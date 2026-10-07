@@ -163,6 +163,13 @@ CSV_CONTRACT = {
     # Renamed by issue 95: `original_name` -> `source_label`, `target_polity_code` ->
     # `polity_code`, `rows` -> `observed_rows`. These are pipeline-internal registries,
     # not a published contract, so they could be unified now; `data/final/` could not.
+    # Added with the table's consumers (issue 446). Pinned because 17_constant_runs.py,
+    # 26_edition_conflicts.py and the matcher JOIN it on (source, unit, era) and read `verdict`; a
+    # renamed key makes the join match nothing and every value read as having no recorded grid.
+    "pipelines/polity-autoimprove/state/source_value_precision.csv": [
+        "source", "unit", "era", "n_nonzero", "share_grid_1000", "share_grid_100",
+        "share_subunit", "verdict",
+    ],
     "pipelines/polity-autoimprove/state/applied_aliases.csv": [
         "source_label", "source", "year_start", "year_end", "common_name",
         "polity_code", "confidence", "basis", "observed_rows",
@@ -209,11 +216,14 @@ MANIFEST_KEYS = [
     "identity_fields", "identity_sha256", "iso3_successor_map", "label_alias_map",
     "label_item_corrections", "live_polity_codes", "local_iso3_codes", "local_iso3_why",
     "polity_code_renames", "polities_schema", "polygon_gap_polity_codes", "source", "source_flow_flags",
-    "stated_area_basis", "territory_families", "territory_families_why",
+    "stated_area_basis", "territory_families", "territory_families_why", "value_precision",
 ]
 # `polities_schema` added 2026-10-07 (issue 600): the explicit VERSION of the polities table's schema, its
 # column list, the GeoPackage-only fields and what each area column means. Pinned against
 # POLITIES_SCHEMA_VERSION below so the version cannot stay put while the columns move.
+# `value_precision` added 2026-10-07 (issue 446): the fingerprint of
+# pipelines/polity-autoimprove/state/source_value_precision.csv, the per-(source, unit, era) reporting
+# grids behind the harmonized `value_grid` / `source_grid_verdict` columns.
 # `polity_code_renames` added 2026-10-02: the fingerprint of data/final/polity_code_renames.csv,
 # old -> new for the 304 subnational codes recoded to ISO 3166-2 subunit parts. A consumer
 # holding data keyed on an old code finds the new one only through this table.

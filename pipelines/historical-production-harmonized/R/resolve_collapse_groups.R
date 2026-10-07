@@ -60,6 +60,18 @@ COLLAPSE_KEY <- c(
   "unit"
 )
 
+# Coarse-to-fine order of `source_grid_verdict`, so a group of rows keeps the WORST (coarsest) one.
+grid_verdict_rank <- c("fine", "mixed", "coarse_100", "coarse_1000")
+
+coarsest_grid <- function(x) {
+  if (all(is.na(x))) NA_real_ else max(x, na.rm = TRUE)
+}
+
+coarsest_verdict <- function(x) {
+  r <- match(x, grid_verdict_rank)
+  if (all(is.na(r))) NA_character_ else grid_verdict_rank[max(r, na.rm = TRUE)]
+}
+
 .same_values <- function(v) {
   (max(v) - min(v)) <= IDENTICAL_TOLERANCE * max(1, abs(max(v)))
 }
@@ -118,6 +130,11 @@ resolve_collapse_groups <- function(rows) {
   multi <- rows[n_by_key[rows$.key] > 1L, , drop = FALSE]
 
   picked <- integer(0)
+  # PRECISION (issue 446): a published row carries the grid of the row it was chosen from; where
+  # several rows carrying the SAME number were merged (identical), the COARSEST of their grids,
+  # because the number is no more precise than its least precise printing.
+  has_grid <- all(c("value_grid", "source_grid_verdict") %in% names(rows))
+  grid_override <- list()
   audit <- vector("list", 0L)
   for (part in split(seq_len(nrow(multi)), multi$.key)) {
     g <- multi[part, , drop = FALSE]
@@ -153,6 +170,12 @@ resolve_collapse_groups <- function(rows) {
     }
     if (!is.na(chosen)) {
       picked <- c(picked, chosen)
+      if (has_grid && all_same) {
+        grid_override[[as.character(chosen)]] <- list(
+          grid = coarsest_grid(g$value_grid),
+          verdict = coarsest_verdict(g$source_grid_verdict)
+        )
+      }
     }
     one_source_dups <- any(lengths(by_src) > 1L)
     if (all_same && !one_source_dups) {
@@ -184,6 +207,12 @@ resolve_collapse_groups <- function(rows) {
     )
   }
 
+  if (has_grid && length(grid_override)) {
+    for (k in names(grid_override)) {
+      multi$value_grid[[as.integer(k)]] <- grid_override[[k]]$grid
+      multi$source_grid_verdict[[as.integer(k)]] <- grid_override[[k]]$verdict
+    }
+  }
   published <- dplyr::bind_rows(single, multi[picked, , drop = FALSE]) |>
     dplyr::arrange(.data$.row) |>
     dplyr::select(-dplyr::all_of(c(".row", ".rank", ".key")))

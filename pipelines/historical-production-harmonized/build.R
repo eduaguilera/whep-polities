@@ -333,7 +333,9 @@ base_cols <- function() {
     "unit",
     "raw_unit",
     "whep_code",
-    "match_method"
+    "match_method",
+    "value_grid",
+    "source_grid_verdict"
   )
 }
 
@@ -465,6 +467,17 @@ if (!"value_divisor" %in% names(matches)) {
   )
 }
 
+# VALUE PRECISION (whep-polities issue 446). matched_rows.parquet carries `value_grid` (the step a
+# value cannot be assumed finer than, in the unit layer B printed it), `source_grid_verdict` and the
+# two series columns. A matches file without them predates the channel; publishing from it would
+# put 47% of the panel's non-zero values back as exact points, so it is refused.
+if (!all(c("value_grid", "source_grid_verdict") %in% names(matches))) {
+  stop(
+    "matched rows carry no `value_grid`/`source_grid_verdict`; re-run ",
+    "pipelines/polity-autoimprove/01_match_and_findings.py"
+  )
+}
+
 base <- dplyr::bind_cols(
   layer_b |>
     dplyr::rename(
@@ -475,7 +488,10 @@ base <- dplyr::bind_cols(
       raw_unit = "unit"
     ),
   matches |>
-    dplyr::select("whep_code", "value_divisor", dplyr::any_of("match_method"))
+    dplyr::select(
+      "whep_code", "value_divisor", "value_grid", "source_grid_verdict",
+      dplyr::any_of("match_method")
+    )
 ) |>
   dplyr::mutate(
     item_code = normalise_item_code(.data$raw_item_code),
@@ -490,6 +506,14 @@ base <- dplyr::bind_cols(
       .data$value_divisor < 1,
       as.numeric(.data$value) * .data$unit_multiplier * round(1 / .data$value_divisor),
       as.numeric(.data$value) * .data$unit_multiplier / .data$value_divisor
+    ),
+    # The grid is a step in the PRINTED unit, so it rescales exactly as the value does: a
+    # `1000 tonnes` row on a 0.1 grid is a 100 t step, a /100 value-scale correction divides the
+    # step by 100 as well, and a x10 cell correction (divisor 0.1) multiplies it by 10.
+    value_grid = dplyr::if_else(
+      .data$value_divisor < 1,
+      as.numeric(.data$value_grid) * .data$unit_multiplier * round(1 / .data$value_divisor),
+      as.numeric(.data$value_grid) * .data$unit_multiplier / .data$value_divisor
     )
   ) |>
   dplyr::filter(
@@ -564,7 +588,9 @@ harmonized <- resolved$published |>
     "raw_unit",
     "source_detail",
     "match_method",
-    "value"
+    "value",
+    "value_grid",
+    "source_grid_verdict"
   ) |>
   dplyr::arrange(
     .data$year,

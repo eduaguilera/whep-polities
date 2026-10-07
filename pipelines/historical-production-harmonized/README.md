@@ -134,6 +134,38 @@ provenance:
 - `raw_unit`
 - `source_detail`
 - `match_method`
+- `value_grid`
+- `source_grid_verdict`
+
+## Value Precision
+
+`value` is a printed number, and a large part of the panel was printed coarsely: 47% of the non-zero
+layer-B values sit on a 1000-grid (whep-polities #446), so `1,000` is often "somewhere in 500-1,500",
+not an exact point. Two columns carry that, derived by `matchlib.value_precision` in stage 01 and
+documented for consumers in `data/final/polities_manifest.json` under `value_precision`:
+
+- `value_grid` -- the step the value cannot be assumed finer than, **in the row's output unit**. Treat
+  it as a `+/- value_grid/2` interval around `value`, never as a shift of it. It is the coarser of
+  (a) the largest power of ten (0.001 to 1,000,000) that every non-zero value of the row's own series
+  `(source, label, item, unit, indicator[, era])` is a multiple of -- needs 5 non-zero values, and a
+  series that is not on any grid above the 0.001 floor reads 0.001, meaning "that fine or finer" -- and
+  (b) 1000 / 100 where the source's verdict is `coarse_1000` / `coarse_100`. It follows the value's own
+  rescaling: the printed grid is multiplied by the `1000 tonnes` style unit multiplier and divided by
+  the #416 value-scale divisor. The published row (one per consumer key, `R/resolve_collapse_groups.R`) carries the grid of
+  the candidate row it was chosen from; where several rows carrying the SAME number were merged it
+  keeps the COARSEST of their grids, because a number is no more precise than its least precise printing. **NULL means
+  unknown, not exact**: 3.4% of the harmonized rows (short series from a source without a coarse
+verdict).
+- `source_grid_verdict` -- `coarse_1000`, `coarse_100`, `mixed` or `fine`, the (source, unit, era)
+  verdict of `pipelines/polity-autoimprove/state/source_value_precision.csv`. `mixed` (the majority of
+  the panel: `juan` crops, `iia` overall) means the source prints both coarse and fine values there, so
+  the verdict cannot say whether THIS value is rounded -- read `value_grid` for that. Only `iia` is
+  split by era (the 1934 volume boundary; a period row takes its end year).
+
+Neither column is proof that one value was rounded: a grid is a fact about a series or a source. A
+published `0` in a series on a coarse grid may be a value below half a step; the 201 such zeros are
+enumerated in `state/grid_ambiguous_zeros.csv`. The build refuses a matches file without the columns,
+which would otherwise publish the panel as exact again. Gate: `scripts/validate_value_grid_channel.py`.
 
 ## Included
 

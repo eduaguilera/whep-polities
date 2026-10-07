@@ -5053,6 +5053,47 @@ def mutate_precision_contradicts_the_registry(root, gpd, make_valid, affinity):
         w.writerows(rows)
 
 
+def mutate_grid_channel_drops_the_coarsest_rule(root, gpd, make_valid, affinity):
+    """Make the resolver keep the FINEST grid when it merges identical rows (issue 446).
+
+    the resolver merges several identical source rows into one harmonized row, and the mean of values on a
+    1000-grid is no finer than they are, so the row must keep the coarsest contributor's grid. Keeping
+    the minimum instead publishes a narrower interval than any input supports -- and still carries a
+    `value_grid` column, so nothing downstream looks wrong. The R cannot run in CI, so the gate reads
+    its source text for the rule.
+    """
+    path = os.path.join(root, "pipelines/historical-production-harmonized/R/resolve_collapse_groups.R")
+    with open(path, encoding="utf-8") as fh:
+        src = fh.read()
+    old = "grid = coarsest_grid(g$value_grid)"
+    if old not in src:
+        raise AssertionError("resolve_collapse_groups.R no longer merges value_grid with coarsest_grid(), so this "
+                             "case would pass vacuously")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(src.replace(old, "grid = min(g$value_grid, na.rm = TRUE)"))
+    return "the resolver merges identical rows keeping value_grid with min() instead of the coarsest contributor"
+
+
+def mutate_grid_channel_derivation_ignores_eras(root, gpd, make_valid, affinity):
+    """Key the series grid WITHOUT the era, so a fine early volume hides a coarse late one.
+
+    That is exactly how `iia` reads: its pre-1934 volumes resolve to the unit and its 1934+ volumes to
+    100-1000, so one grid over the whole series is 1 and every late value reads as exact. The mutation
+    removes `era` from the series key in `matchlib.value_precision`; the synthetic frame in the gate
+    has an iia series spanning both eras and must see the late grid collapse.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/matchlib.py")
+    with open(path, encoding="utf-8") as fh:
+        src = fh.read()
+    old = '"unit": df["unit"], "ind": ind, "era": era})'
+    if old not in src:
+        raise AssertionError("matchlib.value_precision no longer builds its series key this way, so "
+                             "this case would pass vacuously")
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(src.replace(old, '"unit": df["unit"], "ind": ind, "era": "all"})'))
+    return "value_precision's series key no longer includes the era"
+
+
 def mutate_hierarchy_subfloor_without_the_exemption(root, gpd, make_valid, affinity):
     """Keep a below-floor row while removing what earns it its place.
 
@@ -6580,6 +6621,20 @@ CASES = (
         "raised to match so only the cross-check against source_conventions.csv can see it",
     ),
     (
+        "validate_value_grid_channel.py",
+        mutate_grid_channel_drops_the_coarsest_rule,
+        "keeps the coarsest grid when it merges identical rows",
+        "the harmonized build averaging rows and keeping the finest grid, so a mean of 1000-grid values "
+        "is published with a narrower interval than any input supports",
+    ),
+    (
+        "validate_value_grid_channel.py",
+        mutate_grid_channel_derivation_ignores_eras,
+        "iia 1934+ must read grid 1000",
+        "a series key without the era, so a fine early iia volume hides the coarse grid of its late "
+        "volumes and every 1934+ value reads as exact",
+    ),
+    (
         "validate_label_hierarchy_identity.py",
         mutate_hierarchy_subfloor_without_the_exemption,
         "does not meet the exact-full-partition exemption",
@@ -7897,6 +7952,17 @@ WRITABLE = {
     # The case rewrites source_value_precision.csv in place (it promotes one row's verdict), and the
     # gate imports the generator's classify() and reads the conventions registry, so all three are
     # staged.
+    # Both cases rewrite a file the gate reads as TEXT or imports (matchlib.py is loaded with
+    # spec_from_file_location, so it must be staged); the manifest, README and table are read as data.
+    "validate_value_grid_channel.py": (
+        "pipelines/polity-autoimprove/matchlib.py",
+        "pipelines/polity-autoimprove/01_match_and_findings.py",
+        "pipelines/historical-production-harmonized/build.R",
+        "pipelines/historical-production-harmonized/R/resolve_collapse_groups.R",
+        "pipelines/historical-production-harmonized/README.md",
+        "data/final/polities_manifest.json",
+        "pipelines/polity-autoimprove/state/source_value_precision.csv",
+    ),
     "validate_value_precision.py": (
         "pipelines/polity-autoimprove/state/source_value_precision.csv",
         "pipelines/polity-autoimprove/37_value_precision.py",

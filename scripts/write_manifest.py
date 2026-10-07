@@ -495,6 +495,45 @@ polities_schema = {
     },
 }
 
+# VALUE PRECISION (issue 446). Layer B prints a number and nothing about how coarsely it was printed:
+# 47% of the panel's non-zero values sit on a 1000-grid and read as exact points. The reporting grids
+# are measured per (source, unit, era) in state/source_value_precision.csv, and the matcher derives
+# four per-row columns from them (matchlib.value_precision) that the harmonized build carries as
+# `value_grid` and `source_grid_verdict`. Named here for the reason every table above is: a consumer
+# reading the manifest cannot otherwise learn that the numbers have a precision at all.
+VALUE_PRECISION = os.path.join(REPO, "pipelines/polity-autoimprove/state/source_value_precision.csv")
+value_precision_info = None
+if os.path.exists(VALUE_PRECISION):
+    raw = open(VALUE_PRECISION, "rb").read()
+    vp_rows = list(csv.DictReader(open(VALUE_PRECISION, encoding="utf-8")))
+    verdicts = {}
+    for r in vp_rows:
+        verdicts[r["verdict"]] = verdicts.get(r["verdict"], 0) + 1
+    value_precision_info = {
+        "path": "pipelines/polity-autoimprove/state/source_value_precision.csv",
+        "sha256": hashlib.sha256(raw).hexdigest(),
+        "groups": len(vp_rows),
+        "verdicts": dict(sorted(verdicts.items())),
+        "matched_rows_columns": ["series_grid", "series_grid_n", "source_grid_verdict", "value_grid"],
+        "harmonized_columns": ["value_grid", "source_grid_verdict"],
+        "why": (
+            "How coarsely each value was PRINTED. `value_grid` is the step a value cannot be assumed "
+            "finer than, in the output unit of the row (a +/-value_grid/2 interval around `value`, "
+            "never a shift of it): the coarser of (a) the largest power of ten that every non-zero "
+            "value of the row's own series is a multiple of (series needs 5 non-zero values; floor "
+            "0.001) and (b) the grid of the source's verdict. `source_grid_verdict` is that "
+            "(source, unit, era) verdict from this table: coarse_1000 (about +/-500 in the printed "
+            "unit), coarse_100 (+/-50), mixed (both coarse and fine values appear; inspect per "
+            "value) or fine. NULL `value_grid` means UNKNOWN, not exact. Only iia is split by era "
+            "(1934, an undated period row takes its end year). A grid is a fact about a series or a "
+            "source, not proof that one value was rounded; and where a harmonized row averages "
+            "several source rows it carries the COARSEST of their grids and verdicts. A published "
+            "ZERO in a series on a coarse grid may be a value below half a step "
+            "(state/grid_ambiguous_zeros.csv). Join `path` on (source, unit, era) for the measured "
+            "shares behind a verdict."
+        ),
+    }
+
 manifest = {
     "_comment": (
         "Contract for consumers of the WHEP polities database. Compare "
@@ -520,6 +559,9 @@ manifest = {
         "`polities_schema.version` names the schema of polities_database.{csv,gpkg}; it "
         "changes whenever a column is added, removed, renamed or changes meaning, and "
         "`polities_schema.area_fields` says which of the area columns to read for what. "
+        "`value_precision` fingerprints the per-(source, unit, era) reporting-grid table behind the "
+        "`value_grid` / `source_grid_verdict` columns of the harmonized historical production: a "
+        "value on a coarse grid is an interval, not a point, and a NULL grid is unknown, not exact. "
         "Regenerate with scripts/write_manifest.py."
     ),
     "polities_schema": polities_schema,
@@ -593,6 +635,7 @@ manifest = {
     "stated_area_basis": stated_area_basis,
     "source_flow_flags": flow_flags_info,
     "polity_code_renames": renames_info,
+    "value_precision": value_precision_info,
     "territory_families": territory_families,
     "territory_families_why": (
         "WHICH OTHER FAMILIES COVER ONE TERRITORY. iso3_code identifies a polity; it does not "
