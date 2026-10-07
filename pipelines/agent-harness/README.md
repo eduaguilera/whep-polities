@@ -127,7 +127,7 @@ python3 pipelines/agent-harness/harness.py --country Chile --alias-stage
 | `matched` | observed (`disposition` empty) to its polity, clipped to that polity's span |
 | `proposed` | observed to the authored polity -- its own `polity_code`, else the `page_polity_code` / `extra_pages` era whose span holds the year |
 | `back_cast` | `back_cast` to its polity, for the years **before** that polity starts; years inside it are the era's container and are reported, not derived |
-| `unroutable` | nothing |
+| `unroutable` | nothing -- and `--check` fails when the unit's own polities account for the years: before its own polity starts (that is `back_cast`), or inside a polity its segments name (issue 657) |
 
 Every derived row is unscoped: the ledger has no indicator dimension. A registry row scoped to
 one panel `indicator` (the optional column added 2026-09-25) is a hand decision; it counts as

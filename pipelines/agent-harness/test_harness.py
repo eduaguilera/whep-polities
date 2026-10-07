@@ -1577,6 +1577,84 @@ def test_derived_rows_are_unscoped_and_the_registry_column_is_last():
     assert res["missing"] and all(r["indicator"] == "" for r in res["missing"]), res["missing"]
 
 
+# ---------------------------------------------------------------------------
+# Issue 657 -- data that predates its own unit is back_cast, not unroutable
+# ---------------------------------------------------------------------------
+_POLS_657 = [
+    {"polity_code": "CHL-AI-1976-2025", "polity_name": "Aysen", "iso3_code": "CHL",
+     "polity_type": "subnational", "start_year": "1976", "end_year": "2025"},
+    {"polity_code": "NSW-1800-1901", "polity_name": "New South Wales colony", "iso3_code": "AUS",
+     "polity_type": "national", "start_year": "1800", "end_year": "1901"},
+    {"polity_code": "AUS-NSW-1901-2025", "polity_name": "New South Wales", "iso3_code": "AUS",
+     "polity_type": "subnational", "start_year": "1901", "end_year": "2025"},
+]
+
+
+def test_unroutable_years_before_the_units_own_polity_are_objected_to():
+    """BUG (issue 657): 20 units recorded the years before their own creation `unroutable` --
+    CHL-AI 1900-1975 against CHL-AI-1976-2025, BRA-ACRE's 3 years, MEX-QUINTANAROO's 2 -- while
+    the panel filed those years under the modern unit on one constant land frame. The 10% rule let
+    the short ones through. The objection names back_cast AND the alternative (an earlier
+    administration of the same territory), and states the land frame when the unit has one."""
+    unit = {"unit_id": "CHL-AI", "y0": 1900, "y1": 2023, "size_km2": 83827.0,
+            "size_years": 124, "size_spread": 1.0}
+    live = {"coverage": [_seg(1900, 1975, "unroutable"), _seg(1976, 2023, "proposed")],
+            "proposed": {"start_year": 1976, "end_year": 2025}}
+    obj = harness.coverage_objection(live, unit, _POLS_657) or ""
+    assert "1900-1975 only PREDATES the polity you proposed (starts 1976)" in obj, obj
+    assert "`back_cast`" in obj and "earlier administration of the SAME territory" in obj, obj
+    assert "~83,827 km2" in obj, "the land frame is the evidence and must be stated"
+    # short spans are caught too: the 10% rule never saw Quintana Roo's 2 years
+    short = {"coverage": [_seg(1900, 1901, "unroutable"), _seg(1902, 2023, "proposed")],
+             "proposed": {"start_year": 1902, "end_year": 2025}}
+    assert "only PREDATES" in (harness.coverage_objection(
+        short, {"unit_id": "MEX-QUINTANAROO", "y0": 1900, "y1": 2023}, []) or "")
+    # the re-recorded shape passes
+    fixed = {"coverage": [_seg(1900, 1975, "back_cast", "CHL-AI-1976-2025"),
+                          _seg(1976, 2023, "proposed")],
+             "proposed": {"start_year": 1976, "end_year": 2025}}
+    assert harness.coverage_objection(fixed, unit, _POLS_657) is None
+    # a unit with no polity of its own (ARG-RESID) and a year past every polity are not flagged
+    resid = {"coverage": [_seg(1900, 2023, "unroutable")], "proposed": None}
+    assert not harness.predating_problems(resid, unit, resid["coverage"], {})
+
+
+def test_an_unroutable_year_inside_a_polity_the_verdict_names_is_objected_to():
+    """AUS-NEWSOUTHWALES left 1900 `unroutable` beside a matched NSW-1800-1901, whose EXCLUSIVE
+    end 1901 covers 1900. The objection says the colony carries it -- not that it predates the
+    state, which would invite a back_cast onto the wrong polity."""
+    unit = {"unit_id": "AUS-NEWSOUTHWALES", "y0": 1860, "y1": 2022}
+    v = {"coverage": [_seg(1860, 1899, "matched", "NSW-1800-1901"), _seg(1900, 1900, "unroutable"),
+                      _seg(1901, 2022, "proposed")],
+         "proposed": {"start_year": 1901, "end_year": 2025}}
+    probs = harness.predating_problems(v, unit, v["coverage"],
+                                       {p["polity_code"]: p for p in _POLS_657})
+    assert len(probs) == 1 and "lies inside NSW-1800-1901" in probs[0], probs
+
+
+def test_derive_blocks_an_unroutable_segment_the_units_own_polities_account_for():
+    """The committed-ledger half of issue 657. The registry routed every one of the 20 units'
+    pre-creation years back_cast, and the ledger's `unroutable` showed only as a non-blocking
+    `unrecorded` line, so the two halves disagreed indefinitely. Now it blocks --check."""
+    live = dict(_LIVE, **{"NSW-1800-1901": {"start": 1800, "end": 1901, "name": "NSW colony"},
+                          "AUS-NSW-1901-2025": {"start": 1901, "end": 2025, "name": "NSW"}})
+    ledger = [_unit("CHL-AP", "Arica", [_seg(1900, 2006, "unroutable"),
+                                        _seg(2007, 2023, "proposed")], page="CHL-AP-2007-2025"),
+              _unit("AUS-NEWSOUTHWALES", "New South Wales",
+                    [_seg(1860, 1899, "matched", "NSW-1800-1901"), _seg(1900, 1900, "unroutable"),
+                     _seg(1901, 2022, "proposed")], page="AUS-NSW-1901-2025"),
+              _unit("ARG-RESID", "Resto", [_seg(1900, 2023, "unroutable")]),
+              _unit("USA-TEXAS", "Texas", [_seg(1866, 2025, "proposed"),
+                                           _seg(2026, 2026, "unroutable")], page="CAL-1850-2025")]
+    res = derive.derive(ledger, [], live, derive.name_owners(ledger))
+    assert sorted(res["unroutable_owned"]) == sorted([
+        "CHL-AP 1900-2006 (unroutable): predates the unit's own polity (starts 2007); "
+        "record it back_cast",
+        "AUS-NEWSOUTHWALES 1900-1900 (unroutable): inside NSW-1800-1901, which this unit's own "
+        "segments name"]), res["unroutable_owned"]
+    assert "unroutable_owned" in derive.BLOCKING
+
+
 if __name__ == "__main__":
     failed = 0
     for name, fn in sorted(globals().items()):
