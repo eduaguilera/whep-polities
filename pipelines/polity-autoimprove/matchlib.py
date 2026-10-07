@@ -464,6 +464,122 @@ def value_scale_divisors(df, rules, label_col="country"):
     return div, per_rule
 
 
+# ---------------------------------------------------------------------------
+# VALUE PRECISION (issue 446).
+#
+# The panel prints a number and nothing about how it was printed: 47% of its non-zero values sit
+# on a 1000-grid and read as exact points. Three row-level facts are derived GENERICALLY here and
+# written to matched_rows.parquet so the harmonized build can carry them:
+#
+#   series_grid          the coarsest power-of-ten grid (10^k, k in GRID_EXP_MIN..GRID_EXP_MAX)
+#                        that EVERY non-zero value of the row's series sits on, in the unit the
+#                        source printed. NaN when the series has fewer than MIN_SERIES_NONZERO
+#                        non-zero values: three round numbers prove nothing about a grid. A series
+#                        is (source, label as printed, item, unit, indicator), and for a source
+#                        with a registered era boundary (source_value_precision.csv has era rows)
+#                        also the era -- else one fine early volume would hide a coarse late one,
+#                        which is exactly how iia reads. Zero rows inherit their series' grid:
+#                        that is what makes "a zero below half a step" identifiable (state/
+#                        grid_ambiguous_zeros.csv).
+#   series_grid_n        the number of non-zero values the series grid was derived from.
+#   source_grid_verdict  fine / mixed / coarse_100 / coarse_1000 -- the (source, unit, era) verdict
+#                        of state/source_value_precision.csv (37_value_precision.py), NaN where the
+#                        table has no row. The era of an undated row is its period's END year, the
+#                        convention matchlib.eff_year uses for routing.
+#   value_grid           the coarsest of series_grid and the verdict's grid (1000 / 100): the step
+#                        the value cannot be assumed finer than. NaN = unknown, NOT "exact".
+#
+# A grid is a statement about a SERIES or a SOURCE, never proof that one value was rounded; the
+# columns say "cannot be assumed finer than", and a consumer should widen, not shift, a value.
+GRID_EXP_MIN, GRID_EXP_MAX = -3, 6
+MIN_SERIES_NONZERO = 5
+PRECISION_COLUMNS = ("series_grid", "series_grid_n", "source_grid_verdict", "value_grid")
+VERDICT_GRID = {"coarse_1000": 1000.0, "coarse_100": 100.0}
+
+
+def load_value_precision(path):
+    """{(source, unit): {era: verdict}} from state/source_value_precision.csv ({} if absent)."""
+    out = {}
+    if not os.path.exists(path):
+        return out
+    with open(path, newline="") as fh:
+        for r in csv.DictReader(fh):
+            out.setdefault((r["source"], r["unit"]), {})[r["era"]] = r["verdict"]
+    return out
+
+
+def _era_cut(eras):
+    """The year an era table splits at ('pre-1934' / '1934+'), or None for an `all`-only source."""
+    for e in eras:
+        m = re.fullmatch(r"(\d{4})\+", e)
+        if m:
+            return int(m.group(1))
+    return None
+
+
+def row_grid_exponent(values):
+    """Per value: the largest k in [GRID_EXP_MIN, GRID_EXP_MAX] with value an integer multiple of
+    10^k (float NaN for NaN / zero values, which sit on every grid and so carry no information)."""
+    v = pd.to_numeric(pd.Series(values), errors="coerce").astype(float)
+    a = v.abs().where(v.notna() & (v != 0))
+    exp = pd.Series(np.nan, index=v.index)
+    exp[a.notna()] = GRID_EXP_MIN            # finer than the floor still reads as the floor
+    for k in range(GRID_EXP_MIN, GRID_EXP_MAX + 1):
+        r = a / (10.0 ** k)
+        ok = ((r - r.round()).abs() <= 1e-9 * np.maximum(1.0, r)) & a.notna()
+        exp[ok] = k
+    return exp
+
+
+def value_precision(df, table, label_col="source_label_raw"):
+    """Return a frame (index of df) with series_grid, series_grid_n, source_grid_verdict, value_grid.
+
+    `table` is load_value_precision(). `label_col` must hold the label AS LAYER B PRINTS IT, so two
+    corrected spellings of one printed label stay one series."""
+    year = pd.to_numeric(df["year"], errors="coerce")
+    eff = year.copy()
+    if "period" in df.columns:
+        ends = df["period"].map(lambda p: eff_year(np.nan, p))
+        eff = eff.where(eff.notna(), ends)
+    cut_by = {k: _era_cut(v) for k, v in table.items()}
+    cutv = pd.Series([cut_by.get((s, u)) for s, u in zip(df["source"], df["unit"])],
+                     index=df.index, dtype=object)
+    era = pd.Series("all", index=df.index, dtype=object)
+    has_cut = cutv.notna() & eff.notna()
+    for c in sorted({c for c in cutv.dropna().unique()}):
+        m = has_cut & (cutv == c)
+        era[m & (eff < c)] = f"pre-{c}"
+        era[m & (eff >= c)] = f"{c}+"
+
+    ind = df["indicator"].fillna("") if "indicator" in df.columns else ""
+    key = pd.DataFrame({"source": df["source"], "label": df[label_col], "item": df["item"],
+                        "unit": df["unit"], "ind": ind, "era": era})
+    exp = row_grid_exponent(df["value"])
+    g = key.assign(exp=exp).groupby(["source", "label", "item", "unit", "ind", "era"],
+                                    sort=False, dropna=False)["exp"]
+    smin = g.transform("min")
+    n = g.transform("count")
+    # float("1e-1") is exactly the literal 0.1; 10.0 ** -1 is 0.09999999999999999 under some
+    # numpy/pandas builds (it was, on CI), which would publish a grid no consumer can compare to 0.1.
+    series_grid = smin.map(lambda k: float(f"1e{int(k)}") if pd.notna(k) else np.nan) \
+        .where(n >= MIN_SERIES_NONZERO)
+    out = pd.DataFrame(index=df.index)
+    out["series_grid"] = series_grid
+    out["series_grid_n"] = n.astype("int64")
+
+    def verdict(s, u, e):
+        eras = table.get((s, u))
+        if not eras:
+            return np.nan
+        return eras.get(e, eras.get("all", np.nan))
+    pairs = pd.Series(list(zip(df["source"], df["unit"], era)), index=df.index)
+    memo = {t: verdict(*t) for t in set(pairs)}
+    out["source_grid_verdict"] = pairs.map(memo)
+    vg = out["source_grid_verdict"].map(VERDICT_GRID)
+    out["value_grid"] = pd.concat([out["series_grid"], vg], axis=1).max(axis=1, skipna=True)
+    return out[list(PRECISION_COLUMNS)]
+
+
 class Matcher:
     """Deterministic candidate resolver over the polities DB + alias tables.
 

@@ -1222,6 +1222,16 @@ checks the two tables against each other in both directions, in CI. A power-of-t
 not a verdict: the three 1933 hops areas in the original x10 list read right, because the 10x side
 is iia_1938_39's hops-area unit.
 
+**Value precision channel (issue 446).** `01_match_and_findings.py` also appends four columns to
+`matched_rows.parquet`, derived generically by `matchlib.value_precision`: `series_grid` (the coarsest
+power-of-ten grid, 0.001-1,000,000, every non-zero value of the series sits on; one grid per era for
+`iia`; NaN under 5 non-zero values), `series_grid_n`, `source_grid_verdict` (the (source, unit, era)
+verdict of `state/source_value_precision.csv`; an undated row takes its period's end year) and
+`value_grid` (the coarser of the series grid and the verdict's 1000/100). The harmonized build
+publishes `value_grid` and `source_grid_verdict`; the manifest's `value_precision` block documents
+them for consumers. NaN means unknown, not exact. Run 37_value_precision.py `--write` before 01 when
+layer B changes. Gate: `scripts/validate_value_grid_channel.py`.
+
 ### What a source label actually means (avoid false precision)
 
 A label like "Germany Western" is **the source's own reporting unit**, with the

@@ -43,7 +43,8 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from matchlib import Matcher, norm, toks, eff_year as _eff_year, covers as _year_covers
 from matchlib import load_label_item_corrections, apply_label_item_corrections
-from matchlib import load_value_scale_corrections, value_scale_divisors
+from matchlib import (load_value_scale_corrections, value_scale_divisors, value_precision,
+                      load_value_precision, VERDICT_GRID)
 import extdata
 from atomic import write_csv_atomic
 
@@ -95,6 +96,14 @@ for _k, _n in _vsc_per_rule.items():
             f"against the rebuilt layer B and update observed_rows (or the rule) deliberately.")
 print(f"value-scale corrections: {int((work['value_divisor'] != 1).sum()):,} row(s) carry a divisor "
       f"across {len(_vsc)} rule(s)")
+# VALUE PRECISION (issue 446): the reporting grid each value cannot be assumed finer than, derived
+# per series and per (source, unit, era) -- matchlib.value_precision. Computed on the printed label
+# for the same reason as the divisor; appended to matched_rows.parquet after `value_divisor`.
+work_precision = value_precision(work, load_value_precision(extdata.VALUE_PRECISION))
+print(f"value precision: {int(work_precision['value_grid'].notna().sum()):,} of {len(work):,} row(s) "
+      f"carry a grid ({int(work_precision['series_grid'].notna().sum()):,} from their own series, "
+      f"{int(work_precision['source_grid_verdict'].isin(list(VERDICT_GRID)).sum()):,} from a coarse "
+      f"source verdict)")
 _ocr = extdata.load_ocr_corrections()
 _before = work["country"].copy()
 for (_src, _bad), _good in _ocr.items():
@@ -558,6 +567,7 @@ json.dump({"summary": {
 work[["source","country","iso3c","year","period","item","indicator","value","unit","whep_code","match_method",
       "period_straddles_polity_span","period_years_before_start","period_years_after_end",
       "source_label_raw", "value_divisor"]] \
+    .join(work_precision) \
     .to_parquet(f"{OUT}/matched_rows.parquet", index=False)
 
 # coverage by source after

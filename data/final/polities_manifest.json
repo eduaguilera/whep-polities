@@ -1,5 +1,5 @@
 {
- "_comment": "Contract for consumers of the WHEP polities database. Compare `identity_sha256` against your embedded copy to detect drift; exclude `dead_status` rows from any resolution of data to polities; and treat `polygon_gap_polity_codes` as the known set of rows whose status asserts a polygon the GeoPackage does not carry, so you can assert no NEW gap appears without asserting an invariant we do not yet meet. `faostat_area_map` fingerprints the FAOSTAT area -> polity mapping published beside this file, which is the authority for which polity a reporting area's data belongs to in a given year, and `label_alias_map` the mapping from a source's own country LABEL to a polity — prefer both over rebuilding those mappings yourself. `label_item_corrections` lists the rows a source files under another territory's label for one item; apply it BEFORE resolving labels with the alias map. `source_flow_flags` names the (source, label, item) combinations whose figures are NOT the labelled territory's production — entrepot/transit volumes — which no aggregate should sum beside the producing territory's own series. `territory_families` and `iso3_successor_map` say which OTHER families cover one territory, which iso3_code cannot: do not infer that link from the code. `polity_code_renames` maps codes renamed without any territorial change (old_code -> new_code); apply it to data keyed on codes from before the rename. `polities_schema.version` names the schema of polities_database.{csv,gpkg}; it changes whenever a column is added, removed, renamed or changes meaning, and `polities_schema.area_fields` says which of the area columns to read for what. Regenerate with scripts/write_manifest.py.",
+ "_comment": "Contract for consumers of the WHEP polities database. Compare `identity_sha256` against your embedded copy to detect drift; exclude `dead_status` rows from any resolution of data to polities; and treat `polygon_gap_polity_codes` as the known set of rows whose status asserts a polygon the GeoPackage does not carry, so you can assert no NEW gap appears without asserting an invariant we do not yet meet. `faostat_area_map` fingerprints the FAOSTAT area -> polity mapping published beside this file, which is the authority for which polity a reporting area's data belongs to in a given year, and `label_alias_map` the mapping from a source's own country LABEL to a polity — prefer both over rebuilding those mappings yourself. `label_item_corrections` lists the rows a source files under another territory's label for one item; apply it BEFORE resolving labels with the alias map. `source_flow_flags` names the (source, label, item) combinations whose figures are NOT the labelled territory's production — entrepot/transit volumes — which no aggregate should sum beside the producing territory's own series. `territory_families` and `iso3_successor_map` say which OTHER families cover one territory, which iso3_code cannot: do not infer that link from the code. `polity_code_renames` maps codes renamed without any territorial change (old_code -> new_code); apply it to data keyed on codes from before the rename. `polities_schema.version` names the schema of polities_database.{csv,gpkg}; it changes whenever a column is added, removed, renamed or changes meaning, and `polities_schema.area_fields` says which of the area columns to read for what. `value_precision` fingerprints the per-(source, unit, era) reporting-grid table behind the `value_grid` / `source_grid_verdict` columns of the harmonized historical production: a value on a coarse grid is an interval, not a point, and a NULL grid is unknown, not exact. Regenerate with scripts/write_manifest.py.",
  "polities_schema": {
   "version": 2,
   "csv_columns": [
@@ -287,6 +287,28 @@
   "sha256": "79ad69a06d4c00feba128f834fcbd2e229e1f01aad289657ab8cb41527a35dfe",
   "renames": 304,
   "why": "Codes that were renamed without any change of territory, years or data. Map `old_code` to `new_code` in any data keyed on polity codes from before `renamed_on`. The mapping is one-to-one, does not chain, and no `old_code` is ever reused for a different polity. Data keyed on source labels needs nothing: label_alias_map already resolves to the new codes."
+ },
+ "value_precision": {
+  "path": "pipelines/polity-autoimprove/state/source_value_precision.csv",
+  "sha256": "c3ce1b1c407dc4ec4cff8407468510200d3516acc4677001985671241cab4fc6",
+  "groups": 20,
+  "verdicts": {
+   "coarse_100": 2,
+   "coarse_1000": 4,
+   "fine": 10,
+   "mixed": 4
+  },
+  "matched_rows_columns": [
+   "series_grid",
+   "series_grid_n",
+   "source_grid_verdict",
+   "value_grid"
+  ],
+  "harmonized_columns": [
+   "value_grid",
+   "source_grid_verdict"
+  ],
+  "why": "How coarsely each value was PRINTED. `value_grid` is the step a value cannot be assumed finer than, in the output unit of the row (a +/-value_grid/2 interval around `value`, never a shift of it): the coarser of (a) the largest power of ten that every non-zero value of the row's own series is a multiple of (series needs 5 non-zero values; floor 0.001) and (b) the grid of the source's verdict. `source_grid_verdict` is that (source, unit, era) verdict from this table: coarse_1000 (about +/-500 in the printed unit), coarse_100 (+/-50), mixed (both coarse and fine values appear; inspect per value) or fine. NULL `value_grid` means UNKNOWN, not exact. Only iia is split by era (1934, an undated period row takes its end year). A grid is a fact about a series or a source, not proof that one value was rounded; and where a harmonized row averages several source rows it carries the COARSEST of their grids and verdicts. A published ZERO in a series on a coarse grid may be a value below half a step (state/grid_ambiguous_zeros.csv). Join `path` on (source, unit, era) for the measured shares behind a verdict."
  },
  "territory_families": {
   "AGO": [

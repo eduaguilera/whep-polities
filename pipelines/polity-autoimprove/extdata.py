@@ -388,6 +388,12 @@ VALUE_SCALE_CORRECTIONS = os.path.join(
 )
 
 
+# Source value precision (issue 446): the (source, unit, era) reporting-grid verdicts written by
+# 37_value_precision.py; read by matchlib.load_value_precision.
+VALUE_PRECISION = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), "state", "source_value_precision.csv")
+
+
 def load_ocr_corrections(path: str | None = None):
     """Load the tabled OCR spelling corrections as {(source, ocr_label): correct_label}.
 

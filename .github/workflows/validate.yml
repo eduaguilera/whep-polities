@@ -655,6 +655,12 @@ jobs:
       - name: Sources — the value-precision table must agree with the grid conventions
         if: '!cancelled()'
         run: python3 scripts/validate_value_precision.py
+      # The per-row precision channel (issue 446): matched_rows and the harmonized build carry
+      # `value_grid` / `source_grid_verdict`, and the manifest documents them. The parquet is not in CI,
+      # so this checks the derivation on a synthetic frame, the wiring in build.R and the contract.
+      - name: Sources — every published value must carry its reporting grid (precision channel)
+        if: '!cancelled()'
+        run: python3 scripts/validate_value_grid_channel.py
       - name: Sources — nested-label identities must hold, and the label tree must be real
         if: '!cancelled()'
         run: python3 scripts/validate_label_hierarchy_identity.py
