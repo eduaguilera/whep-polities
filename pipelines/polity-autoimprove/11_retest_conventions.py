@@ -1476,7 +1476,31 @@ def check_fao1952_present_boundaries(d):
         instrument here decomposes them onto either the Mandate or the 1949 armistice lines. Their
         pre-war rows stay on PAL-1920-1948 and JOR-1923-1946. The arm pins the three values, so a
         rebuilt panel that changes them reopens the question.
-    Yugoslavia, Italy, Hungary, Korea and the Pacific labels are NOT asserted either way.
+    ADDED 2026-10-07 (issue 684):
+    (11) ITALY is on the POST-WAR frame WITHOUT the Free Territory (printed as `Trieste`). External
+        figures, ISTAT, Popolazione residente dei Comuni. Censimenti dal 1861 al 1991 (1994):
+        resident population at the 21 April 1936 census 42,993,602 on the boundaries of the time and
+        42,398,489 on the 1991 boundaries; the difference is exactly the 590,639 people of the
+        communes ceded to Yugoslavia plus the 4,474 ceded to France. On the 1991 boundaries the
+        province of Trieste (= Zone A) held 273,676 (1931) and 271,689 (1936); Italy 41,043,489 (1931).
+        Post-war Italy without Trieste, carried forward at its own 1931-36 rate to any date in 1937,
+        brackets fao1952's 1937 `Italy`. The interwar frame without the whole Free Territory (FAO's own
+        `Trieste`, 350) is ABOVE fao1952's figure already in April 1936, so no 1937 date can reach it.
+        Asserted for the 1937 population only; the 1934-38 averages follow the source-wide rule, and
+        the 1939 livestock is not asserted (Romania's 1939 livestock is the interwar exception). The
+        rows stay on ITA-1919-2025, which has no post-1947 row to receive them (issue 686).
+    (12) KOREA NORTH is a COMPONENT of `Korea`: in the nitrogen table every cell printed for `Korea`
+        that also prints a part equals `Korea South` + `Korea North` (blank as zero), including 1934-38 production (93.0 = North
+        93.0). Its 1934-38 row goes back_cast to PRK-1948-2025; `Korea South` stays on KRS-1910-1945.
+    (13) PACIFIC ISLANDS (US trust labels) 1934-38/1937 are the Japanese South Seas Mandate: the
+        present territory (TTPI) and the Mandate are the same four island groups, and fao1952's 1934-38
+        cane sugar (63) is within 3% of iia's separately carried `japanese south pacific` 1934-1938
+        average (63,900 t); `Guam` is printed separately in 1937. Routed to SSM-1914-1945.
+    (14) `Ryukyus Palau and Marianas` (phosphate rock) is a CROSS-POLITY AGGREGATE (Okinawa plus two
+        Mandate island groups in 1934-38; the Ryukyus and two Trust Territory groups in 1949-51) and
+        is deliberately left UNROUTED: no polity holds the union. The arm pins its pre-war rock and
+        P2O5 rows (256, 95) and that `Pacific Is US tr` carries no pre-war phosphate (no double count).
+    Yugoslavia and Hungary are NOT asserted either way.
     """
     import statistics as st
     msg, ok = [], True
@@ -1592,6 +1616,65 @@ def check_fao1952_present_boundaries(d):
     ok = ok and pij_ok
     msg.append(f"1937 Palestine {pal}, Israel {isr}, Jordan {jor} (pinned 385/386/442; excluded, "
                f"not asserted)")
+
+    # (11) Italy on the post-war frame without the Free Territory (ISTAT 1994 figures, see docstring).
+    att31, att36, epoca36 = 41_043_489, 42_398_489, 42_993_602
+    ts31, ts36 = 273_676, 271_689
+    ceded = 590_639 + 4_474
+    ita, tri = pop.get("Italy"), pop.get("Trieste")
+    it_ok = epoca36 - att36 == ceded and bool(ita) and bool(tri)
+    if it_ok:
+        base, rate = att36 - ts36, ((att36 - ts36) - (att31 - ts31)) / 5.0
+        lo = (base + rate * (255 / 365.25)) / 1000        # 1 January 1937
+        hi = (base + rate * (619 / 365.25)) / 1000        # 31 December 1937
+        interwar_floor = epoca36 / 1000 - tri             # April 1936, before a year's growth
+        it_ok = lo * 0.995 <= ita <= hi * 1.005 and ita < interwar_floor
+        msg.append(f"Italy 1937 {ita:,.0f} within post-war-without-Trieste {lo:,.0f}-{hi:,.0f} and "
+                   f"below the interwar-without-FTT floor {interwar_floor:,.0f}: "
+                   f"{'yes' if it_ok else 'NO'}")
+    else:
+        msg.append("Italy/Trieste 1937 population missing, or ISTAT constants inconsistent")
+    ok = ok and it_ok
+
+    # (12) Korea = Korea South + Korea North, cell by cell, in the nitrogen table.
+    k = d[(d["source"] == "fao1952") & d["country"].isin(["Korea", "Korea South", "Korea North"])
+          & (d["item"] == "commercial nitrogenous fertilizers")].copy()
+    k["yk"] = k["period"].where(k["period"].notna(), k["year"].astype("string"))
+    kp = k.pivot_table(index=["indicator", "yk"], columns="country", values="value", aggfunc="sum")
+    kn_ok, n_cells, pre = False, 0, None
+    if {"Korea", "Korea North"} <= set(kp.columns):
+        # cells where Korea AND at least one part are printed (1934-38 consumption has no parts)
+        kp = kp.dropna(subset=["Korea"]).dropna(subset=["Korea South", "Korea North"], how="all")
+        parts = kp["Korea South"].fillna(0) + kp["Korea North"].fillna(0)
+        n_cells = int(((kp["Korea"] - parts).abs() < 1e-6).sum())
+        pre = kp["Korea North"].get(("inputs:production", "1934-1938"))
+        kn_ok = n_cells == len(kp) and n_cells >= 5 \
+            and pre is not None and abs(pre - kp["Korea"][("inputs:production", "1934-1938")]) < 1e-6
+    ok = ok and kn_ok
+    msg.append(f"Korea = South + North on {n_cells} nitrogen cells (all printed: "
+               f"{'yes' if kn_ok else 'NO'}); 1934-38 North production {pre}")
+
+    # (13) Pacific trust labels pre-war = the South Seas Mandate (iia `japanese south pacific`).
+    fs = d[(d["source"] == "fao1952") & (d["country"] == "Pacific Islands US Trust")
+           & (d["period"] == "1934-1938")]["value"]
+    isg = d[(d["source"] == "iia") & (d["country"] == "micronesia (federated states of)")
+            & (d["item"] == "sugar raw centrifugal") & (d["period"] == "1934-1938")]["value"]
+    pac_ok = len(fs) == 1 and len(isg) == 1 and abs(float(fs.iloc[0]) * 1000 / float(isg.iloc[0]) - 1) <= 0.03 \
+        and bool(pop.get("Guam")) and bool(pop.get("Pacific Islands (U S"))
+    ok = ok and pac_ok
+    msg.append(f"Pacific Is 1934-38 sugar {float(fs.iloc[0]) if len(fs) else float('nan'):,.0f}k vs iia "
+               f"japanese south pacific {float(isg.iloc[0]) / 1000 if len(isg) else float('nan'):,.1f}k, "
+               f"Guam separate: {'yes' if pac_ok else 'NO'}")
+
+    # (14) Ryukyus Palau and Marianas: cross-polity aggregate, pinned and left unrouted.
+    rp = d[(d["source"] == "fao1952") & (d["country"] == "Ryukyus Palau and Marianas")
+           & (d["period"] == "1934-1938")]["value"]
+    pt = d[(d["source"] == "fao1952") & (d["country"] == "Pacific Is US tr")
+           & (d["item"] == "phosphate rock") & (d["period"] == "1934-1938")]
+    rp_ok = sorted(rp.astype(float)) == [95.0, 256.0] and pt.empty
+    ok = ok and rp_ok
+    msg.append(f"Ryukyus Palau and Marianas 1934-38 {sorted(rp.astype(float))} (pinned 95/256; "
+               f"no pre-war `Pacific Is US tr` phosphate: {'yes' if pt.empty else 'NO'})")
     return ok, "; ".join(msg)
 
 

@@ -1033,7 +1033,7 @@ POL-1920-1921,Poland (1920-1921),1920,1921,cshapes-2.0,1920.0,assigned,True,meas
 POL-1921-1945,Poland (1921-1945),1921,1945,cshapes-2.0,1921.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1921 faithful to period 1921-1945,827
 POL-1945-2025,Poland (1945-2025),1945,2025,cshapes-2.0,1945.0,assigned,True,assumed_constant,True,True,stable_where_covered,0.05,single 1945 polygon held across a 80y span (1945-2025); borders may have changed,687
 PRI-1800-2025,Puerto Rico,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,952
-PRK-1948-2025,North Korea,1948,2025,cshapes-2.0,1948.0,assigned,True,assumed_constant,True,False,stable_where_covered,0.08,single 1948 polygon held across a 77y span (1948-2025); borders may have changed,30
+PRK-1948-2025,North Korea,1948,2025,cshapes-2.0,1948.0,assigned,True,assumed_constant,True,False,stable_where_covered,0.08,single 1948 polygon held across a 77y span (1948-2025); borders may have changed,31
 PRT-01-1835-2025,Aveiro (district of Portugal),1835,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 PRT-02-1835-2025,Beja (district of Portugal),1835,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 PRT-03-1835-2025,Braga (district of Portugal),1835,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
@@ -1153,7 +1153,7 @@ SRB-2008-2025,Serbia,2008,2025,cshapes-2.0,2008.0,assigned,False,measured,False,
 SRB-XK-2006-2008,Serbia excluding Kosovo (2006-2008),2006,2008,constructed,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 SRH-1953-1964,"Southern Rhodesia (within Federation, 1953-1964)",1953,1964,cshapes-2.0,1953.0,assigned,True,measured,False,False,no_reference,,vintage 1953 faithful to period 1953-1964,72
 SSD-2011-2025,South Sudan,2011,2025,cshapes-2.0,2011.0,assigned,False,measured,False,False,stable_where_covered,-0.01,vintage 2011 faithful to period 2011-2025,0
-SSM-1914-1945,South Seas Islands under Japan (Nan'yo Gunto),1914,1945,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,35
+SSM-1914-1945,South Seas Islands under Japan (Nan'yo Gunto),1914,1945,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,39
 STP-1800-2025,Sao Tome and Principe,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,89
 STS-1826-1946,Straits Settlements,1826,1946,cshapes-2.0,1900.0,proxy,True,assumed_constant,True,False,no_reference,,single 1900 polygon held across a 120y span (1826-1946); borders may have changed,0
 SUD-1899-1934,"Sudan (Anglo-Egyptian Condominium, to 1934)",1899,1934,cshapes-2.0,1914.0,assigned,True,assumed_constant,True,True,no_reference,,single 1914 polygon held across a 35y span (1899-1934); borders may have changed,97
