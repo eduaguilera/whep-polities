@@ -56,7 +56,11 @@ WHAT THIS GATE CHECKS, and which arms run where.
        (item, unit, year) -- a collision would be a double count, not a correction.
     F  routing: where state/matched_rows.parquet exists, every row it marks as relabelled
        (`country` differs from `source_label_raw` under a rule's key) sits on the rule's
-       `polity_code`.
+       `polity_code`. And the file stays row-aligned with layer B, which the harmonized build
+       (pipelines/historical-production-harmonized/build.R) requires and stops on, but which
+       nothing in CI runs: `source`, `year`, `item` and `unit` equal layer B row for row,
+       `source_label_raw` equals layer B's `country`, and `iso3c` equals layer B's on every row
+       whose label was NOT corrected (the corrections clear it on the rows they relabel).
 
 Usage:
   python3 scripts/validate_label_item_corrections.py
@@ -339,6 +343,7 @@ def main() -> int:
                 if routed != total:
                     problems.append(f"matched_rows.parquet carries {routed} relabelled rows, the "
                                     f"table {total} -- stale; re-run 01_match_and_findings.py")
+                problems.extend(check_layer_b_alignment(lb, m))
 
     if problems:
         print(f"\nFAIL: {len(problems)} problem(s)\n")
@@ -347,6 +352,36 @@ def main() -> int:
         return 1
     print("\nPASS: every item-scoped relabel is unambiguous, lands on a live polity, and is needed")
     return 0
+
+
+def _same(a, b):
+    """Row-wise equality with missing == missing (build.R's same_or_both_na)."""
+    a = a.astype(object).reset_index(drop=True)
+    b = b.astype(object).reset_index(drop=True)
+    an, bn = a.isna(), b.isna()
+    return (an & bn) | (~an & ~bn & (a.map(str) == b.map(str)))
+
+
+def check_layer_b_alignment(lb, m):
+    """Arm F, alignment: what build.R's validate_alignment() checks, so it fails here first."""
+    if len(lb) != len(m):
+        return [f"matched_rows.parquet has {len(m)} rows, layer B {len(lb)} non-aggregate -- the "
+                "harmonized build cannot align them"]
+    out = []
+    relabelled = ~_same(m["country"], m["source_label_raw"])
+    pairs = [(c, c, None) for c in ("source", "year", "item", "unit")]
+    pairs += [("country", "source_label_raw", None), ("iso3c", "iso3c", ~relabelled)]
+    for theirs, mine, keep in pairs:
+        bad = ~_same(lb[theirs], m[mine])
+        if keep is not None:
+            bad &= keep.values
+        if int(bad.sum()):
+            out.append(f"matched_rows.parquet `{mine}` differs from layer B `{theirs}` on "
+                       f"{int(bad.sum())} row(s) -- the harmonized build would stop (or join values "
+                       "to the wrong rows)")
+    print(f"  matched_rows.parquet: {'aligned with' if not out else 'MISALIGNED against'} layer B "
+          f"({int(relabelled.sum())} relabelled row(s), iso3c compared on the rest)")
+    return out
 
 
 if __name__ == "__main__":

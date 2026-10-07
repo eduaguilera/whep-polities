@@ -51,6 +51,12 @@ import csv
 import os
 import sys
 
+# STRINGIFYING A COLUMN: `.map(str)`, never `.astype(str)`. Under pandas 3 `.astype(str)` returns the
+# `str` dtype and KEEPS a missing value missing, where pandas 2 wrote the text "nan"/"None"; a key
+# joined with "|".join then raised TypeError in check_western_eastern_prefix, and every `.str`
+# comparison downstream would silently change meaning on missing cells. `.map(str)` writes the text on
+# both. Measured 2026-10-07: the full re-test prints byte-identical output under pandas 2.2.3 and 3.0.6.
+
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.dirname(os.path.dirname(HERE))
 STATE = os.path.join(HERE, "state")
@@ -237,7 +243,7 @@ def _corrupted_labels_split_claims(ctx):
     pal_pa = pal[pal["_v"].isin(PA)]
     pal_wide = pal[pal["_v"].isin(WIDE)]
     five = len(e[e["_c"].str.contains("|".join(legible)) & e["_v"].isin(WIDE)])
-    with_period = int(und["year"].astype(str).str.contains("-").sum())
+    with_period = int(und["year"].map(str).str.contains("-").sum())
     return [("area+production rows", len(pa), 669),
              ("  of those, dated", int(pa["y_"].notna().sum()), 573),
              ("  of those, undated", int(pa["y_"].isna().sum()), 96),
@@ -298,16 +304,16 @@ def check_tobacco_era_scope(ctx):
     dated = t[t["year"].notna()]
     per = t[t["year"].isna()]
     big = per[per["value"] > 500_000]
-    p2832 = per[per["period"].astype(str) == "1928-1932"]
+    p2832 = per[per["period"].map(str) == "1928-1932"]
     CLEAN = {"1909-1913", "1925-1929"}
-    clean_hits = big[big["period"].astype(str).isin(CLEAN)]
+    clean_hits = big[big["period"].map(str).isin(CLEAN)]
     era_periods = {str(r["period"]).strip() for r in v if str(r.get("period") or "").strip()}
     return ([("era rows", len(v), 427),
              ("labels", len({r["label"] for r in v}), 93),
              ("iia tobacco (tonnes) rows, dated -- the entry's denominator", len(dated), 607),
              ("the same rows carrying a period instead", len(per), 286),
              ("period rows above 500,000 t", len(big), 73),
-             ("of those, in the late 1928-1932 average", len(big[big["period"].astype(str)
+             ("of those, in the late 1928-1932 average", len(big[big["period"].map(str)
                                                                 == "1928-1932"]), 34),
              ("1928-1932 tobacco rows in total", len(p2832), 83),
              ("clean-volume hits (india and the USA, both CORRECT)", len(clean_hits), 2),
@@ -340,7 +346,7 @@ def check_western_eastern_prefix(ctx):
     fao1952 row including the ones that do route."""
     lb = ctx["panel"]
     f = lb[lb["source"] == "fao1952"].copy()
-    f["lab"] = f["country"].astype(str).str.strip()
+    f["lab"] = f["country"].map(str).str.strip()
 
     def val(lab, item, ind, year):
         d = f[(f["lab"] == lab) & (f["item"] == item) & (f["indicator"] == ind)
@@ -370,12 +376,12 @@ def check_western_eastern_prefix(ctx):
     # The label AS PRINTED (`source_label_raw`), not the matcher's `country`: since 2026-09-24 `Western`
     # and `Eastern` are OCR-corrected to `Germany Western`/`Germany Eastern` before matching, so under
     # `country` they would vanish and their twins would absorb them. The claims are about the printed labels.
-    mm["lab"] = mm["source_label_raw"].astype(str).str.strip()
+    mm["lab"] = mm["source_label_raw"].map(str).str.strip()
     KEY = ["item", "indicator", "unit", "year", "period"]
 
     def routed(lab):
         d = mm[mm["lab"] == lab]
-        return int(d["whep_code"].fillna("").astype(str).str.strip().ne("").sum()), len(d)
+        return int(d["whep_code"].fillna("").map(str).str.strip().ne("").sum()), len(d)
 
     # 10/13, 4/5 -> 13/13, 5/5 on 2026-09-24 (fao1952 present boundaries second pass): `Germany` 1934-1939 is
     # now back_cast to DEU-1945-1949, so the back-projected zone rows no longer land beside the total, and
@@ -387,7 +393,7 @@ def check_western_eastern_prefix(ctx):
         # The rows deliberately left unrouted are the back-projected ones, and which they are is the
         # claim -- a count alone would pass if a 1949 row were dropped and a 1937 one gained.
         left = mm[(mm["lab"] == orphan)
-                  & mm["whep_code"].fillna("").astype(str).str.strip().eq("")]
+                  & mm["whep_code"].fillna("").map(str).str.strip().eq("")]
         tags = sorted({(str(int(x)) if pd.notna(x) else str(pp))
                        for x, pp in zip(left["year"], left["period"])})
         claims.append((f"  `{orphan}` still unrouted, by year/period", ",".join(tags),
@@ -404,13 +410,13 @@ def check_western_eastern_prefix(ctx):
                        {"Germany Western": "254/254", "Germany Eastern": "109/109"}[twin]))
         o = mm[mm["lab"] == orphan].copy()
         t = mm[mm["lab"] == twin].copy()
-        ok = set(o[KEY].astype(str).agg("|".join, axis=1))
-        tk = set(t[KEY].astype(str).agg("|".join, axis=1))
+        ok = set(o[KEY].map(str).agg("|".join, axis=1))
+        tk = set(t[KEY].map(str).agg("|".join, axis=1))
         claims.append((f"  keys `{orphan}` shares with its twin", len(ok & tk), 0))
 
     def codes(lab, yr):
         d = mm[(mm["lab"] == lab) & (mm["year"] == yr)]
-        return ",".join(sorted(set(d["whep_code"].dropna().astype(str))))
+        return ",".join(sorted(set(d["whep_code"].dropna().map(str))))
 
     claims.append(("1949 total vs part polity", f"{codes('Germany', 1949)} vs "
                    f"{codes('Germany Western', 1949)}", "DEU-1949-1990 vs F78-1949-1990"))
@@ -424,7 +430,7 @@ def check_western_eastern_prefix(ctx):
     claims.append(("1937 total vs part polity -- issue 411", f"{codes('Germany', 1937)} vs "
                    f"{codes('Germany Western', 1937)}", "DEU-1945-1949 vs WZO-1938-1949"))
     # The class this pair belongs to, found structurally rather than by identity proof.
-    fr = mm[mm["whep_code"].fillna("").astype(str).str.strip() == ""]
+    fr = mm[mm["whep_code"].fillna("").map(str).str.strip() == ""]
     rt = mm[mm["whep_code"].notna()]
     cleanlabs = sorted({str(x).strip() for x in rt["lab"]})
     frag = []
@@ -469,7 +475,7 @@ def check_western_eastern_prefix(ctx):
     # OCR-corrected to `Portugal` (2026-09-25), so it is read by its raw label and has left the class.
     # The three values are the fao1952 `poultry` species group (source_conventions: one row per species,
     # no total), which is why one key carries three -- structure still did not make it a duplicate.
-    pg = mm[(mm["source_label_raw"].astype(str).str.strip() == "Portuga")]
+    pg = mm[(mm["source_label_raw"].map(str).str.strip() == "Portuga")]
     claims.append(("`Portuga` distinct values on its single key",
                    int(pg["value"].nunique()), 3))
     claims.append(("  it is in the unambiguous list -- structure is NOT sufficiency",
@@ -501,15 +507,15 @@ def check_malawi_cotton_deflation(ctx):
     m = MATCHED_DF[0]
     if m is None:
         return None
-    iia = lb[(lb["source"] == "iia") & (lb["country"].astype(str).str.lower() == "malawi")
-             & (lb["item"].astype(str).str.lower() == "cotton lint")]
+    iia = lb[(lb["source"] == "iia") & (lb["country"].map(str).str.lower() == "malawi")
+             & (lb["item"].map(str).str.lower() == "cotton lint")]
     fao = lb[(lb["source"] == "fao1952")
-             & lb["country"].astype(str).str.contains("Nyasaland", case=False, na=False)
-             & (lb["item"].astype(str).str.lower() == "cotton lint")]
+             & lb["country"].map(str).str.contains("Nyasaland", case=False, na=False)
+             & (lb["item"].map(str).str.lower() == "cotton lint")]
 
     def per(frame, unit, p="1934-1938"):
         h = frame[(frame["unit"] == unit) & frame["year"].isna()
-                  & (frame["period"].astype(str) == p)]
+                  & (frame["period"].map(str) == p)]
         return float(h["value"].iloc[0]) if len(h) else None
 
     it, ia = per(iia, "tonnes"), per(iia, "ha")
@@ -531,11 +537,11 @@ def check_malawi_cotton_deflation(ctx):
                    "100,3400,100,100"))
     mm = m[m["value"].notna()]
     pol = sorted({str(x) for x in mm[(mm["source"] == "iia")
-                                     & (mm["country"].astype(str).str.lower() == "malawi")
-                                     & (mm["item"].astype(str).str.lower() == "cotton lint")
+                                     & (mm["country"].map(str).str.lower() == "malawi")
+                                     & (mm["item"].map(str).str.lower() == "cotton lint")
                                      ]["whep_code"].dropna()})
     fpol = sorted({str(x) for x in mm[(mm["source"] == "fao1952")
-                                      & mm["country"].astype(str).str.contains("Nyasaland", case=False,
+                                      & mm["country"].map(str).str.contains("Nyasaland", case=False,
                                                                                na=False)
                                       ]["whep_code"].dropna()})
     claims.append(("both labels land on one polity", f"{','.join(pol)}|{','.join(fpol)}",
@@ -578,15 +584,15 @@ def check_error_inde_is_india(ctx):
 
     # route 3: british india stops where this label starts
     bi = raw[(raw["_c"] == "british india") & raw["value"].notna()]
-    bys = sorted({int(y) for y in bi["year"].astype(str).str.strip() if y.isdigit()})
-    eys = sorted({int(y) for y in r["year"].astype(str).str.strip() if y.isdigit()})
+    bys = sorted({int(y) for y in bi["year"].map(str).str.strip() if y.isdigit()})
+    eys = sorted({int(y) for y in r["year"].map(str).str.strip() if y.isdigit()})
     claims.append(("`british india` last dated year", max(bys) if bys else None, 1938))
     claims.append(("`[error] inde` last dated year", max(eys) if eys else None, 1945))
     claims.append(("  years ONLY under the broken label",
                    ",".join(str(y) for y in sorted(set(eys) - set(bys))),
                    "1939,1940,1941,1942,1943,1944,1945"))
     claims.append(("`british india` rows in iia_1939_45 -- must stay 0",
-                   int((bi["yearbook"].astype(str) == "iia_1939_45").sum()), 0))
+                   int((bi["yearbook"].map(str) == "iia_1939_45").sum()), 0))
 
     # route 2: the magnitude profile
     def med(frame, prod, var):
@@ -599,7 +605,7 @@ def check_error_inde_is_india(ctx):
 
     # the exposure
     i = lb[(lb["source"] == "iia")
-           & (lb["country"].astype(str).str.strip().str.lower() == "india") & lb["value"].notna()]
+           & (lb["country"].map(str).str.strip().str.lower() == "india") & lb["value"].notna()]
     seen = collections.defaultdict(set)
     for x in i.itertuples():
         k = str(int(x.year)) if pd.notna(x.year) else str(x.period)
@@ -633,12 +639,12 @@ def check_libya_olives_period_cell(ctx):
     sound, so the defect is one cell and not the label's period rows in general."""
     lb = ctx["panel"]
     d = lb[(lb["source"] == "iia") & (lb["country"] == "libya")
-           & (lb["item"].astype(str).str.lower() == "olives")]
+           & (lb["item"].map(str).str.lower() == "olives")]
     t = d[d["unit"] == "tonnes"]
     a = d[d["unit"] == "ha"]
 
     def per(frame, p):
-        h = frame[frame["year"].isna() & (frame["period"].astype(str) == p)]
+        h = frame[frame["year"].isna() & (frame["period"].map(str) == p)]
         return float(h["value"].iloc[0]) if len(h) else None
 
     def dated_mean(frame, lo, hi):
@@ -662,15 +668,15 @@ def check_libya_olives_period_cell(ctx):
 
     # cross-source: fao1952 publishes the same period, in thousands
     fo = lb[(lb["source"] == "fao1952")
-            & lb["country"].astype(str).str.contains("Libya", case=False, na=False)
-            & (lb["item"].astype(str).str.lower() == "olives")]
-    fp = fo[fo["year"].isna() & (fo["period"].astype(str) == "1934-1938")]
+            & lb["country"].map(str).str.contains("Libya", case=False, na=False)
+            & (lb["item"].map(str).str.lower() == "olives")]
+    fp = fo[fo["year"].isna() & (fo["period"].map(str) == "1934-1938")]
     claims.append(("fao1952 same period (1000 t)",
                    float(fp["value"].iloc[0]) if len(fp) else None, 11.0))
 
     # the item-level control: olives is NOT an era-scaled item
     import statistics
-    ol = lb[(lb["source"] == "iia") & (lb["item"].astype(str).str.lower() == "olives")
+    ol = lb[(lb["source"] == "iia") & (lb["item"].map(str).str.lower() == "olives")
             & (lb["unit"] == "tonnes") & lb["value"].notna()]
     breaks = []
     for lab, g in ol.groupby("country"):
@@ -708,7 +714,7 @@ def check_china_whole_and_five_parts(ctx):
     if m is None:
         return None
     f = m[(m["source"] == "fao1952") & m["value"].notna()].copy()
-    f["lab"] = f["country"].astype(str).str.strip()
+    f["lab"] = f["country"].map(str).str.strip()
     u = f[(f["item"] == "use total") & (f["year"] == 1947)]
     val = {r["lab"]: float(r["value"]) for _, r in u.iterrows()}
     PARTS = ["China 22 provinces", "China Manchuria", "China Sinkiang", "China Sikang", "China Jehol"]
@@ -728,7 +734,7 @@ def check_china_whole_and_five_parts(ctx):
 
     def routed(lab):
         d = f[f["lab"] == lab]
-        return int(d["whep_code"].fillna("").astype(str).str.strip().ne("").sum()), len(d)
+        return int(d["whep_code"].fillna("").map(str).str.strip().ne("").sum()), len(d)
 
     # THE DECISION THE DOCSTRING ASKED FOR WAS TAKEN 2026-09-25 (geodata batch 2): each part gets a
     # polity of its own, never the whole's. `China 22 provinces` -> CHN-P22-1939-1953 and `China
@@ -738,14 +744,14 @@ def check_china_whole_and_five_parts(ctx):
     # carries the old warning: no 1947 part row sits on the polity the whole is on.
     def targets(lab):
         d = f[(f["lab"] == lab) & (f["year"] == 1947)]
-        return ",".join(sorted(set(d["whep_code"].dropna().astype(str)))) or "-"
+        return ",".join(sorted(set(d["whep_code"].dropna().map(str)))) or "-"
 
     WANT_TARGET = {"China 22 provinces": "CHN-P22-1939-1953", "China Manchuria": "MAN-1945-1950",
                    "China Sinkiang": "CHN-XJ-1884-2025", "China Sikang": "-", "China Jehol": "-"}
     for lab, want in WANT_TARGET.items():
         claims.append((f"`{lab}` 1947 routes to", targets(lab), want))
-    whole_codes = set(f[(f["lab"] == "China") & (f["year"] == 1947)]["whep_code"].dropna().astype(str))
-    on_whole = f[f["lab"].isin(PARTS) & (f["year"] == 1947) & f["whep_code"].astype(str).isin(whole_codes)]
+    whole_codes = set(f[(f["lab"] == "China") & (f["year"] == 1947)]["whep_code"].dropna().map(str))
+    on_whole = f[f["lab"].isin(PARTS) & (f["year"] == 1947) & f["whep_code"].map(str).isin(whole_codes)]
     claims.append(("  1947 part rows on the whole's polity -- must stay 0", len(on_whole), 0))
 
     ch = f[f["lab"] == "China"]
@@ -788,8 +794,8 @@ def check_tractors_total_beside_parts(ctx):
     introduced and the entry should be revisited rather than left passing."""
     lb = ctx["panel"]
     f = lb[(lb["source"] == "fao1952") & (lb["item_code"] == "192_194")].copy()
-    f["lab"] = f["country"].astype(str).str.strip()
-    f["_p"] = f["period"].astype(str).where(f["year"].isna(), f["year"].astype("Int64").astype(str))
+    f["lab"] = f["country"].map(str).str.strip()
+    f["_p"] = f["period"].map(str).where(f["year"].isna(), f["year"].astype("Int64").map(str))
     nonagg = f[f["is_aggregate"] == False]  # noqa: E712 -- a pandas mask, not a truth test
     counts = {str(k): int(v) for k, v in nonagg["item"].value_counts().items()}
     TOT, WHEEL, CRAWL, ALL = ("total tractors agriculture", "wheel tractors agriculture",
@@ -830,7 +836,7 @@ def check_tractors_total_beside_parts(ctx):
 
     whole = lb[lb["source"] == "fao1952"]
     agg = whole[whole["is_aggregate"] == True]  # noqa: E712
-    named_total = whole[whole["item"].astype(str).str.strip().str.lower().str.startswith("total")]
+    named_total = whole[whole["item"].map(str).str.strip().str.lower().str.startswith("total")]
     claims.append(("fao1952 is_aggregate=True rows (all GEOGRAPHIC)", len(agg), 2141))
     claims.append(("rows whose ITEM name begins `total` yet is_aggregate=False",
                    int((named_total["is_aggregate"] == False).sum()), 267))  # noqa: E712
@@ -862,8 +868,8 @@ def check_germany_western_cheese(ctx):
     makes 2 anomalous against the label's later behaviour and not only against its parent."""
     lb = ctx["panel"]
     f = lb[lb["source"] == "fao1952"].copy()
-    f["lab"] = f["country"].astype(str).str.strip()
-    p34 = f[f["year"].isna() & (f["period"].astype(str) == "1934-1938")]
+    f["lab"] = f["country"].map(str).str.strip()
+    p34 = f[f["year"].isna() & (f["period"].map(str) == "1934-1938")]
     K = ["item", "item_code", "indicator", "unit"]
 
     def grouped(lab):
@@ -925,7 +931,7 @@ def check_algeria_civil_basis_span(ctx):
     m = MATCHED_DF[0]
     if m is None:
         return None
-    a = m[(m["country"].astype(str).str.strip().str.lower() == "algeria") & (m["source"] == "iia")]
+    a = m[(m["country"].map(str).str.strip().str.lower() == "algeria") & (m["source"] == "iia")]
     dated = a[a["year"].notna()]
 
     def band(lo, hi):
@@ -957,7 +963,7 @@ def check_algeria_civil_basis_span(ctx):
                            round(whole[0] / civil[0], 2), 3.81))
 
     per = a[a["year"].isna()]
-    counts = {str(k): int(v) for k, v in per["period"].astype(str).value_counts().items()}
+    counts = {str(k): int(v) for k, v in per["period"].map(str).value_counts().items()}
     for p, want in (("1925-1929", 24), ("1928-1932", 25)):
         claims.append((f"period {p} rows -- STRADDLES the switch, unroutable", counts.get(p), want))
     claims.append(("period 1909-1913 rows (on DZA-CVD, correct)", counts.get("1909-1913"), 19))
@@ -986,13 +992,13 @@ def check_estates_label_prefix(ctx):
     row including the ones that DO route, so the panel cannot answer the routing question at all."""
     lb = ctx["panel"]
     f = lb[lb["source"] == "fao1952"].copy()
-    f["lab"] = f["country"].astype(str).str.strip()
+    f["lab"] = f["country"].map(str).str.strip()
 
     def cell(lab, indicator, year, period):
         d = f[(f["lab"] == lab) & (f["item"] == "coffee") & (f["indicator"] == indicator)]
         d = d[d["year"].isna()] if period else d[d["year"].astype("Float64") == year]
         if period:
-            d = d[d["period"].astype(str) == period]
+            d = d[d["period"].map(str) == period]
         return float(d["value"].iloc[0]) if len(d) == 1 else None
 
     PAIRS = [("1934-1938", None, 55.6, 113.0), (None, 1949, 10.9, 33.0),
@@ -1014,11 +1020,11 @@ def check_estates_label_prefix(ctx):
     if m is None:
         return None
     mm = m[m["source"] == "fao1952"].copy()
-    mm["lab"] = mm["country"].astype(str).str.strip()
+    mm["lab"] = mm["country"].map(str).str.strip()
 
     def routed(lab):
         d = mm[mm["lab"] == lab]
-        return int(d["whep_code"].fillna("").astype(str).str.strip().ne("").sum()), len(d)
+        return int(d["whep_code"].fillna("").map(str).str.strip().ne("").sum()), len(d)
 
     ind_r, ind_n = routed("Indonesia")
     # 144/144 -> 145/145 on 2026-09-25: `Indonesia 4` (1 jute row, footnote marker) is OCR-corrected to
@@ -1138,9 +1144,9 @@ def check_russia_asian_component(ctx):
     # correctly-summed cells when the answer is 8; issue 422's three-term identity
     # (28,161,536 + 918,720 + 318,737 = 29,398,993) is the same fact seen from the other side.
     reu = rye[rye["_c"] == "russia in europe"].groupby(
-        rye["year"].astype(str).str.strip())["value"].sum().to_dict()
+        rye["year"].map(str).str.strip())["value"].sum().to_dict()
     ras = rye[rye["_c"] == "russia in asia"].groupby(
-        rye["year"].astype(str).str.strip())["value"].sum().to_dict()
+        rye["year"].map(str).str.strip())["value"].sum().to_dict()
     gr = lb[(lb["source"] == "iia") & (lb["country"] == "russian federation")
             & (lb["item"] == "rye") & (lb["unit"] == "ha") & lb["value"].notna()]
     rwhen = gr["period"].where(gr["period"].notna(), gr["year"].astype("string"))
@@ -1272,7 +1278,7 @@ def check_hops_x100_and_area_x10(ctx):
     intra-source factor measurable at all.
     """
     raw = ctx["raw"]
-    r = raw[(raw["year"].astype(str).str.strip() == "1933") & raw["value"].notna()
+    r = raw[(raw["year"].map(str).str.strip() == "1933") & raw["value"].notna()
             & raw["yearbook"].isin(["iia_1933_34", "iia_1938_39"])]
 
     def factors(prod, var):
@@ -1375,7 +1381,7 @@ def check_item_product_switches(ctx):
     when = g["period"].where(g["period"].notna(), g["year"].astype("string"))
     cane = beet = foreign = 0
     for w, v in zip(when, g["value"]):
-        m = R[(R["year"].astype(str).str.strip() == str(w).strip())
+        m = R[(R["year"].map(str).str.strip() == str(w).strip())
               & (R["value"].round(6) == round(float(v), 6))]
         labs = sorted(set(zip(m["_c"], m["_p"])))
         if len(labs) != 1:
@@ -1848,14 +1854,14 @@ def check_china_groundnut_audit(ctx):
     label. Issue 483 counts 25 uniquely-attributable Kwantung cells; the additive ones are a disjoint
     population."""
     raw, lb = ctx["raw"], ctx["panel"]
-    r = raw.assign(k_=raw["year"].astype(str).str.strip())
+    r = raw.assign(k_=raw["year"].map(str).str.strip())
     gnut = r[r["_p"].str.contains("groundnut", na=False) & r["value"].notna()]
     KW = "japan: kwantung leased territory"
     kwrows = gnut[(gnut["_c"] == KW) & gnut["value"].isin([2663.0, 2873.5])]
-    units = sorted(set(kwrows["unit"].astype(str)))
+    units = sorted(set(kwrows["unit"].map(str)))
     books = sorted(set(kwrows["yearbook"]))
     # 2,460,450 t: gone from both sides
-    gl = lb[lb["item"].astype(str).str.contains("groundnut", case=False, na=False)]
+    gl = lb[lb["item"].map(str).str.contains("groundnut", case=False, na=False)]
     near = gl[(gl["value"] > 2460450 * 0.99) & (gl["value"] < 2460450 * 1.01)]
 
     # the additive identity, over every china,mainland cell with a same-family Kwantung row
@@ -1976,7 +1982,7 @@ def _unrouted(panel, label):
     m = MATCHED_DF[0]
     if m is None:
         return None, None
-    d = m[m["country"].astype(str).str.strip() == label]
+    d = m[m["country"].map(str).str.strip() == label]
     routed = sum(1 for x in d["whep_code"].fillna("") if str(x).strip())
     return len(d), routed
 
@@ -1998,7 +2004,7 @@ def check_china_goats_x1001(ctx):
     d = ctx.get("pre1961")
     if d is None:
         return None
-    g = d[(d["item"].astype(str).str.lower() == "goats") & (d["country"] == "China, mainland")]
+    g = d[(d["item"].map(str).str.lower() == "goats") & (d["country"] == "China, mainland")]
     v = {int(t.year): float(t.value) for t in g.itertuples()}
     clean = sum(1 for y in range(1950, 1961)
                 if abs(v[y] / 1001 - round(v[y] / 1001)) < 1e-6 and round(v[y] / 1001) % 1000 == 0)
@@ -2022,14 +2028,14 @@ def check_australia_fiji_merged(ctx):
     -- an ordinary yield. And the label must reach no polity for the entry's "must not be routed
     anywhere" to hold, so that is asserted too rather than assumed."""
     lb = ctx["panel"]
-    a = lb[lb["country"].astype(str).str.strip() == "Australia Fiji"]
+    a = lb[lb["country"].map(str).str.strip() == "Australia Fiji"]
     prod = {int(t.year): float(t.value) for t in a.itertuples()
             if t.unit == "1000 tonnes" and pd.notna(t.year)}
     area = {int(t.year): float(t.value) for t in a.itertuples()
             if t.unit == "1000 hectares" and pd.notna(t.year)}
     rows, routed = _unrouted(lb, "Australia Fiji")
     sib = sum(1 for n in ("Australia", "Fiji")
-              if len(lb[(lb["source"] == "fao1952") & (lb["country"].astype(str).str.strip() == n)]))
+              if len(lb[(lb["source"] == "fao1952") & (lb["country"].map(str).str.strip() == n)]))
     return ([("1949 production", prod.get(1949), 81.0),
              ("1950 production", prod.get(1950), 61.0),
              ("1949 area", area.get(1949), 7.0),
@@ -2053,9 +2059,9 @@ def check_california_double_count(ctx):
     reach CAL-1850-2025 and none reaches the national polity" -- the double count the entry refused is
     still refused, which is the half of the claim that has to keep reproducing."""
     lb = ctx["panel"]
-    ca = lb[lb["country"].astype(str).str.strip() == "United States California"]
-    us = lb[(lb["source"] == "fao1952") & (lb["country"].astype(str).str.strip() == "United States")
-            & (lb["item"].astype(str) == "grapes")]
+    ca = lb[lb["country"].map(str).str.strip() == "United States California"]
+    us = lb[(lb["source"] == "fao1952") & (lb["country"].map(str).str.strip() == "United States")
+            & (lb["item"].map(str) == "grapes")]
     cav = {int(t.year): float(t.value) for t in ca.itertuples()
            if t.unit == "1000 tonnes" and pd.notna(t.year)}
     usv = {int(t.year): float(t.value) for t in us.itertuples()
@@ -2064,8 +2070,8 @@ def check_california_double_count(ctx):
     m = MATCHED_DF[0]
     on_cal = on_usa = None
     if m is not None:
-        d = m[m["country"].astype(str).str.strip() == "United States California"]
-        codes = d["whep_code"].fillna("").astype(str)
+        d = m[m["country"].map(str).str.strip() == "United States California"]
+        codes = d["whep_code"].fillna("").map(str)
         on_cal = int((codes == "CAL-1850-2025").sum())
         on_usa = int(codes.str.startswith("USA-").sum())
     return ([("california 1949", cav.get(1949), 161.0),
@@ -2211,8 +2217,8 @@ MATCHED_DF = [None]   # filled by main(); _unrouted() reads the assignment artef
 
 # Only entries with a reproducible figure appear here. See the docstring on why the rest cannot.
 def _paired_series(mr, src, label, item, unit):
-    d = mr[(mr.source == src) & (mr.country.astype(str).str.lower() == label)
-           & (mr["item"].astype(str).str.lower() == item) & (mr.unit.astype(str) == unit)]
+    d = mr[(mr.source == src) & (mr.country.map(str).str.lower() == label)
+           & (mr["item"].map(str).str.lower() == item) & (mr.unit.map(str) == unit)]
     d = d.dropna(subset=["year"])
     return {int(t.year): float(t.value) for t in d.itertuples()}
 
@@ -2456,7 +2462,7 @@ def check_iia_indonesia_is_java_and_madura(ctx):
 
     # 2. what layer B kept. Stated on BOTH time axes: filtering on `year` alone would silently drop
     #    the 75 period rows, which is the trap this repo documented in issue 618.
-    ind = lb[(lb["source"] == "iia") & (lb["country"].astype(str).str.strip().str.lower() == "indonesia")]
+    ind = lb[(lb["source"] == "iia") & (lb["country"].map(str).str.strip().str.lower() == "indonesia")]
     out += [("layer-B iia `indonesia` rows", len(ind), 378),
             ("  dated", int(ind["year"].notna().sum()), 303),
             ("  period", int(ind["year"].isna().sum()), 75)]
@@ -2539,11 +2545,11 @@ def check_iia_czechoslovakia_beans_component(ctx):
         b = r[(r["_v"] == var) & r["_y"].notna()]
         J = {int(x.year): float(x.value) for x in
              m[(m.source == "juan") & (m["item"] == "beans, dry") & (m["unit"] == unit)
-               & (m.country.astype(str).str.lower() == "czechoslovakia")].itertuples()
+               & (m.country.map(str).str.lower() == "czechoslovakia")].itertuples()
              if pd.notna(x.year)}
         I = {int(x.year): float(x.value) for x in
              m[(m.source == "iia") & (m["item"] == "beans, dry") & (m["unit"] == unit)
-               & (m.country.astype(str).str.lower() == "czech republic")].itertuples()
+               & (m.country.map(str).str.lower() == "czech republic")].itertuples()
              if pd.notna(x.year)}
         two = sums = smalls = 0
         for y in sorted({int(v) for v in b["_y"]}):
@@ -2592,7 +2598,7 @@ def check_iia_yugoslavia_sunflower_x10(ctx):
     # `_y` is not one of the columns the harness precomputes (it supplies _c, _p, _v only), so
     # derive it here rather than assuming it -- the first version of this check raised KeyError.
     r = raw[(raw["_c"] == "yugoslavia")
-            & raw["product"].astype(str).str.contains("sunflower", case=False, na=False)].copy()
+            & raw["product"].map(str).str.contains("sunflower", case=False, na=False)].copy()
     r["_y"] = pd.to_numeric(r["year"], errors="coerce")
     # ROWS, not year-cells: two years (dated 1939 and the volume period row) x two variables
     # (area, production). Pinned as 4 after a first version said 2 and the re-test caught it.
@@ -2609,7 +2615,7 @@ def check_iia_yugoslavia_sunflower_x10(ctx):
         out += [(f"{tag} raw area", a, want_a), (f"  production", pr, want_p),
                 (f"  implied yield t/ha", round(pr / a, 2) if a else 0.0, 0.1)]
     j = m[(m.source == "juan") & (m["item"] == "sunflower seed")
-          & (m.country.astype(str).str.lower() == "yugoslav sfr")]
+          & (m.country.map(str).str.lower() == "yugoslav sfr")]
     j39a = j[(j["unit"] == "ha") & (pd.to_numeric(j["year"], errors="coerce") == 1939)]["value"].sum()
     j39p = j[(j["unit"] == "tonnes") & (pd.to_numeric(j["year"], errors="coerce") == 1939)]["value"].sum()
     out += [("juan 1939 area -- IDENTICAL to iia", float(j39a), 19000.0),
@@ -2656,7 +2662,7 @@ def check_nga_1950_livestock_broadcast(ctx):
     g = m[m.whep_code.notna() & m.value.notna()]
     # The RAW label: since 2026-09-24 these livestock rows are relabelled to the Nigeria + British Cameroons
     # landing label by an item-scoped correction (issue 688), so `country` no longer reads `nigeria`.
-    g = g[(g.source == "mitchell") & (g.source_label_raw.astype(str).str.lower() == "nigeria")]
+    g = g[(g.source == "mitchell") & (g.source_label_raw.map(str).str.lower() == "nigeria")]
     out = []
     BROADCAST = ("cattle", "goats", "sheep", "swine / pigs")
     for item in BROADCAST:
@@ -2710,10 +2716,10 @@ def check_mitchell_japan_rye_is_not_rye(ctx):
     import pandas as pd
 
     g = m[m.whep_code.notna() & m.value.notna()]
-    jp = g[g.country.astype(str).str.lower().str.contains("japan")]
+    jp = g[g.country.map(str).str.lower().str.contains("japan")]
 
     def ser(src, item, unit):
-        h = jp[(jp.source == src) & (jp["item"] == item) & (jp["unit"].astype(str) == unit)]
+        h = jp[(jp.source == src) & (jp["item"] == item) & (jp["unit"].map(str) == unit)]
         return {int(r.year): float(r.value) for _, r in h.iterrows() if pd.notna(r.year)}
 
     out = []
@@ -2776,12 +2782,12 @@ def check_iia_olives_1934_1938_scale(ctx):
 
     g = lb[(lb["source"] == "iia") & (lb["item"] == "olives")]
     fa = lb[(lb["source"] == "fao1952")
-            & lb["item"].astype(str).str.contains("olive", case=False, na=False)]
+            & lb["item"].map(str).str.contains("olive", case=False, na=False)]
 
     def per(frame, label, unit, span):
-        h = frame[(frame["country"].astype(str).str.lower() == label)
-                  & (frame["unit"].astype(str) == unit) & (frame["year"].isna())
-                  & (frame["period"].astype(str) == span)]
+        h = frame[(frame["country"].map(str).str.lower() == label)
+                  & (frame["unit"].map(str) == unit) & (frame["year"].isna())
+                  & (frame["period"].map(str) == span)]
         return float(h["value"].max()) if len(h) else 0.0
 
     out = []
@@ -2791,20 +2797,20 @@ def check_iia_olives_1934_1938_scale(ctx):
                                              ("libya", 1610700.0, 19300.0, 11.0)):
         out += [(f"{lab[:14]} 1934-38 production", per(g, lab, "tonnes", "1934-1938"), want_p),
                 (f"  its 1928-32 average", per(g, lab, "tonnes", "1928-1932"), want_prev)]
-        f2 = fa[(fa["country"].astype(str).str.lower().str.startswith(lab.split()[0]))
+        f2 = fa[(fa["country"].map(str).str.lower().str.startswith(lab.split()[0]))
                 & (fa["year"].isna())]
         out.append((f"  fao1952 1934-38 (1000 t)", float(f2["value"].max()) if len(f2) else 0.0, want_fao))
     # deflated: italy, the direction that rules out a single multiplier
     out += [("italy 1934-38 production -- LOW", per(g, "italy", "tonnes", "1934-1938"), 10300.0),
             ("  its 1928-32 average", per(g, "italy", "tonnes", "1928-1932"), 1325100.0)]
-    f2 = fa[(fa["country"].astype(str).str.lower().str.startswith("italy")) & (fa["year"].isna())]
+    f2 = fa[(fa["country"].map(str).str.lower().str.startswith("italy")) & (fa["year"].isna())]
     out.append(("  fao1952 1934-38 (1000 t)", float(f2["value"].max()) if len(f2) else 0.0, 1267.0))
     # THE CONTROL: the paired AREA axis is clean for all four
     for lab, want in (("israel", 52000.0), ("italy", 1358000.0),
                       ("united states of america", 10000.0), ("libya", 61000.0)):
         out.append((f"AREA 1934-38 {lab[:12]} -- clean", per(g, lab, "ha", "1934-1938"), want))
     # and israel's own dated mean inside the span, the third reference
-    d = g[(g["country"].astype(str).str.lower() == "israel") & (g["unit"].astype(str) == "tonnes")
+    d = g[(g["country"].map(str).str.lower() == "israel") & (g["unit"].map(str) == "tonnes")
           & g["year"].notna()]
     d = d[pd.to_numeric(d["year"], errors="coerce").between(1934, 1938)]
     out += [("israel dated 1934-38 rows", len(d), 5),
@@ -2844,11 +2850,11 @@ def check_iia_sugar_1934_1938_deflated(ctx):
 
     g = lb[(lb["source"] == "iia") & (lb["item"] == "sugar raw centrifugal")]
     fa = lb[(lb["source"] == "fao1952")
-            & lb["item"].astype(str).str.contains("sugar", case=False, na=False)]
+            & lb["item"].map(str).str.contains("sugar", case=False, na=False)]
 
     def per(label, span):
-        h = g[(g["country"].astype(str).str.lower() == label) & (g["year"].isna())
-              & (g["period"].astype(str) == span)]
+        h = g[(g["country"].map(str).str.lower() == label) & (g["year"].isna())
+              & (g["period"].map(str) == span)]
         return round(float(h["value"].max()), 1) if len(h) else 0.0
 
     out = []
@@ -2856,11 +2862,11 @@ def check_iia_sugar_1934_1938_deflated(ctx):
                       ("australia", (922.5, 511802.8, 524800.0, 4400.0, 752.0))):
         for span, w in zip(("1909-1913", "1925-1929", "1928-1932", "1934-1938"), want):
             out.append((f"{lab[:9]} {span}", per(lab, span), w))
-        f2 = fa[(fa["country"].astype(str).str.lower().str.startswith(lab[:6])) & (fa["year"].isna())]
+        f2 = fa[(fa["country"].map(str).str.lower().str.startswith(lab[:6])) & (fa["year"].isna())]
         out.append((f"  fao1952 1934-38 (1000 t)", float(f2["value"].max()) if len(f2) else 0.0, want[4]))
 
     # australia's dated block
-    d = g[(g["country"].astype(str).str.lower() == "australia") & g["year"].notna()].copy()
+    d = g[(g["country"].map(str).str.lower() == "australia") & g["year"].notna()].copy()
     d["y"] = pd.to_numeric(d["year"], errors="coerce")
     blk = d[d.y.between(1913, 1919)]
     nrm = d[(d.y.between(1909, 1912)) | (d.y.between(1920, 1932))]
@@ -2876,7 +2882,7 @@ def check_iia_sugar_1934_1938_deflated(ctx):
             ("  but its 1909-1913 period row", per("australia", "1909-1913"), 922.5),
             ("  == its 1913 dated value", round(float(d[d.y == 1913]["value"].iloc[0]), 1), 922.5),
             ("argentina dated rows (all years)",
-             len(g[(g["country"].astype(str).str.lower() == "argentina") & g["year"].notna()]), 1)]
+             len(g[(g["country"].map(str).str.lower() == "argentina") & g["year"].notna()]), 1)]
     return out, ("both labels' 1934-38 averages collapse ~180x against their own earlier volumes and "
                  "against fao1952; australia also has a 7-year dated block at 98x and a period row "
                  "that copies one deflated year instead of averaging")
@@ -2906,9 +2912,9 @@ def check_cmr_1932_groundnut_area(ctx):
     lb = ctx["panel"]
     import pandas as pd
 
-    g = lb[(lb["source"] == "iia") & (lb["country"].astype(str).str.lower() == "cameroon")
+    g = lb[(lb["source"] == "iia") & (lb["country"].map(str).str.lower() == "cameroon")
            & (lb["item"] == "groundnuts, with shell") & lb["value"].notna()]
-    a = g[g["unit"].astype(str) == "ha"].copy()
+    a = g[g["unit"].map(str) == "ha"].copy()
     a["y"] = pd.to_numeric(a["year"], errors="coerce")
 
     def yr(y):
@@ -2916,8 +2922,8 @@ def check_cmr_1932_groundnut_area(ctx):
         return float(h.iloc[0]) if len(h) else 0.0
 
     def per(span):
-        h = g[(g["year"].isna()) & (g["period"].astype(str) == span)
-              & (g["unit"].astype(str) == "ha")]["value"]
+        h = g[(g["year"].isna()) & (g["period"].map(str) == span)
+              & (g["unit"].map(str) == "ha")]["value"]
         return float(h.max()) if len(h) else 0.0
 
     CAMEROON_HA = 47540000.0     # restated, not derived: ~475,400 km2
@@ -2961,22 +2967,22 @@ def check_bgr_beans_1934_1938_x1000(ctx):
     argument: the yield is the argument.
     """
     lb = ctx["panel"]
-    g = lb[(lb["source"] == "iia") & (lb["country"].astype(str).str.lower() == "bulgaria")
+    g = lb[(lb["source"] == "iia") & (lb["country"].map(str).str.lower() == "bulgaria")
            & (lb["item"] == "beans, dry") & lb["value"].notna()]
 
     def per(span, unit):
-        h = g[(g["year"].isna()) & (g["period"].astype(str) == span)
-              & (g["unit"].astype(str) == unit)]["value"]
+        h = g[(g["year"].isna()) & (g["period"].map(str) == span)
+              & (g["unit"].map(str) == unit)]["value"]
         return float(h.max()) if len(h) else 0.0
 
     p38, a38 = per("1934-1938", "tonnes"), per("1934-1938", "ha")
     p32, a32 = per("1928-1932", "tonnes"), per("1928-1932", "ha")
     fa = lb[(lb["source"] == "fao1952")
-            & lb["country"].astype(str).str.lower().str.startswith("bulgaria")
-            & (lb["item"].astype(str) == "dry beans") & lb["value"].notna() & lb["year"].isna()]
-    f_t = float(fa[fa["unit"].astype(str) == "1000 tonnes"]["value"].max()) if len(fa) else 0.0
-    f_a = float(fa[fa["unit"].astype(str) == "1000 hectares"]["value"].max()) if len(fa) else 0.0
-    w = lb[(lb["item"] == "beans, dry") & (lb["unit"].astype(str) == "tonnes") & lb["value"].notna()]
+            & lb["country"].map(str).str.lower().str.startswith("bulgaria")
+            & (lb["item"].map(str) == "dry beans") & lb["value"].notna() & lb["year"].isna()]
+    f_t = float(fa[fa["unit"].map(str) == "1000 tonnes"]["value"].max()) if len(fa) else 0.0
+    f_a = float(fa[fa["unit"].map(str) == "1000 hectares"]["value"].max()) if len(fa) else 0.0
+    w = lb[(lb["item"] == "beans, dry") & (lb["unit"].map(str) == "tonnes") & lb["value"].notna()]
     out = [("1934-38 production (t)", p38, 44016400.0),
            ("  its paired area (ha) -- clean", a38, 80000.0),
            ("  implied yield t/ha", round(p38 / a38, 1) if a38 else 0.0, 550.2),
@@ -3028,11 +3034,11 @@ def check_iia_1934_1938_single_axis_deflated(ctx):
     import pandas as pd
 
     def rows(label, item):
-        return lb[(lb["source"] == "iia") & (lb["country"].astype(str).str.lower() == label)
+        return lb[(lb["source"] == "iia") & (lb["country"].map(str).str.lower() == label)
                   & (lb["item"] == item) & lb["value"].notna()]
 
     def per(g, span, unit):
-        h = g[(g["year"].isna()) & (g["period"].astype(str) == span) & (g["unit"].astype(str) == unit)]["value"]
+        h = g[(g["year"].isna()) & (g["period"].map(str) == span) & (g["unit"].map(str) == unit)]["value"]
         return float(h.max()) if len(h) else 0.0
 
     out = []
@@ -3049,8 +3055,8 @@ def check_iia_1934_1938_single_axis_deflated(ctx):
 
     o = rows("israel", "oranges")
     d = o[o["year"].notna()].copy(); d["y"] = pd.to_numeric(d["year"], errors="coerce")
-    dt = d[(d["unit"].astype(str) == "tonnes") & d.y.between(1934, 1938)]["value"]
-    da = d[(d["unit"].astype(str) == "ha") & d.y.between(1934, 1938)]["value"]
+    dt = d[(d["unit"].map(str) == "tonnes") & d.y.between(1934, 1938)]["value"]
+    da = d[(d["unit"].map(str) == "ha") & d.y.between(1934, 1938)]["value"]
     out += [("israel oranges production 1934-38", per(o, "1934-1938", "tonnes"), 1300.0),
             ("  its dated mean in span", round(float(dt.mean()), 1), 253300.0),
             ("  its AREA period row", per(o, "1934-1938", "ha"), 29000.0),
@@ -3060,7 +3066,7 @@ def check_iia_1934_1938_single_axis_deflated(ctx):
             ("  implied yield from the dated mean",
              round(float(dt.mean()) / per(o, "1934-1938", "ha"), 1), 8.7),
             ("  the dated 1939 value it equals",
-             float(d[(d["unit"].astype(str) == "tonnes") & (d.y == 1939)]["value"].iloc[0]), 1300.0),
+             float(d[(d["unit"].map(str) == "tonnes") & (d.y == 1939)]["value"].iloc[0]), 1300.0),
             ("  1939 is outside the span", 1 if not (1934 <= 1939 <= 1938) else 0, 1)]
     return out, ("usa rye deflates the AREA and israel oranges the PRODUCTION; each label's other "
                  "axis holds across four volumes, so the yield identity convicts without a second "
@@ -3088,19 +3094,19 @@ def check_ago_1936_sesame_area(ctx):
     lb = ctx["panel"]
     import pandas as pd
 
-    g = lb[(lb["source"] == "iia") & (lb["country"].astype(str).str.lower() == "angola")
+    g = lb[(lb["source"] == "iia") & (lb["country"].map(str).str.lower() == "angola")
            & (lb["item"] == "sesame seed") & lb["value"].notna()]
     d = g[g["year"].notna()].copy(); d["y"] = pd.to_numeric(d["year"], errors="coerce")
-    a = d[d["unit"].astype(str) == "ha"]
-    t = d[d["unit"].astype(str) == "tonnes"]
+    a = d[d["unit"].map(str) == "ha"]
+    t = d[d["unit"].map(str) == "tonnes"]
 
     def yr(frame, y):
         h = frame[frame.y == y]["value"]
         return float(h.iloc[0]) if len(h) else 0.0
 
     def per(span, unit):
-        h = g[(g["year"].isna()) & (g["period"].astype(str) == span)
-              & (g["unit"].astype(str) == unit)]["value"]
+        h = g[(g["year"].isna()) & (g["period"].map(str) == span)
+              & (g["unit"].map(str) == unit)]["value"]
         return float(h.max()) if len(h) else 0.0
 
     a36, t36 = yr(a, 1936), yr(t, 1936)
@@ -3152,12 +3158,12 @@ def check_iia_mex_oats_arg_rapeseed_scale(ctx):
     import pandas as pd
 
     def rows(src, label, item):
-        return lb[(lb["source"] == src) & (lb["country"].astype(str).str.lower().str.startswith(label))
-                  & (lb["item"].astype(str) == item) & lb["value"].notna()]
+        return lb[(lb["source"] == src) & (lb["country"].map(str).str.lower().str.startswith(label))
+                  & (lb["item"].map(str) == item) & lb["value"].notna()]
 
     def per(g, unit, span="1934-1938"):
-        h = g[(g["year"].isna()) & (g["period"].astype(str) == span)
-              & (g["unit"].astype(str) == unit)]["value"]
+        h = g[(g["year"].isna()) & (g["period"].map(str) == span)
+              & (g["unit"].map(str) == unit)]["value"]
         return float(h.max()) if len(h) else 0.0
 
     out = []
@@ -3179,8 +3185,8 @@ def check_iia_mex_oats_arg_rapeseed_scale(ctx):
     ap, aa = per(a, "tonnes"), per(a, "ha")
     f2p, f2a = per(fa2, "1000 tonnes"), per(fa2, "1000 hectares")
     d = a[a["year"].notna()].copy(); d["y"] = pd.to_numeric(d["year"], errors="coerce")
-    d39p = float(d[(d["unit"].astype(str) == "tonnes") & (d.y == 1939)]["value"].iloc[0])
-    d39a = float(d[(d["unit"].astype(str) == "ha") & (d.y == 1939)]["value"].iloc[0])
+    d39p = float(d[(d["unit"].map(str) == "tonnes") & (d.y == 1939)]["value"].iloc[0])
+    d39a = float(d[(d["unit"].map(str) == "ha") & (d.y == 1939)]["value"].iloc[0])
     out += [("arg rapeseed area (ha)", aa, 3730000.0),
             ("  its production (t) -- CLEAN", ap, 46000.0),
             ("  fao1952 production (1000 t)", f2p, 50.0),
@@ -3198,15 +3204,15 @@ def check_iia_mex_oats_arg_rapeseed_scale(ctx):
 def _raw_cells(raw, country, product, variable, unit):
     """(year-or-period string, value) pairs for one raw series, both spellings of year normalised."""
     r = raw[(raw["_c"] == country) & (raw["_p"] == product) & (raw["_v"] == variable)
-            & (raw["unit"].astype(str).str.lower() == unit) & raw["value"].notna()]
-    yr = r["year"].astype(str).str.replace(r"\.0$", "", regex=True)
+            & (raw["unit"].map(str).str.lower() == unit) & raw["value"].notna()]
+    yr = r["year"].map(str).str.replace(r"\.0$", "", regex=True)
     return list(zip(yr, r["value"].astype(float)))
 
 
 def _lb_cells(lb, label, item, unit):
     g = lb[(lb["source"] == "iia") & (lb["country"] == label) & (lb["item"] == item)
            & (lb["unit"] == unit) & lb["value"].notna()]
-    t = g["year"].astype("Int64").astype("string").fillna(g["period"]).astype(str)
+    t = g["year"].astype("Int64").astype("string").fillna(g["period"]).map(str)
     return dict(zip(t, g["value"].astype(float)))
 
 
@@ -3549,7 +3555,7 @@ def _iia_india_vs_french_india(ctx):
         return None, None
     g = m[(m["source"] == "iia") & (m["source_label_raw"] == "india") & m["item"].isin(_FI_ITEMS)
           & m["value"].notna()].copy()
-    g["yk"] = g["year"].astype("Int64").astype("string").fillna(g["period"]).astype(str)
+    g["yk"] = g["year"].astype("Int64").astype("string").fillna(g["period"]).map(str)
     hits = []
     for r in g.itertuples():
         var = {"ha": "area", "tonnes": "production"}.get(r.unit)
@@ -3659,7 +3665,7 @@ def _china_mainland_kwantung_cells(ctx):
     prod = {"eggs, hen, in shell": ("eggs",), "groundnuts, with shell": ("groundnut", "groundnut: unshelled"),
             "sesame seed": ("sesame",), "soybeans": ("soybean",)}
     r = raw[raw["_c"].isin(ab) & raw["_v"].isin(["area", "production"]) & raw["value"].notna()]
-    r = r.assign(k_=r["year"].astype(str).str.strip().str.replace(r"\.0$", "", regex=True))
+    r = r.assign(k_=r["year"].map(str).str.strip().str.replace(r"\.0$", "", regex=True))
     c = lb[(lb["source"] == "iia") & (lb["country"] == "china, mainland") & lb["item"].isin(prod)]
     out = []
     for t in c.itertuples():
@@ -3694,7 +3700,7 @@ def check_china_mainland_kwantung_summed(ctx):
         return None
     cells = _china_mainland_kwantung_cells(ctx)
     mm = m[(m["source"] == "iia") & (m["source_label_raw"] == "china, mainland")]
-    mk = mm["year"].astype("Int64").astype("string").fillna(mm["period"]).astype(str)
+    mk = mm["year"].astype("Int64").astype("string").fillna(mm["period"]).map(str)
     code = {(i, u, k, round(float(v), 4)): w for i, u, k, v, w in
             zip(mm["item"], mm["unit"], mk, mm["value"], mm["whep_code"])}
     alone = [c for c in cells if c[4] == "KWA" and c[3] != 0]
@@ -3875,18 +3881,18 @@ def _fertilizer_component_census(ctx):
                 lp[k] = d
     raw = ctx["raw"]
     raw = raw[(raw["_v"] == "production") & raw["value"].notna()]
-    raw = raw.assign(_k=raw["year"].astype(str).str.strip().str.replace(r"\.0$", "", regex=True),
-                     _u=raw["unit"].astype(str).str.strip().str.lower())
+    raw = raw.assign(_k=raw["year"].map(str).str.strip().str.replace(r"\.0$", "", regex=True),
+                     _u=raw["unit"].map(str).str.strip().str.lower())
     # Every printed value is kept, not one per product: two volumes can print the same product-year
     # differently, and a cell matching EITHER printing is that product's. Size uses the largest.
     idx = {k: g[["_p", "value"]] for k, g in raw.groupby(["_c", "_k", "_u"])}
     lb = ctx["panel"]
     lb = lb[(lb["source"] == "iia") & lb["item"].isin(_FERT_ITEMS) & lb["value"].notna()
             & ~lb["is_aggregate"].fillna(False).astype(bool)]
-    key = lb["year"].astype("Int64").astype("string").fillna(lb["period"]).astype(str).str.strip()
+    key = lb["year"].astype("Int64").astype("string").fillna(lb["period"]).map(str).str.strip()
     out = []
-    for c, item, k, u, v in zip(lb["country"].astype(str).str.lower(), lb["item"], key,
-                                lb["unit"].astype(str).str.lower(), lb["value"].astype(float)):
+    for c, item, k, u, v in zip(lb["country"].map(str).str.lower(), lb["item"], key,
+                                lb["unit"].map(str).str.lower(), lb["value"].astype(float)):
         rows = [idx[(lab, k, u)] for lab in sorted({lp.get(c, c), c}) if (lab, k, u) in idx]
         rows = pd.concat(rows) if rows else None
         if rows is not None:
@@ -4084,9 +4090,9 @@ def main() -> int:
 
     import pandas as pd
     raw = pd.read_excel(a.raw)
-    raw = raw.assign(_c=raw["country"].astype(str).str.strip().str.lower(),
-                     _p=raw["product"].astype(str).str.strip().str.lower(),
-                     _v=raw["variable"].astype(str).str.lower())
+    raw = raw.assign(_c=raw["country"].map(str).str.strip().str.lower(),
+                     _p=raw["product"].map(str).str.strip().str.lower(),
+                     _v=raw["variable"].map(str).str.lower())
     with open(os.path.join(STATE, "era_shift_verdicts.csv"), newline="", encoding="utf-8") as fh:
         era = list(csv.DictReader(fh))
     matched_path = os.path.join(STATE, "matched_rows.parquet")

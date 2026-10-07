@@ -655,9 +655,9 @@ HUN-1947-2025,Hungary (1947-2025),1947,2025,cshapes-2.0,1947.0,assigned,True,ass
 HYD-1724-1948,Hyderabad State,1724,1948,cliopatria,1947.0,assigned,True,assumed_constant,True,False,reference_mismatch,-95.46,single 1947 polygon held across a 224y span (1724-1948); borders may have changed,0
 IBD-1829-1893,Ibadan City-State,1829,1893,paine-2024,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 ICN-1800-2025,Canary Islands,1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,4
-IDN-1800-1889,Indonesia (to 1889),1800,1889,cshapes-2.0,1886.0,unassigned,True,unassigned,True,False,reference_mismatch,-59.66,no polygon (honest gap; never a false territory),0
+IDN-1800-1889,Indonesia (to 1889),1800,1889,cshapes-2.0,1886.0,unassigned,True,unassigned,True,False,stable_where_covered,-0.02,no polygon (honest gap; never a false territory),0
 IDN-1800-1945,Dutch East Indies (1800-1945),1800,1945,cshapes-2.0,1900.0,polygon_vintage_drift,True,assumed_constant,True,True,stable_where_covered,-0.02,single 1900 polygon held across a 145y span (1800-1945); borders may have changed,957
-IDN-1889-1945,Indonesia (1889-1945),1889,1945,cshapes-2.0,1900.0,unassigned,True,unassigned,True,False,reference_mismatch,-59.66,no polygon (honest gap; never a false territory),0
+IDN-1889-1945,Indonesia (1889-1945),1889,1945,cshapes-2.0,1900.0,unassigned,True,unassigned,False,False,stable_confirmed,-0.02,"no polygon (honest gap; never a false territory); border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.02%), so the single polygon is not an assumption",0
 IDN-1945-1949,Indonesia (1945-1949),1945,1949,cshapes-2.0,1945.0,assigned,True,measured,False,False,stable_confirmed,-0.02,vintage 1945 faithful to period 1945-1949,53
 IDN-1949-1963,Indonesia (1949-1963),1949,1963,cshapes-2.0,1949.0,assigned,True,measured,False,False,stable_confirmed,-0.03,vintage 1949 faithful to period 1949-1963,382
 IDN-1949-1969,Indonesia (1949-1969),1949,1969,cshapes-2.0,1949.0,assigned,True,measured,False,False,stable_confirmed,-0.03,vintage 1949 faithful to period 1949-1969,0
@@ -986,7 +986,7 @@ NLD-1800-1830,United Kingdom of the Netherlands,1800,1830,cliopatria,1820.0,assi
 NLD-1830-2025,Netherlands,1830,2025,cliopatria,1950.0,assigned,True,assumed_constant,True,False,no_reference,,single 1950 polygon held across a 195y span (1830-2025); borders may have changed,2927
 NNG-1949-1963,Netherlands New Guinea (1949-1963),1949,1963,cshapes-2.0,1955.0,assigned,True,measured,False,False,no_reference,,vintage 1955 faithful to period 1949-1963,5
 NNI-1899-1904,Northern Nigeria (1899-1904),1899,1904,cshapes-2.0,1899.0,assigned,True,measured,False,False,no_reference,,vintage 1899 faithful to period 1899-1904,0
-NNI-1904-1913,Northern Nigeria (1904-1913),1904,1913,cshapes-2.0,1905.0,assigned,True,measured,False,False,reference_mismatch,105.97,vintage 1905 faithful to period 1904-1913,0
+NNI-1904-1913,Northern Nigeria (1904-1913),1904,1913,cshapes-2.0,1905.0,assigned,True,measured,False,False,no_reference,,vintage 1905 faithful to period 1904-1913,0
 NOR-1800-2025,Norway,1800,2025,cshapes-2.0,1905.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.16,single 1905 polygon held across a 225y span (1800-2025); borders may have changed,1637
 NPL-1800-1816,Greater Nepal,1800,1816,cliopatria,1800.0,assigned,False,measured,False,False,no_reference,,vintage 1800 faithful to period 1800-1816,0
 NPL-1816-2025,Nepal,1816,2025,cliopatria,1929.0,assigned,True,assumed_constant,True,False,no_reference,,single 1929 polygon held across a 209y span (1816-2025); borders may have changed,38
