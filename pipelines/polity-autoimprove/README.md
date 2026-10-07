@@ -1281,6 +1281,16 @@ back-projects modern country borders onto historical production/trade data.
 python pipelines/polity-autoimprove/01_match_and_findings.py     # match + review units, filtered by ledger
 python pipelines/polity-autoimprove/02_territorial_evidence.py   # attach numeric territorial evidence
 python pipelines/polity-autoimprove/04_territory_basis.py        # classify each polity's territory_basis (1860-1961 sweep)
+# territory_basis.csv run order (issue 573): 01 -> 02 -> (44_border_stability.py, tracked output) -> 04.
+#   04 reads state/matched_rows.parquet (01; layerb_data_rows), state/territorial_flagged.json (02;
+#   priority_review) and state/border_stability.csv (44; border_check). The first two are untracked,
+#   so CI's `04 --check` skips those columns; locally a full 01 -> 02 -> 04 run and `04 --check`
+#   agree on all 15 columns. Without layer B / a stage-02 run (a PR that only changed the polity
+#   set, dates or polygons) a plain `04` REFUSES to write; use
+#   `04_territory_basis.py --splice` instead of hand-editing the CSV: it regenerates every column
+#   the tracked inputs determine and keeps the two volatile columns from the committed file.
+#   A polity with no committed row needs 01/02 (or `--allow-collapsed-columns`, which gives only
+#   those new rows 0/False).
 python pipelines/polity-autoimprove/reconcile_quarantine.py      # clear resolved quarantine rows (--dry-run to preview)
 python pipelines/polity-autoimprove/12_triage_assertions.py      # tier the pending assertion queue + the nesting/inclusion screen (needs 00_intake first)
 
