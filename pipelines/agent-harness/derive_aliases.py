@@ -35,7 +35,9 @@ WHAT IS DERIVED, per ledger unit and per coverage segment:
                  ledger naming the national row at 10-44x the unit's area while the registry
                  routed the unit's own polity, and a report line nobody had to act on let the
                  two halves of the routing disagree indefinitely. Re-recorded 2026-09-24.
-    unroutable -> nothing
+    unroutable -> nothing -- but it BLOCKS --check when the unit's own polities account for the
+                 years (before its own polity starts, or inside one its segments name): see
+                 `unroutable_owned`, issue 657
 
 INDICATOR-SCOPED REGISTRY ROWS (`indicator` non-blank, added 2026-09-25) cover their years for the
 purpose of this comparison: a year the registry splits by indicator is routed, and it agrees with
@@ -106,7 +108,7 @@ STAMP = "agent-harness derive_aliases"
 # Finding kinds that fail --check. `back_cast_inside` joined the first three once its 12 findings
 # were re-recorded: a back_cast inside its target's own span names the era's container, which the
 # registry does not route, so the ledger and the registry disagree about where the data goes.
-BLOCKING = ("missing", "conflict", "refused", "back_cast_inside")
+BLOCKING = ("missing", "conflict", "refused", "back_cast_inside", "unroutable_owned")
 # A live polity whose EXCLUSIVE end_year is this ceiling has no real last year: `CAL-1850-2025`
 # ends at 2025 because the registry stops there, not because California did. So the ceiling year
 # itself IS covered, and an alias may end at 2025 -- the exception validate_alias_year_coverage.py
@@ -291,7 +293,56 @@ def intended(unit: dict[str, str], live: dict[str, dict[str, Any]]):
         out = [y for y in range(lo, hi + 1) if not in_span(y, p0, p1)]
         for a, b in runs(out):
             findings.append(("clipped", f"{where}: {a}-{b} is outside {code}'s span {p0}-{p1}"))
+    findings += unroutable_owned(uid, segs, page_codes, unit, live)
     return plan, findings
+
+
+def unroutable_owned(uid: str, segs: list[dict[str, Any]], page_codes: list[str],
+                     unit: dict[str, str], live: dict[str, dict[str, Any]]) -> list[tuple[str, str]]:
+    """`unroutable` years the unit's own routing says belong somewhere (issue 657).
+
+    Two shapes, both a ledger that abandons data its own other segments account for:
+
+      * BEFORE the unit's own polity starts -- the polity of its page(s), its matched_polity_code,
+        or any `proposed`/`back_cast` segment's target. The source filed those years under the
+        later unit, so they are a back_cast to it (or, where an earlier administration of the
+        same territory existed, that administration's years). 20 segments over 20 units sat
+        here -- 11 Chilean regions, COL-SUCRE/VAUPES/VICHADA, three Mexican states, BRA-ACRE,
+        BRA-RONDONIA, ITA-ITH4 -- while the registry already routed every one of their years
+        `back_cast` to the same polity; the only trace was a non-blocking `unrecorded` line.
+      * INSIDE the span of a polity the unit's segments name -- AUS-NEWSOUTHWALES etc. left 1900
+        `unroutable` beside a `matched` NSW-1800-1901, whose EXCLUSIVE end 1901 covers 1900.
+
+    A year past every polity (USA-TEXAS 2026, beyond the 2025 ceiling) and a unit with no polity
+    at all (ARG-RESID) are not flagged: nothing the unit names could carry them.
+    """
+    own = [c for c in page_codes + [(unit.get("matched_polity_code") or "").strip()]
+           + [(s.get("polity_code") or "").strip() for s in segs
+              if s.get("disposition") in ("proposed", "back_cast")] if c in live]
+    named = [c for c in {(s.get("polity_code") or "").strip() for s in segs} if c in live]
+    own_start = min((live[c]["start"] for c in own), default=None)
+    out: list[tuple[str, str]] = []
+    for s in segs:
+        if s.get("disposition") != "unroutable":
+            continue
+        try:
+            lo, hi = int(s["start_year"]), int(s["end_year"])
+        except (KeyError, TypeError, ValueError):
+            continue
+        carried: set[int] = set()
+        for c in sorted(named):
+            inside = [y for y in range(lo, hi + 1)
+                      if in_span(y, live[c]["start"], live[c]["end"])]
+            carried.update(inside)
+            for a, b in runs(inside):
+                out.append(("unroutable_owned", f"{uid} {a}-{b} (unroutable): inside {c}, which "
+                                                f"this unit's own segments name"))
+        before = [y for y in range(lo, hi + 1)
+                  if own_start is not None and y < own_start and y not in carried]
+        for a, b in runs(before):
+            out.append(("unroutable_owned", f"{uid} {a}-{b} (unroutable): predates the unit's own "
+                                            f"polity (starts {own_start}); record it back_cast"))
+    return out
 
 
 def is_panel_slug(slug: str, cfg: dict[str, Any]) -> bool:
@@ -320,7 +371,8 @@ def derive(ledger: list[dict[str, str]], aliases: list[dict[str, str]],
     """
     cfg = cfg or {"panel_slug": "juan-subnational", "panel_slug_prefixes": ("whep-lab-",)}
     out: dict[str, list] = {"missing": [], "conflict": [], "refused": [], "clipped": [],
-                            "back_cast_inside": [], "ambiguous": [], "unauthored": [],
+                            "back_cast_inside": [], "unroutable_owned": [], "ambiguous": [],
+                            "unauthored": [],
                             "unrecorded": [], "scoped": []}
     by_label: dict[str, list[dict[str, str]]] = collections.defaultdict(list)
     for a in aliases:
@@ -464,6 +516,7 @@ def report(res: dict[str, list], verbose: bool = True) -> None:
               "refused": "segment target(s) that are not live polities",
               "clipped": "segment range(s) outside their target's span",
               "back_cast_inside": "back_cast range(s) inside their target's own span",
+              "unroutable_owned": "unroutable range(s) the unit's own polities account for",
               "ambiguous": "year(s) two authored eras both claim",
               "unauthored": "proposed segment(s) with no page yet",
               "unrecorded": "registry range(s) the ledger does not route (not acted on)",
@@ -498,7 +551,8 @@ def run(check: bool, country: str | None = None, verbose: bool = True,
         if blocking:
             print(f"FAIL: the routing ledger and applied_aliases.csv disagree "
                   f"({', '.join(blocking)}). `--write` appends the missing rows; conflicts, "
-                  f"refusals and back_cast-inside segments need a decision, not a rerun.")
+                  f"refusals, back_cast-inside and unroutable-owned segments need a decision "
+                  f"(a ledger edit), not a rerun.")
             return 1
         print("PASS: every routed ledger year has its alias, and none is contradicted")
         return 0

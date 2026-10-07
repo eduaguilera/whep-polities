@@ -467,6 +467,81 @@ def limit_hit(res, where: str, ledger: dict[str, dict[str, str]] | None = None) 
     return True
 
 
+def predating_problems(v: dict[str, Any], unit: dict[str, Any], segs: list[dict[str, Any]],
+                       by_code: dict[str, dict[str, str]]) -> list[str]:
+    """Years a unit reports before its OWN polity begins are `back_cast`, not `unroutable`.
+
+    Issue 657. Twenty segments over 20 units (11 Chilean regions, COL-SUCRE/VAUPES/VICHADA,
+    MEX-BAJACALIFORNIASUR/NAYARIT/QUINTANAROO, BRA-ACRE/RONDONIA, ITA-ITH4) recorded the years
+    before their unit's creation as `unroutable`. The 10% rule above missed most of them (Acre's
+    3 years, Quintana Roo's 2) and the agents kept the rest after retries. In every case the panel
+    filed the values under the modern unit and its land total was the same before and after the
+    creation date (CHL-BI 23,310 km2 both sides, ITA-ITH4 7,914): the source reconstructed the
+    years onto the modern frame, which is what `back_cast` records. (The six clipped `proposed`
+    segments are not objected to here: at stage 1 a `proposed` segment before the proposed start
+    is often an earlier era the agent means to author -- ARG-LAPAMPA's Territorio Nacional, which
+    got its own page -- and derive_aliases reports the ones no page ever covered as `clipped`.)
+
+    Arithmetic, so it is checked; the remedy is handed back, because the other answer is real too:
+    when an earlier administration of the SAME territory existed and reported (Idaho Territory for
+    USA-IDAHO), those years need that administration's polity, matched or proposed. What is never
+    right is `unroutable` for a year the unit's own data covers.
+
+    `own_start` is the start of the polity the verdict makes the unit's own: the proposed polity,
+    the matched_polity_code, and any polity a `proposed` or `back_cast` segment names. A `matched`
+    segment's polity is not counted -- it may be an era container (the colony before federation).
+    """
+    out: list[str] = []
+    prop = v.get("proposed") or {}
+    starts: list[tuple[int, str]] = []
+    if isinstance(prop, dict) and isinstance(prop.get("start_year"), int):
+        starts.append((prop["start_year"], "the polity you proposed"))
+    own_codes = [(v.get("matched_polity_code") or "").strip()] + [
+        (s.get("polity_code") or "").strip() for s in segs
+        if s.get("disposition") in ("proposed", "back_cast")]
+    for c in own_codes:
+        if c and c in by_code:
+            try:
+                starts.append((int(by_code[c]["start_year"]), c))
+            except (KeyError, TypeError, ValueError):
+                pass
+    own_start, own_name = (min(starts) if starts else (None, None))
+    frame = ""
+    if unit.get("size_km2"):
+        frame = (f" This unit's own land total is ~{unit['size_km2']:,.0f} km2 across "
+                 f"{unit.get('size_years', '?')} years with spread "
+                 f"{unit.get('size_spread', 1.0):.2f}: the source measured one frame before and "
+                 f"after, i.e. it reconstructed these years onto the later boundary.")
+    named = {(s.get("polity_code") or "").strip() for s in segs if s.get("polity_code")}
+    for s in segs:
+        a, b = s["start_year"], s["end_year"]
+        if s.get("disposition") == "unroutable":
+            # inside a polity this verdict itself names: that polity carries the year
+            carried: set[int] = set()
+            for c in sorted(named):
+                p = by_code.get(c)
+                if not p:
+                    continue
+                p0, p1 = int(p["start_year"]), int(p["end_year"])
+                hit = [y for y in range(a, b + 1) if p0 <= y < p1]
+                carried.update(hit)
+                if hit:
+                    out.append(f"Segment {a}-{b} is `unroutable`, but {hit[0]}-{hit[-1]} lies "
+                               f"inside {c} ({p0}-{p1}, end EXCLUSIVE), a polity this verdict "
+                               f"already names. Those years belong to it.")
+            if own_start is not None and a < own_start and a not in carried:
+                hi = min(b, own_start - 1)
+                out.append(
+                    f"Segment {a}-{b} is `unroutable`, but {a}-{hi} only PREDATES {own_name} "
+                    f"(starts {own_start}). The source reports those years for this unit, so they "
+                    f"are `back_cast` to it -- the values are a reconstruction onto a boundary "
+                    f"that did not exist yet, and the polity's own span still starts in "
+                    f"{own_start}.{frame} Only if an earlier administration of the SAME territory "
+                    f"existed and has (or needs) its own polity are they `matched`/`proposed` "
+                    f"to that instead. `unroutable` abandons data the source filed here.")
+    return out
+
+
 def coverage_objection(v: dict[str, Any], unit: dict[str, Any],
                        pols: list[dict[str, str]]) -> str | None:
     """Do the coverage segments account for every data year, and does each matched code cover its own?
@@ -543,6 +618,7 @@ def coverage_objection(v: dict[str, Any], unit: dict[str, Any],
             f"territory existed under an earlier administration, the polity's span starts then and "
             f"the classification is just its current label; if a different territory reported those "
             f"years, name it. Do not leave measured data with no polity.")
+    problems += predating_problems(v, unit, segs, by_code)
     if not problems:
         return None
     return ("\n".join(problems) + f"\n\nThe segments must tile this unit's whole data span "
