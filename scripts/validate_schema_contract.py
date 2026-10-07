@@ -149,9 +149,11 @@ CSV_CONTRACT = {
     # the rows keyed on `source`/`item`/`unit`/`year_start`/`year_end` (minus `exempt_labels`) by
     # `divisor`, and a renamed key column makes that filter match nothing and silently publish the
     # 1934-1945 iia tobacco block at 100x again.
+    # `labels` and `volume` appended by issue 424 (single-cell rules); a consumer must also honour
+    # `labels`, or it would scale every label's 1933 cell of the item by ten.
     "data/final/source_value_scale_corrections.csv": [
         "source", "item", "unit", "year_start", "year_end", "divisor", "exempt_labels",
-        "observed_rows", "issue", "evidence",
+        "observed_rows", "issue", "evidence", "labels", "volume",
     ],
     # Renamed by issue 95: `original_name` -> `source_label`, `target_polity_code` ->
     # `polity_code`, `rows` -> `observed_rows`. These are pipeline-internal registries,

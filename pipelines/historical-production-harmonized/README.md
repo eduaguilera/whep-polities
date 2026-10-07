@@ -34,8 +34,10 @@ Rscript build.R <raw_layer_b_parquet> <matched_rows_parquet> <output_dir>
 
 `matched_rows.parquet` carries a per-row `value_divisor` (whep-polities issue 416), 1 except where
 `data/final/source_value_scale_corrections.csv` says the source printed a block in another unit --
-iia tobacco and hops production 1934-1945 (/100) and hops area 1934-1938 (/10). The build divides
-`value` by it and refuses a matches file without the column, which would otherwise publish those
+iia tobacco and hops production 1934-1945 (/100) and hops area 1934-1938 (/10) -- or a single cell
+ten times too small (divisor 0.1, issue 424: eight 1933 iia cells that another yearbook volume prints
+right, e.g. japan soybean area). The build divides `value` by it (multiplying by the exact inverse
+when the divisor is below 1) and refuses a matches file without the column, which would otherwise publish those
 cells at 100x. Re-run `pipelines/polity-autoimprove/01_match_and_findings.py` after changing the
 table.
 

@@ -432,10 +432,11 @@ if (nrow(layer_b) != nrow(matches)) {
 }
 validate_alignment(layer_b, matches)
 
-# VALUE-SCALE CORRECTIONS (whep-polities issue 416). matched_rows.parquet carries a per-row
+# VALUE-SCALE CORRECTIONS (whep-polities issues 416, 424). matched_rows.parquet carries a per-row
 # `value_divisor`: 1 except where data/final/source_value_scale_corrections.csv says a source printed
 # a block in a different unit (iia tobacco and hops production 1934-1945 at 100x, hops area 1934-1938
-# at 10x). The matcher leaves `value` as printed, so the division happens here. A matches file
+# at 10x), or a single cell ten times too small (0.1: eight 1933 iia cells another volume prints
+# right). The matcher leaves `value` as printed, so the division happens here. A matches file
 # without the column predates the table, and publishing from it would put the 100x cells back, so
 # it is refused rather than read as "no corrections".
 if (!"value_divisor" %in% names(matches)) {
@@ -464,7 +465,13 @@ base <- dplyr::bind_cols(
     unit_multiplier = unit_multiplier(.data$unit_in),
     year = as.integer(.data$year),
     unit = output_unit(.data$unit_in),
-    value = as.numeric(.data$value) * .data$unit_multiplier / .data$value_divisor
+    # A divisor below 1 (issue 424: single cells printed 10x too small) multiplies by its exact
+    # inverse; dividing by 0.1 would carry 0.1's binary rounding into the published value.
+    value = dplyr::if_else(
+      .data$value_divisor < 1,
+      as.numeric(.data$value) * .data$unit_multiplier * round(1 / .data$value_divisor),
+      as.numeric(.data$value) * .data$unit_multiplier / .data$value_divisor
+    )
   ) |>
   dplyr::filter(
     !is.na(.data$unit),

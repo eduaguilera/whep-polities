@@ -3356,6 +3356,32 @@ def mutate_value_scale_rule_widened(root, gpd, make_valid, affinity):
     return "widened the iia hops-area /10 rule from 1934-1938 to 1934-1945, over iia_1939_45's plain hectares"
 
 
+def mutate_volume_conflict_unconvicted(root, gpd, make_valid, affinity):
+    """Downgrade the japan 1933 soybean-area cell from `carried_convicted` to `undecided` (issue 424).
+
+    The value-scale table still carries its x10 cell rule, pinned in full, so arms A-C stay quiet: the
+    only thing wrong is that nothing convicts the printed value any more -- the state a re-run of
+    46_volume_scale_conflicts.py would leave if a neighbour moved. A rule multiplying a cell no
+    comparison convicts publishes a guess, and only the cross-check against the conflict table can
+    see it.
+    """
+    import csv as _csv
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/volume_scale_conflicts.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        reader = _csv.DictReader(fh)
+        fields = list(reader.fieldnames)
+        rows = list(reader)
+    hit = [r for r in rows if r["layer_b_label"] == "japan" and r["item"] == "soybeans"
+           and r["verdict"] == "carried_convicted"]
+    assert len(hit) == 1, "the japan soybean conflict moved -- pick another cell"
+    hit[0]["verdict"] = "undecided"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(rows)
+    return "downgraded japan soybean area 1933 to `undecided` while its x10 cell rule stays"
+
+
 def mutate_label_item_correction_wrong_polity(root, gpd, make_valid, affinity):
     """Record the wrong `polity_code` on the fao1952 `New Guinea` use-total rule (issue 675).
 
@@ -6659,6 +6685,13 @@ CASES = (
         "table unchanged, eight sibling-confirmed cells divided by ten",
     ),
     (
+        "validate_value_scale_corrections.py",
+        mutate_volume_conflict_unconvicted,
+        "nothing convicts the printed value",
+        "a x10 cell rule left standing after the volume comparison stopped convicting its cell -- "
+        "the rule table pinned in full and unchanged",
+    ),
+    (
         "validate_label_item_corrections.py",
         mutate_label_item_correction_wrong_polity,
         "the relabel and the published polity_code disagree",
@@ -7707,6 +7740,8 @@ WRITABLE = {
         "source_value_scale_corrections.csv",
         "pipelines/polity-autoimprove/matchlib.py",
         "pipelines/polity-autoimprove/extdata.py",
+        # Arm G (issue 424) checks the cell rules against it; the second case mutates it.
+        "pipelines/polity-autoimprove/state/volume_scale_conflicts.csv",
     ),
     "validate_label_item_corrections.py": (
         "polities_database.csv",
