@@ -227,6 +227,64 @@ def judge(row: dict, prec: dict, cuts: dict) -> dict:
             "precision_era": era, "precision_grid": str(grid)}
 
 
+# WHAT THE RUN LOOKS LIKE AGAINST ITS OWN NEIGHBOURS (issue 366). The three readings the issue asks to
+# tell apart have signatures that need no source page. They are tested in this order, and a run that
+# matches none is reported as such rather than forced into one:
+#
+#   PLACEHOLDER      the constant is an order of magnitude (>= PLACEHOLDER_RATIO either way) off the
+#                    median of the REST of the series, so it is not a rounding of anything the
+#                    series otherwise carries (india sesame 1,000 ha against 2.2M)
+#   CARRIED_FORWARD  the constant reproduces the last observation BEFORE the run to within
+#                    CARRY_TOL, at the run's own grid (argentina soybeans 1,000 after 992; denmark
+#                    potatoes 54,000 after 54,100)
+#   STARTS_SERIES    no observation before the run to compare against
+#   BRIDGED          the constant lies between the flanking observations: a plateau across a gap
+#   UNCLASSIFIED     plausible magnitude, matches neither flank
+PLACEHOLDER_RATIO = 10.0
+CARRY_TOL = 0.05
+
+
+def shape_of(v, start, end, const):
+    """Classify the run v[start:end] == const against the rest of its series. See above."""
+    rest = sorted(x for j, x in enumerate(v) if not (start <= j < end))
+    if rest:
+        med = rest[len(rest) // 2] if len(rest) % 2 else (rest[len(rest) // 2 - 1]
+                                                          + rest[len(rest) // 2]) / 2
+        if med > 0 and (const >= med * PLACEHOLDER_RATIO or const * PLACEHOLDER_RATIO <= med):
+            return "PLACEHOLDER"
+    prev = v[start - 1] if start > 0 else None
+    nxt = v[end] if end < len(v) else None
+    if prev is not None and abs(prev - const) <= CARRY_TOL * const:
+        return "CARRIED_FORWARD"
+    if prev is None:
+        return "STARTS_SERIES"
+    if nxt is not None and min(prev, nxt) <= const <= max(prev, nxt):
+        return "BRIDGED"
+    return "UNCLASSIFIED"
+
+
+def disposition_of(row: dict) -> str:
+    """What a CONSUMER should do with the run (issue 366). One word, derived from `verdict` + `shape`.
+
+    ROUNDING_GRID    the source's own reporting grid explains it: the values are unchanged TO THE GRID,
+                     not unmeasured. Keep, and read as +-half a grid step (state/source_value_precision.csv)
+    CARRIED_FORWARD  the constant repeats the last real observation: only the first value of the run is
+                     an observation, the rest are a filled gap
+    PLACEHOLDER      the constant is not on the series' own scale: not a measurement at all
+    BRIDGED          a plateau between the flanking observations: a fill, but defensible if labelled
+    UNRESOLVED       none of the above decides it; needs the source page
+
+    PLACEHOLDER outranks an EXPLAINED verdict: a constant 2,000x off its own series is not made innocent
+    by sitting on a coarse grid."""
+    if row["shape"] == "PLACEHOLDER":
+        return "PLACEHOLDER"
+    if row["verdict"] == "EXPLAINED":
+        return "ROUNDING_GRID"
+    if row["shape"] in ("CARRIED_FORWARD", "BRIDGED"):
+        return row["shape"]
+    return "UNRESOLVED"
+
+
 def find_runs(panel_path):
     import pandas as pd
     d = pd.read_parquet(panel_path)
@@ -237,10 +295,33 @@ def find_runs(panel_path):
     d = d.dropna(subset=["year", "value"])
     d = d[d["value"] > 0]
 
+    # VALUE-SCALE CORRECTIONS (issue 416, merged in #717). The late IIA volumes print tobacco and hops
+    # in a unit 100x (area 10x) smaller. A run is a property of the figure a CONSUMER reads, and the
+    # harmonized build divides by this table, so the run is measured on the DIVIDED value: dividing
+    # keeps a run flat but moves its constant onto a different grid, and a refutation judged against
+    # the printed grid would be judged against a unit nobody publishes. Same table, same function,
+    # same label column (the label as layer B prints it) as 01_match_and_findings.py.
+    sys.path.insert(0, HERE)
+    import extdata
+    import matchlib
+    rules = matchlib.load_value_scale_corrections(extdata.VALUE_SCALE_CORRECTIONS)
+    div, _ = matchlib.value_scale_divisors(d, rules)
+    d = d.assign(value=d["value"] / div, divisor=div)
+    # ITEM-SCOPED LABEL CORRECTIONS (issue 675), applied after the divisor and on the same frame, as
+    # 01_match_and_findings.py does. A run whose cells are another territory's figures filed under
+    # this label is a ROUTING defect, not a filled gap: `iia india sesame seed` 1,000 ha 1934-1945 is
+    # French India's own area, and counting it as a placeholder said the opposite of what
+    # data_errors `constant-runs-two-proven-placeholders` was amended to say. Relabelling first
+    # moves such rows into the series they belong to, where their repetition is judged on its own.
+    lic = matchlib.load_label_item_corrections(extdata.LABEL_ITEM_CORRECTIONS)
+    d, _hit, _per = matchlib.apply_label_item_corrections(d, lic)
+
     series = defaultdict(list)
+    divs = defaultdict(dict)       # series -> {year: divisor applied}, to say which runs were divided
     for r in d.itertuples():
-        series[(norm(r.country), norm(r.item), str(r.unit), r.source)].append(
-            (int(r.year), float(r.value)))
+        k = (norm(r.country), norm(r.item), str(r.unit), r.source)
+        series[k].append((int(r.year), float(r.value)))
+        divs[k][int(r.year)] = float(r.divisor)
 
     out, n_series, n_runs_all, n_rows_all = [], 0, 0, 0
     for (country, item, unit, source), vals in series.items():
@@ -288,6 +369,8 @@ def find_runs(panel_path):
                             "n_finer_elsewhere": len(finer),
                             "finer_in_volume_year": wit_y,
                             "finer_in_volume_value": wit_v,
+                            "value_divisor": f"{max(divs[(country, item, unit, source)][y] for y in years[start:k]):g}",
+                            "shape": shape_of(v, start, k, const),
                         })
                 start = k
     out.sort(key=lambda r: (-r["n_values"], r["source"], r["country"], r["item"]))
@@ -321,6 +404,7 @@ def main() -> int:
     rows, n_series, n_runs_all, n_rows_all = find_runs(args.layer_b)
     for r in rows:
         r.update(judge(r, prec, cuts))
+        r["disposition"] = disposition_of(r)
     print(f"series (country, item, unit, source) with >={MIN_SERIES} values: {n_series:,}")
     print(f"constant runs of >={MIN_RUN} identical values: {n_runs_all:,} ({n_rows_all:,} rows)")
     print(f"  refuted as rounding by their own series: {len(rows):,} "
@@ -333,6 +417,12 @@ def main() -> int:
     for v, n in sorted(Counter(r["verdict"] for r in rows).items(), key=lambda kv: -kv[1]):
         print(f"    {n:>4}  {v:17} "
               f"{dict(Counter(r['source'] for r in rows if r['verdict'] == v).most_common())}")
+    print("  what a consumer should do with them (issue 366):")
+    for v, n in sorted(Counter(r["disposition"] for r in rows).items(), key=lambda kv: -kv[1]):
+        print(f"    {n:>4}  {v:16} "
+              f"{dict(Counter(r['source'] for r in rows if r['disposition'] == v).most_common())}")
+    print(f"  runs measured on a value-scale-DIVIDED figure (issue 416): "
+          f"{sum(1 for r in rows if r['value_divisor'] != '1')}")
     print("\nlongest refuted runs (the series resolves finer than the value it repeats):")
     for r in rows[:14]:
         print(f"   {r['source']:9} {r['country'][:17]:18} {r['item'][:21]:22} {r['unit']:7} "
@@ -344,7 +434,7 @@ def main() -> int:
         cols = ["source", "country", "item", "unit", "constant", "n_values", "year_first",
                 "year_last", "series_n", "grid", "finest_elsewhere", "n_finer_elsewhere",
                 "finer_in_volume_year", "finer_in_volume_value", "verdict", "precision_era",
-                "precision_grid"]
+                "precision_grid", "value_divisor", "shape", "disposition"]
         if args.check:
             if not os.path.exists(OUT):
                 print(f"MISSING {os.path.relpath(OUT, REPO)}", file=sys.stderr)

@@ -321,19 +321,28 @@ verify_assertions      one economic-historian agent per pending assertion ->
                        VARIANCE and read as "unchanged" when nobody knew. Only self-refuting runs
                        count: argentina soybeans resolves 2 ha then sits at exactly 1,000 for 11
                        years; denmark potatoes reads 54,000 for a decade in a series carrying
-                       54,100. 246 runs, 1,619 rows, 210 series (juan 1,035, iia 522, mitchell 62;
+                       54,100. 244 runs, 1,601 rows, 208 series (juan 1,035, iia 504, mitchell 62;
                        fao1952 nil, as its values are non-integer and have no coarse grid to sit
                        on). --write refreshes state/constant_runs.csv for validate_constant_runs.py
                        and validate_constant_run_verdicts.py. Each run also carries a `verdict`
                        joined from state/source_value_precision.csv (37_value_precision.py), which
                        answers the one explanation a series cannot test against itself — a source
                        whose grid in that unit and era is coarser than the constant prints the same
-                       figure every year with nothing filled in. 68 EXPLAINED, 153 UNDETERMINED (all
+                       figure every year with nothing filled in. 66 EXPLAINED, 153 UNDETERMINED (all
                        juan: its ha and tonnes are both `mixed`), 11 REFUTED, 4 OFF-GRID, 10 NOT
                        ATTRIBUTABLE for runs straddling iia's 1934 boundary. `precision_era` and
                        `precision_grid` record which row of the precision table each verdict was
                        read from; the era cut is recovered from that table's own labels rather than
-                       restated here
+                       restated here. The panel is first put through the issue-416 value-scale
+                       divisors and the issue-675 label corrections, as 01 does, so a run is judged
+                       on the figure a consumer reads (two iia india sesame runs left: French
+                       India's own area). Each run also carries a `shape` against its own series
+                       (PLACEHOLDER >=10x off the median; CARRIED_FORWARD reproduces the last
+                       observation within 5%; BRIDGED lies between its flanks) and the
+                       `disposition` a consumer acts on: ROUNDING_GRID / CARRIED_FORWARD /
+                       PLACEHOLDER / BRIDGED / UNRESOLVED, gated by
+                       validate_constant_run_dispositions.py. The 31 filled runs are registered in
+                       data_errors `constant-runs-filled-carried-forward`
 18_isolated_spikes.py  does one year read many times its own neighbours? 05_magnitude_screen.py
                        screens series MEDIANS, so a single bad year is invisible to it: iia
                        cameroon groundnuts runs 61,000 / 620,004,098 / 62,000 ha, median 71,000,

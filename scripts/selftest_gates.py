@@ -5297,6 +5297,34 @@ def mutate_precision_row_recoarsened(root, gpd, make_valid, affinity):
             f"every count and the pinned residue untouched")
 
 
+def mutate_filled_run_relabelled_unresolved(root, gpd, make_valid, affinity):
+    """Re-file one CARRIED_FORWARD run as UNRESOLVED, consistently, so only the census can see it.
+
+    `denmark / potatoes / ha` 54,000 for ten years against a prior 54,100 is this issue's cleanest
+    carried-forward exhibit. The mutation rewrites BOTH `shape` and `disposition` to the unresolved
+    pair, so the arm that re-derives a disposition from its shape and verdict has nothing to object
+    to and the schema arm is satisfied; what moves is the census (one fewer filled run) and the
+    identity pin on the filled set. That is the failure the gate exists for: a relaxed generator
+    that stops recognising a carried-forward value would regenerate a self-consistent table in which
+    a filled gap quietly reads as an observation.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/constant_runs.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    hit = [r for r in rows if (r["source"], r["country"], r["item"], r["unit"], r["year_first"])
+           == ("juan", "denmark", "potatoes", "ha", "1902")]
+    if len(hit) != 1 or hit[0]["disposition"] != "CARRIED_FORWARD":
+        raise AssertionError("juan denmark potatoes 1902 is no longer a single CARRIED_FORWARD run, so "
+                             "relabelling it would not move the census and the case would pass vacuously")
+    hit[0]["shape"], hit[0]["disposition"] = "UNCLASSIFIED", "UNRESOLVED"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return "juan denmark potatoes 54,000 x10 re-filed from CARRIED_FORWARD to UNRESOLVED, consistently"
+
+
 def mutate_arearevision_second_coincidental_agreement(root, gpd, make_valid, affinity):
     """Give a SECOND polity both verdicts, so one of its agreements is coincidental.
 
@@ -6340,6 +6368,13 @@ CASES = (
         "one side of a two-table join moved without the other, so 8 runs the source's own measured "
         "precision now explains are still published as REFUTED — the counts, the residue and the "
         "schema all stay exactly where they were pinned",
+    ),
+    (
+        "validate_constant_run_dispositions.py",
+        mutate_filled_run_relabelled_unresolved,
+        "CARRIED_FORWARD: 22 run(s)",
+        "a carried-forward run re-filed as unresolved in a self-consistent table, so a filled gap "
+        "reads as an observation while the schema and the shape/verdict re-derivation stay satisfied",
     ),
     (
         "validate_constant_runs.py",
@@ -7754,6 +7789,12 @@ WRITABLE = {
     # witness year -- so it must be a real copy rather than a symlink into the tracked table.
     "validate_constant_runs.py": (
         "pipelines/polity-autoimprove/state/constant_runs.csv",
+    ),
+    # The case rewrites constant_runs.csv in place (it re-files one run), so a real copy; the gate also
+    # joins data_errors.csv, which must be staged or the gate SKIPs/fails for the wrong reason.
+    "validate_constant_run_dispositions.py": (
+        "pipelines/polity-autoimprove/state/constant_runs.csv",
+        "pipelines/polity-autoimprove/state/data_errors.csv",
     ),
     # The case rewrites source_value_precision.csv in place (it re-coarsens the iia/ha/pre-1934 row),
     # so that one must be a real copy. constant_runs.csv is read-only for both gate and mutator, but

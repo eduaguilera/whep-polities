@@ -79,7 +79,7 @@ SCALE = 10 ** 6      # scaled integers, because float modulo cannot be trusted o
 # 366. BIDIRECTIONAL: a run moving between buckets is a finding either way and must move this with a
 # note saying which run moved and why.
 BASELINE_COUNTS = {
-    "EXPLAINED": 68,
+    "EXPLAINED": 66,   # 68 -> 66 (issue 366): the two `iia india sesame seed` runs were French India's, relabelled
     "UNDETERMINED": 153,
     "REFUTED": 11,
     "OFF-GRID": 4,
@@ -94,7 +94,7 @@ BASELINE_RESIDUE = frozenset({
     ('iia', 'australia', 'hops', 'ha', '500.000', '1939'),
     ('iia', 'austria', 'n', 'tonnes', '24000.000', '1914'),
     ('iia', 'fiji', 'tea', 'ha', '80.000', '1911'),
-    ('iia', 'france', 'eggs hen in shell', 'tonnes', '5.390', '1939'),
+    ('iia', 'saint pierre and miquelon', 'eggs hen in shell', 'tonnes', '5.390', '1939'),
     ('iia', 'guadeloupe', 'cacao beans', 'ha', '5000.000', '1918'),
     ('iia', 'guadeloupe', 'coffee green', 'ha', '7000.000', '1918'),
     ('iia', 'madagascar', 'wine', 'tonnes', '291.000', '1934'),

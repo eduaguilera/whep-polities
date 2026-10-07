@@ -553,7 +553,7 @@ jobs:
       # And is each of those runs innocent? A source whose grid in that unit and era is coarser than
       # the run's constant prints the same figure every year without anybody filling a gap -- the
       # ground on which issue 366's headline was withdrawn. 17_constant_runs.py joins
-      # source_value_precision.csv (#446) and writes a verdict per run: 68 EXPLAINED, 153 UNDETERMINED
+      # source_value_precision.csv (#446) and writes a verdict per run: 66 EXPLAINED, 153 UNDETERMINED
       # (all juan, whose ha and tonnes are both `mixed`), 11 REFUTED, 4 OFF-GRID, 10 NOT ATTRIBUTABLE.
       # The 15 refuted and off-grid runs are the residue the issue exists to isolate, and the split
       # lived only in a comment until this gate; the counts and those 15 identities are pinned, and
@@ -561,6 +561,17 @@ jobs:
       - name: Sources — a constant run's verdict must re-derive from its source's measured precision
         if: '!cancelled()'
         run: python3 scripts/validate_constant_run_verdicts.py
+
+      # And what IS a flat run that its source's grid does not explain? 17_constant_runs.py reads each
+      # run against its own series -- constant >=10x off the median is a PLACEHOLDER, one that
+      # reproduces the preceding observation is CARRIED_FORWARD (argentina soybeans 1,000 after 992,
+      # denmark potatoes 54,000 after 54,100), one between its flanks is BRIDGED -- and writes the
+      # `disposition` a consumer acts on, after the issue-416 divisors and issue-675 label corrections.
+      # The census and the 31 filled runs are pinned and every filled run must be named in data_errors
+      # `constant-runs-filled-carried-forward`.
+      - name: Sources — every constant run must say what a consumer does with it, and the filled ones are registered
+        if: '!cancelled()'
+        run: python3 scripts/validate_constant_run_dispositions.py
 
       # 05_magnitude_screen.py screens series MEDIANS against polity area, so a single bad year is
       # invisible to it: iia cameroon groundnuts runs 61,000 / 620,004,098 / 62,000 ha and its median
