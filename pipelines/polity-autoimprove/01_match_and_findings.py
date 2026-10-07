@@ -43,6 +43,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 from matchlib import Matcher, norm, toks, eff_year as _eff_year, covers as _year_covers
 from matchlib import load_label_item_corrections, apply_label_item_corrections
+from matchlib import load_value_scale_corrections, value_scale_divisors
 import extdata
 from atomic import write_csv_atomic
 
@@ -74,6 +75,26 @@ work = df[~df.is_aggregate].copy()
 # layer B row by row (pipelines/historical-production-harmonized/build.R does, on `country`) must
 # compare against this column: the corrected label is by construction not what layer B says.
 work["source_label_raw"] = work["country"]
+# VALUE-SCALE CORRECTIONS (issue 416). A per-row DIVISOR for blocks a source printed in a different
+# unit (iia tobacco and hops production 1934-1945 at 100x, hops area 1934-1938 at 10x). Computed on
+# the label AS LAYER B PRINTS IT, before either label correction below, because the exemptions name
+# source labels. `value` is NOT rewritten -- every diagnostic downstream convicts the printed number
+# -- the divisor rides on matched_rows.parquet and the harmonized build divides by it. Table and
+# rationale: data/final/source_value_scale_corrections.csv; gate:
+# scripts/validate_value_scale_corrections.py.
+_vsc = load_value_scale_corrections(extdata.VALUE_SCALE_CORRECTIONS)
+work["value_divisor"], _vsc_per_rule = value_scale_divisors(work, _vsc)
+for _k, _n in _vsc_per_rule.items():
+    _ru = _vsc[_k]
+    if _n != int(_ru["observed_rows"]):
+        # Refuse, as the label corrections do: a different count means layer B was rebuilt under
+        # the rule, and it may now divide rows nobody adjudicated.
+        raise SystemExit(
+            f"value-scale correction {(_ru['source'], _ru['item'], _ru['unit'], _ru['year_start'], _ru['year_end'])} "
+            f"hits {_n} row(s), but the table records {_ru['observed_rows']}. Re-verify the rule "
+            f"against the rebuilt layer B and update observed_rows (or the rule) deliberately.")
+print(f"value-scale corrections: {int((work['value_divisor'] != 1).sum()):,} row(s) carry a divisor "
+      f"across {len(_vsc)} rule(s)")
 _ocr = extdata.load_ocr_corrections()
 _before = work["country"].copy()
 for (_src, _bad), _good in _ocr.items():
@@ -526,7 +547,9 @@ json.dump({"summary": {
 # PROVENANCE (152 values: `page_17_table_1`, `copia de page_17_table_1`). A consumer must decide
 # per source; see 25_same_polity_overlaps.py, where keying on it for mitchell would separate the
 # very duplicates the table exists to find.
-# `source_label_raw` (issue 675) is appended LAST for the same reason: `country` is the label the
+# `value_divisor` (issue 416) is appended after it: 1.0 except on rows a value-scale rule covers,
+# where it is the power of ten the harmonized build divides `value` by. `value` itself stays as
+# printed. `source_label_raw` (issue 675) was appended LAST before it for the same reason: `country` is the label the
 # row was ROUTED under, after the OCR and item-scoped corrections, and `source_label_raw` is what
 # layer B itself prints. They differ on exactly the corrected rows.
 # The three `period_*` columns are APPENDED, after `match_method`, so nothing that reads this
@@ -534,7 +557,7 @@ json.dump({"summary": {
 # averaged window pokes outside the polity it was routed to, and by how many years at which end.
 work[["source","country","iso3c","year","period","item","indicator","value","unit","whep_code","match_method",
       "period_straddles_polity_span","period_years_before_start","period_years_after_end",
-      "source_label_raw"]] \
+      "source_label_raw", "value_divisor"]] \
     .to_parquet(f"{OUT}/matched_rows.parquet", index=False)
 
 # coverage by source after

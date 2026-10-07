@@ -1185,6 +1185,20 @@ each label is in `state/iia_error_label_crosswalk.csv`: one row per label, with 
 they drift) and measures where the certain rows would route. It is not a gate, because the raw
 extract is not in CI.
 
+**When a whole block was printed in another unit, a value-scale rule divides it** (issue 416).
+The IIA's late volumes print tobacco and hops production 100x too large from 1934 and
+iia_1938_39 prints hops area 10x too large; that is a property of a volume's column, so it is
+recorded as one rule per block in `data/final/source_value_scale_corrections.csv` (`source, item,
+unit, year_start, year_end, divisor, exempt_labels, observed_rows, issue, evidence`; inclusive
+years, DATED rows only, `divisor` an exact power of ten, `exempt_labels` a `;`-list of layer-B
+labels the rule leaves alone). `01_match_and_findings.py` computes the per-row divisor on the label
+layer B prints (`matchlib.value_scale_divisors`) and writes it to `matched_rows.parquet` as
+`value_divisor`; `value` stays as printed, so every diagnostic still convicts the printed cell, and
+`pipelines/historical-production-harmonized/build.R` divides. A rule needs sibling evidence per
+series (same polity and year in juan/mitchell, fao1952's period averages) and a measured edge, not
+a fitted factor. `scripts/validate_value_scale_corrections.py` pins every rule in full and, with
+layer B present, re-measures the sibling agreement and the control rows each edge leaves alone.
+
 ### What a source label actually means (avoid false precision)
 
 A label like "Germany Western" is **the source's own reporting unit**, with the

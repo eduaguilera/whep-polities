@@ -432,6 +432,19 @@ if (nrow(layer_b) != nrow(matches)) {
 }
 validate_alignment(layer_b, matches)
 
+# VALUE-SCALE CORRECTIONS (whep-polities issue 416). matched_rows.parquet carries a per-row
+# `value_divisor`: 1 except where data/final/source_value_scale_corrections.csv says a source printed
+# a block in a different unit (iia tobacco and hops production 1934-1945 at 100x, hops area 1934-1938
+# at 10x). The matcher leaves `value` as printed, so the division happens here. A matches file
+# without the column predates the table, and publishing from it would put the 100x cells back, so
+# it is refused rather than read as "no corrections".
+if (!"value_divisor" %in% names(matches)) {
+  stop(
+    "matched rows carry no `value_divisor`; re-run ",
+    "pipelines/polity-autoimprove/01_match_and_findings.py"
+  )
+}
+
 base <- dplyr::bind_cols(
   layer_b |>
     dplyr::rename(
@@ -442,7 +455,7 @@ base <- dplyr::bind_cols(
       raw_unit = "unit"
     ),
   matches |>
-    dplyr::select("whep_code", dplyr::any_of("match_method"))
+    dplyr::select("whep_code", "value_divisor", dplyr::any_of("match_method"))
 ) |>
   dplyr::mutate(
     item_code = normalise_item_code(.data$raw_item_code),
@@ -451,7 +464,7 @@ base <- dplyr::bind_cols(
     unit_multiplier = unit_multiplier(.data$unit_in),
     year = as.integer(.data$year),
     unit = output_unit(.data$unit_in),
-    value = as.numeric(.data$value) * .data$unit_multiplier
+    value = as.numeric(.data$value) * .data$unit_multiplier / .data$value_divisor
   ) |>
   dplyr::filter(
     !is.na(.data$unit),
