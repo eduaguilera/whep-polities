@@ -1172,6 +1172,19 @@ magnitude argument. `scripts/validate_label_item_corrections.py` refuses overlap
 chained, redundant or dead-target rules and, with layer B present, a rule whose row count has
 drifted or whose relabelled rows would collide with existing cells.
 
+**Neither table can repair a label that never reaches layer B** (issue 493). The raw IIA
+extract has 1,237 rows under 93 `[error] ...` country labels: the upstream IIA project's
+cleaning table rewrites each unreadable country cell to `[error] <text>` and gives it no
+modern country, so layer B's iia block, which is built from the rows that have one, carries
+none of them. A row keyed on `[error] inde` in either table above would hit 0 rows and route
+nothing. The repair belongs upstream, in the extract's cleaning table. This repo records what
+each label is in `state/iia_error_label_crosswalk.csv`: one row per label, with a `status`
+(`certain`, `uncertain_territory`, `component_not_total`, `not_a_territory`, `trade_only`), a
+`correct_label` in the extract's own vocabulary for the certain ones, and the evidence.
+`45_iia_error_label_recovery.py` re-derives the row counts from the raw extract (it refuses if
+they drift) and measures where the certain rows would route. It is not a gate, because the raw
+extract is not in CI.
+
 ### What a source label actually means (avoid false precision)
 
 A label like "Germany Western" is **the source's own reporting unit**, with the
