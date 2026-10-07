@@ -100,8 +100,8 @@ meslin as wheat. Measured on the 2026-10-07 panel, with only `item_withheld` tog
 keys 141,718 -> 141,721: 65 leave (9 iia wheat, 56 iia other sugar crops), 68 return with juan's
 wheat; no other key changes value. Withheld keys 256 -> 188.
           before             after
-ha        33,033,610,621     33,076,687,597     +43,076,976 = +43,995,600 juan wheat - 918,624 iia rows
-tonnes    67,629,287,398     67,686,057,212     +56,769,814 = +57,321,350 juan wheat - 551,536 iia rows
+ha        33,034,033,576     33,077,110,552     +43,076,976 = +43,995,600 juan wheat - 918,624 iia rows
+tonnes    67,629,892,455     67,686,662,269     +56,769,814 = +57,321,350 juan wheat - 551,536 iia rows
 ```
 
 ## Constant-Territory Smoke Runs
