@@ -471,7 +471,7 @@ FCC-1862-1887,French Cochinchina,1862,1887,constructed,,proxy,True,assumed_const
 FCM-1916-1920,French-occupied Cameroon (1916-1920),1916,1920,cshapes-2.0,1920.0,proxy,True,measured,False,False,no_reference,,vintage 1920 faithful to period 1916-1920,3
 FCM-1920-1960,French Cameroon (1920-1960),1920,1960,cshapes-2.0,1940.0,assigned,True,assumed_constant,False,False,stable_confirmed,-0.02,"single 1940 polygon held across a 40y span (1920-1960); borders may have changed; border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.02%), so the single polygon is not an assumption",451
 FEZ-1943-1951,French Military Administration of Fezzan,1943,1951,constructed,,proxy,True,assumed_constant,True,True,reference_mismatch,-71.34,polygon present but no recorded vintage year,5
-FID-1887-1954,French Indochina,1887,1954,constructed,1920.0,assigned,True,assumed_constant,True,True,no_reference,,single 1920 polygon held across a 67y span (1887-1954); borders may have changed,263
+FID-1887-1954,French Indochina,1887,1954,constructed,1920.0,assigned,True,assumed_constant,True,True,no_reference,,single 1920 polygon held across a 67y span (1887-1954); borders may have changed,252
 FIN-1809-1917,Grand Duchy of Finland,1809,1917,cshapes-2.0,1917.0,assigned,True,assumed_constant,True,True,no_reference,,single 1917 polygon held across a 108y span (1809-1917); borders may have changed,411
 FIN-1917-1940,Finland (1917-1940),1917,1940,cshapes-2.0,1917.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1917 faithful to period 1917-1940,598
 FIN-1940-2025,Finland (1940-2025),1940,2025,cshapes-2.0,1940.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.01,single 1940 polygon held across a 85y span (1940-2025); borders may have changed,775
@@ -656,9 +656,9 @@ HYD-1724-1948,Hyderabad State,1724,1948,cliopatria,1947.0,assigned,True,assumed_
 IBD-1829-1893,Ibadan City-State,1829,1893,paine-2024,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 ICN-1800-2025,Canary Islands,1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,4
 IDN-1800-1889,Indonesia (to 1889),1800,1889,cshapes-2.0,1886.0,unassigned,True,unassigned,True,False,reference_mismatch,-59.66,no polygon (honest gap; never a false territory),0
-IDN-1800-1945,Dutch East Indies (1800-1945),1800,1945,cshapes-2.0,1900.0,polygon_vintage_drift,True,assumed_constant,True,True,stable_where_covered,-0.02,single 1900 polygon held across a 145y span (1800-1945); borders may have changed,1209
+IDN-1800-1945,Dutch East Indies (1800-1945),1800,1945,cshapes-2.0,1900.0,polygon_vintage_drift,True,assumed_constant,True,True,stable_where_covered,-0.02,single 1900 polygon held across a 145y span (1800-1945); borders may have changed,1051
 IDN-1889-1945,Indonesia (1889-1945),1889,1945,cshapes-2.0,1900.0,unassigned,True,unassigned,True,False,reference_mismatch,-59.66,no polygon (honest gap; never a false territory),0
-IDN-1945-1949,Indonesia (1945-1949),1945,1949,cshapes-2.0,1945.0,assigned,True,measured,False,False,stable_confirmed,-0.02,vintage 1945 faithful to period 1945-1949,70
+IDN-1945-1949,Indonesia (1945-1949),1945,1949,cshapes-2.0,1945.0,assigned,True,measured,False,False,stable_confirmed,-0.02,vintage 1945 faithful to period 1945-1949,53
 IDN-1949-1963,Indonesia (1949-1963),1949,1963,cshapes-2.0,1949.0,assigned,True,measured,False,False,stable_confirmed,-0.03,vintage 1949 faithful to period 1949-1963,382
 IDN-1949-1969,Indonesia (1949-1969),1949,1969,cshapes-2.0,1949.0,assigned,True,measured,False,False,stable_confirmed,-0.03,vintage 1949 faithful to period 1949-1969,0
 IDN-1963-1976,Indonesia (1963-1976),1963,1976,cshapes-2.0,1969.0,assigned,False,measured,False,False,changed,27.94,vintage 1969 faithful to period 1963-1976,0
@@ -669,7 +669,7 @@ IDN-BA-1800-1949,Bali (Dutch East Indies),1800,1949,gadm-4.1-adm1,,proxy,True,as
 IDN-BLB-1800-1949,Bali and Lombok (Dutch East Indies),1800,1949,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 IDN-BLB-1949-1951,"Bali and Lombok (within Indonesia, 1949-1951)",1949,1951,constructed,,proxy,True,assumed_constant,True,True,no_reference,,polygon present but no recorded vintage year,34
 IDN-JAV-1800-1949,Java (Dutch East Indies),1800,1949,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
-IDN-JVM-1800-1949,Java and Madura (Dutch East Indies),1800,1949,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+IDN-JVM-1800-1949,Java and Madura (Dutch East Indies),1800,1949,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,175
 IDN-JVM-1949-1951,"Java and Madura (within Indonesia, 1949-1951)",1949,1951,constructed,,proxy,True,assumed_constant,True,True,no_reference,,polygon present but no recorded vintage year,43
 IDN-LOM-1800-1949,Lombok (Dutch East Indies),1800,1949,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 IDN-MAD-1800-1949,Madura (Dutch East Indies),1800,1949,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
@@ -1306,7 +1306,7 @@ VEN-1830-2025,Venezuela,1830,2025,cshapes-2.0,1886.0,assigned,True,assumed_const
 VGB-1800-2025,British Virgin Islands,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,38
 VIC-1851-1901,Victoria (to 1900),1851,1901,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,True,no_reference,,single 1886 polygon held across a 50y span (1851-1901); borders may have changed,195
 VIR-1917-2025,United States Virgin Islands,1917,2025,gadm-4.1-adm0,2023.0,assigned,True,assumed_constant,True,True,no_reference,,single 2023 polygon held across a 108y span (1917-2025); borders may have changed,65
-VNM-1887-1954,Vietnam (French Indochina),1887,1954,cshapes-2.0,1894.0,assigned,True,assumed_constant,True,True,changed,-14.68,single 1894 polygon held across a 67y span (1887-1954); borders may have changed,231
+VNM-1887-1954,Vietnam (French Indochina),1887,1954,cshapes-2.0,1894.0,assigned,True,assumed_constant,True,True,changed,-14.68,single 1894 polygon held across a 67y span (1887-1954); borders may have changed,242
 VNM-1975-2025,Vietnam,1975,2025,cshapes-2.0,1975.0,assigned,False,assumed_constant,True,False,stable_where_covered,-0.04,single 1975 polygon held across a 50y span (1975-2025); borders may have changed,0
 VNM-TON-1887-1945,Tonkin (within French Indochina),1887,1945,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,258
 VUT-1800-2025,Vanuatu,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,140
