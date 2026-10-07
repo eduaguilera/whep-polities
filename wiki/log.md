@@ -26,6 +26,21 @@ Kinds:
 
 ---
 
+## decision-mitchell-footers-java-indochina
+**Date:** 2026-10-07
+**Touched:** IDN-JVM-1800-1949, IDN-1800-1945, IDN-1945-1949, VNM-1887-1954, FID-1887-1954
+**Source:** mitchell
+**Kind:** decision
+
+Mitchell's 12 footer workbooks were loaded into the footnote-territory corpus (issue 689). Two notes
+there name a territory that the label's routing did not have. C2 note 8 and C4 note 3 make Mitchell's
+`indonesia` output Java and Madura only to 1948, so 175 tonnes rows moved to
+[idn-jvm-1800-1949](polities/idn-jvm-1800-1949.md). fao1952's own Java and Madura label matches
+Mitchell's 1934-1938 means for cassava, sweet potatoes and soya. C2 note 10 makes `indochina` maize to
+1926 exclude Laos and Cambodia, so 11 rows moved to [vnm-1887-1954](polities/vnm-1887-1954.md). Both
+moves use unit-scoped relabels in `data/final/source_label_item_corrections.csv`. Claude made the
+change; it awaits review in the PR.
+
 ## decision-karafuto-cells-off-russia
 **Date:** 2026-10-07
 **Touched:** KAR-1905-1945, F228-1914-1917, F228-1917-1918, F228-1918-1920, F228-1920-1921,

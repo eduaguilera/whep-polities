@@ -108,9 +108,14 @@ MATCHED = os.path.join(REPO, "pipelines/polity-autoimprove/state/matched_rows.pa
 # 65/927 -> 74/948 on 2026-10-07 (issue 422, Claude): iia `russian federation` cells that are raw `japan:
 # karafuto prefecture` alone -- rapeseed 1914/1917-1918/1920/1922, yarn of true hemp 1916-1918, flax, hemp and
 # rye 1918, eggs 1931-1935 (9 rules, 21 rows -> KAR-1905-1945). Unscoped, so BASELINE_SCOPED_RULES is unchanged.
-BASELINE_RULES = 74
-BASELINE_ROWS = 948
-BASELINE_SCOPED_RULES = 8
+# 74/948 -> 81/1134 on 2026-10-07 (issue 689, Mitchell's footers loaded into the footnote-territory corpus):
+# mitchell `indonesia` OUTPUT (C2 rice to 1945, maize/cassava/sweet potatoes to 1948; C4 groundnuts and soya to
+# 1948) is Java and Madura only by its notes 8 and 3 (6 rules, 175 rows -> IDN-JVM-1800-1949), and mitchell
+# `indochina` maize to 1926 excludes Laos and Cambodia by note 10 (1 rule, 11 rows -> VNM-1887-1954). All seven
+# are scoped `unit=tonnes` (8 -> 15): the same labels' area rows carry no extracted note and stay.
+BASELINE_RULES = 81
+BASELINE_ROWS = 1134
+BASELINE_SCOPED_RULES = 15
 
 # Units a scope may name, per source: layer B's own `unit` vocabulary, measured 2026-09-25 over
 # consolidated_layer_b.parquet (every non-null value of the column, by source). A scope outside it

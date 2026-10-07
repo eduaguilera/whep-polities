@@ -24,6 +24,29 @@ source / year / topic / commodity-page table. Each `footers_*.xlsx` has columns
 language — ~113 boundary-vintage notes, ~89 named inclusion/exclusion notes.
 FAO 1949–1961 is the bulk; IIA footnotes are sparse (mostly land-use).
 
+**Mitchell (third input, issue 689).** `~/Nextcloud/WHEP_ERC 2025/Sources/data_raw/
+sources_original/mitchell/Agriculture without Europe data/page<a>-<b>/footers_page<a>-<b>.xlsx`,
+12 files, 558 rows, same three columns. `consolidate_footnotes.py` appends them after the
+FAO/IIA rows (`source = mitchell`, `commodity` = workbook stem, `page_number`/`table_number`
+workbook-local, as in layer B's `indicator`), so the FAO/IIA note ids are unchanged.
+**Measured (2026-10-07):** only **12** of the 558 rows carry note text. 360 are
+"See p. N for footnotes" pointers to a book page whose notes were not extracted, and 186 are
+blank. So most of Mitchell's table notes (all of C1 crop area to p. 28, livestock, C5 cocoa ...)
+are **not** in this corpus. The manual PDF pass in #688 read some of them, for example Lower
+Burma, Ghana with British Togoland and Nigeria with British Cameroons. The 12 rows split into
+43 marker-level claims. A note joins to its column through the marker the extract keeps glued to the
+header (`Indonesia 8`, `Maize 10`, `Korea¹ 13`). The marker is also glued to the cells of the
+line-break years (`58958` = 5,895 + note 8), which dates the break.
+
+Mitchell routing check (2026-10-07, `mitchell_footnote_routing_check.csv` in the output dir):
+fixed by unit-scoped relabels: `indonesia` C2/C4 output to 1948 → IDN-JVM-1800-1949 (175 rows),
+`indochina` maize to 1926 → VNM-1887-1954 (11). Mismatches with no target polity, left in
+place: `india` C2 1928/1932-1936 excludes Burma while IND-1914-1937 includes it (34 rows),
+`syrian arab republic` C1 area 1922-1938 excludes Lattakia and Jebel Druze (34), `indonesia`
+rice 1946-1948 and sweet potatoes 1949-1952 cover Java, Madura, Bali and Lombok (6). Not
+certain: `malaysia` C2 1920-1945 'Malay states' vs GBM-1895-1946 (32), and `israel/palestine`
+wheat 1947-1948 after 'Palestine to 1946' (2).
+
 ## Pipeline
 
 1. **Consolidate** — `consolidate_footnotes.py` walks the tree → one long table
@@ -105,6 +128,12 @@ provenance-traceable (per wiki-page standards).
     `04_territory_basis.py` now unions into `priority_review` (durable across
     classifier re-runs; bypasses the polygon-vintage gate since a footnote is
     direct coverage evidence). Adds e.g. West Germany Bizone, Syria⊃Lebanon.
+  - [x] **Mitchell** (issue 689): footers consolidated (12 notes / 43 claims appended to
+    `footnote_territory_claims.csv`) and checked against routing directly. The FAO-style
+    step 4/5 (`footnote_polity_proposals.csv` → `validate_proposals.py`) was not re-run:
+    re-running it on the stored proposals no longer reproduces the committed
+    `footnote_flags.csv`. The proposals still name CAN-1948-2025, which the flags file renamed
+    to CAN-1949-2025 when Canada's boundary moved to the Newfoundland accession.
   - [ ] create the 19 gap polities / compose unions / aliases (each needs a wiki
     page per standards). Boundary-vintage for generic numbered markers still
     needs the marked data tables.
