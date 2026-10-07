@@ -2622,6 +2622,30 @@ def mutate_collapse_mean_outside_range(root, gpd, make_valid, affinity):
             f"those {worst['n_rows']} rows can be that number")
 
 
+def mutate_collapse_parts_relation_dropped(root, gpd, make_valid, affinity):
+    """Erase `parts_relation` on a total-beside-parts row that is not an anchor.
+
+    The label is what tells a reader -- and the harmonized build's rule mirrors it -- that the group
+    holds a total and its parts rather than siblings. Dropping it leaves every number consistent, so
+    only arm F, which recomputes the fingerprint from n_rows, published_mean and v_max, can see it.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/collapse_groups.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    hit = next((r for r in rows if r["parts_relation"] == "total_beside_parts"
+                and r["whep_code"] != "USA-1867-1959"), None)
+    if hit is None:
+        raise AssertionError("no total_beside_parts row outside the anchors, so this tests nothing")
+    hit["parts_relation"] = ""
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"erased parts_relation on {hit['whep_code']}/{hit['item']}/{hit['year']}, whose v_max "
+            f"{hit['v_max']} is still the sum of its other members")
+
+
 def mutate_collapse_anchor_silently_agrees(root, gpd, make_valid, affinity):
     """Make a curated anchor read as though the two territories had always agreed.
 
@@ -2641,21 +2665,95 @@ def mutate_collapse_anchor_silently_agrees(root, gpd, make_valid, affinity):
     with open(path, newline="", encoding="utf-8") as fh:
         rows = list(csv.DictReader(fh))
         fields = list(rows[0])
-    hit = next(r for r in rows if r["whep_code"] == "KOR-1948-2025"
-               and r["item"] == "r_fao_population_1952_10_18" and r["year"] == "1951")
+    # The KOR-1948-2025 population anchor this used to lift was dissolved by routing (`Korea` now
+    # reaches KORP-1948-1953), so it targets the anchor that replaced it: issue 367's US meat total.
+    hit = next(r for r in rows if r["whep_code"] == "USA-1867-1959"
+               and r["item"] == "meat" and r["year"] == "1950")
     before = f"{hit['v_min']}/{hit['v_max']} -> {hit['published_mean']}"
     hit["v_min"] = hit["v_max"]
     hit["published_mean"] = hit["v_max"]
     hit["ratio_mean_max"] = "1"
     hit["verdict"] = "values_identical"
     hit["n_distinct"] = "1"
+    hit["parts_relation"] = ""
     with open(path, "w", newline="", encoding="utf-8") as fh:
         w = csv.DictWriter(fh, fieldnames=fields)
         w.writeheader()
         w.writerows(rows)
-    return (f"lifted South Korea's 1951 population to the whole peninsula's ({before}), leaving an "
-            f"internally consistent values_identical row, so issue 451's one decidable case reads as "
+    return (f"lifted every US 1950 meat part to the total ({before}), leaving an internally "
+            f"consistent values_identical row, so issue 367's total-beside-parts case reads as "
             f"agreement and only the pinned anchor stands between that and a green gate")
+
+def _published_collapse_rows(root):
+    path = os.path.join(root, "pipelines/historical-production-harmonized/state/collapse_resolutions.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rd = csv.DictReader(fh)
+        return path, list(rd), list(rd.fieldnames)
+
+
+def mutate_published_collapse_blend(root, gpd, make_valid, affinity):
+    """Publish the MEAN of a key's candidates again, as the build did before issue 451.
+
+    The realistic regression: somebody "simplifies" the resolver back to an average. Only the value
+    moves -- the resolution, the published source and the rules stay as recorded -- so the row still
+    looks like a source_precedence decision, and only re-deriving the value from the candidates (B)
+    and checking it is one of that source's own numbers (C) can see a blend was published.
+    """
+    path, rows, fields = _published_collapse_rows(root)
+    hit = next((r for r in rows if r["resolution"] == "source_precedence"), None)
+    if hit is None:
+        raise AssertionError("no source_precedence row, so this mutation tests nothing")
+    vals = [float(x) for part in hit["candidates"].split("|") for x in part.split("=", 1)[1].split(";")]
+    before = hit["published_value"]
+    hit["published_value"] = repr(sum(vals) / len(vals))
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"replaced {hit['polity_code']}/{hit['year']}'s published {before} by the mean of its "
+            f"candidates ({hit['published_value']}), the blend issue 451 measured on 1,706 keys")
+
+
+def mutate_withheld_key_undocumented(root, gpd, make_valid, affinity):
+    """Drop one withheld key from the baseline, as a new contradiction arrives undocumented.
+
+    A withheld key vanishes from the published table. The baseline is what makes that a recorded
+    decision rather than silent data loss, so a withheld key the baseline does not list must fail --
+    while every other arm stays quiet, because the resolution table itself is untouched.
+    """
+    path = os.path.join(root, "pipelines/historical-production-harmonized/state/withheld_keys_baseline.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rd = csv.DictReader(fh)
+        rows, fields = list(rd), list(rd.fieldnames)
+    if not rows:
+        raise AssertionError("empty baseline, so this mutation tests nothing")
+    gone = rows.pop(0)
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"removed {gone['polity_code']}/{gone['year']}/{gone['item_prod_code']}/{gone['unit']} "
+            f"({gone['resolution']}) from the baseline while it is still withheld")
+
+
+def mutate_build_averages_again(root, gpd, make_valid, affinity):
+    """Put the pre-451 `summarise(value = mean(.data$value))` back into build.R.
+
+    The table this gate re-derives is written BY build.R, so a build that averages again would keep
+    passing on the last committed table until somebody regenerated it. The source arm is what makes
+    the regression visible in the commit that introduces it.
+    """
+    path = os.path.join(root, "pipelines/historical-production-harmonized/build.R")
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
+    needle = "resolved <- resolve_collapse_groups(candidates)"
+    assert needle in text, "build.R no longer calls the resolver where this mutation expects it"
+    text = text.replace(needle, needle + "\nblend <- dplyr::summarise(candidates, value = mean(.data$value, "
+                        "na.rm = TRUE), .by = \"year\")", 1)
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(text)
+    return "build.R"
+
 
 def mutate_overlap_shrunk_below_floor(root, gpd, make_valid, affinity):
     """Shrink a pinned containment pair's cell count below the floor that made it sayable.
@@ -6475,9 +6573,38 @@ CASES = (
         "validate_collapse_groups.py",
         mutate_collapse_anchor_silently_agrees,
         "expected 'values_differ'",
-        "issue 451's one decidable case -- the Korean peninsula's population beside South Korea's on "
-        "one polity -- rewritten as agreement, internally flawless, so only the pinned anchor can "
-        "tell that the finding evaporated",
+        "issue 367's US meat total beside its own three parts rewritten as agreement, internally "
+        "flawless, so only the pinned anchor can tell that the finding evaporated",
+    ),
+    (
+        "validate_collapse_groups.py",
+        mutate_collapse_parts_relation_dropped,
+        "against the other",
+        "a total beside its own parts with its parts_relation label erased, every value intact, so "
+        "only recomputing the fingerprint from the row can tell the total is no longer marked "
+        "(issue 367)",
+    ),
+    (
+        "validate_published_collapse.py",
+        mutate_published_collapse_blend,
+        "a blend, which",
+        "a published key's value replaced by the mean of its candidates, every other field untouched, "
+        "so only re-deriving the value and checking it is one of the source's own numbers can see "
+        "that the consumer would receive a number from no source (issue 451)",
+    ),
+    (
+        "validate_published_collapse.py",
+        mutate_withheld_key_undocumented,
+        "NEW withheld key",
+        "a withheld key missing from the baseline: the key silently leaves the published table, and "
+        "only the bidirectional baseline arm records that as a decision rather than a loss",
+    ),
+    (
+        "validate_published_collapse.py",
+        mutate_build_averages_again,
+        "averages `value` again",
+        "build.R averaging `value` again while the committed table still reads as resolved, so only "
+        "the source arm can see the regression before the table is regenerated",
     ),
     (
         "validate_same_polity_overlaps.py",
@@ -7638,6 +7765,15 @@ WRITABLE = {
     # member), so a real copy rather than a symlink into the tracked table.
     "validate_collapse_groups.py": (
         "pipelines/polity-autoimprove/state/collapse_groups.csv",
+    ),
+    # The cases rewrite the resolution table, the withheld-key baseline or build.R in place, so real
+    # copies; the resolver is read for its constants and data_errors.csv for arm D's id check.
+    "validate_published_collapse.py": (
+        "pipelines/historical-production-harmonized/state/collapse_resolutions.csv",
+        "pipelines/historical-production-harmonized/state/withheld_keys_baseline.csv",
+        "pipelines/historical-production-harmonized/build.R",
+        "pipelines/historical-production-harmonized/R/resolve_collapse_groups.R",
+        "pipelines/polity-autoimprove/state/data_errors.csv",
     ),
     # The case rewrites same_polity_overlaps.csv in place (it shrinks a cell count), so a real copy
     # rather than a symlink into the tracked table.

@@ -94,7 +94,27 @@ EPS = 1e-9
 
 FIELDS = ("whep_code", "item", "unit", "year", "n_rows", "n_distinct", "n_labels", "n_sources",
           "n_indicators", "verdict", "composition", "duplicate_class", "v_min", "v_max",
-          "published_mean", "ratio_mean_max", "labels", "sources")
+          "published_mean", "ratio_mean_max", "parts_relation", "labels", "sources")
+
+# Issue 367's fingerprint of a TOTAL sitting beside its own parts: three or more members whose
+# largest equals the sum of the rest to within this share of it. The same constant as
+# TBP_TOLERANCE in pipelines/historical-production-harmonized/R/resolve_collapse_groups.R, which
+# keeps the total and drops the parts before publishing.
+TBP_TOLERANCE = 0.02
+
+
+def parts_relation(n_rows: int, mean_written: str, vmax_written: str, identical: bool) -> str:
+    """`total_beside_parts` when the group's largest member is the sum of the others.
+
+    Computed from the values AS WRITTEN (n_rows x published_mean is the group sum) so that
+    validate_collapse_groups.py can recompute it from the row alone, the same reason
+    ratio_mean_max is derived from the rounded fields.
+    """
+    if identical or n_rows < 3:
+        return ""
+    vmax = float(vmax_written)
+    rest = n_rows * float(mean_written) - vmax
+    return "total_beside_parts" if abs(vmax - rest) <= TBP_TOLERANCE * abs(vmax) else ""
 
 
 def _num(x) -> str:
@@ -147,6 +167,9 @@ def build(matched: str) -> list[dict]:
             # stored mean is 0.233333 and 0.233333/0.3 is 0.777777, while the unrounded ratio rounds
             # to 0.777778. Four rows failed on exactly that, which is how this was found.
             "ratio_mean_max": (_num(float(_num(vmean)) / float(_num(vmax))) if vmax else ""),
+            # issue 367: a total beside its own parts. Under the consumer's mean it publishes 1/n of
+            # the total's double; under a sum, exactly double. The harmonized build keeps the total.
+            "parts_relation": parts_relation(len(g), _num(vmean), _num(vmax), identical),
             "labels": " | ".join(labels), "sources": " | ".join(sources),
         })
     rows.sort(key=lambda r: (r["whep_code"], r["item"], r["unit"], r["year"]))
@@ -197,6 +220,8 @@ def main() -> int:
     dc: dict[str, int] = {}
     for r in diff:
         dc[r["duplicate_class"]] = dc.get(r["duplicate_class"], 0) + 1
+    tbp = sum(1 for r in diff if r["parts_relation"] == "total_beside_parts")
+    print(f"  total_beside_parts {tbp:5}  (largest member = sum of the rest, issue 367)")
     print("  by what the disagreement IS:")
     for k in ("true_duplicate_key", "item_code_collision"):
         why = ("one measure reported twice: routing/composition"

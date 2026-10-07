@@ -44,6 +44,8 @@ Checks:
   C. THE CURATED ANCHORS still read as the issues say they do.
   D. CONSISTENCY WITH THE COMPOSITION FIELD -- `one_label` iff exactly one label is listed, and
      likewise for sources, so the counts printed in C cannot drift from the rows they summarise.
+  F. TOTAL BESIDE PARTS (issue 367) -- `parts_relation` is `total_beside_parts` exactly when the
+     group's largest member equals the sum of the others to within 2%, recomputed from the row.
 """
 import csv
 import os
@@ -54,7 +56,10 @@ TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/collapse_groups.c
 
 FIELDS = ["whep_code", "item", "unit", "year", "n_rows", "n_distinct", "n_labels", "n_sources",
           "n_indicators", "verdict", "composition", "duplicate_class", "v_min", "v_max",
-          "published_mean", "ratio_mean_max", "labels", "sources"]
+          "published_mean", "ratio_mean_max", "parts_relation", "labels", "sources"]
+# Issue 367's total-beside-parts fingerprint; the same constant as the generator and as
+# TBP_TOLERANCE in pipelines/historical-production-harmonized/R/resolve_collapse_groups.R.
+TBP_TOLERANCE = 0.02
 DUP_CLASSES = frozenset({"true_duplicate_key", "item_code_collision"})
 VERDICTS = frozenset({"values_identical", "values_differ"})
 COMPOSITIONS = frozenset({"one_label_one_source", "one_label_several_sources",
@@ -64,18 +69,17 @@ COMPOSITIONS = frozenset({"one_label_one_source", "one_label_several_sources",
 # Each entry is quoted in an open issue. A change here is not necessarily a regression -- it may be a
 # correct reroute -- but it MUST be noticed, because the issue text stops being true.
 ANCHORS = {
-    ("KOR-1948-2025", "r_fao_population_1952_10_18", "1000 people", "1951"): dict(
-        verdict="values_differ", v_min="20500", v_max="29300", published_mean="24900",
-        why="issue 451: 29,300 is the whole Korean peninsula in 1951 and 20,500 is South Korea "
-            "alone. Both route to KOR-1948-2025, so the published figure is 24,900 -- a number for "
-            "no territory. The two cannot both describe one territory, which makes this decidable "
-            "without any external source"),
-    ("DEU-1920-1938", "r_fao_population_1952_10_18", "1000 people", "1937"): dict(
-        verdict="values_differ", n_rows="10", v_max="57576", published_mean="13854.5",
-        why="issue 411: TEN rows for one polity-item-year, the 57,576 Reich total beside its "
-            "post-war subdivisions, published as 13,854.5 -- 24% of the Reich. Four labels are "
-            "involved but `germany` alone supplies five of the ten rows, which is why the "
-            "label-pair screen reports one cell here and this table reports ten rows"),
+    # KOR-1948-2025 population 1951 (issue 451) and DEU-1920-1938 population 1937 (issue 411) were
+    # anchors here until routing resolved both: on 2026-10-07 `Korea` reaches KORP-1948-1953, the
+    # peninsula, and `Korea South` KOR-1948-2025; the 1937 German rows reach DEU/WZO/BRL/SBZ one
+    # territory each. Neither group exists any more, which is the outcome the anchors were waiting for.
+    ("USA-1867-1959", "meat", "1000 tonnes", "1950"): dict(
+        verdict="values_differ", v_max="10015", published_mean="5007.5",
+        parts_relation="total_beside_parts",
+        why="issue 367's headline: 10,015 = 4,884 + 4,860 + 271 thousand t, a TOTAL beside its own "
+            "three parts under one label. The consumer's mean publishes 5,007.5 -- half the total -- "
+            "and a sum would publish exactly double. If this ever reads as agreement or loses its "
+            "parts_relation, the fingerprint the harmonized build relies on has stopped working"),
     ("ETH-1941-1952", "coffee, green", "tonnes", "1945"): dict(
         verdict="values_identical", v_min="17000", v_max="17000", published_mean="17000",
         why="issue 451: `ethiopia` and `ethiopia pdr` agree to the digit, so `mean` returns the "
@@ -158,6 +162,19 @@ def main() -> int:
         if n_ind is not None and not (1 <= n_ind <= n_rows):
             problems.append(f"E {where}: n_indicators {n_ind} outside [1, n_rows={n_rows}]")
 
+        # --- F. parts_relation follows the row's own arithmetic (issue 367) ---
+        # n_rows x published_mean is the group's sum, so whether the largest member equals the sum
+        # of the rest is decidable from the row. A label that drifts from it either hides a total
+        # the harmonized build would keep, or invents one it would wrongly prefer over siblings.
+        rest = n_rows * mean - vmax
+        want_tbp = ("total_beside_parts"
+                    if not ident and n_rows >= 3 and abs(vmax - rest) <= TBP_TOLERANCE * abs(vmax)
+                    else "")
+        if r.get("parts_relation", "") != want_tbp:
+            problems.append(f"F {where}: parts_relation {r.get('parts_relation')!r} but v_max {vmax:g} "
+                            f"against the other {n_rows - 1} member(s) summing to {rest:g} says "
+                            f"{want_tbp!r}")
+
         # --- D. composition agrees with the listed labels/sources ---
         labs = [x for x in r["labels"].split(" | ") if x]
         srcs = [x for x in r["sources"].split(" | ") if x]
@@ -199,6 +216,7 @@ def main() -> int:
         dc[r["duplicate_class"]] = dc.get(r["duplicate_class"], 0) + 1
     for k in ("true_duplicate_key", "item_code_collision"):
         print(f"  {k:24} {dc.get(k, 0)}")
+    print(f"  total_beside_parts       {sum(1 for r in diff if r.get('parts_relation'))}")
     reach = comp.get("several_labels_one_source", 0)
     if diff:
         print(f"  reachable by a per-source label-pair screen: {reach} "

@@ -161,6 +161,7 @@ python3 scripts/validate_component_underselection.py # recorded component under-
 python3 scripts/validate_grid_ambiguous_zeros.py  # recorded grid-ambiguous zeros must live at their grid's resolution floor
 python3 scripts/validate_cross_label_duplication.py # recorded cross-label duplications must still clear their own conditions
 python3 scripts/validate_collapse_groups.py        # the value the consumer publishes must be a mean of the rows it collapses
+python3 scripts/validate_published_collapse.py     # the harmonized build publishes one candidate per consumer key, never a blend
 python3 scripts/validate_atomic_state_writes.py    # no tool may truncate a state file holding unregenerable adjudications
 python3 scripts/validate_territory_basis_write_guard.py # a pipeline tool may not publish a column the run could not compute
 python3 scripts/validate_quarantine_resolution_guard.py # a fallback route source may not close an adjudication

@@ -18,6 +18,17 @@ out_dir <- if (length(args) >= 3L) {
   "/home/usuario/Nextcloud/whep/historical_production_harmonized"
 }
 
+file_arg <- grep("^--file=", commandArgs(trailingOnly = FALSE), value = TRUE)
+script_dir <- if (length(file_arg)) {
+  dirname(normalizePath(sub("^--file=", "", file_arg[[1L]])))
+} else {
+  file.path(getwd(), "pipelines/historical-production-harmonized")
+}
+source(file.path(script_dir, "R", "resolve_collapse_groups.R"))
+# The tracked resolution table describes the real panel; an explicit-argument run over another
+# panel still writes its outputs but leaves the record alone unless asked.
+write_tracked_state <- length(args) < 2L || nzchar(Sys.getenv("WHEP_WRITE_COLLAPSE_STATE"))
+
 if (!requireNamespace("whep", quietly = TRUE)) {
   if (requireNamespace("pkgload", quietly = TRUE)) {
     pkgload::load_all("/home/usuario/WHEP-polities-reconcile", quiet = TRUE)
@@ -83,6 +94,14 @@ validate_alignment <- function(layer_b, matches) {
   # Comparing the routed label against layer B stopped this build on the 25 OCR
   # rows, so compare the raw one wherever the matcher wrote it.
   if ("source_label_raw" %in% names(matches)) {
+    # A relabelled row also has its `iso3c` cleared, because the ISO code came with the
+    # territory it was misfiled under (924 rows on 2026-10-07). Restore layer B's own code on
+    # exactly those rows before comparing, so the check still catches a misaligned row
+    # everywhere else instead of stopping on every relabelling.
+    relabelled <- !same_or_both_na(matches$country, matches$source_label_raw)
+    if ("iso3c" %in% names(matches) && "iso3c" %in% names(layer_b)) {
+      matches$iso3c[relabelled] <- layer_b$iso3c[relabelled]
+    }
     matches$country <- matches$source_label_raw
   }
   check_cols <- intersect(
@@ -490,46 +509,56 @@ base <- dplyr::bind_cols(
 products <- prepare_products(base, product_lookup())
 stocks <- prepare_stocks(base, stock_lookup())
 
-harmonized <- dplyr::bind_rows(products, stocks) |>
+candidates <- dplyr::bind_rows(products, stocks) |>
   dplyr::left_join(polity_lookup(), by = "whep_code") |>
   dplyr::filter(
     !is.na(.data$item_prod_code),
     !is.na(.data$item_cbs_code),
-    !is.na(.data$area_code)
+    !is.na(.data$area_code),
+    !is.nan(.data$value)
   ) |>
   dplyr::mutate(
     source = paste0("historical_", .data$raw_source),
     item_prod_code = as.numeric(.data$item_prod_code),
     item_cbs_code = as.numeric(.data$item_cbs_code),
     live_anim_code = as.numeric(.data$live_anim_code)
+  )
+
+# ONE ROW PER CONSUMER KEY (whep-polities issues 451, 367). This used to be
+# `summarise(value = mean(value))` over a key that kept the raw label, item and source apart, so
+# several rows reached WHEP for one (year, area, item, unit) and WHEP averaged them: 1,706 keys of
+# the published table carried candidates that disagree, and their published value equalled none of
+# them. R/resolve_collapse_groups.R now picks one candidate per key by stated rules -- dedupe
+# identical rows, keep a total over its own parts, drop a source whose rows cannot be told apart,
+# then source precedence -- and writes every non-trivial decision to the tracked
+# state/collapse_resolutions.csv, which scripts/validate_published_collapse.py re-derives in CI.
+resolved <- resolve_collapse_groups(candidates)
+
+harmonized <- resolved$published |>
+  dplyr::select(
+    "year",
+    "area_code",
+    "polity_area_code",
+    "polity_code",
+    "reporting_polity_code",
+    "reporting_polity_name",
+    "reporting_polity_has_geometry",
+    "item_prod_code",
+    "item_prod",
+    "item_cbs_code",
+    "item_cbs",
+    "live_anim_code",
+    "unit",
+    "source",
+    "raw_source",
+    "raw_country",
+    "raw_item",
+    "raw_item_code",
+    "raw_unit",
+    "source_detail",
+    "match_method",
+    "value"
   ) |>
-  dplyr::summarise(
-    value = mean(.data$value, na.rm = TRUE),
-    .by = c(
-      "year",
-      "area_code",
-      "polity_area_code",
-      "polity_code",
-      "reporting_polity_code",
-      "reporting_polity_name",
-      "reporting_polity_has_geometry",
-      "item_prod_code",
-      "item_prod",
-      "item_cbs_code",
-      "item_cbs",
-      "live_anim_code",
-      "unit",
-      "source",
-      "raw_source",
-      "raw_country",
-      "raw_item",
-      "raw_item_code",
-      "raw_unit",
-      "source_detail",
-      "match_method"
-    )
-  ) |>
-  dplyr::filter(!is.nan(.data$value)) |>
   dplyr::arrange(
     .data$year,
     .data$reporting_polity_code,
@@ -541,6 +570,31 @@ harmonized <- dplyr::bind_rows(products, stocks) |>
     item_prod_name = "item_prod",
     item_cbs_name = "item_cbs"
   )
+
+dup_keys <- harmonized |>
+  dplyr::count(dplyr::across(dplyr::all_of(COLLAPSE_KEY))) |>
+  dplyr::filter(.data$n > 1L)
+if (nrow(dup_keys) > 0L) {
+  stop(nrow(dup_keys), " published keys still carry more than one row; the consumer would blend them")
+}
+
+# Tracked, so the CI gate can re-derive each decision without the (non-redistributable) panel.
+# Written only for the default inputs: a run over a test panel must not overwrite the record.
+resolutions_path <- file.path(script_dir, "state", "collapse_resolutions.csv")
+if (write_tracked_state) {
+  dir.create(dirname(resolutions_path), showWarnings = FALSE)
+  tmp <- paste0(resolutions_path, ".tmp")
+  readr::write_csv(resolved$resolutions, tmp, na = "")
+  file.rename(tmp, resolutions_path)
+  message("Wrote: ", resolutions_path)
+}
+message(
+  "Collapse resolution: ", nrow(candidates), " candidate rows -> ", nrow(harmonized),
+  " published keys; ",
+  paste(names(table(resolved$resolutions$resolution)), table(resolved$resolutions$resolution),
+    sep = " ", collapse = ", "
+  )
+)
 
 out_parquet <- file.path(out_dir, "historical_production_harmonized.parquet")
 out_csv <- file.path(out_dir, "historical_production_harmonized.csv")
