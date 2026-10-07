@@ -39,6 +39,48 @@ iia tobacco and hops production 1934-1945 (/100) and hops area 1934-1938 (/10). 
 cells at 100x. Re-run `pipelines/polity-autoimprove/01_match_and_findings.py` after changing the
 table.
 
+## One Row Per Consumer Key (issues 451, 367)
+
+WHEP's `.prepare_historical_production()` reduces every `(year, area, item, unit)` key with
+`mean(value)`, and this build used to do the same before handing the table over. Where a key's
+candidate rows disagree the consumer then publishes a number equal to none of them: fao1952 prints
+Yugoslavia's 1949 dry beans as two rows (38,000 and 783,000 ha) that sum to juan's 821,000, and the
+three were averaged. Measured 2026-10-07, **1,706 published keys** were blends like that.
+
+The build now publishes **exactly one row per key** (`year`, `polity_code`, `area_code`,
+`item_prod_code`, `item_cbs_code`, `live_anim_code`, `unit`) and refuses to write a table that does
+not. `R/resolve_collapse_groups.R` picks the row:
+
+1. within one source: one row; identical rows (one series under two spellings) deduped; a total
+   beside its own parts (largest = sum of the rest within 2%, issue 367) keeps the total; anything
+   else is `ambiguous` and that source contributes nothing to the key;
+2. across the surviving sources: agreement within 2x publishes the first in `PRECEDENCE`
+   (WHEP's own `.prod_source_rank()` order, so the source the consumer already labels the key with
+   is now the source of its value); a wider disagreement, or no survivor, **withholds** the key.
+
+Every decision that was not a lone row or plain cross-source agreement goes to the tracked
+`state/collapse_resolutions.csv`; every withheld key must be listed, with a reason and its
+`data_errors.csv` id where one exists, in `state/withheld_keys_baseline.csv`.
+`scripts/validate_published_collapse.py` re-derives each decision in CI and fails on a withheld key
+the baseline does not document. The tracked table is rewritten only by a default-input run (or with
+`WHEP_WRITE_COLLAPSE_STATE=1`), so a run over a test panel leaves the record alone.
+
+Effect on the consumer-collapsed totals, 2026-10-07 panel, before -> after:
+
+```
+          before             after              change     withheld keys carried
+ha        33,084,288,112     33,033,610,621     -0.153%    52,678,607
+tonnes    68,152,965,039     68,097,626,398     -0.081%    58,183,573
+heads     84,928,919,271     84,820,666,637     -0.127%    94,805,500
+
+keys 142,138 -> 141,882: 256 withheld (251 cross-source contradictions, 5 unreadable
+single-source groups); 1,451 retained keys change value, median ratio 1.001
+```
+
+136 of the 256 withheld keys already have a `data_errors.csv` explanation (iia wheat that is spelt
+and meslin, Czechoslovak beans that are one component, Mitchell's Japanese "rye", ...). The other
+120 are recorded only in the baseline and are open defects.
+
 ## Constant-Territory Smoke Runs
 
 The example in `examples/austria_wheat_constant_territory_smoke.R` compares

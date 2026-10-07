@@ -673,6 +673,14 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_collapse_groups.py
 
+      # The harmonized build publishes ONE row per consumer key (issues 451, 367): identical rows
+      # deduped, a total kept over its parts, an unreadable source dropped, then source precedence;
+      # contradictions withheld. Re-derives every decision from the tracked resolution table, and
+      # every withheld key must be in the documented baseline.
+      - name: Sources — every published historical key resolves to one candidate, never a blend
+        if: '!cancelled()'
+        run: python3 scripts/validate_published_collapse.py
+
       # open(path,"w") and pandas.to_csv(path) both truncate on open, so a failure part-way through
       # loses a tracked file. Issue 431 found the four sites that mattered by grepping for
       # open(x,"w") — a floor, not a census. Re-swept with an AST there are 48 write sites, not 16;
