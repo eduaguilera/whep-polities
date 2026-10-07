@@ -274,7 +274,8 @@ if "--check" in sys.argv:
               f"regenerated)")
         for line in problems:
             print(f"  {line}")
-        print("  rerun: python3 pipelines/polity-autoimprove/04_territory_basis.py")
+        print("  rerun: python3 pipelines/polity-autoimprove/04_territory_basis.py "
+              "(--splice if layer B / stage 02 outputs are absent here)")
         raise SystemExit(1)
 
     if _missing:
@@ -285,6 +286,42 @@ if "--check" in sys.argv:
         print(f"OK: territory_basis.csv matches the database ({len(fresh)} polities, "
               f"all {len(fresh.columns)} columns)")
     raise SystemExit(0)
+
+# --splice: THE SUPPORTED REPLACEMENT FOR HAND-EDITING territory_basis.csv (issue 573).
+#
+# Most PRs change the polity set or the tracked basis columns (dates, polygon vintage, basis_reason)
+# on a machine WITHOUT layer B or a fresh stage-02 run, so the full regeneration refuses (below)
+# and contributors used to splice the new rows into the CSV by hand. This does the same thing
+# deterministically: every column the TRACKED inputs determine is regenerated, and each column
+# whose untracked input is absent keeps its committed value, matched by polity_code.
+# A polity that has no committed row cannot be spliced (its value was never computed), so any
+# such code leaves that column in `_missing` and the guard below refuses, naming the stage to run
+# (--allow-collapsed-columns instead gives only those NEW rows the collapsed value).
+# A full pipeline run (01 -> 02 -> 04) followed by --check agrees with a splice for every column
+# the splice can see; only layer B / stage 02 can refresh the volatile columns themselves.
+if "--splice" in sys.argv and _missing and os.path.exists(_DEST):
+    _prior = pd.read_csv(_DEST, keep_default_na=False, dtype=str).set_index("polity_code")
+    _new = [c for c in out["polity_code"] if c not in _prior.index]
+    for _c in list(_missing):
+        if _c not in _prior.columns:
+            continue
+        if _new and "--allow-collapsed-columns" not in sys.argv:
+            print(f"splice: `{_c}` NOT spliced -- no committed value for {len(_new)} polit"
+                  f"{'y' if len(_new) == 1 else 'ies'} ({', '.join(_new[:8])}"
+                  f"{', ...' if len(_new) > 8 else ''}); run {_PRODUCER[_c]}, or add "
+                  f"--allow-collapsed-columns to give ONLY those new rows the collapsed value")
+            continue
+        _kept = out["polity_code"].map(_prior[_c])
+        if out[_c].dtype == bool:
+            _kept = _kept.eq("True")
+        elif pd.api.types.is_integer_dtype(out[_c]):
+            _kept = _kept.fillna(0).astype(int)
+        else:
+            _kept = _kept.fillna("")
+        out[_c] = _kept
+        _missing.remove(_c)
+        print(f"splice: `{_c}` kept from the committed file (input "
+              f"{os.path.basename(_VOLATILE[_c])} absent)")
 
 # REFUSE TO WRITE A COLUMN THIS RUN CANNOT COMPUTE (issue 573).
 #
@@ -335,6 +372,8 @@ if _missing and os.path.exists(_DEST) and "--allow-collapsed-columns" not in sys
         # run 02_territorial_evidence.py, which does not write that file and never would.
         _stage = _PRODUCER.get(_c, "the stage that writes it")
         print(f"  {_c:<18s} needs state/{os.path.basename(_src)}  (run {_stage})")
+    print("Or, when only TRACKED inputs changed (polity set, dates, polygons), pass --splice: it "
+          "regenerates every reproducible column and keeps these from the committed file.")
     print("Or pass --allow-collapsed-columns to write the collapse deliberately. See issue 573.")
     raise SystemExit(1)
 
