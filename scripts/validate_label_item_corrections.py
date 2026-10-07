@@ -113,9 +113,19 @@ MATCHED = os.path.join(REPO, "pipelines/polity-autoimprove/state/matched_rows.pa
 # 1948) is Java and Madura only by its notes 8 and 3 (6 rules, 175 rows -> IDN-JVM-1800-1949), and mitchell
 # `indochina` maize to 1926 excludes Laos and Cambodia by note 10 (1 rule, 11 rows -> VNM-1887-1954). All seven
 # are scoped `unit=tonnes` (8 -> 15): the same labels' area rows carry no extracted note and stay.
-BASELINE_RULES = 81
-BASELINE_ROWS = 1134
-BASELINE_SCOPED_RULES = 15
+# 81/1134 -> 124/1547 on 2026-10-07 (issue 372, Claude): the item-level mixtures that issue named, re-measured
+# cell by cell against the raw extract on current main and moved where a target polity exists -- iia `australia`
+# `p` to Christmas Island (1 rule, 17 rows -> CXR-1888-1946), `austria` p and mixed fertiliser 1909-1916 to the dual
+# monarchy (2, 14 -> AUH-1908-1918), `syrian arab republic` cotton, tobacco, grapes, oranges, olives, eggs, sesame
+# and vaccinium-class fruit to Syria+Lebanon (17, 170 -> SYL-1920-1944), `indonesia` sugar, groundnuts, soybeans,
+# cacao and tobacco to Java and Madura (10, 94 -> IDN-JVM-1800-1949), `niger` cotton 1918-1919/1934-1945 to the
+# federation (3, 42 -> AOF-1895-1960), `malaysia` coffee and tea to the Federated Malay States / British Malaya
+# (3, 60 -> FMS-1909-1946, GBM-1895-1946) and `united states of america` Puerto-Rico-only coffee cells (7, 16 ->
+# PRI-1800-2025). Ten are unit-scoped (where the other unit of the same years is a different territory, or a
+# 1909-1913 average is the Dutch East Indies whole): BASELINE_SCOPED_RULES 15 -> 25.
+BASELINE_RULES = 124
+BASELINE_ROWS = 1547
+BASELINE_SCOPED_RULES = 25
 
 # Units a scope may name, per source: layer B's own `unit` vocabulary, measured 2026-09-25 over
 # consolidated_layer_b.parquet (every non-null value of the column, by source). A scope outside it

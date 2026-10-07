@@ -118,8 +118,11 @@ CONTROL_PINS = {
 # fao1952 1934-1938 average vs the mean of the divided dated 1934-1938 rows: (polities, within 2x).
 # Joined on polity: fao1952's `Czechoslovakia` average closes on F51-1947-1993, so czech republic's
 # 1934-1938 iia rows (F51-1918-1938) have no partner here and are compared through juan in arm F.
+# Tobacco 20/20 -> 21/21 on 2026-10-07 (issue 372): iia `syrian arab republic` tobacco 1934-1938 moved to
+# SYL-1920-1944 (it is raw `french syria and lebanon`), where it meets fao1952 `Syria and Lebanon` for the first
+# time -- divided mean 3,873.6 t against fao1952's 3,800 t, an independent check on that relabel.
 FAO_PINS = {
-    ("iia", "tobacco, unmanufactured", "tonnes"): (20, 20),
+    ("iia", "tobacco, unmanufactured", "tonnes"): (21, 21),
     ("iia", "hops", "tonnes"): (2, 2),
     ("iia", "hops", "ha"): (3, 3),
 }
