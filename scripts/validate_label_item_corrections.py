@@ -100,9 +100,14 @@ MATCHED = os.path.join(REPO, "pipelines/polity-autoimprove/state/matched_rows.pa
 # 59/892 -> 60/900 on 2026-09-25 (unrouted-rows audit, Claude): fao1952 `French Morocco & Br Gold Coast` dry
 # peas 1934-1951 (8 rows) are French Morocco's; the label carries nothing else and the Gold Coast grows no dry
 # peas. Unscoped (unit and indicator blank), so BASELINE_SCOPED_RULES is unchanged.
-BASELINE_RULES = 60
-BASELINE_ROWS = 900
-BASELINE_SCOPED_RULES = 4
+# 60/900 -> 65/927 on 2026-10-07 (issue 483, Claude): iia `china, mainland` cells that are raw
+# `japan: kwantung leased territory` alone, now that KWA-1905-1945 exists (PR 710): all 9 egg cells, groundnut
+# area 1909-1933 (10), groundnut output 1909-1913 and 1928-1932 (1 + 1) and sesame area 1925-1933 (6). Four of
+# the five are scoped (ha / tonnes) because the same key's other unit holds China + Kwantung SUMS, which stay
+# (data_errors.csv iia-china-mainland-kwantung-summed-cells); BASELINE_SCOPED_RULES 4 -> 8.
+BASELINE_RULES = 65
+BASELINE_ROWS = 927
+BASELINE_SCOPED_RULES = 8
 
 # Units a scope may name, per source: layer B's own `unit` vocabulary, measured 2026-09-25 over
 # consolidated_layer_b.parquet (every non-null value of the column, by source). A scope outside it

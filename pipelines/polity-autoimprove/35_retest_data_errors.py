@@ -3581,6 +3581,77 @@ def check_iia_india_french_india_period_cells(ctx):
             "46 French India cells relabelled; 6 period averages and 5 unattributed cells recorded, not moved")
 
 
+def _china_mainland_kwantung_cells(ctx):
+    """Each layer-B iia `china, mainland` egg/groundnut/sesame/soybean cell, with the set of raw labels whose
+    values SUM to it (subset of one row per label, same product, variable and year-or-period, any volume)."""
+    import itertools
+    raw, lb = ctx["raw"], ctx["panel"]
+    ab = {"china": "CHN", "china: manchuria": "MAN", "china: excluding manchuria": "XMAN",
+          "china: manchukuo": "MKO", "japan: kwantung leased territory": "KWA"}
+    prod = {"eggs, hen, in shell": ("eggs",), "groundnuts, with shell": ("groundnut", "groundnut: unshelled"),
+            "sesame seed": ("sesame",), "soybeans": ("soybean",)}
+    r = raw[raw["_c"].isin(ab) & raw["_v"].isin(["area", "production"]) & raw["value"].notna()]
+    r = r.assign(k_=r["year"].astype(str).str.strip().str.replace(r"\.0$", "", regex=True))
+    c = lb[(lb["source"] == "iia") & (lb["country"] == "china, mainland") & lb["item"].isin(prod)]
+    out = []
+    for t in c.itertuples():
+        when = str(t.period) if pd.isna(t.year) else str(int(t.year))
+        var = "area" if t.unit == "ha" else "production"
+        cand = r[r["_p"].isin(prod[t.item]) & (r["_v"] == var) & (r["k_"] == when)]
+        rows = list(zip(cand["_c"], cand["value"].astype(float)))
+        sols = set()
+        for n in (1, 2, 3):
+            for comb in itertools.combinations(rows, n):
+                if len({x[0] for x in comb}) == n and \
+                        abs(sum(x[1] for x in comb) - float(t.value)) <= max(0.051, 1e-6 * float(t.value)):
+                    sols.add("+".join(sorted(ab[x[0]] for x in comb)))
+            if sols:
+                break
+        kw = [v for lab, v in rows if lab == "japan: kwantung leased territory"]
+        out.append((t.item, t.unit, when, float(t.value), "|".join(sorted(sols)), kw))
+    return out
+
+
+def check_china_mainland_kwantung_summed(ctx):
+    """iia `china, mainland` folds raw Kwantung in: alone where China prints nothing, ADDED where it does.
+
+    The Kwantung-alone cells are relabelled to KWA-1905-1945 by source_label_item_corrections.csv (issue 483);
+    pinned here is that every non-zero one of them sits there, that NO summed cell does (a rule that widened
+    onto one would move China's own figure with it), and the summed population that stays: its size, its
+    composition, and its largest Kwantung share. Also pinned: the 1934-1936 groundnut-area excess over raw
+    `china` that issue 483 left unexplained is Kwantung's own area for those years.
+    """
+    m = ctx.get("matched")
+    if m is None:
+        return None
+    cells = _china_mainland_kwantung_cells(ctx)
+    mm = m[(m["source"] == "iia") & (m["source_label_raw"] == "china, mainland")]
+    mk = mm["year"].astype("Int64").astype("string").fillna(mm["period"]).astype(str)
+    code = {(i, u, k, round(float(v), 4)): w for i, u, k, v, w in
+            zip(mm["item"], mm["unit"], mk, mm["value"], mm["whep_code"])}
+    alone = [c for c in cells if c[4] == "KWA" and c[3] != 0]
+    summed = [c for c in cells if "KWA" in c[4] and c[4] != "KWA"]
+    on_kwa = lambda cs: sum(1 for c in cs if code.get((c[0], c[1], c[2], round(c[3], 4))) == "KWA-1905-1945")
+    comp = collections.Counter(f"{c[0].split(',')[0]}:{c[4]}" for c in summed)
+    shares = [c[5][0] / c[3] for c in summed if len(c[5]) == 1]
+    excess = [f"{c[2]}:{c[5][0]:g}" for c in summed
+              if c[0] == "groundnuts, with shell" and c[1] == "ha" and c[2] in ("1934", "1935", "1936")]
+    zero_left = sorted(f"{c[0]}/{c[1]}/{c[2]}" for c in cells if c[4] == "KWA" and c[3] == 0
+                       and code.get((c[0], c[1], c[2], 0.0)) != "KWA-1905-1945")
+    return ([("non-zero Kwantung-alone cells", len(alone), 26),
+             ("  on KWA-1905-1945", on_kwa(alone), 26),
+             ("summed cells holding Kwantung", len(summed), 34),
+             ("  on KWA-1905-1945", on_kwa(summed), 0),
+             ("  composition", ";".join(f"{k}={v}" for k, v in sorted(comp.items())),
+              "groundnuts:CHN+KWA=8;sesame seed:CHN+KWA=6;soybeans:CHN+KWA=8;"
+              "soybeans:CHN+KWA+MAN=2;soybeans:KWA+MAN=8;soybeans:KWA+MAN+XMAN=2"),
+             ("  largest Kwantung share", round(max(shares), 4), 0.2141),
+             ("groundnut ha 1934-36 Kwantung", ",".join(sorted(excess)),
+              "1934:37000,1935:39000,1936:40000"),
+             ("zero Kwantung cells left", ";".join(zero_left), "sesame seed/tonnes/1928-1932")],
+            "Kwantung-alone cells moved to KWA; summed cells stay on China and are recorded, not split")
+
+
 def check_germany_oats_area_1949(ctx):
     """fao1952 `Germany Western` 1949 oats area is 21,134 thousand ha, and `Germany` inherits it.
 
@@ -3686,6 +3757,7 @@ CHECKS = {
     "iia-greece-grapes-dodecanese-period-cells": check_greece_grapes_dodecanese,
     "iia-india-french-india-period-cells": check_iia_india_french_india_period_cells,
     "fao1952-germany-oats-area-1949-impossible": check_germany_oats_area_1949,
+    "iia-china-mainland-kwantung-summed-cells": check_china_mainland_kwantung_summed,
 }
 
 
