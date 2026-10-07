@@ -229,12 +229,12 @@ CHL-RM-1976-2025,Metropolitana (region of Chile),1976,2025,gadm-4.1-adm1,,assign
 CHL-TA-1976-2025,Tarapacá (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 CHL-VS-1976-2025,Valparaíso (region of Chile),1976,2025,gadm-4.1-adm1,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 CHN-1800-1895,China (to 1895),1800,1895,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,stable_where_covered,-0.0,single 1886 polygon held across a 95y span (1800-1895); borders may have changed,5
-CHN-1895-1913,China (1895-1913),1895,1913,cshapes-2.0,1899.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1899 faithful to period 1895-1913,5
+CHN-1895-1913,China (1895-1913),1895,1913,cshapes-2.0,1899.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1899 faithful to period 1895-1913,3
 CHN-1913-1914,China (1913-1914),1913,1914,cshapes-2.0,1913.0,assigned,True,measured,False,False,no_reference,,vintage 1913 faithful to period 1913-1914,0
 CHN-1914-1921,China (1914-1921),1914,1921,cshapes-2.0,1914.0,assigned,True,measured,False,False,stable_confirmed,0.0,vintage 1914 faithful to period 1914-1921,28
-CHN-1921-1932,China (1921-1932),1921,1932,cshapes-2.0,1921.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1921 faithful to period 1921-1932,92
+CHN-1921-1932,China (1921-1932),1921,1932,cshapes-2.0,1921.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1921 faithful to period 1921-1932,77
 CHN-1921-1945,China (1921-1945),1921,1945,cshapes-2.0,1921.0,assigned,True,measured,False,True,stable_confirmed,-0.0,vintage 1921 faithful to period 1921-1945; footnote coverage caveat (FAO/IIA yearbook),0
-CHN-1932-1945,China (1932-1945),1932,1945,constructed,,assigned,True,assumed_constant,True,True,stable_confirmed,-10.49,polygon present but no recorded vintage year,353
+CHN-1932-1945,China (1932-1945),1932,1945,constructed,,assigned,True,assumed_constant,True,True,stable_confirmed,-10.49,polygon present but no recorded vintage year,343
 CHN-1945-1947,China (1945-1947),1945,1947,cshapes-2.0,1945.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1945 faithful to period 1945-1947,46
 CHN-1947-1949,China (1947-1949),1947,1949,cshapes-2.0,1947.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1947 faithful to period 1947-1949,52
 CHN-1949-1950,China (1949-1950),1949,1950,cshapes-2.0,1949.0,assigned,True,measured,False,False,no_reference,,vintage 1949 faithful to period 1949-1950,45
@@ -819,7 +819,7 @@ KOS-2008-2025,Kosovo,2008,2025,cshapes-2.0,2008.0,assigned,False,measured,False,
 KRS-1910-1945,Korea South (within Japanese Chosen),1910,1945,cshapes-2.0,1948.0,assigned,True,back_projected,True,True,no_reference,,polygon vintage 1948 is AFTER the period ends (1945) — later/modern border applied back,40
 KRS-1945-1948,Korea south of the 38th parallel (US Army Military Government),1945,1948,constructed,,assigned,True,assumed_constant,True,True,no_reference,,polygon present but no recorded vintage year,46
 KSJ-1800-1911,Kingdom of Kasanje,1800,1911,paine-2024,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
-KWA-1905-1945,Kwantung Leased Territory,1905,1945,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+KWA-1905-1945,Kwantung Leased Territory,1905,1945,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,27
 KWT-1800-2025,Kuwait,1800,2025,cshapes-2.0,1961.0,assigned,True,assumed_constant,True,False,stable_where_covered,0.27,single 1961 polygon held across a 225y span (1800-2025); borders may have changed,4
 KZM-1800-1899,Kingdom of Kazembe,1800,1899,paine-2024,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 LAO-1893-1954,Laos (1893-1954),1893,1954,cshapes-2.0,1896.0,assigned,True,assumed_constant,False,False,stable_confirmed,0.04,"single 1896 polygon held across a 61y span (1893-1954); borders may have changed; border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.04%), so the single polygon is not an assumption",89
