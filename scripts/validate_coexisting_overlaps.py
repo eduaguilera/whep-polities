@@ -126,7 +126,7 @@ MIN_OVERLAP_KM2 = 1.0
 ENCLAVE_PINS = {
     ("IND-1949-2025", "PTIND-1816-1961", 1955): 3719.08,
     ("IND-1949-2025", "FRIN-1816-1954", 1950): 520.25,
-    ("ITA-1919-2025", "VAT-1929-2025", 1950): 0.53,
+    ("ITA-1947-2025", "VAT-1929-2025", 1950): 0.53,
 }
 ENCLAVE_TOLERANCE = 0.02      # 2%: simplification and CRS noise, not a territorial change
 
@@ -167,14 +167,14 @@ DECIDED_OVERLAPS = {
     ("CHI-1800-2025", "GGY-1800-2025"): "nested",
     ("CHI-1800-2025", "JEY-1800-2025"): "nested",
     # 893 km2, 79.2% of Hong Kong, inside China's.
-    ("CHN-1950-2025", "HKG-1842-2025"): "nested",
+    ("CHN-1950-2025", "HKG-1898-2025"): "nested",
     # 6 km2, 19.2% of Macau, inside China's. Small in area, large in share, which is why
     # the threshold is a share and not a size.
     ("CHN-1950-2025", "MAC-1800-2025"): "nested",
     # 9 km2, 14.1% of San Marino. The enclave case: Italy's polygon does not cut San
     # Marino out cleanly at source resolution. Reported as nested because the convention
     # is the same -- the container's polygon includes ground the enclave also claims.
-    ("ITA-1919-2025", "SMR-1800-2025"): "nested",
+    ("ITA-1947-2025", "SMR-1800-2025"): "nested",
     # ---- class 2 in the 1990 slice only: the USSR and the Pacific trust territory ----
     # F228-1945-1991 is the Soviet Union; its polygon is gross of the republics that are
     # rows in their own right. 86,011 km2 (Azerbaijan SSR), 65,965 (Latvia), 55,886
@@ -182,7 +182,7 @@ DECIDED_OVERLAPS = {
     ("AZE-SSR-1920-1991", "F228-1945-1991"): "nested",
     ("F228-1945-1991", "LVA-1940-1991"): "nested",
     ("F228-1945-1991", "LTU-1940-1991"): "nested",
-    ("EST-1940-1991", "F228-1945-1991"): "nested",
+    ("EST-1945-1991", "F228-1945-1991"): "nested",
     # TTPI-1947-1994 is the Trust Territory of the Pacific Islands, gross of the entities
     # that emerged from it: 503 km2 (99.9% of the Northern Marianas), 257 km2 (85.6% of
     # the Marshall Islands).

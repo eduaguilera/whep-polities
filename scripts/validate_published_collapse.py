@@ -61,7 +61,7 @@ ANCHORS = {
         why="fao1952 prints Yugoslav dry beans as two rows, 38,000 and 783,000 ha, that SUM to juan's "
             "821,000 total. With no total of its own the fao1952 pair cannot be read, so it drops out "
             "and juan's total is published -- the mean used to publish 547,333"),
-    ("1950", "ITA-1919-2025", "560", "tonnes"): dict(
+    ("1950", "ITA-1947-2025", "560", "tonnes"): dict(
         resolution="source_precedence", published_source="fao1952", published_value="6544000",
         why="issue 367's total beside its own parts: 6,544 = 4,014 + 2,530 thousand t. The total is "
             "kept, and it equals juan's figure"),

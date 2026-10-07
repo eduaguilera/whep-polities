@@ -195,8 +195,9 @@ BASELINE_CROSS_FAMILY = frozenset({
     # Italy, Ndebele and Southern Rhodesia, Wadai and Chad.
     ("FTJ-1800-1896", "GIN-1894-1958"),                 #   2y 1894-1896
     ("IGL-1800-1901", "NNI-1899-1904"),                 #   2y 1899-1901
-    ("ITA-1861-1866", "PAP-1800-1870"),                 #   5y 1861-1866
-    ("ITA-1866-1870", "PAP-1800-1870"),                 #   4y 1866-1870
+    # ITA-1861-1866 / ITA-1866-1870 against the Papal States REMOVED 2026-10-07 (issue 686): the
+    # Papal row was split at 1860, and PAP-1860-1870 carries CShapes-Europe 327's 1862 step (Lazio,
+    # 11,861 km2), the same vintage as the Italian rows, so the two no longer overlap.
     ("NDB-1823-1894", "ZWE-1890-1891"),                 #   1y 1890-1891
     ("NDB-1823-1894", "ZWE-1891-1900"),                 #   3y 1891-1894
     ("TCD-1900-1912", "WAD-1800-1912"),                 #  12y 1900-1912

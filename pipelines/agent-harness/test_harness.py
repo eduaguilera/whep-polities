@@ -1446,7 +1446,7 @@ def test_committed_ledger_and_registry_agree():
 # Territory size -- stage 1 and stage 3 objections
 # ---------------------------------------------------------------------------
 _AREAS = {"FRA-91-1968-2025": 1818.72, "FRA-SSO-1860-2025": 6019.17,
-          "ITA-1919-2025": 300310.44, "ITA-PVA-1861-2025": 28529.0,
+          "ITA-1947-2025": 300310.44, "ITA-PVA-1861-2025": 28529.0,
           "NSW-1800-1901": 801150.0, "AUS-NSW-1901-2025": 801100.0,
           "CHL-1902-2025": 742597.37}
 
@@ -1467,7 +1467,7 @@ def test_size_objection_refutes_a_region_matched_to_its_country():
     already receives Italy's own labels; the consumer's mean() would have averaged each region
     with the country. With no land total, the unit's own polity is the reference."""
     unit = {"unit_id": "ITA-ITC1"}
-    bad = {"coverage": [_seg(1919, 1969, "matched", "ITA-1919-2025")]}
+    bad = {"coverage": [_seg(1947, 1969, "matched", "ITA-1947-2025")]}
     obj = harness.territory_size_objection(bad, unit, _AREAS, own_code="ITA-PVA-1861-2025")
     assert obj and "container" in obj and "10.5x" in obj, obj
     # A colony matched to its own colonial row -- typed `national`, and correct -- is not objected.

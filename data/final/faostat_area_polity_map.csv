@@ -74,7 +74,7 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 64,1961,2024,FRO-1800-2025,Faroe Islands,FRO,iso-equal,high,45036
 65,1850,2024,FLK-1833-2025,Falkland Islands (Malvinas),FLK,registry,high,0
 66,1961,2024,FJI-1800-2025,Fiji,FJI,iso-equal,high,205178
-67,1961,2024,FIN-1940-2025,Finland,FIN,iso-equal,high,232164
+67,1961,2024,FIN-1944-2025,Finland,FIN,iso-equal,high,232164
 68,1961,2024,FRA-1919-2025,France,FRA,iso-equal,high,272109
 69,1961,2006,GUF-1946-2025,French Guiana,GUF,manual-route,high,8934
 70,1961,2024,PYF-1800-2025,French Polynesia,PYF,iso-equal,high,171674
@@ -102,7 +102,7 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 93,1961,2024,HTI-1800-2025,Haiti,HTI,iso-equal,high,153970
 94,1929,2024,VAT-1929-2025,Holy See,VAT,registry,high,0
 95,1961,2024,HND-1800-2025,Honduras,HND,iso-equal,high,215436
-96,1961,2024,HKG-1842-2025,"China, Hong Kong SAR",HKG,iso-equal,high,233347
+96,1961,2024,HKG-1898-2025,"China, Hong Kong SAR",HKG,iso-equal,high,233347
 97,1961,2024,HUN-1947-2025,Hungary,HUN,iso-equal,high,257733
 98,1992,2024,HRV-1992-2025,Croatia,HRV,iso-equal,high,124741
 99,1961,2024,ISL-1800-2025,Iceland,ISL,iso-equal,high,173015
@@ -116,7 +116,7 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 104,1961,2024,IRL-1921-2025,Ireland,IRL,iso-equal,high,248859
 105,1961,1966,ISR-1948-1967,Israel,ISR,iso-equal,high,236803
 105,1967,2024,ISR-RA-1967-2025,Israel,ISR,manual-territory,high,236803
-106,1961,2024,ITA-1919-2025,Italy,ITA,iso-equal,high,280391
+106,1961,2024,ITA-1947-2025,Italy,ITA,iso-equal,high,280391
 107,1961,2024,CIV-1960-2025,Côte d'Ivoire,CIV,iso-equal,high,210471
 108,1992,2024,KAZ-1991-2025,Kazakhstan,KAZ,iso-equal,high,122730
 109,1961,2024,JAM-1800-2025,Jamaica,JAM,iso-equal,high,201211

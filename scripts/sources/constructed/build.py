@@ -2883,6 +2883,176 @@ def build_usa_1800_1803() -> ogr.Geometry:
     return _us_contiguous_minus(land.Difference(kept), kept)
 
 
+# ---------------------------------------------------------------------------------------------
+# Issue 686: rows that ran one polygon across a documented border change, split into eras.
+# Every recipe below composes features already fetched under data/geodata; none draws a line.
+# ---------------------------------------------------------------------------------------------
+
+
+def _parts_where(geom: ogr.Geometry, keep) -> ogr.Geometry:
+    """The parts of a (multi)polygon whose centroid (lon, lat) satisfies `keep`."""
+    out = ogr.Geometry(ogr.wkbMultiPolygon)
+    parts = ([geom.GetGeometryRef(i) for i in range(geom.GetGeometryCount())]
+             if geom.GetGeometryType() in (ogr.wkbMultiPolygon, ogr.wkbMultiPolygon25D) else [geom])
+    for p in parts:
+        c = p.Centroid()
+        if keep(c.GetX(), c.GetY()):
+            out.AddGeometry(p)
+    return out
+
+
+def _petsamo() -> ogr.Geometry:
+    """Petsamo (Pechenga) = the part of CShapes 375's 1917-1940 step that its 1940-2019 step lacks,
+    north of 68 N. CShapes draws Petsamo as Finnish from 1917 and as Soviet from 1940, which is the
+    1944 cession put four years early. The other two parts of that difference are the 1940 cessions
+    (the Karelian Isthmus and Ladoga Karelia, 34,689 km2; Salla-Kuusamo, 7,937 km2), both south of
+    67.7 N. Measured (Mollweide): 10,837 km2, against the ~10,500 km2 usually quoted."""
+    d = _cshapes2_step(375, 1917, 1940).Difference(_cshapes2_step(375, 1940, 2019))
+    return _parts_where(d, lambda x, y: y > 68.0)
+
+
+def build_fin_1917_1920() -> ogr.Geometry:
+    """Finland 1917-1920 = CShapes 375's 1917-1940 step WITHOUT Petsamo, which the Treaty of Tartu
+    (14 October 1920) ceded to Finland."""
+    return _difference(_cshapes2_step(375, 1917, 1940), _petsamo())
+
+
+def build_fin_1940_1944() -> ogr.Geometry:
+    """Finland 1940-1944 = CShapes 375's 1940-2019 step WITH Petsamo, which Finland kept under the
+    Moscow Peace Treaty of 1940 and lost by the Moscow Armistice of 19 September 1944."""
+    return _union(_cshapes2_step(375, 1940, 2019), _petsamo())
+
+
+def _memel_territory() -> ogr.Geometry:
+    """The Klaipeda (Memel) Territory = Cliopatria's "Kingdom of Lithuania" at 1924 minus the same
+    polity at 1920. Cliopatria is the only fetched source that draws the territory at all: CShapes 2.0
+    and CShapes-Europe both put it inside Lithuania from 1918 and inside no German step. Measured
+    (Mollweide): 2,398 km2, against the 2,848 km2 usually quoted (Cliopatria's coast is coarse)."""
+    d = _cliopatria_feature("Kingdom of Lithuania", 1924).Difference(
+        _cliopatria_feature("Kingdom of Lithuania", 1920))
+    return _parts_where(d, lambda x, y: x < 22.6)
+
+
+def _shifted_south(geom: ogr.Geometry, dlat: float) -> ogr.Geometry:
+    """`geom` moved `dlat` degrees south (a copy)."""
+    g = geom.Clone()
+    for i in range(g.GetGeometryCount()):
+        poly = g.GetGeometryRef(i)
+        rings = [poly] if poly.GetGeometryType() == ogr.wkbLinearRing else [
+            poly.GetGeometryRef(j) for j in range(poly.GetGeometryCount())]
+        for ring in rings:
+            for k in range(ring.GetPointCount()):
+                x, y = ring.GetX(k), ring.GetY(k)
+                ring.SetPoint_2D(k, x, y - dlat)
+    return g
+
+
+# Cliopatria's territory stops short of the Neman, which is where CShapes' Lithuanian-German
+# border runs, leaving a strip of the territory between them. Sweeping the territory south by up
+# to 0.4 degrees fills that strip; south of the Neman between 21.2 and 22.6 E lies East Prussia,
+# which is not in the CShapes Lithuania step, so the sweep cannot take Lithuanian ground there.
+MEMEL_SWEEP_STEPS = 8
+MEMEL_SWEEP_STEP_DEG = 0.05
+SLIVER_KM2 = 10.0
+
+
+def build_ltu_1918_1923() -> ogr.Geometry:
+    """Lithuania 1918-1923 = CShapes 368's 1922-1939 step WITHOUT the Klaipeda (Memel) Territory,
+    which was under Allied administration until the January 1923 revolt and the 1924 Klaipeda
+    Convention. Measured (Mollweide): 53,511 km2, against about 52,822 km2 stated (55,670 with the
+    territory, less its 2,848); the territory removed measures 2,211 km2, because Cliopatria's
+    northern edge of it runs south of the treaty line."""
+    memel = _memel_territory()
+    sweep = _union(memel, *(_shifted_south(memel, k * MEMEL_SWEEP_STEP_DEG)
+                            for k in range(1, MEMEL_SWEEP_STEPS + 1)))
+    rest = _difference(_cshapes2_step(368, 1922, 1939), sweep)
+    # The tip of the Curonian Spit (3 km2) is left as a separate piece; it is part of the territory.
+    deg2_per_km2 = 1.0 / (111.32 * 111.32 * 0.57)  # cos(55.3 N) ~= 0.57
+    out = ogr.Geometry(ogr.wkbMultiPolygon)
+    for i in range(rest.GetGeometryCount()):
+        p = rest.GetGeometryRef(i)
+        if p.GetArea() > SLIVER_KM2 * deg2_per_km2:
+            out.AddGeometry(p)
+    return out
+
+
+# Krk (Veglia) was in the Austrian Littoral but went to the Kingdom of Serbs, Croats and Slovenes
+# under the Treaty of Rapallo (1920); its part of the HistoGIS crownland is the one centred near
+# 14.6 E, 45.07 N.
+KRK_CENTROID_BOX = (14.45, 44.95, 14.80, 45.25)
+
+
+def build_ita_1919_1947() -> ogr.Geometry:
+    """Italy 1919-1947 = CShapes 325's 1919-2019 step (the post-1947 border; CShapes has no 1947
+    step) plus what the 1947 Treaty of Paris took away:
+
+      * Venezia Giulia: the HistoGIS 1860 Austrian Littoral (Kuestenland, id 17) without Krk.
+        Measured 6,887 km2 beyond CShapes' Italy. It omits the Carniolan districts Italy also held
+        (Idrija, Postojna, Ilirska Bistrica), Fiume (1924), Zara and Lagosta, for which no fetched
+        source draws an outline.
+      * Tende and La Brigue: GADM 4.1 FRA communes, 262 km2 beyond CShapes' Italy.
+
+    Measured (Mollweide) about 307,400 km2 against 310,196 km2 stated for 1936, -0.9%."""
+    littoral = _crownland("17")
+    x0, y0, x1, y1 = KRK_CENTROID_BOX
+    littoral = _parts_where(littoral, lambda x, y: not (x0 < x < x1 and y0 < y < y1))
+    tende = _union(_gadm_country("FRA", 5, "FRA.13.2.2.20.2_1"),   # Tende
+                   _gadm_country("FRA", 5, "FRA.13.2.2.20.1_1"))   # La Brigue
+    return _union(_cshapes2_step(325, 1919, 2019), littoral, tende)
+
+
+def build_chn_1800_1860() -> ogr.Geometry:
+    """Qing China to 1860 = CShapes 710's 1886-1895 step plus Outer Manchuria, the land north of
+    the Amur and east of the Ussuri that the treaties of Aigun (1858) and Peking (1860) gave Russia.
+
+    Outer Manchuria = CShapes 365's 1886 step (Russia) intersected with Cliopatria's "Qing Dynasty"
+    at 1857, keeping only the part east of 119 E. Cliopatria moves the whole of it at once, between
+    its 1859 and 1860 steps, so Aigun's two years (1858-1859) cannot be drawn separately from any
+    fetched source. The intersection also returns 40,067 km2 around Lake Zaysan and three small
+    pieces on the Mongolian border (the 1864 Tarbagatai cessions); those belong to another era and
+    are dropped. Measured 896,569 km2 of Outer Manchuria."""
+    om = _valid(_cshapes2_feature(365, 1886), "CShapes 365 1886").Intersection(
+        _valid(_cliopatria_feature("Qing Dynasty", 1857), "Cliopatria Qing 1857"))
+    om = _parts_where(om, lambda x, y: x > 119.0)
+    return _union(_cshapes2_feature(710, 1886), om)
+
+
+HKG_ISLAND_GID2 = ("HKG.1_1", "HKG.15_1", "HKG.2_1", "HKG.11_1")  # Central and Western, Wan Chai,
+#                                                                   Eastern, Southern
+HKG_KOWLOON_GID2 = ("HKG.17_1", "HKG.10_1", "HKG.4_1")  # Yau Tsim Mong, Sham Shui Po, Kowloon City
+# Southern District also holds the Po Toi islands (22.17 N), leased only in 1898.
+HKG_ISLAND_MIN_LAT = 22.19
+# Boundary Street, the 1860 line across the peninsula, runs at about 22.3245 N.
+HKG_BOUNDARY_STREET_LAT = 22.3245
+
+
+def _hkg_box(lat_min: float, lat_max: float) -> ogr.Geometry:
+    return ogr.CreateGeometryFromWkt(
+        f"POLYGON((113.8 {lat_min},114.5 {lat_min},114.5 {lat_max},113.8 {lat_max},"
+        f"113.8 {lat_min}))")
+
+
+def build_hkg_1842_1860() -> ogr.Geometry:
+    """Hong Kong 1842-1860 = Hong Kong Island and its islets (Treaty of Nanking): the four GADM 4.1
+    districts on the island, without the Po Toi group south of 22.19 N."""
+    island = _union(*(_gadm_country("CHN", 2, g) for g in HKG_ISLAND_GID2))
+    return _union(island.Intersection(_hkg_box(HKG_ISLAND_MIN_LAT, 22.30)))
+
+
+def build_hkg_1860_1898() -> ogr.Geometry:
+    """Hong Kong 1860-1898 = the island plus Kowloon south of Boundary Street and Stonecutters
+    Island (Convention of Peking, 1860): GADM's three Kowloon districts cut at 22.3245 N."""
+    kowloon = _union(*(_gadm_country("CHN", 2, g) for g in HKG_KOWLOON_GID2))
+    return _union(build_hkg_1842_1860(),
+                  kowloon.Intersection(_hkg_box(22.25, HKG_BOUNDARY_STREET_LAT)))
+
+
+def build_fra_83_1790_1860() -> ogr.Geometry:
+    """Var before 1860 = GADM 4.1 Var plus the arrondissement of Grasse (now Alpes-Maritimes), which
+    was detached from Var on 23 June 1860 to form Alpes-Maritimes with the annexed County of Nice."""
+    return _union(_gadm_country("FRA", 2, "FRA.13.5_1"), _gadm_country("FRA", 3, "FRA.13.2.1_1"))
+
+
 BUILDERS = [
     (
         "CZN-1903-1979",
@@ -3917,6 +4087,54 @@ BUILDERS = [
         "China and Taiwan (combined reporting unit)",
         build_cht_1950_2025,
         "Union of CShapes 2.0 710 (1950 step) and 713 (1949). Harmonize audit 'china; taiwan' 1950-1954.",
+    ),
+    (
+        "FIN-1917-1920",
+        "Finland (1917-1920)",
+        build_fin_1917_1920,
+        "CShapes 2.0 375 1917-1940 step minus Petsamo (that step minus the 1940-2019 step, north of 68 N). Issue 686.",
+    ),
+    (
+        "FIN-1940-1944",
+        "Finland (1940-1944)",
+        build_fin_1940_1944,
+        "CShapes 2.0 375 1940-2019 step plus Petsamo (the 1917-1940 step minus the 1940-2019 step, north of 68 N). Issue 686.",
+    ),
+    (
+        "LTU-1918-1923",
+        "Lithuania (1918-1923)",
+        build_ltu_1918_1923,
+        "CShapes 2.0 368 1922-1939 step minus the Klaipeda Territory (Cliopatria Kingdom of Lithuania 1924 minus 1920, swept south to the Neman). Issue 686.",
+    ),
+    (
+        "ITA-1919-1947",
+        "Italy (1919-1947)",
+        build_ita_1919_1947,
+        "CShapes 2.0 325 1919-2019 step plus the HistoGIS 1860 Austrian Littoral without Krk plus GADM 4.1 communes Tende and La Brigue. Issue 686.",
+    ),
+    (
+        "CHN-1800-1860",
+        "China (to 1860)",
+        build_chn_1800_1860,
+        "CShapes 2.0 710 1886 step plus Outer Manchuria (CShapes 365 1886 step intersected with Cliopatria Qing Dynasty 1857, east of 119 E). Issue 686.",
+    ),
+    (
+        "HKG-1842-1860",
+        "Hong Kong (Hong Kong Island, 1842-1860)",
+        build_hkg_1842_1860,
+        "GADM 4.1 HKG districts Central and Western, Wan Chai, Eastern, Southern, north of 22.19 N. Issue 686.",
+    ),
+    (
+        "HKG-1860-1898",
+        "Hong Kong (with Kowloon, 1860-1898)",
+        build_hkg_1860_1898,
+        "HKG-1842-1860 plus GADM 4.1 Yau Tsim Mong, Sham Shui Po and Kowloon City south of Boundary Street (22.3245 N). Issue 686.",
+    ),
+    (
+        "FRA-83-1790-1860",
+        "Var (departement, before 1860)",
+        build_fra_83_1790_1860,
+        "GADM 4.1 FRA adm2 Var plus adm3 arrondissement of Grasse. Issue 686.",
     ),
 ]
 

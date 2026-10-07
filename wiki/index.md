@@ -14,17 +14,17 @@ double the real polity total.)
 
 | Metric | Value |
 |---|---|
-| Polities in the database | 1329 |
-| Polity pages | 1329 |
-| Sources ingested | 37 |
-| `status: draft` | 1226 |
+| Polities in the database | 1341 |
+| Polity pages | 1341 |
+| Sources ingested | 38 |
+| `status: draft` | 1238 |
 | `status: reviewed` | 59 |
 | `status: superseded` / `retired` | 21 / 23 |
-| Pages with no source citation | 633 |
-| Pages citing biger-1995 | 414 |
+| Pages with no source citation | 631 |
+| Pages citing biger-1995 | 416 |
 | Open questions (`### oq-`) | 2008 |
 
-**By continent:** Europe 389 · Africa 290 · Asia 259 · North America 164 · South America 162 · Oceania 62 · World 2
+**By continent:** Europe 398 · Africa 290 · Asia 262 · North America 164 · South America 162 · Oceania 62 · World 2
 
 Regenerate with `python3 scripts/update_wiki_index.py`. The authoritative
 catalog is `data/final/polities_database.csv`; the per-continent notes below
@@ -36,10 +36,12 @@ are a **curated selection**, not a complete listing.
 
 ### Europe
 
-- [Italy](polities/ita-1919-2025.md) —
-  `ITA-1919-2025`, draft, 2 open questions. Modern Italy from
-  Saint-Germain (1919) to present. Post-WWII Istria/Dalmatia
-  losses flagged.
+- [Italy (1919-1947)](polities/ita-1919-1947.md) —
+  `ITA-1919-1947`, draft. Saint-Germain (1919) to the Treaty of
+  Paris (1947), with Venezia Giulia and Tende (split 2026-10-07).
+- [Italy (1947-2025)](polities/ita-1947-2025.md) —
+  `ITA-1947-2025`, draft, 2 open questions. Modern Italy from
+  the Treaty of Paris (1947) to present.
 - [Italy (to 1919)](polities/ita-1861-1919.md) —
   `ITA-1861-1919`, draft, 6 open questions. 59-year row from
   unification (1861-03-17) to Saint-Germain (1919-09-10). 6
@@ -148,8 +150,10 @@ are a **curated selection**, not a complete listing.
   `AUH-1866-1908`, draft. Ausgleich 1867, Bosnia occupied 1878.
 - [Austria-Hungary (1908-1918)](polities/auh-1908-1918.md) —
   `AUH-1908-1918`, draft. Successor list fixed (5 states).
-- [Finland](polities/fin-1940-2025.md) — `FIN-1940-2025`, draft. Modern Finland. Chain complete 1917→2025.
-- [Finland (1917-1940)](polities/fin-1917-1940.md) — `FIN-1917-1940`, draft. Independence to Winter War.
+- [Finland (1944-2025)](polities/fin-1944-2025.md) — `FIN-1944-2025`, draft. Modern Finland, without Petsamo. Chain complete 1917→2025.
+- [Finland (1940-1944)](polities/fin-1940-1944.md) — `FIN-1940-1944`, draft. Moscow Peace to Moscow Armistice, with Petsamo.
+- [Finland (1920-1940)](polities/fin-1920-1940.md) — `FIN-1920-1940`, draft. Treaty of Tartu to Winter War.
+- [Finland (1917-1920)](polities/fin-1917-1920.md) — `FIN-1917-1920`, draft. Independence to the Treaty of Tartu, without Petsamo.
 - [Albania](polities/alb-1913-2025.md) — `ALB-1913-2025`, draft. 113-year continuous row from Ottoman independence.
 - [Czechoslovakia (1947-1993)](polities/f51-1947-1993.md) — `F51-1947-1993`, draft. Communist era to Velvet Divorce 1993.
 - [Czechoslovakia (1945-1947)](polities/f51-1945-1947.md) — `F51-1945-1947`, draft. Restored, Ruthenia ceded to USSR.
@@ -260,13 +264,18 @@ are a **curated selection**, not a complete listing.
 - [Romania (to 1913)](polities/rou-1859-1913.md) —
   `ROU-1859-1913`, draft, 2 open questions. Unification to
   Balkan Wars. Congress of Berlin territorial exchange.
-- [Bulgaria (to 1913)](polities/bgr-1878-1913.md) —
-  `BGR-1878-1913`, draft, 2 open questions. Congress of Berlin
-  to Balkan Wars. 1908 independence = OTT split event.
-- [Papal States](polities/pap-1800-1870.md) —
-  `PAP-1800-1870`, draft, 1 open question. Central Italian
-  state, 71 years. Rome captured 20 Sept 1870. Italian
-  predecessor.
+- [Principality of Bulgaria (1878-1885)](polities/bgr-1878-1885.md) —
+  `BGR-1878-1885`, draft. Congress of Berlin to the union with
+  Eastern Rumelia.
+- [Bulgaria (1885-1913)](polities/bgr-1885-1913.md) —
+  `BGR-1885-1913`, draft, 2 open questions. Union with Eastern
+  Rumelia to Balkan Wars. 1908 independence = OTT split event.
+- [Papal States (to 1860)](polities/pap-1800-1860.md) —
+  `PAP-1800-1860`, draft, 1 open question. Central Italian
+  state to the 1860 annexations. Italian predecessor.
+- [Papal States (Lazio, 1860-1870)](polities/pap-1860-1870.md) —
+  `PAP-1860-1870`, draft. The rump state; Rome captured
+  20 Sept 1870.
 - [Germany (1920-1938)](polities/deu-1920-1938.md) —
   `DEU-1920-1938`, draft, 1 open question. Weimar Republic +
   early Nazi period. Ends at 1938 Anschluss.
@@ -565,7 +574,8 @@ are a **curated selection**, not a complete listing.
 
 - [Armenia](polities/arm-1991-2025.md) — `ARM-1991-2025`, reviewed.
 - [Azerbaijan](polities/aze-1991-2025.md) — `AZE-1991-2025`, reviewed.
-- [China (to 1895)](polities/chn-1800-1895.md) — `CHN-1800-1895`, draft.
+- [China (to 1860)](polities/chn-1800-1860.md) — `CHN-1800-1860`, draft.
+- [China (1860-1895)](polities/chn-1860-1895.md) — `CHN-1860-1895`, draft.
 - [China (1895-1913)](polities/chn-1895-1913.md) — `CHN-1895-1913`, draft.
 - [China (1913-1914)](polities/chn-1913-1914.md) — `CHN-1913-1914`, draft.
 - [China (1914-1921)](polities/chn-1914-1921.md) — `CHN-1914-1921`, draft.

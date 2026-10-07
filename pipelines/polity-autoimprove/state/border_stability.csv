@@ -98,7 +98,8 @@ BFCM-1920-1960,1920,1960,,aggregate,constructed,510433,no_reference,0,,0,,,,,,
 BGA-1800-1894,1800,1894,,national,paine-2024,38704,no_reference,0,,0,,,,,,
 BGD-1947-1971,1947,1971,771,national,cshapes-2.0,137848,no_reference,0,,0,,,,,,
 BGD-1971-2025,1971,2025,771,national,cshapes-2.0,137848,stable_where_covered,1,1971-2019,0,137848,137848,,,0.994,-0.0
-BGR-1878-1913,1878,1913,355,national,cshapes-europe,93177,stable_where_covered,1,1886-1912,0,93162,93162,,,0.992,0.02
+BGR-1878-1885,1878,1885,355,national,cshapes-europe,57560,no_reference,0,,0,,,,,,
+BGR-1885-1913,1885,1913,355,national,cshapes-europe,93177,stable_where_covered,1,1886-1912,0,93162,93162,,,0.992,0.02
 BGR-1913-1918,1913,1918,355,national,cshapes-2.0,111481,stable_confirmed,1,1913-1917,0,111549,111549,,,0.997,-0.06
 BGR-1918-1919,1918,1919,355,national,cshapes-2.0,119198,no_reference,0,,0,,,,,,
 BGR-1919-1940,1919,1940,355,national,cshapes-2.0,103263,stable_confirmed,1,1919-1939,0,103333,103333,,,0.997,-0.07
@@ -228,7 +229,8 @@ CHL-OTR-1976-2025,1976,2025,,subnational,constructed,494771,no_reference,0,,0,,,
 CHL-RM-1976-2025,1976,2025,,subnational,gadm-4.1-adm1,15383,no_reference,0,,0,,,,,,
 CHL-TA-1976-2025,1976,2025,,subnational,gadm-4.1-adm1,39952,no_reference,0,,0,,,,,,
 CHL-VS-1976-2025,1976,2025,,subnational,gadm-4.1-adm1,16251,no_reference,0,,0,,,,,,
-CHN-1800-1895,1800,1895,710,national,cshapes-2.0,11146656,stable_where_covered,1,1886-1894,0,11146802,11146802,,,1.0,-0.0
+CHN-1800-1860,1800,1860,710,national,constructed,12046289,no_reference,0,,0,,,,,,
+CHN-1860-1895,1860,1895,710,national,cshapes-2.0,11146656,stable_where_covered,1,1886-1894,0,11146802,11146802,,,1.0,-0.0
 CHN-1895-1913,1895,1913,710,national,cshapes-2.0,11110684,stable_confirmed,1,1895-1912,1,11110812,11110812,,,1.0,-0.0
 CHN-1913-1914,1913,1914,710,national,cshapes-2.0,9224461,no_reference,0,,0,,,,,,
 CHN-1914-1921,1914,1921,710,national,cshapes-2.0,9059518,stable_confirmed,1,1914-1920,0,9059502,9059502,,,0.999,0.0
@@ -429,7 +431,8 @@ ESP-IBZ-1833-2025,1833,2025,,subnational,none,,no_reference,0,,0,,,,,,
 ESP-ML-1800-2025,1800,2025,,territory,constructed,8,no_reference,0,,0,,,,,,
 EST-1800-1918,1800,1918,366,national,cshapes-2.0,49303,no_reference,0,,0,,,,,,
 EST-1918-1940,1918,1940,366,national,cshapes-2.0,49303,stable_confirmed,1,1918-1939,0,49295,49295,,,0.995,0.02
-EST-1940-1991,1940,1991,366,national,cshapes-2.0,49303,no_reference,0,,0,,,,,,
+EST-1940-1945,1940,1945,366,national,cshapes-2.0,49303,no_reference,0,,0,,,,,,
+EST-1945-1991,1945,1991,366,national,cshapes-2.0,45939,no_reference,0,,0,,,,,,
 EST-1991-2025,1991,2025,366,national,cshapes-2.0,45939,stable_where_covered,1,1991-2019,0,45912,45912,,,0.994,0.06
 ETH-1800-1889,1800,1889,530,national,cliopatria,240358,stable_where_covered,1,1886-1888,0,280222,280222,,,0.74,-14.23
 ETH-1889-1897,1889,1897,530,national,cshapes-2.0,266093,stable_confirmed,1,1889-1896,0,266082,266082,,,0.999,0.0
@@ -473,8 +476,10 @@ FCM-1920-1960,1920,1960,471,national,cshapes-2.0,422964,stable_confirmed,1,1920-
 FEZ-1943-1951,1943,1951,620,national,constructed,463617,reference_mismatch,1,1943-1950,1,1617564,1617564,,,0.286,-71.34
 FID-1887-1954,1887,1954,,national,constructed,753049,no_reference,0,,0,,,,,,
 FIN-1809-1917,1809,1917,375,national,cshapes-2.0,388750,no_reference,0,,0,,,,,,
-FIN-1917-1940,1917,1940,375,national,cshapes-2.0,388750,stable_confirmed,1,1917-1939,0,388768,388768,,,0.998,-0.0
-FIN-1940-2025,1940,2025,375,national,cshapes-2.0,335207,stable_where_covered,1,1940-2019,0,335249,335249,,,0.998,-0.01
+FIN-1917-1920,1917,1920,375,national,constructed,377867,stable_confirmed,1,1917-1919,0,388768,388768,,,0.97,-2.8
+FIN-1920-1940,1920,1940,375,national,cshapes-2.0,388750,stable_confirmed,1,1920-1939,0,388768,388768,,,0.998,-0.0
+FIN-1940-1944,1940,1944,375,national,constructed,346108,stable_confirmed,1,1940-1943,0,335249,335249,,,0.967,3.24
+FIN-1944-2025,1944,2025,375,national,cshapes-2.0,335207,stable_where_covered,1,1944-2019,0,335249,335249,,,0.998,-0.01
 FJI-1800-2025,1800,2025,950,national,gadm-4.1-adm0,18644,stable_where_covered,1,1886-2019,1,18032,18032,,,0.86,3.39
 FLK-1833-2025,1833,2025,,colonial,gadm-4.1-adm0,12207,no_reference,0,,0,,,,,,
 FMS-1909-1946,1909,1946,,colonial,cshapes-2.0,71477,no_reference,0,,0,,,,,,
@@ -564,7 +569,8 @@ FRA-79-1800-2025,1800,2025,,subnational,gadm-4.1-adm2,6035,no_reference,0,,0,,,,
 FRA-80-1800-2025,1800,2025,,subnational,gadm-4.1-adm2,6221,no_reference,0,,0,,,,,,
 FRA-81-1800-2025,1800,2025,,subnational,gadm-4.1-adm2,5765,no_reference,0,,0,,,,,,
 FRA-82-1808-2025,1808,2025,,subnational,gadm-4.1-adm2,3711,no_reference,0,,0,,,,,,
-FRA-83-1790-2025,1790,2025,,subnational,gadm-4.1-adm2,6044,no_reference,0,,0,,,,,,
+FRA-83-1790-1860,1790,1860,,subnational,constructed,7294,no_reference,0,,0,,,,,,
+FRA-83-1860-2025,1860,2025,,subnational,gadm-4.1-adm2,6044,no_reference,0,,0,,,,,,
 FRA-84-1793-2025,1793,2025,,subnational,gadm-4.1-adm2,3562,no_reference,0,,0,,,,,,
 FRA-85-1800-2025,1800,2025,,subnational,gadm-4.1-adm2,6778,no_reference,0,,0,,,,,,
 FRA-86-1800-2025,1800,2025,,subnational,gadm-4.1-adm2,7055,no_reference,0,,0,,,,,,
@@ -640,7 +646,9 @@ GUY-1800-2025,1800,2025,110,national,cshapes-2.0,210474,stable_where_covered,1,1
 HATAY-1938-1939,1938,1939,,colonial,none,,no_reference,0,,0,,,,,,
 HAW-1959-2025,1959,2025,,subnational,gadm-4.1-adm1,16706,no_reference,0,,0,,,,,,
 HAWI-1898-1959,1898,1959,4,national,cshapes-2.0,16632,stable_confirmed,1,1898-1958,0,16686,16686,,,0.988,-0.32
-HKG-1842-2025,1842,2025,,national,gadm-4.1-adm1,1128,no_reference,0,,0,,,,,,
+HKG-1842-1860,1842,1860,,national,constructed,83,no_reference,0,,0,,,,,,
+HKG-1860-1898,1860,1898,,national,constructed,96,no_reference,0,,0,,,,,,
+HKG-1898-2025,1898,2025,,national,gadm-4.1-adm1,1128,no_reference,0,,0,,,,,,
 HND-1800-2025,1800,2025,91,national,cshapes-2.0,112280,stable_where_covered,1,1886-2019,0,112227,112227,,,0.996,0.05
 HRV-1992-2025,1992,2025,344,national,cshapes-2.0,55759,stable_where_covered,1,1992-2019,0,55834,55834,,,0.989,-0.13
 HTI-1800-2025,1800,2025,41,national,cshapes-2.0,27093,stable_where_covered,1,1886-2019,2,27137,27137,,,0.99,-0.16
@@ -707,7 +715,8 @@ ITA-1861-1866,1861,1866,325,national,cshapes-europe,247918,no_reference,0,,0,,,,
 ITA-1861-1919,1861,1919,325,national,cshapes-europe,284848,stable_where_covered,1,1886-1918,0,284652,284652,,,0.991,0.07
 ITA-1866-1870,1866,1870,325,national,cshapes-europe,272718,no_reference,0,,0,,,,,,
 ITA-1870-1919,1870,1919,325,national,cshapes-europe,284848,stable_where_covered,1,1886-1918,0,284652,284652,,,0.991,0.07
-ITA-1919-2025,1919,2025,325,national,cshapes-2.0,300310,stable_where_covered,1,1919-2019,0,300049,300049,,,0.996,0.09
+ITA-1919-1947,1919,1947,325,national,constructed,307443,stable_confirmed,1,1919-1946,0,300049,300049,,,0.973,2.46
+ITA-1947-2025,1947,2025,325,national,cshapes-2.0,300310,stable_where_covered,1,1947-2019,0,300049,300049,,,0.996,0.09
 ITA-21-1970-2025,1970,2025,,subnational,gadm-4.1-adm1,25274,no_reference,0,,0,,,,,,
 ITA-23-1948-2025,1948,2025,,subnational,gadm-4.1-adm1,3256,no_reference,0,,0,,,,,,
 ITA-25-1861-2025,1861,2025,,subnational,gadm-4.1-adm1,23908,no_reference,0,,0,,,,,,
@@ -845,7 +854,8 @@ LSO-1886-1966,1886,1966,570,national,cshapes-2.0,30503,stable_confirmed,1,1886-1
 LSO-1966-2025,1966,2025,570,national,cshapes-2.0,30503,stable_where_covered,1,1966-2019,0,30516,30516,,,0.996,-0.04
 LST-1822-1868,1822,1868,,national,paine-2024,39178,no_reference,0,,0,,,,,,
 LTU-1800-1918,1800,1918,368,national,cshapes-2.0,83899,no_reference,0,,0,,,,,,
-LTU-1918-1940,1918,1940,368,national,cshapes-2.0,55904,changed,2,1918-1939,1,83882,55858,1.502,1920,0.665,-33.35
+LTU-1918-1923,1918,1923,368,national,constructed,53666,changed,2,1918-1922,0,83882,55858,1.502,1920,0.639,-36.02
+LTU-1923-1940,1923,1940,368,national,cshapes-2.0,55904,stable_confirmed,1,1923-1939,0,55858,55858,,,0.996,0.08
 LTU-1940-1991,1940,1991,368,national,cshapes-2.0,55904,no_reference,0,,0,,,,,,
 LTU-1991-2025,1991,2025,368,national,cshapes-2.0,65071,stable_where_covered,1,1991-2019,0,65024,65024,,,0.997,0.07
 LUX-1839-2025,1839,2025,212,national,cshapes-2.0,2591,stable_where_covered,1,1886-2019,0,2582,2582,,,0.993,0.34
@@ -1012,7 +1022,8 @@ PAK-WP-1949-1971,1949,1971,,subnational,constructed,876509,no_reference,0,,0,,,,
 PAL-1920-1948,1920,1948,,national,cshapes-2.0,27009,no_reference,0,,0,,,,,,
 PAN-1903-1979,1903,1979,95,national,cshapes-2.0,74050,stable_confirmed,1,1903-1978,0,74108,74108,,,0.993,-0.08
 PAN-1979-2025,1979,2025,95,national,cshapes-2.0,74050,stable_where_covered,1,1979-2019,0,74108,74108,,,0.993,-0.08
-PAP-1800-1870,1800,1870,327,national,cliopatria,39269,no_reference,0,,0,,,,,,
+PAP-1800-1860,1800,1860,327,national,cliopatria,39269,no_reference,0,,0,,,,,,
+PAP-1860-1870,1860,1870,327,national,cshapes-europe,11861,no_reference,0,,0,,,,,,
 PAPNG-1920-1949,1920,1949,,aggregate,constructed,461618,no_reference,0,,0,,,,,,
 PCN-1800-2025,1800,2025,,territory,gadm-4.1-adm0,54,no_reference,0,,0,,,,,,
 PER-1825-1884,1825,1884,135,national,cshapes-2.0,1277593,no_reference,0,,0,,,,,,
@@ -1124,6 +1135,7 @@ SER-1816-1913,1816,1913,,national,cshapes-2.0,52539,no_reference,0,,0,,,,,,
 SER-1878-1913,1878,1913,345,national,cshapes-2.0,52539,no_reference,0,,0,,,,,,
 SER-1913-1918,1913,1918,,national,cshapes-europe,90538,no_reference,0,,0,,,,,,
 SER-1918-1945,1918,1945,,subnational,cshapes-europe,90538,no_reference,0,,0,,,,,,
+SER-1945-2006,1945,2006,,subnational,cshapes-2.0,87993,no_reference,0,,0,,,,,,
 SER-2006-2008,2006,2008,,national,cshapes-2.0,101959,no_reference,0,,0,,,,,,
 SGP-1824-1946,1824,1946,,colonial,cshapes-2.0,545,no_reference,0,,0,,,,,,
 SGP-1946-1963,1946,1963,830,colonial,cshapes-2.0,545,stable_confirmed,1,1946-1962,0,545,545,,,1.0,-0.08

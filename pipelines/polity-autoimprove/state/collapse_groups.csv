@@ -1296,24 +1296,24 @@ FCM-1920-1960,horses mules asses,1000 heads,1950,2,2,1,1,1,values_differ,one_lab
 FCM-1920-1960,horses mules asses,1000 heads,1951,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,17,36,26.5,0.736111,,French Cameroons,fao1952
 FCM-1920-1960,meat,1000 tonnes,1950,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,1,8,5.333333,0.666667,total_beside_parts,French Cameroons,fao1952
 FCM-1920-1960,other meat,1000 tonnes,1948,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,0.2,1,0.6,0.6,,French Cameroons,fao1952
-FIN-1940-2025,commercial nitrogenous fertilizers,1000 tonnes,1949,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,0.6,13.3,6.95,0.522556,,Finland,fao1952
-FIN-1940-2025,commercial nitrogenous fertilizers,1000 tonnes,1950,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,0.4,17.4,8.9,0.511494,,Finland,fao1952
-FIN-1940-2025,commercial nitrogenous fertilizers,1000 tonnes,1951,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,0.4,25,12.7,0.508,,Finland,fao1952
-FIN-1940-2025,commercial phosphoric acid,1000 tonnes,1949,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,50.8,55.3,53.05,0.959313,,Finland,fao1952
-FIN-1940-2025,commercial phosphoric acid,1000 tonnes,1950,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,49.1,61.2,55.15,0.901144,,Finland,fao1952
-FIN-1940-2025,commercial phosphoric acid,1000 tonnes,1951,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,74.4,80,77.2,0.965,,Finland,fao1952
-FIN-1940-2025,meat,1000 tonnes,1949,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,7,107,53.5,0.5,total_beside_parts,Finland,fao1952
-FIN-1940-2025,meat,1000 tonnes,1950,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,7,106,53,0.5,total_beside_parts,Finland,fao1952
-FIN-1940-2025,other meat,1000 tonnes,1948,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,0.8,6.4,2.9,0.453125,,Finland,fao1952
-FIN-1940-2025,other meat,1000 tonnes,1949,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,1.3,6.7,3.2,0.477612,,Finland,fao1952
-FIN-1940-2025,other meat,1000 tonnes,1950,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,1.5,6.9,4.133333,0.599034,,Finland,fao1952
-FIN-1940-2025,pesticides arsenicals,tonnes,1949,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,5,30,17.5,0.583333,,Finland,fao1952
-FIN-1940-2025,pesticides arsenicals,tonnes,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,4,25,14.5,0.58,,Finland,fao1952
-FIN-1940-2025,pesticides arsenicals,tonnes,1951,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,3,15,9,0.6,,Finland,fao1952
-FIN-1940-2025,poultry,1000 heads,1949,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,5,2668,1336.5,0.500937,,Finland,fao1952
-FIN-1940-2025,poultry,1000 heads,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,5,3108,1556.5,0.500804,,Finland,fao1952
-FIN-1940-2025,r_fao_population_1952_10_18,1000 people,1937,5,5,1,1,5,values_differ,one_label_one_source,item_code_collision,476,3256,1489.4,0.457432,,Finland,fao1952
-FIN-1940-2025,r_fao_population_1952_10_18,1000 people,1951,5,5,1,1,5,values_differ,one_label_one_source,item_code_collision,525,4050,1640,0.404938,,Finland,fao1952
+FIN-1944-2025,commercial nitrogenous fertilizers,1000 tonnes,1949,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,0.6,13.3,6.95,0.522556,,Finland,fao1952
+FIN-1944-2025,commercial nitrogenous fertilizers,1000 tonnes,1950,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,0.4,17.4,8.9,0.511494,,Finland,fao1952
+FIN-1944-2025,commercial nitrogenous fertilizers,1000 tonnes,1951,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,0.4,25,12.7,0.508,,Finland,fao1952
+FIN-1944-2025,commercial phosphoric acid,1000 tonnes,1949,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,50.8,55.3,53.05,0.959313,,Finland,fao1952
+FIN-1944-2025,commercial phosphoric acid,1000 tonnes,1950,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,49.1,61.2,55.15,0.901144,,Finland,fao1952
+FIN-1944-2025,commercial phosphoric acid,1000 tonnes,1951,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,74.4,80,77.2,0.965,,Finland,fao1952
+FIN-1944-2025,meat,1000 tonnes,1949,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,7,107,53.5,0.5,total_beside_parts,Finland,fao1952
+FIN-1944-2025,meat,1000 tonnes,1950,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,7,106,53,0.5,total_beside_parts,Finland,fao1952
+FIN-1944-2025,other meat,1000 tonnes,1948,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,0.8,6.4,2.9,0.453125,,Finland,fao1952
+FIN-1944-2025,other meat,1000 tonnes,1949,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,1.3,6.7,3.2,0.477612,,Finland,fao1952
+FIN-1944-2025,other meat,1000 tonnes,1950,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,1.5,6.9,4.133333,0.599034,,Finland,fao1952
+FIN-1944-2025,pesticides arsenicals,tonnes,1949,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,5,30,17.5,0.583333,,Finland,fao1952
+FIN-1944-2025,pesticides arsenicals,tonnes,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,4,25,14.5,0.58,,Finland,fao1952
+FIN-1944-2025,pesticides arsenicals,tonnes,1951,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,3,15,9,0.6,,Finland,fao1952
+FIN-1944-2025,poultry,1000 heads,1949,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,5,2668,1336.5,0.500937,,Finland,fao1952
+FIN-1944-2025,poultry,1000 heads,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,5,3108,1556.5,0.500804,,Finland,fao1952
+FIN-1944-2025,r_fao_population_1952_10_18,1000 people,1937,5,5,1,1,5,values_differ,one_label_one_source,item_code_collision,476,3256,1489.4,0.457432,,Finland,fao1952
+FIN-1944-2025,r_fao_population_1952_10_18,1000 people,1951,5,5,1,1,5,values_differ,one_label_one_source,item_code_collision,525,4050,1640,0.404938,,Finland,fao1952
 FNA-1912-1956,commercial nitrogenous fertilizers,1000 tonnes,1950,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,0.8,12.2,6.5,0.532787,,French North Africa,fao1952
 FNA-1912-1956,commercial nitrogenous fertilizers,1000 tonnes,1951,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,0.8,13.4,7.1,0.529851,,French North Africa,fao1952
 FNA-1912-1956,commercial phosphoric acid,1000 tonnes,1949,2,1,1,1,2,values_identical,one_label_one_source,item_code_collision,36,36,36,1,,French North Africa,fao1952
@@ -1466,11 +1466,11 @@ HAWI-1898-1959,pesticides arsenicals,tonnes,1951,3,2,1,1,1,values_differ,one_lab
 HAWI-1898-1959,poultry,1000 heads,1950,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,3,611,207.666667,0.33988,,Hawaii,fao1952
 HAWI-1898-1959,r_fao_population_1952_10_18,1000 people,1937,4,4,1,1,4,values_differ,one_label_one_source,item_code_collision,5,401,129.25,0.322319,,Hawaii,fao1952
 HAWI-1898-1959,r_fao_population_1952_10_18,1000 people,1951,4,4,1,1,4,values_differ,one_label_one_source,item_code_collision,3,500,140.5,0.281,,Hawaii,fao1952
-HKG-1842-2025,meat,1000 tonnes,1949,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,5,341,173,0.507331,,Hong Kong,fao1952
-HKG-1842-2025,other meat,1000 tonnes,1949,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,0.5,1.6,1.05,0.65625,,Hong Kong,fao1952
-HKG-1842-2025,other meat,1000 tonnes,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,0.5,1.7,1.1,0.647059,,Hong Kong,fao1952
-HKG-1842-2025,poultry,1000 heads,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,22,218,120,0.550459,,Hong Kong,fao1952
-HKG-1842-2025,poultry,1000 heads,1951,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,26,681,353.5,0.51909,,Hong Kong,fao1952
+HKG-1898-2025,meat,1000 tonnes,1949,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,5,341,173,0.507331,,Hong Kong,fao1952
+HKG-1898-2025,other meat,1000 tonnes,1949,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,0.5,1.6,1.05,0.65625,,Hong Kong,fao1952
+HKG-1898-2025,other meat,1000 tonnes,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,0.5,1.7,1.1,0.647059,,Hong Kong,fao1952
+HKG-1898-2025,poultry,1000 heads,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,22,218,120,0.550459,,Hong Kong,fao1952
+HKG-1898-2025,poultry,1000 heads,1951,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,26,681,353.5,0.51909,,Hong Kong,fao1952
 HND-1800-2025,horses mules asses,1000 heads,1930,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,12,167,74.666667,0.447106,,Honduras,fao1952
 HND-1800-2025,horses mules asses,1000 heads,1949,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,20,209,100.333333,0.480064,,Honduras,fao1952
 HND-1800-2025,horses mules asses,1000 heads,1950,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,22,198,96.333333,0.486532,,Honduras,fao1952
@@ -1578,46 +1578,46 @@ ISR-1948-1967,poultry,1000 heads,1949,2,2,1,1,1,values_differ,one_label_one_sour
 ISR-1948-1967,poultry,1000 heads,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,23,3119,1571,0.503687,,Israel,fao1952
 ISR-1948-1967,poultry,1000 heads,1951,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,40,4750,2395,0.504211,,Israel,fao1952
 ISR-1948-1967,r_fao_population_1952_10_18,1000 people,1951,5,5,1,1,5,values_differ,one_label_one_source,item_code_collision,11,1516,362,0.238786,,Israel,fao1952
-ITA-1919-2025,commercial nitrogenous fertilizers,1000 tonnes,1949,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,119.9,136.9,128.4,0.937911,,Italy,fao1952
-ITA-1919-2025,commercial nitrogenous fertilizers,1000 tonnes,1950,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,156.5,177.3,166.9,0.941342,,Italy,fao1952
-ITA-1919-2025,commercial nitrogenous fertilizers,1000 tonnes,1951,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,158,186,172,0.924731,,Italy,fao1952
-ITA-1919-2025,commercial phosphoric acid,1000 tonnes,1949,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,247.6,274.4,261,0.951166,,Italy,fao1952
-ITA-1919-2025,commercial phosphoric acid,1000 tonnes,1950,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,303,310.1,306.55,0.988552,,Italy,fao1952
-ITA-1919-2025,commercial phosphoric acid,1000 tonnes,1951,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,290,322.4,306.2,0.949752,,Italy,fao1952
-ITA-1919-2025,commercial potash fertilizers,1000 tonnes,1949,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,0.7,16,8.35,0.521875,,Italy,fao1952
-ITA-1919-2025,commercial potash fertilizers,1000 tonnes,1950,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,0.7,19,9.85,0.518421,,Italy,fao1952
-ITA-1919-2025,commercial potash fertilizers,1000 tonnes,1951,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,0.7,20,10.35,0.5175,,Italy,fao1952
-ITA-1919-2025,edible pig fat,1000 tonnes,1949,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,35,83,59,0.710843,,Italy,fao1952
-ITA-1919-2025,edible pig fat,1000 tonnes,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,26,62,44,0.709677,,Italy,fao1952
-ITA-1919-2025,grapes,1000 hectares,1949,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,1014,2840,1859.333333,0.654695,,Italy,fao1952
-ITA-1919-2025,grapes,1000 hectares,1950,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,1010,2896,1880,0.649171,,Italy,fao1952
-ITA-1919-2025,grapes,1000 hectares,1951,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,1017,2904,1888,0.650138,,Italy,fao1952
-ITA-1919-2025,grapes,1000 tonnes,1950,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,2530,6544,4362.666667,0.666667,total_beside_parts,Italy,fao1952
-ITA-1919-2025,grapes,1000 tonnes,1951,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,2883,7318,4878.666667,0.666667,total_beside_parts,Italy,fao1952
-ITA-1919-2025,horses mules asses,1000 heads,1939,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,432,789,667.333333,0.845796,,Italy,fao1952
-ITA-1919-2025,horses mules asses,1000 heads,1949,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,394,798,651.666667,0.816625,,Italy,fao1952
-ITA-1919-2025,horses mules asses,1000 heads,1950,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,398,797,655.333333,0.82225,,Italy,fao1952
-ITA-1919-2025,horses mules asses,1000 heads,1951,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,393,773,644.666667,0.83398,,Italy,fao1952
-ITA-1919-2025,meat,1000 tonnes,1949,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,45,637,318.5,0.5,total_beside_parts,Italy,fao1952
-ITA-1919-2025,meat,1000 tonnes,1950,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,50,511,255.5,0.5,total_beside_parts,Italy,fao1952
-ITA-1919-2025,meat,1000 tonnes,1951,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,49,491,245.5,0.5,total_beside_parts,Italy,fao1952
-ITA-1919-2025,milk,1000 tonnes,1948,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,534,4202,2368,0.563541,,Italy,fao1952
-ITA-1919-2025,milk,1000 tonnes,1949,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,641,4917,2779,0.565182,,Italy,fao1952
-ITA-1919-2025,milk,1000 tonnes,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,689,5257,2973,0.565532,,Italy,fao1952
-ITA-1919-2025,milk,1000 tonnes,1951,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,697,5447,3072,0.56398,,Italy,fao1952
-ITA-1919-2025,other meat,1000 tonnes,1948,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,48,66.7,58.233333,0.873063,,Italy,fao1952
-ITA-1919-2025,other meat,1000 tonnes,1949,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,16.6,65.9,46.675,0.70827,,Italy,fao1952
-ITA-1919-2025,other meat,1000 tonnes,1950,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,21.7,66.6,47.925,0.719595,,Italy,fao1952
-ITA-1919-2025,pesticides arsenicals,tonnes,1949,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,37,1330,683.5,0.51391,,Italy,fao1952
-ITA-1919-2025,pesticides arsenicals,tonnes,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,365,1834,1099.5,0.599509,,Italy,fao1952
-ITA-1919-2025,pesticides arsenicals,tonnes,1951,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,395,2334,1364.5,0.584619,,Italy,fao1952
-ITA-1919-2025,pesticides copper sulphate,tonnes,1949,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,3514,77436,40475,0.52269,,Italy,fao1952
-ITA-1919-2025,pesticides copper sulphate,tonnes,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,3575,70436,37005.5,0.525378,,Italy,fao1952
-ITA-1919-2025,pesticides sulphur dust,tonnes,1949,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,3122,23998,9774.5,0.407305,,Italy,fao1952
-ITA-1919-2025,pesticides sulphur dust,tonnes,1950,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,3030,37324,14938.666667,0.400243,,Italy,fao1952
-ITA-1919-2025,pesticides sulphur dust,tonnes,1951,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,5137,45059,25098,0.557003,,Italy,fao1952
-ITA-1919-2025,r_fao_population_1952_10_18,1000 people,1937,5,5,1,1,5,values_differ,one_label_one_source,item_code_collision,2427,42372,15754.6,0.371816,,Italy,fao1952
-ITA-1919-2025,r_fao_population_1952_10_18,1000 people,1951,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,20000,46598,33299,0.714601,,Italy,fao1952
+ITA-1947-2025,commercial nitrogenous fertilizers,1000 tonnes,1949,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,119.9,136.9,128.4,0.937911,,Italy,fao1952
+ITA-1947-2025,commercial nitrogenous fertilizers,1000 tonnes,1950,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,156.5,177.3,166.9,0.941342,,Italy,fao1952
+ITA-1947-2025,commercial nitrogenous fertilizers,1000 tonnes,1951,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,158,186,172,0.924731,,Italy,fao1952
+ITA-1947-2025,commercial phosphoric acid,1000 tonnes,1949,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,247.6,274.4,261,0.951166,,Italy,fao1952
+ITA-1947-2025,commercial phosphoric acid,1000 tonnes,1950,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,303,310.1,306.55,0.988552,,Italy,fao1952
+ITA-1947-2025,commercial phosphoric acid,1000 tonnes,1951,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,290,322.4,306.2,0.949752,,Italy,fao1952
+ITA-1947-2025,commercial potash fertilizers,1000 tonnes,1949,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,0.7,16,8.35,0.521875,,Italy,fao1952
+ITA-1947-2025,commercial potash fertilizers,1000 tonnes,1950,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,0.7,19,9.85,0.518421,,Italy,fao1952
+ITA-1947-2025,commercial potash fertilizers,1000 tonnes,1951,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,0.7,20,10.35,0.5175,,Italy,fao1952
+ITA-1947-2025,edible pig fat,1000 tonnes,1949,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,35,83,59,0.710843,,Italy,fao1952
+ITA-1947-2025,edible pig fat,1000 tonnes,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,26,62,44,0.709677,,Italy,fao1952
+ITA-1947-2025,grapes,1000 hectares,1949,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,1014,2840,1859.333333,0.654695,,Italy,fao1952
+ITA-1947-2025,grapes,1000 hectares,1950,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,1010,2896,1880,0.649171,,Italy,fao1952
+ITA-1947-2025,grapes,1000 hectares,1951,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,1017,2904,1888,0.650138,,Italy,fao1952
+ITA-1947-2025,grapes,1000 tonnes,1950,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,2530,6544,4362.666667,0.666667,total_beside_parts,Italy,fao1952
+ITA-1947-2025,grapes,1000 tonnes,1951,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,2883,7318,4878.666667,0.666667,total_beside_parts,Italy,fao1952
+ITA-1947-2025,horses mules asses,1000 heads,1939,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,432,789,667.333333,0.845796,,Italy,fao1952
+ITA-1947-2025,horses mules asses,1000 heads,1949,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,394,798,651.666667,0.816625,,Italy,fao1952
+ITA-1947-2025,horses mules asses,1000 heads,1950,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,398,797,655.333333,0.82225,,Italy,fao1952
+ITA-1947-2025,horses mules asses,1000 heads,1951,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,393,773,644.666667,0.83398,,Italy,fao1952
+ITA-1947-2025,meat,1000 tonnes,1949,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,45,637,318.5,0.5,total_beside_parts,Italy,fao1952
+ITA-1947-2025,meat,1000 tonnes,1950,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,50,511,255.5,0.5,total_beside_parts,Italy,fao1952
+ITA-1947-2025,meat,1000 tonnes,1951,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,49,491,245.5,0.5,total_beside_parts,Italy,fao1952
+ITA-1947-2025,milk,1000 tonnes,1948,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,534,4202,2368,0.563541,,Italy,fao1952
+ITA-1947-2025,milk,1000 tonnes,1949,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,641,4917,2779,0.565182,,Italy,fao1952
+ITA-1947-2025,milk,1000 tonnes,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,689,5257,2973,0.565532,,Italy,fao1952
+ITA-1947-2025,milk,1000 tonnes,1951,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,697,5447,3072,0.56398,,Italy,fao1952
+ITA-1947-2025,other meat,1000 tonnes,1948,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,48,66.7,58.233333,0.873063,,Italy,fao1952
+ITA-1947-2025,other meat,1000 tonnes,1949,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,16.6,65.9,46.675,0.70827,,Italy,fao1952
+ITA-1947-2025,other meat,1000 tonnes,1950,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,21.7,66.6,47.925,0.719595,,Italy,fao1952
+ITA-1947-2025,pesticides arsenicals,tonnes,1949,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,37,1330,683.5,0.51391,,Italy,fao1952
+ITA-1947-2025,pesticides arsenicals,tonnes,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,365,1834,1099.5,0.599509,,Italy,fao1952
+ITA-1947-2025,pesticides arsenicals,tonnes,1951,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,395,2334,1364.5,0.584619,,Italy,fao1952
+ITA-1947-2025,pesticides copper sulphate,tonnes,1949,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,3514,77436,40475,0.52269,,Italy,fao1952
+ITA-1947-2025,pesticides copper sulphate,tonnes,1950,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,3575,70436,37005.5,0.525378,,Italy,fao1952
+ITA-1947-2025,pesticides sulphur dust,tonnes,1949,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,3122,23998,9774.5,0.407305,,Italy,fao1952
+ITA-1947-2025,pesticides sulphur dust,tonnes,1950,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,3030,37324,14938.666667,0.400243,,Italy,fao1952
+ITA-1947-2025,pesticides sulphur dust,tonnes,1951,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,5137,45059,25098,0.557003,,Italy,fao1952
+ITA-1947-2025,r_fao_population_1952_10_18,1000 people,1937,5,5,1,1,5,values_differ,one_label_one_source,item_code_collision,2427,42372,15754.6,0.371816,,Italy,fao1952
+ITA-1947-2025,r_fao_population_1952_10_18,1000 people,1951,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,20000,46598,33299,0.714601,,Italy,fao1952
 ITS-1908-1960,horses mules asses,1000 heads,1939,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,3,11,7,0.636364,,Somalia,fao1952
 ITS-1908-1960,horses mules asses,1000 heads,1949,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,2,30,14,0.466667,,Somalia,fao1952
 JAM-1800-2025,horses mules asses,1000 heads,1938,2,2,1,1,1,values_differ,one_label_one_source,true_duplicate_key,10,11,10.5,0.954545,,British West Indies Jamaica,fao1952

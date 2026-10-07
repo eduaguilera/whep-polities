@@ -13,7 +13,7 @@ FRA-1919-2025,1,separate_entity,Chandernagor,Excludes Chandernagor which became 
 GRC-1919-2025,2,composed_union,Dodecanese,Includes the Dodecanese ceded by Italy in 1947.
 HUN-1947-2025,2,territory_basis,Bratislava Bridgehead,"Excluding Bratislava Bridgehead ceded by Hungary in 1947, with a popul"
 IND-1949-2025,15,composed_union|separate_entity|territory_basis,"Andaman and Nicobar; Burma; Hyderabad; Kashmir; Kashmir, Jammu, tribal areas of Assam, Mahe, Pondicherry, Karikal, Yanao",Pakistan included under India.
-ITA-1919-2025,2,territory_basis,territories ceded by Italy in 1947,Excludes territories (708 square kilometres) ceded by Italy in 1947.
+ITA-1947-2025,2,territory_basis,territories ceded by Italy in 1947,Excludes territories (708 square kilometres) ceded by Italy in 1947.
 JOR-1946-2025,1,composed_union,West Jordan,"Includes West Jordan (i.e., that part of Arab Palestine annexed 24 Apr"
 JPN-1952-2025,4,composed_union|separate_entity,"Amami Islands, Togara Archipelago; Okinawa and certain other Ryukyuan areas","Including Amami Islands and the Togara Archipelago, but excluding Okin"
 LBY-1951-2025,1,composed_union,Cyrenaica,Includes Cyrenaica.
