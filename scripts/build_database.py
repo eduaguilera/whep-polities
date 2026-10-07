@@ -266,8 +266,42 @@ CSV_COLUMN_TO_FM_KEY = {
     # 100). A published binding whose deciding input is unpublished cannot be
     # reproduced from data/final/ at all. Empty on every row that does not need it.
     "polygon_feature_date": "polygon_feature_date",
+    # APPENDED for the same reason, by issue 600 (schema contract version 2). `polygon_area_km2`
+    # had two meanings -- a figure read off the row's own polygon, and a figure a source or a
+    # gazetteer STATES -- and nothing said which, so a comparison of the field against the
+    # polygon was a no-op for half the rows and a real test for the rest. `polygon_area_source`
+    # records the origin of the declared figure (written by hand on the page);
+    # `stated_area_km2` is the half of the declared figures that is INDEPENDENT of the polygon,
+    # DERIVED here and never hand-written, so a reader who wants "what a source says the area
+    # is" has one unambiguous column. `polygon_area_km2` itself is unchanged, so every
+    # existing reader of it still gets exactly what it got.
+    "polygon_area_source":  "polygon_area_source",
+    "stated_area_km2":      "stated_area_km2",
 }
 CSV_COLUMNS = list(CSV_COLUMN_TO_FM_KEY.keys())
+
+# Where a declared `polygon_area_km2` came from (issue 600). Required whenever the figure is set,
+# empty whenever it is not.
+#
+#   measured-from-polygon  read off the row's own geometry. Honest bookkeeping, but NOT evidence:
+#                          a polygon cannot disagree with a number copied from it, so
+#                          validate_polygons check A skips these rows and counts them.
+#   source-stated          a yearbook / dataset figure (FAO, IIA, the CShapes `area` attribute).
+#                          Must be corroborated by data/final/source_stated_area_basis.csv or
+#                          a `stated_area_km2` row there; validate_polygons checks that.
+#   official-gazetteer     an official land area (national statistics office, CIA Factbook, ...).
+#   derived-arithmetic     a sum/difference of published figures (island areas added up).
+#   unrecorded             a legacy figure whose origin the page does not say. A CEILING, not a
+#                          category to grow: new pages must pick one of the four above.
+POLYGON_AREA_SOURCE_VOCABULARY = (
+    "measured-from-polygon", "source-stated", "official-gazetteer",
+    "derived-arithmetic", "unrecorded",
+)
+# The figures that are independent of the row's own polygon, and so are published as
+# `stated_area_km2`. `unrecorded` is excluded: nothing shows it is independent.
+POLYGON_AREA_INDEPENDENT = frozenset(
+    {"source-stated", "official-gazetteer", "derived-arithmetic"}
+)
 
 
 def flatten_row(fm: dict[str, Any]) -> dict[str, Any]:
@@ -300,6 +334,11 @@ def flatten_row(fm: dict[str, Any]) -> dict[str, Any]:
         if isinstance(v, str) and v.strip() == "NA":
             v = ""
         row[col] = v
+    # DERIVED, never read from the page: the independent half of the declared areas.
+    if str(row.get("polygon_area_source", "")).strip() in POLYGON_AREA_INDEPENDENT:
+        row["stated_area_km2"] = row.get("polygon_area_km2", "")
+    else:
+        row["stated_area_km2"] = ""
     return row
 
 
@@ -322,6 +361,34 @@ def existing_geometry_count(path: Path) -> int | None:
     except Exception:
         return None
 
+
+
+
+# The MEASURED area of the shipped geometry, published beside the declared figures so the two
+# meanings of `polygon_area_km2` are never confused (issue 600). It lives in the GeoPackage only:
+# measuring needs the geometry, which `--check` does not have in CI, so it cannot be a column of
+# the wiki-derived CSV. Planar `.area` in ESRI:54034, the convention validate_area_convention.py
+# pins as the one every published figure follows.
+COMPUTED_AREA_FIELD = "computed_polygon_area_km2"
+_AREA_CT: list = []
+
+
+def computed_area_km2(geom: ogr.Geometry | None) -> float | None:
+    """Planar area of `geom` in ESRI:54034, km2, rounded to 0.01. None when there is no geometry."""
+    if geom is None or geom.IsEmpty():
+        return None
+    if not _AREA_CT:
+        src = osr.SpatialReference()
+        src.ImportFromEPSG(4326)
+        src.SetAxisMappingStrategy(osr.OAMS_TRADITIONAL_GIS_ORDER)
+        dst = osr.SpatialReference()
+        dst.SetFromUserInput("ESRI:54034")
+        dst.SetAxisMappingStrategy(osr.OAMS_TRADITIONAL_GIS_ORDER)
+        _AREA_CT.append(osr.CoordinateTransformation(src, dst))
+    g = geom.Clone()
+    if g.Transform(_AREA_CT[0]) != 0:
+        return None
+    return round(g.GetArea() / 1e6, 2)
 
 
 
@@ -378,9 +445,22 @@ def sync_gpkg_attributes(rows: list[dict[str, Any]], out_path: Path) -> str:
     """
     if not out_path.exists():
         return "  (no GeoPackage to sync)"
+    # Schema first, on a handle that has read nothing: adding columns to a layer that has already
+    # been iterated aborts GDAL when the dataset closes (issue 600).
     ds = ogr.Open(str(out_path), update=1)
     if ds is None:
         return "  (GeoPackage could not be opened for attribute sync)"
+    lyr = ds.GetLayer(0)
+    have_fields = [lyr.GetLayerDefn().GetFieldDefn(i).GetName()
+                   for i in range(lyr.GetLayerDefn().GetFieldCount())]
+    for col in CSV_COLUMNS:
+        if col not in have_fields:
+            lyr.CreateField(ogr.FieldDefn(col, ogr.OFTString))
+    if COMPUTED_AREA_FIELD not in have_fields:
+        lyr.CreateField(ogr.FieldDefn(COMPUTED_AREA_FIELD, ogr.OFTReal))
+    lyr = None
+    ds = None
+    ds = ogr.Open(str(out_path), update=1)
     lyr = ds.GetLayer(0)
     by_code = {r["polity_code"]: r for r in rows}
 
@@ -397,10 +477,21 @@ def sync_gpkg_attributes(rows: list[dict[str, Any]], out_path: Path) -> str:
               for i in range(lyr.GetLayerDefn().GetFieldCount())]
     changed = 0
     changed_codes: list[str] = []
+    pending: list = []
     lyr.ResetReading()
     for feat in lyr:
         row = by_code[feat.GetField("polity_code")]
         dirty = False
+        want_area = computed_area_km2(feat.GetGeometryRef())
+        have_area = feat.GetField(COMPUTED_AREA_FIELD)
+        if want_area != have_area and not (
+            want_area is not None and have_area is not None and abs(want_area - have_area) < 0.005
+        ):
+            if want_area is None:
+                feat.SetFieldNull(COMPUTED_AREA_FIELD)
+            else:
+                feat.SetField(COMPUTED_AREA_FIELD, want_area)
+            dirty = True
         for f in fields:
             if f not in row:
                 continue
@@ -432,10 +523,23 @@ def sync_gpkg_attributes(rows: list[dict[str, Any]], out_path: Path) -> str:
                     feat.SetField(f, want_s)
                 dirty = True
         if dirty:
-            lyr.SetFeature(feat)
+            # Collected and written AFTER the read loop: writing while a cursor is open over a
+            # table in which most rows change aborts GDAL (free(): invalid pointer).
+            pending.append(feat.Clone())
             changed += 1
             changed_codes.append(row["polity_code"])
+    for feat in pending:
+        lyr.SetFeature(feat)
+    pending = feat = lyr = None
     ds = None
+    if changed:
+        # An in-place rewrite of most rows leaves the old pages on the freelist (+30% on the
+        # first sync after a column was added); reclaim them so the file does not grow.
+        import sqlite3
+        with sqlite3.connect(str(out_path)) as con:
+            con.isolation_level = None
+            con.execute("VACUUM")
+        con.close()
     if changed == 0:
         return "  Attributes already matched the wiki; geometries untouched."
     return (f"  SYNCED {changed} row(s)' attributes in place (geometries "
@@ -609,6 +713,7 @@ def write_gpkg(
     for col in CSV_COLUMNS:
         ftype = ogr.OFTInteger if col in ("start_year", "end_year") else ogr.OFTString
         lyr.CreateField(ogr.FieldDefn(col, ftype))
+    lyr.CreateField(ogr.FieldDefn(COMPUTED_AREA_FIELD, ogr.OFTReal))
 
     repair_wkb = load_s2_repair()
     s2_check = load_s2_check()
@@ -664,6 +769,9 @@ def write_gpkg(
                 s2_repaired.append(row["polity_code"])
             g = _repair_if_free(g, row["polity_code"], repairs)
             f.SetGeometry(g)
+            area = computed_area_km2(g)
+            if area is not None:
+                f.SetField(COMPUTED_AREA_FIELD, area)
         lyr.CreateFeature(f)
 
     if simplifies["reduced"]:
@@ -1166,6 +1274,28 @@ def main() -> int:
             for code, st in bad_status[:10]:
                 print(f"  {code}: {st!r}")
             print(f"\n  Allowed: {sorted(POLYGON_STATUS_VOCABULARY)}")
+            return 1
+
+        # A DECLARED AREA MUST SAY WHERE IT CAME FROM (issue 600). `polygon_area_km2` meant two
+        # things -- a figure read off the row's own polygon, and a figure a source states -- and
+        # nothing recorded which, so check A compared a polygon with itself for about half the
+        # rows. Every row that sets the figure now names its origin from a closed vocabulary, and
+        # a row that sets no figure must not name one.
+        bad_area_src = sorted(
+            (r["polity_code"], r.get("polygon_area_km2", ""), r.get("polygon_area_source", ""))
+            for r in rows
+            if (str(r.get("polygon_area_km2", "")).strip() != "")
+            != (str(r.get("polygon_area_source", "")).strip() != "")
+            or (str(r.get("polygon_area_source", "")).strip() != ""
+                and r["polygon_area_source"].strip() not in POLYGON_AREA_SOURCE_VOCABULARY)
+        )
+        if bad_area_src:
+            print("--check: FAIL - polygon_area_km2 and polygon_area_source disagree about "
+                  "whether a figure is declared, or the source is outside the vocabulary "
+                  "(see wiki/README.md, Page schema)")
+            for code, area, src in bad_area_src[:10]:
+                print(f"  {code}: polygon_area_km2={area!r} polygon_area_source={src!r}")
+            print(f"\n  Allowed: {list(POLYGON_AREA_SOURCE_VOCABULARY)}")
             return 1
 
         # THE SAME DISCIPLINE FOR polity_type, for the same reason (issue 31).
