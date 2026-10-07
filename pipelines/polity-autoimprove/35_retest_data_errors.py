@@ -3969,6 +3969,31 @@ def check_iia_fertilizer_one_material(ctx):
             "in 122 cells across 21 series, and k is clean")
 
 
+def check_constant_runs_filled(ctx):
+    """The disposition census the entry states, and that the filled runs are all named in it (issue 366).
+
+    Reads the COMMITTED state/constant_runs.csv, so it needs no local input. The shape and disposition
+    columns are regenerated from the panel by 17_constant_runs.py --check; what is pinned here is that the
+    entry's stated counts are the table's, that no run was measured under a value-scale divisor (the
+    issue-416 re-measure), and that every CARRIED_FORWARD / PLACEHOLDER run is named in the summary.
+    """
+    with open(os.path.join(STATE, "constant_runs.csv"), newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+    with open(ERRORS, newline="", encoding="utf-8") as fh:
+        summ = next(r["summary"] for r in csv.DictReader(fh)
+                    if r["issue_id"] == "constant-runs-filled-carried-forward")
+    c = collections.Counter(r["disposition"] for r in rows)
+    filled = [r for r in rows if r["disposition"] in ("CARRIED_FORWARD", "PLACEHOLDER")]
+    named = sum(1 for r in filled if f"{r['source']} {r['country']} / {r['item']} ({r['unit']}) "
+                f"{r['year_first']}-{r['year_last']} = {float(r['constant']):g}" in summ)
+    claims = [("runs", len(rows), 244), ("ROUNDING_GRID", c["ROUNDING_GRID"], 63),
+              ("CARRIED_FORWARD", c["CARRIED_FORWARD"], 23), ("PLACEHOLDER", c["PLACEHOLDER"], 8),
+              ("BRIDGED", c["BRIDGED"], 52), ("UNRESOLVED", c["UNRESOLVED"], 98),
+              ("runs under a value-scale divisor", sum(1 for r in rows if r["value_divisor"] != "1"), 0),
+              ("filled runs named in the entry", named, len(filled))]
+    return claims, "31 filled runs (23 carried forward, 8 placeholders), each named; no run touched by a divisor"
+
+
 CHECKS = {
     "mmr-1885-1889-rice-area-is-lower-burma": check_mmr_1885_1889_lower_burma,
     "vnm-1955-1960-rice-maize-output-is-north-plus-south": check_vnm_1955_1960_output_north_plus_south,
@@ -4013,6 +4038,7 @@ CHECKS = {
     "iia-layerb-magnitude-scale-inconsistent": check_iia_scale_is_common,
     "iia-hops-x100": check_hops_x100_and_area_x10,
     "iia-tobacco-hops-late-volume-unit-scale": check_iia_tobacco_hops_late_volume_scale,
+    "constant-runs-filled-carried-forward": check_constant_runs_filled,
     "fao1952-hemp-germany-label-glued": check_hemp_germany_glued,
     "iia-item-series-switch-raw-products": check_item_product_switches,
     "iia-fertilizer-nutrient-item-is-one-material": check_iia_fertilizer_one_material,

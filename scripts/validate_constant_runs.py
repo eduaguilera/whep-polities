@@ -48,7 +48,16 @@ TABLE = os.path.join(REPO, "pipelines/polity-autoimprove/state/constant_runs.csv
 
 # Measured 2026-08-18 on the first run. BIDIRECTIONAL: repairing runs must lower this, with a note
 # saying which were repaired, so a later regression cannot hide inside the old headroom.
-BASELINE_RUNS = 246
+#
+# 246 -> 244 (issue 366, re-measured on a table that now applies the item-scoped label corrections of
+# issue 675 and the value-scale divisors of issue 416, as 01_match_and_findings.py does). The two runs
+# that left are `iia india sesame seed` in ha and in tonnes: their cells are French India's own
+# figures filed under `india` (data/final/source_label_item_corrections.csv, issue 372), so once
+# relabelled they are not a series repeating a value but one small territory printing it. Seven other
+# runs kept their values and changed only the LABEL they sit under (viet nam -> tonkin within french
+# indochina, cameroon -> british and french cameroons combined reporting unit, france eggs -> saint
+# pierre and miquelon). No run was touched by a value-scale divisor.
+BASELINE_RUNS = 244
 
 # At this length a coarse-grid reading is not available as an explanation.
 LONG_RUN = 10
@@ -62,10 +71,9 @@ def key(r):
 BASELINE_LONG = frozenset({
     ('iia', 'australia', 'lemons and limes', 'ha', '2000.000', '1933'),
     ('iia', 'grenada', 'cotton lint', 'tonnes', '100.000', '1935'),
-    ('iia', 'india', 'sesame seed', 'ha', '1000.000', '1934'),
     ('iia', 'new zealand', 'tobacco unmanufactured', 'ha', '1000.000', '1934'),
     ('iia', 'south africa', 'tea', 'ha', '1000.000', '1933'),
-    ('iia', 'viet nam', 'cotton lint', 'tonnes', '100.000', '1934'),
+    ('iia', 'tonkin within french indochina', 'cotton lint', 'tonnes', '100.000', '1934'),
     ('juan', 'argentina', 'soybeans', 'ha', '1000.000', '1950'),
     ('juan', 'colombia', 'cocoa beans', 'tonnes', '3000.000', '1901'),
     ('juan', 'costa rica', 'tobacco unmanufactured', 'ha', '1000.000', '1939'),
