@@ -2028,6 +2028,20 @@ POL-1945-2025,commercial phosphoric acid,1000 tonnes,1951,2,2,1,1,2,values_diffe
 POL-1945-2025,poultry,1000 heads,1949,4,4,1,1,1,values_differ,one_label_one_source,true_duplicate_key,915,42909,12351.5,0.287853,,Poland,fao1952
 POL-1945-2025,r_fao_population_1952_10_18,1000 people,1937,5,5,1,1,5,values_differ,one_label_one_source,item_code_collision,706,31600,10329.6,0.326886,,Poland,fao1952
 POL-1945-2025,r_fao_population_1952_10_18,1000 people,1951,2,2,1,1,2,values_differ,one_label_one_source,item_code_collision,772,24977,12874.5,0.515454,,Poland,fao1952
+PRI-1800-2025,"coffee, green",ha,1910,2,2,1,2,1,values_differ,one_label_several_sources,true_duplicate_key,61669,63043,62356,0.989103,,puerto rico,iia | juan
+PRI-1800-2025,"coffee, green",ha,1911,2,2,1,2,1,values_differ,one_label_several_sources,true_duplicate_key,61053,61600,61326.5,0.99556,,puerto rico,iia | juan
+PRI-1800-2025,"coffee, green",ha,1918,2,2,1,2,1,values_differ,one_label_several_sources,true_duplicate_key,59738,64311,62024.5,0.964446,,puerto rico,iia | juan
+PRI-1800-2025,"coffee, green",ha,1923,2,2,1,2,1,values_differ,one_label_several_sources,true_duplicate_key,64904,65666,65285,0.994198,,puerto rico,iia | juan
+PRI-1800-2025,"coffee, green",ha,1925,2,2,1,2,1,values_differ,one_label_several_sources,true_duplicate_key,65153.434314,65308,65230.717157,0.998817,,puerto rico,iia | juan
+PRI-1800-2025,"coffee, green",ha,1933,2,1,1,2,1,values_identical,one_label_several_sources,true_duplicate_key,80900,80900,80900,1,,puerto rico,iia | juan
+PRI-1800-2025,"coffee, green",ha,1934,2,2,1,2,1,values_differ,one_label_several_sources,true_duplicate_key,60000,80900,70450,0.870828,,puerto rico,iia | juan
+PRI-1800-2025,"coffee, green",ha,1935,2,2,1,2,1,values_differ,one_label_several_sources,true_duplicate_key,58000,60000,59000,0.983333,,puerto rico,iia | juan
+PRI-1800-2025,"coffee, green",tonnes,1913,2,2,1,2,1,values_differ,one_label_several_sources,true_duplicate_key,22566,22775.6,22670.8,0.995399,,puerto rico,iia | juan
+PRI-1800-2025,"coffee, green",tonnes,1914,2,2,1,2,1,values_differ,one_label_several_sources,true_duplicate_key,22775.6,23190.1,22982.85,0.991063,,puerto rico,iia | juan
+PRI-1800-2025,"coffee, green",tonnes,1918,2,2,1,2,1,values_differ,one_label_several_sources,true_duplicate_key,12654.2,17063.4,14858.8,0.870799,,puerto rico,iia | juan
+PRI-1800-2025,"coffee, green",tonnes,1922,2,2,1,2,1,values_differ,one_label_several_sources,true_duplicate_key,19699.4,20400,20049.7,0.982828,,puerto rico,iia | juan
+PRI-1800-2025,"coffee, green",tonnes,1923,2,2,1,2,1,values_differ,one_label_several_sources,true_duplicate_key,10912,19699.4,15305.7,0.776963,,puerto rico,iia | juan
+PRI-1800-2025,"coffee, green",tonnes,1933,2,2,1,2,1,values_differ,one_label_several_sources,true_duplicate_key,50.8,5171,2610.9,0.504912,,puerto rico,iia | juan
 PRI-1800-2025,horses mules asses,1000 heads,1935,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,3,43,17,0.395349,,Puerto Rico,fao1952
 PRI-1800-2025,horses mules asses,1000 heads,1949,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,3,39,15.666667,0.401709,,Puerto Rico,fao1952
 PRI-1800-2025,horses mules asses,1000 heads,1950,3,3,1,1,1,values_differ,one_label_one_source,true_duplicate_key,3,36,14.333333,0.398148,,Puerto Rico,fao1952

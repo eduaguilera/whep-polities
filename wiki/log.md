@@ -26,6 +26,41 @@ Kinds:
 
 ---
 
+## decision-372-item-level-mixtures-routed
+**Date:** 2026-10-07
+**Touched:** CXR-1888-1946, AUH-1908-1918, SYL-1920-1944, IDN-JVM-1800-1949, AOF-1895-1960, FMS-1909-1946,
+GBM-1895-1946, PRI-1800-2025 (data routing and page text only; no polity row, date or polygon changed)
+**Source:** none
+**Kind:** decision
+
+**Most of the item-level label mixtures in issue 372 now have a polity to land on, so they are routed.**
+[Issue 372](https://github.com/eduaguilera/whep-polities/issues/372) named 11 iia labels that are right for
+some items and wrong for others. Each label was re-measured cell by cell on current main against the raw IIA
+extract. A cell counts when exactly one raw label matches it on product, variable, year and value. 43 new
+rules in `data/final/source_label_item_corrections.csv` relabel 413 rows. Every rule lies on an item series
+with at least 6 distinct values of the raw label. Within each rule's years, every non-zero cell matches that
+raw label, either alone or among round-number collisions, and no cell matches another label alone. After a
+re-run of stage 01, exactly 413 rows change polity and the value total is unchanged:
+
+- `australia` `p` to CXR-1888-1946 (17). The `iia/australia/p` flow flag is retired.
+- `austria` fertiliser 1909-1916 to AUH-1908-1918 (14).
+- `syrian arab republic` to SYL-1920-1944 (170).
+- `indonesia` to IDN-JVM-1800-1949 (94).
+- `niger` cotton to AOF-1895-1960 (42).
+- `malaysia` coffee and tea to FMS-1909-1946 (25) and GBM-1895-1946 (35).
+- `united states of america` Puerto-Rico-only coffee cells to PRI-1800-2025 (16).
+
+Left in place, with the reasons recorded on the issue:
+- `papua new guinea` cacao and coffee are Dutch New Guinea's, but there is no pre-1949 polity for it.
+- `united states of america` `n` is USA plus Canada, and no polity covers that.
+- `ghana` cotton and groundnuts come from the `german togoland` column, which is a persistent header after
+  1914, so its destination is not settled.
+- Several series fall below 6 distinct values.
+- The remaining cases are parts of the polity they sit on: Makatea, Kambing, Queensland, Manchuria and the
+  Russian regions.
+
+Signed off by: Claude (Claude Code), issue 372; pending review in its pull request.
+
 ## decision-polygon-area-provenance
 **Date:** 2026-10-07
 **Touched:** every page declaring `polygon_area_km2` (255 frontmatter lines gained `polygon_area_source`; no figure changed)
