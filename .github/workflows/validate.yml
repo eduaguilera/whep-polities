@@ -590,6 +590,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_same_polity_overlaps.py
 
+      - name: Sources — two panel units may not share a polity unregistered, nor share a cell
+        if: '!cancelled()'
+        run: python3 scripts/validate_panel_units_shared_polity.py
+
       # iia tobacco/hops production from 1934 runs at a median implied yield of 76 t/ha against 0.92
       # before, and 1933 is the last year a second yearbook volume offers an opinion (issue 414). The
       # per-row verdicts are gated rather than the era: 50 rows carry production on an area of exactly

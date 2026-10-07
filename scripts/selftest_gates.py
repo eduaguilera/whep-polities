@@ -3576,6 +3576,31 @@ def mutate_label_item_correction_overlap(root, gpd, make_valid, affinity):
             "1895-1909 rule's years")
 
 
+def mutate_panel_unit_island_beside_province(root, gpd, make_valid, affinity):
+    """Route a second Canary island unit onto the Santa Cruz de Tenerife province.
+
+    ESP-ES707 is La Palma's NUTS code. A ledger row sending it to ESP-38-1927-2025 beside the
+    province's own units is the part-beside-its-whole shape: every cell both report would be
+    averaged by WHEP's mean over (polity, item, unit, year), and each row on its own is well formed
+    and lands on a live polity. Only the cross-unit registry can refuse it.
+    """
+    import csv as _csv
+    path = os.path.join(root, "pipelines/agent-harness/state/routing_verdicts.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        reader = _csv.DictReader(fh)
+        fields = list(reader.fieldnames)
+        rows = list(reader)
+    src = [r for r in rows if r["unit_id"] == "ESP-ES709"]
+    assert src, "ESP-ES709 left the ledger -- pick another unit"
+    clone = dict(src[0], unit_id="ESP-ES707", admin_name="ES707")
+    rows.append(clone)
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(rows)
+    return "routed ESP-ES707 (La Palma island) onto ESP-38-1927-2025 beside the province's own units"
+
+
 def _vnm_rice_output_rule(rows):
     hit = [r for r in rows if r["source"] == "mitchell" and r["source_label"] == "viet nam"
            and r["item"] == "rice, paddy" and r.get("unit") == "tonnes"]
@@ -6909,6 +6934,13 @@ CASES = (
         "the rule table pinned in full and unchanged",
     ),
     (
+        "validate_panel_units_shared_polity.py",
+        mutate_panel_unit_island_beside_province,
+        "both route to ESP-38-1927-2025",
+        "an island unit routed onto its province beside the province's own unit -- each row well "
+        "formed and live, every shared cell averaged across two territories",
+    ),
+    (
         "validate_label_item_corrections.py",
         mutate_label_item_correction_wrong_polity,
         "the relabel and the published polity_code disagree",
@@ -7995,6 +8027,10 @@ WRITABLE = {
         "pipelines/polity-autoimprove/extdata.py",
         # Arm G (issue 424) checks the cell rules against it; the second case mutates it.
         "pipelines/polity-autoimprove/state/volume_scale_conflicts.csv",
+    ),
+    # The gate reads only the routing ledger, which the case appends a unit to.
+    "validate_panel_units_shared_polity.py": (
+        "pipelines/agent-harness/state/routing_verdicts.csv",
     ),
     "validate_label_item_corrections.py": (
         "polities_database.csv",
