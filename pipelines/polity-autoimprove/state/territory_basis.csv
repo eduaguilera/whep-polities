@@ -446,11 +446,11 @@ F215-1961-1964,Tanganyika and Zanzibar (combined reporting),1961,1964,constructe
 F228-1800-1856,Russian Empire (to 1856),1800,1856,cliopatria,1815.0,assigned,False,assumed_constant,True,False,no_reference,,single 1815 polygon held across a 56y span (1800-1856); borders may have changed,0
 F228-1856-1905,Russian Empire (1856-1905),1856,1905,cshapes-2.0,1886.0,assigned,True,assumed_constant,True,False,no_reference,,single 1886 polygon held across a 49y span (1856-1905); borders may have changed,10
 F228-1905-1914,Russian Empire (1905-1914),1905,1914,cshapes-2.0,1905.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1905 faithful to period 1905-1914,136
-F228-1914-1917,Russian Empire (1914-1917),1914,1917,cshapes-2.0,1914.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1914 faithful to period 1914-1917,50
-F228-1917-1918,Russia (1917-1918),1917,1918,cshapes-2.0,1917.0,assigned,True,measured,False,False,no_reference,,vintage 1917 faithful to period 1917-1918,8
-F228-1918-1920,RSFSR (1918-1920),1918,1920,cshapes-2.0,1919.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1919 faithful to period 1918-1920,8
-F228-1920-1921,RSFSR (1920-1921),1920,1921,cshapes-2.0,1920.0,assigned,True,measured,False,False,no_reference,,vintage 1920 faithful to period 1920-1921,5
-F228-1921-1940,RSFSR/USSR (1921-1940),1921,1940,cshapes-2.0,1921.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1921 faithful to period 1921-1940,480
+F228-1914-1917,Russian Empire (1914-1917),1914,1917,cshapes-2.0,1914.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1914 faithful to period 1914-1917,47
+F228-1917-1918,Russia (1917-1918),1917,1918,cshapes-2.0,1917.0,assigned,True,measured,False,False,no_reference,,vintage 1917 faithful to period 1917-1918,5
+F228-1918-1920,RSFSR (1918-1920),1918,1920,cshapes-2.0,1919.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1919 faithful to period 1918-1920,0
+F228-1920-1921,RSFSR (1920-1921),1920,1921,cshapes-2.0,1920.0,assigned,True,measured,False,False,no_reference,,vintage 1920 faithful to period 1920-1921,4
+F228-1921-1940,RSFSR/USSR (1921-1940),1921,1940,cshapes-2.0,1921.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1921 faithful to period 1921-1940,474
 F228-1940-1945,USSR (1940-1945),1940,1945,cshapes-2.0,1941.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1941 faithful to period 1940-1945,23
 F228-1945-1991,USSR (1945-1991),1945,1991,cshapes-2.0,1946.0,assigned,True,assumed_constant,False,False,stable_confirmed,-0.0,"single 1946 polygon held across a 46y span (1945-1991); borders may have changed; border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.00%), so the single polygon is not an assumption",39
 F237-1954-1975,Vietnam (combined reporting: DRV and RVN),1954,1975,cshapes-2.0,1976.0,estimate,True,back_projected,True,True,no_reference,,polygon vintage 1976 is AFTER the period ends (1975) — later/modern border applied back,12
@@ -792,7 +792,7 @@ JPN-43-1871-2025,Kumamoto (prefecture of Japan),1871,2025,gadm-4.1-adm1,,assigne
 JPN-44-1871-2025,Oita (prefecture of Japan),1871,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 JPN-45-1871-2025,Miyazaki (prefecture of Japan),1871,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 JPN-46-1871-2025,Kagoshima (prefecture of Japan),1871,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
-KAR-1905-1945,Karafuto (Japanese South Sakhalin),1905,1945,cshapes-2.0,1920.0,assigned,True,assumed_constant,True,False,no_reference,,single 1920 polygon held across a 40y span (1905-1945); borders may have changed,0
+KAR-1905-1945,Karafuto (Japanese South Sakhalin),1905,1945,cshapes-2.0,1920.0,assigned,True,assumed_constant,True,True,no_reference,,single 1920 polygon held across a 40y span (1905-1945); borders may have changed,21
 KAZ-1991-2025,Kazakhstan,1991,2025,cshapes-2.0,1997.0,assigned,False,assumed_constant,True,False,stable_where_covered,0.01,single 1997 polygon held across a 34y span (1991-2025); borders may have changed,0
 KEN-1888-1891,Kenya (1888-1891),1888,1891,cshapes-2.0,1888.0,assigned,True,measured,False,False,stable_confirmed,-0.12,vintage 1888 faithful to period 1888-1891,0
 KEN-1891-1894,Kenya (1891-1894),1891,1894,cshapes-2.0,1891.0,assigned,True,measured,False,False,stable_confirmed,0.01,vintage 1891 faithful to period 1891-1894,0

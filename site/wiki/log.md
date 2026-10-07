@@ -26,6 +26,32 @@ Kinds:
 
 ---
 
+## decision-karafuto-cells-off-russia
+**Date:** 2026-10-07
+**Touched:** KAR-1905-1945, F228-1914-1917, F228-1917-1918, F228-1918-1920, F228-1920-1921,
+F228-1921-1940, JPN-1895-1945 (data routing and page text only; no polity row, date or polygon changed)
+**Source:** none
+**Kind:** decision
+
+**Layer B filed IIA's Karafuto Prefecture under `russian federation`, and now Karafuto has a
+polity.** [Issue 422](https://github.com/eduaguilera/whep-polities/issues/422) showed that layer-B
+iia `russian federation` carries raw `japan: karafuto prefecture` values. In 1918 they are the whole
+Russian record: rye reads 7 ha against 9,993,626 in 1917. PR 707 created
+[kar-1905-1945](polities/kar-1905-1945.md). Nine rules in `data/final/source_label_item_corrections.csv`
+now relabel the 21 cells that are Karafuto's figure alone to it. These are rapeseed 1914, 1917-1918,
+1920 and 1922, yarn of true hemp 1916-1918, flax, hemp and rye 1918, and eggs 1931-1935. For those
+cells the raw Russian labels have no row. Before and after a re-run of stage 01, exactly 21 rows
+change polity (F228-1914-1917 3, F228-1917-1918 3, F228-1918-1920 8, F228-1920-1921 1,
+F228-1921-1940 6) and the value total is unchanged. F228-1918-1920 is left with no layer-B rows,
+which matches the source.
+
+Karafuto's value is also summed inside 44 more Russian cells. A relabel cannot split those, so they
+stay where they are; the largest share is 0.43%, and `data_errors.csv` counts them. The Japanese
+Empire's constructed polygon does not contain southern Sakhalin, although its CSV note says it does.
+This is recorded on [jpn-1895-1945](polities/jpn-1895-1945.md) and listed as polygon work in issue 422.
+
+Signed off by: Claude (Claude Code), issue 422; pending review in its pull request.
+
 ## ingest-harmonize-audit-polities
 **Date:** 2026-10-01
 **Touched:** MYS-JHR-1909-1946, MYS-KDH-1909-1946, MYS-KTN-1909-1946, MYS-PLS-1909-1946, MYS-TRG-1909-1946, MYS-PRK-1909-1946, MYS-SGR-1909-1946, MYS-NSN-1909-1946, MYS-PHG-1909-1946, MYS-PNG-1826-1946, MYS-MLK-1826-1946, MYS-LBN-1907-1946, COD-LEO-1933-1962, KWA-1905-1945, NGA-N-1914-1961, NGA-S-1914-1967, GNG-1900-1920, GEI-1892-1916, BIH-1878-1918, CZE-CL-1918-1938, CZE-CL-1938-1945, CZE-CL-1945-1993, IDN-JVM-1800-1949, IDN-BLB-1800-1949, CHT-1949-1950, CHT-1950-2025, IDN-JAV-1800-1949, IDN-MAD-1800-1949, IDN-BAL-1800-1949, IDN-LOM-1800-1949

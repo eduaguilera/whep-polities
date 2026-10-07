@@ -45,6 +45,7 @@ from __future__ import annotations
 
 import argparse
 import collections
+import itertools
 import pandas as pd
 import csv
 import os
@@ -1754,13 +1755,60 @@ def check_russia_1918_is_karafuto(ctx):
         if (int(y), float(v)) in pairs)
     ranked = take.most_common()
     second = ranked[1][1] if len(ranked) > 1 else 0
+    # REMEDY (2026-10-07, issue 422). The 21 cells that are Karafuto's figure ALONE are relabelled to
+    # KAR-1905-1945 by source_label_item_corrections.csv; the layer-B cells that hold a Russian sum WITH
+    # Karafuto's figure inside it cannot be relabelled (moving the row would move Russia), so they are
+    # counted here. A cell is SUMMED when its value minus a Karafuto value equals a non-empty subset sum
+    # of the raw Russian rows of that (product, variable, year); SUBSTITUTED when it equals a Karafuto
+    # value and no such Russian subset sum.
+    item_of = {("rye", "area"): ("rye", "ha"), ("rye", "production"): ("rye", "tonnes"),
+               ("rapeseed", "area"): ("rapeseed", "ha"),
+               ("rapeseed", "production"): ("rapeseed", "tonnes"),
+               ("hemp", "area"): ("hemp tow waste", "ha"),
+               ("hemp: fibre", "production"): ("yarn of true hemp", "tonnes"),
+               ("flax", "area"): ("flax fibre and tow", "ha"),
+               ("flax: fibre", "area"): ("flax fibre and tow", "ha"),
+               ("flax: fibre", "production"): ("flax fibre and tow", "tonnes"),
+               ("eggs", "production"): ("eggs, hen, in shell", "tonnes"),
+               ("soybean", "area"): ("soybeans", "ha"),
+               ("soybean", "production"): ("soybeans", "tonnes")}
+    rus_labels = ["russia", "russia in asia", "russia in europe", "ussr", "ussr in europe",
+                  "ussr in asia", "ussr: transcaucasian sfsr"]
+    rus = r[r["_c"].isin(rus_labels) & r["value"].notna()]
+    lbru = lb[(lb["source"] == "iia") & (lb["country"].str.lower() == "russian federation")
+              & lb["year"].notna()]
+    substituted = summed = 0
+    for (p, v, y), g in kara[kara["y_"].notna()].groupby(["_p", "_v", "y_"]):
+        if (p, v) not in item_of:
+            continue
+        item, unit = item_of[(p, v)]
+        cell = lbru[(lbru["item"] == item) & (lbru["unit"] == unit) & (lbru["year"] == int(y))]
+        if cell.empty:
+            continue
+        val = float(cell["value"].iloc[0])
+        parts = list(rus[(rus["_p"] == p) & (rus["_v"] == v) & (rus["y_"] == y)]["value"].astype(float))
+        subs = {round(sum(c), 2) for n in range(1, len(parts) + 1)
+                for c in itertools.combinations(parts, n)}
+        kv = set(g["value"].astype(float))
+        if any(abs(val - x - s) < 0.05 for x in kv for s in subs):
+            summed += 1
+        elif val in kv:
+            substituted += 1
+    on_kar = None
+    if ctx.get("matched") is not None:
+        m = ctx["matched"]
+        on_kar = int(((m["source"] == "iia") & (m["source_label_raw"] == "russian federation")
+                      & (m["whep_code"] == "KAR-1905-1945")).sum())
     return ([("layer B russian rows at 1918", len(lb18), 8),
              ("  matching a Karafuto value", matched, 8),
              ("raw Russian rows at 1918", len(ru1918), 0),
              ("Karafuto dated pairs", len(pairs), 73),
              ("  taken by `russian federation`", take.get("russian federation", 0), 21),
-             ("  taken by the next label", second, 2)],
-            "nothing competed for 1918, and the misrouting is general beyond it")
+             ("  taken by the next label", second, 2),
+             ("russian cells that are Karafuto alone", substituted, 21),
+             ("  of which routed to KAR-1905-1945", on_kar, 21),
+             ("russian cells with Karafuto summed inside", summed, 44)],
+            "the 21 substituted cells are relabelled to Karafuto; the 44 summed cells stay, too small to move")
 
 
 def check_china_groundnut_audit(ctx):
