@@ -105,8 +105,11 @@ MATCHED = os.path.join(REPO, "pipelines/polity-autoimprove/state/matched_rows.pa
 # area 1909-1933 (10), groundnut output 1909-1913 and 1928-1932 (1 + 1) and sesame area 1925-1933 (6). Four of
 # the five are scoped (ha / tonnes) because the same key's other unit holds China + Kwantung SUMS, which stay
 # (data_errors.csv iia-china-mainland-kwantung-summed-cells); BASELINE_SCOPED_RULES 4 -> 8.
-BASELINE_RULES = 65
-BASELINE_ROWS = 927
+# 65/927 -> 74/948 on 2026-10-07 (issue 422, Claude): iia `russian federation` cells that are raw `japan:
+# karafuto prefecture` alone -- rapeseed 1914/1917-1918/1920/1922, yarn of true hemp 1916-1918, flax, hemp and
+# rye 1918, eggs 1931-1935 (9 rules, 21 rows -> KAR-1905-1945). Unscoped, so BASELINE_SCOPED_RULES is unchanged.
+BASELINE_RULES = 74
+BASELINE_ROWS = 948
 BASELINE_SCOPED_RULES = 8
 
 # Units a scope may name, per source: layer B's own `unit` vocabulary, measured 2026-09-25 over
