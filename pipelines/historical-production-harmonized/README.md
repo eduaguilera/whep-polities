@@ -30,6 +30,15 @@ Optional arguments:
 Rscript build.R <raw_layer_b_parquet> <matched_rows_parquet> <output_dir>
 ```
 
+## Value-Scale Corrections
+
+`matched_rows.parquet` carries a per-row `value_divisor` (whep-polities issue 416), 1 except where
+`data/final/source_value_scale_corrections.csv` says the source printed a block in another unit --
+iia tobacco and hops production 1934-1945 (/100) and hops area 1934-1938 (/10). The build divides
+`value` by it and refuses a matches file without the column, which would otherwise publish those
+cells at 100x. Re-run `pipelines/polity-autoimprove/01_match_and_findings.py` after changing the
+table.
+
 ## Constant-Territory Smoke Runs
 
 The example in `examples/austria_wheat_constant_territory_smoke.R` compares

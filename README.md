@@ -124,6 +124,7 @@ python3 scripts/validate_area_convention.py  # projected vs geodesic: one conven
 python3 scripts/validate_cross_source_agreement.py  # two publishers on one polity: every big disagreement is a recorded defect
 python3 scripts/validate_ocr_corrections.py  # tabled OCR label fixes are still needed, and still route
 python3 scripts/validate_label_item_corrections.py  # item-scoped relabels (issue 675; optional unit/indicator scope, issue 688): unambiguous, needed, and landing on a live polity
+python3 scripts/validate_value_scale_corrections.py  # value-scale rules (issue 416): iia tobacco/hops 1934-1945 divided by a power of ten; rules pinned in full, siblings re-measured where layer B is present
 python3 scripts/validate_shared_polygons.py
 python3 scripts/validate_coexisting_overlaps.py   # partial overlap: every substantial one classified, the sliver tail pinned
 python3 scripts/validate_polygon_period_fit.py

@@ -3688,6 +3688,97 @@ def check_germany_oats_area_1949(ctx):
     return out, "a 1949 area cell ~18x the zone's own 1950 figure, carried into the Germany total"
 
 
+def check_iia_tobacco_hops_late_volume_scale(ctx):
+    """The value-scale rules for the IIA late volumes, and the sums they change (issue 416).
+
+    data/final/source_value_scale_corrections.csv divides iia tobacco and hops production 1934-1945 by
+    100 and hops area 1934-1938 by 10, on DATED rows, with `ivory coast` tobacco exempt. This pins
+    what that does to the panel and the evidence the rules stand on, measured on the rows themselves:
+
+      * rows divided per rule, and the printed and divided SUMS -- the published quantity, which is
+        what a rule that drifted would move;
+      * the paired-area yield test: tobacco cells inside 0.2-3.0 t/ha as printed and after division;
+      * the AREA control -- tobacco area agrees with its same-year juan/mitchell sibling as printed,
+        which is why only production is divided;
+      * the hops-area EDGE: iia_1939_45 prints hops area in plain hectares, equal to juan on every
+        1939-1945 cell with a sibling, which is why the area rule stops at 1938;
+      * the era table's dated rows: every convicted one is divided, and the undivided ones are
+        exactly ivory coast's `plausible_yield` rows;
+      * the one divided cell no sibling confirms, czech republic hops 1944 (46,100 printed, juan
+        3,461): a dropped leading digit on top of the unit.
+    """
+    import importlib
+    sys.path.insert(0, HERE)
+    matchlib = importlib.import_module("matchlib")
+    rules = matchlib.load_value_scale_corrections(
+        os.path.join(REPO, "data/final/source_value_scale_corrections.csv"))
+    lb = ctx["panel"]
+    lb = lb[~lb["is_aggregate"].fillna(False).astype(bool)]
+    div, per_rule = matchlib.value_scale_divisors(lb, rules)
+    claims = []
+    names = ("tobacco t", "hops t", "hops ha")
+    for k, r in enumerate(rules):
+        hit = div == float(r["div"])
+        hit &= (lb["item"] == r["item"]) & (lb["unit"] == r["unit"])
+        claims += [(f"{names[k]}: rows divided", per_rule[k], int(r["observed_rows"])),
+                   (f"{names[k]}: printed sum", int(round(lb.loc[hit, "value"].sum())),
+                    {0: 190_615_800, 1: 8_761_500, 2: 726_000}[k]),
+                   (f"{names[k]}: divided sum", int(round((lb.loc[hit, "value"] / div[hit]).sum())),
+                    {0: 1_906_158, 1: 87_615, 2: 72_600}[k])]
+    # Paired-area yield, tobacco 1934-1945 dated, keyed on the layer-B label.
+    yr = pd.to_numeric(lb["year"], errors="coerce")
+    tob = lb[(lb["source"] == "iia") & (lb["item"] == "tobacco, unmanufactured") & (yr >= 1934)]
+    prod = tob[tob["unit"] == "tonnes"].assign(d=div, y=yr)
+    area = tob[tob["unit"] == "ha"].assign(y=yr).groupby(["country", "y"])["value"].mean().rename("a")
+    pa = prod.join(area, on=["country", "y"])
+    pa = pa[pa["a"] > 0]
+    claims += [("tobacco cells with a paired area", len(pa), 164),
+               ("  of those plausible as printed", int(((pa["value"] / pa["a"]).between(0.2, 3.0)).sum()), 9),
+               ("  of those plausible divided", int(((pa["value"] / pa["d"] / pa["a"]).between(0.2, 3.0)).sum()), 152)]
+    m = ctx["matched"]
+    if m is None:
+        return None
+    m = m.assign(yr_=pd.to_numeric(m["year"], errors="coerce"))
+    lab = "source_label_raw" if "source_label_raw" in m.columns else "country"
+    md, _ = matchlib.value_scale_divisors(m, rules, label_col=lab)
+    m = m.assign(d=md)
+    sib = m[m["source"].isin(["juan", "mitchell"]) & m["yr_"].notna() & m["whep_code"].notna()]
+
+    def joined(item, unit, y0, y1):
+        b = m[(m["source"] == "iia") & (m["item"] == item) & (m["unit"] == unit)
+              & m["yr_"].between(y0, y1) & m["whep_code"].notna()]
+        s = (sib[(sib["item"] == item) & (sib["unit"] == unit)]
+             .groupby(["whep_code", "yr_"])["value"].median().rename("s").reset_index())
+        j = b.merge(s, on=["whep_code", "yr_"])
+        return j[j["s"] > 0]
+
+    ta = joined("tobacco, unmanufactured", "ha", 1934, 1945)
+    edge = joined("hops", "ha", 1939, 1945)
+    cz = joined("hops", "tonnes", 1944, 1944)
+    cz = cz[cz[lab] == "czech republic"]
+    claims += [("tobacco AREA cells with a sibling", len(ta), 18),
+               ("  of those equal as printed", int((ta["value"] == ta["s"]).sum()), 18),
+               ("hops area 1939-1945 with a sibling", len(edge), 8),
+               ("  of those equal, undivided", int(((edge["value"] == edge["s"]) & (edge["d"] == 1)).sum()), 8),
+               ("czech hops 1944 printed", int(cz["value"].iloc[0]) if len(cz) else None, 46_100),
+               ("czech hops 1944 juan", int(cz["s"].iloc[0]) if len(cz) else None, 3_461)]
+    era = [r for r in ctx["era"] if (r.get("year") or "").strip()]
+    key = {(r["label"], r["item"], int(float(r["year"]))): r for r in era}
+    dated = lb[(lb["source"] == "iia") & (lb["unit"] == "tonnes") & yr.notna()]
+    dmap = {(c, i, int(y)): d for c, i, y, d in zip(dated["country"], dated["item"], yr[dated.index],
+                                                     div[dated.index])}
+    conv = [k for k, r in key.items() if r["convicted"] == "True"]
+    undiv = [k for k in key if dmap.get(k) == 1.0]
+    claims += [("era dated rows", len(key), 328),
+               ("  convicted, all divided", sum(1 for k in conv if dmap.get(k) == 100.0), 266),
+               ("  convicted left undivided", sum(1 for k in conv if dmap.get(k) != 100.0), 0),
+               ("  undivided = ivory coast plausible",
+                sum(1 for k in undiv if k[0] == "ivory coast" and key[k]["verdict"] == "plausible_yield"), 9),
+               ("  undivided in all", len(undiv), 9)]
+    return (claims, "three rules divide 339 rows; tobacco 190.6 Mt -> 1.91 Mt over 1934-1945, and "
+                    "the convicted dated rows are exactly the divided ones bar ivory coast")
+
+
 CHECKS = {
     "mmr-1885-1889-rice-area-is-lower-burma": check_mmr_1885_1889_lower_burma,
     "vnm-1955-1960-rice-maize-output-is-north-plus-south": check_vnm_1955_1960_output_north_plus_south,
@@ -3731,6 +3822,7 @@ CHECKS = {
     "layerb-nested-reporting-levels-one-polity": check_nested_reporting_levels,
     "iia-layerb-magnitude-scale-inconsistent": check_iia_scale_is_common,
     "iia-hops-x100": check_hops_x100_and_area_x10,
+    "iia-tobacco-hops-late-volume-unit-scale": check_iia_tobacco_hops_late_volume_scale,
     "fao1952-hemp-germany-label-glued": check_hemp_germany_glued,
     "iia-item-series-switch-raw-products": check_item_product_switches,
     "mitchell-flax-fibre-area-is-linseed": check_mitchell_flax_is_linseed,

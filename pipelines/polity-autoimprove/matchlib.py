@@ -370,6 +370,78 @@ def apply_label_item_corrections(df, rules, label_col="country", iso_col="iso3c"
     return out, hit_any, per_rule
 
 
+# VALUE-SCALE CORRECTIONS (issue 416). A source whose printed UNIT changed between editions carries
+# a whole (item, unit, years) block at the wrong power of ten: iia tobacco and hops PRODUCTION are
+# 100x from 1934 (both late volumes), hops AREA 10x in 1934-1938 (iia_1938_39 only). That is a
+# property of a volume's column, not of a cell, so it is one rule per block rather than one row per
+# cell. The rule NEVER rewrites `value`: every diagnostic in this repository (29_, 41_, the era and
+# edition tables) convicts the published number, and would stop seeing the defect it pins. It yields
+# a per-row DIVISOR that matched_rows.parquet carries beside the value, and the harmonized build
+# (pipelines/historical-production-harmonized/build.R) divides by it. Table:
+# data/final/source_value_scale_corrections.csv; gate: scripts/validate_value_scale_corrections.py.
+VALUE_SCALE_CORRECTION_COLUMNS = (
+    "source", "item", "unit", "year_start", "year_end", "divisor", "exempt_labels",
+    "observed_rows", "issue", "evidence",
+)
+
+
+def load_value_scale_corrections(path):
+    """Read data/final/source_value_scale_corrections.csv into rule dicts.
+
+    Raises on a missing file, a wrong header, a blank key, an unbounded or inverted year range, or a
+    divisor that is not a power of ten above 1: the defect this table exists for is a unit change,
+    and a fitted factor (68x, 9.88x) typed here would publish a guess as a correction."""
+    if not path or not os.path.exists(path):
+        raise FileNotFoundError(f"tracked value-scale correction table missing: {path}")
+    with open(path, newline="", encoding="utf-8") as fh:
+        reader = csv.DictReader(fh)
+        if tuple(reader.fieldnames or ()) != VALUE_SCALE_CORRECTION_COLUMNS:
+            raise ValueError(f"{path}: header {reader.fieldnames} != "
+                             f"{list(VALUE_SCALE_CORRECTION_COLUMNS)}")
+        rules = []
+        for i, r in enumerate(reader, start=2):
+            for col in ("source", "item", "unit", "divisor", "observed_rows", "issue", "evidence"):
+                if not (r.get(col) or "").strip():
+                    raise ValueError(f"{path}:{i}: empty `{col}`")
+            y0, y1 = _yr(r.get("year_start")), _yr(r.get("year_end"))
+            if y0 is None or y1 is None or y0 > y1:
+                raise ValueError(f"{path}:{i}: year range must be bounded and ordered, "
+                                 f"got {r.get('year_start')!r}-{r.get('year_end')!r}")
+            d = _yr(r.get("divisor"))
+            if d is None or d < 10 or str(d) != "1" + "0" * (len(str(d)) - 1):
+                raise ValueError(f"{path}:{i}: divisor {r.get('divisor')!r} is not a power of ten "
+                                 "above 1")
+            exempt = tuple(x.strip() for x in (r.get("exempt_labels") or "").split(";") if x.strip())
+            rules.append({**r, "y0": y0, "y1": y1, "div": d, "exempt": exempt})
+    return rules
+
+
+def value_scale_divisors(df, rules, label_col="country"):
+    """Per-row divisor (1.0 where no rule applies) for a layer-B-shaped frame.
+
+    Returns (Series of divisors, {rule index: rows hit}). DATED ROWS ONLY: a period average cannot be
+    assigned a volume by its years (`1928-1932` is printed by the inflated iia_1938_39), and the
+    harmonized build drops period rows anyway. `label_col` must hold the label AS LAYER B PRINTS IT
+    -- the exemptions name source labels, not the corrected ones. Two rules hitting one row raise,
+    because file order must never decide a factor."""
+    years = pd.to_numeric(df["year"], errors="coerce")
+    div = pd.Series(1.0, index=df.index)
+    hit_any = pd.Series(False, index=df.index)
+    per_rule = {}
+    for k, ru in enumerate(rules):
+        m = ((df["source"] == ru["source"]) & (df["item"] == ru["item"])
+             & (df["unit"] == ru["unit"]) & years.notna()
+             & (years >= ru["y0"]) & (years <= ru["y1"]))
+        if ru["exempt"]:
+            m &= ~df[label_col].isin(ru["exempt"])
+        if (m & hit_any).any():
+            raise ValueError(f"value-scale correction rule {k} overlaps an earlier rule")
+        div.loc[m] = float(ru["div"])
+        hit_any |= m
+        per_rule[k] = int(m.sum())
+    return div, per_rule
+
+
 class Matcher:
     """Deterministic candidate resolver over the polities DB + alias tables.
 

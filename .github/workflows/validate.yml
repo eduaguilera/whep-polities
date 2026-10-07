@@ -875,6 +875,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_label_item_corrections.py
 
+      - name: Value-scale corrections are the adjudicated rules, and their sibling sources agree
+        if: '!cancelled()'
+        run: python3 scripts/validate_value_scale_corrections.py
+
       - name: Wiki pages only name things that exist
         if: '!cancelled()'
         run: python3 scripts/validate_references.py

@@ -145,6 +145,14 @@ CSV_CONTRACT = {
         "source", "source_label", "item", "year_start", "year_end", "unit", "indicator",
         "correct_label", "polity_code", "observed_rows", "issue", "evidence",
     ],
+    # Added with the table itself (issue 416). Pinned because a consumer APPLIES it: it divides
+    # the rows keyed on `source`/`item`/`unit`/`year_start`/`year_end` (minus `exempt_labels`) by
+    # `divisor`, and a renamed key column makes that filter match nothing and silently publish the
+    # 1934-1945 iia tobacco block at 100x again.
+    "data/final/source_value_scale_corrections.csv": [
+        "source", "item", "unit", "year_start", "year_end", "divisor", "exempt_labels",
+        "observed_rows", "issue", "evidence",
+    ],
     # Renamed by issue 95: `original_name` -> `source_label`, `target_polity_code` ->
     # `polity_code`, `rows` -> `observed_rows`. These are pipeline-internal registries,
     # not a published contract, so they could be unified now; `data/final/` could not.

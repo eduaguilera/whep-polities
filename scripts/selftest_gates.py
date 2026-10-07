@@ -3332,6 +3332,30 @@ def _rewrite_label_item_corrections(root, edit):
         w.writerows(rows)
 
 
+def mutate_value_scale_rule_widened(root, gpd, make_valid, affinity):
+    """Stretch the hops-AREA value-scale rule from 1938 to 1945 (issue 416).
+
+    The x10 on hops area is iia_1938_39's alone: iia_1939_45 prints plain hectares, equal to juan on
+    all 8 cells with a sibling. A widened rule divides those 8 correct cells by ten -- and every count
+    the table carries stays the same in CI, since `observed_rows` is the table's own number. Only the
+    pin on the adjudicated rule in full can refuse it there.
+    """
+    import csv as _csv
+    path = os.path.join(root, "data/final/source_value_scale_corrections.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        reader = _csv.DictReader(fh)
+        fields = list(reader.fieldnames)
+        rows = list(reader)
+    hit = [r for r in rows if r["item"] == "hops" and r["unit"] == "ha"]
+    assert hit and hit[0]["year_end"] == "1938", "the hops-area rule moved -- pick another rule"
+    hit[0]["year_end"] = "1945"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(rows)
+    return "widened the iia hops-area /10 rule from 1934-1938 to 1934-1945, over iia_1939_45's plain hectares"
+
+
 def mutate_label_item_correction_wrong_polity(root, gpd, make_valid, affinity):
     """Record the wrong `polity_code` on the fao1952 `New Guinea` use-total rule (issue 675).
 
@@ -6628,6 +6652,13 @@ CASES = (
         "and the right size, and the row simply lands on a different unresolved label",
     ),
     (
+        "validate_value_scale_corrections.py",
+        mutate_value_scale_rule_widened,
+        "differs from the adjudicated set",
+        "a value-scale rule widened past the volume that carries the defect -- every count in the "
+        "table unchanged, eight sibling-confirmed cells divided by ten",
+    ),
+    (
         "validate_label_item_corrections.py",
         mutate_label_item_correction_wrong_polity,
         "the relabel and the published polity_code disagree",
@@ -7671,6 +7702,12 @@ WRITABLE = {
     # Both mutations rewrite the correction table; the gate re-resolves every relabel through
     # matchlib and the alias registry, and imports extdata to find layer B (absent in CI, where
     # arms E/F SKIP by name; present on a maintainer's machine, where they run in the scratch too).
+    # The table is mutated; the gate imports matchlib (loader, divisors) and extdata (layer B path).
+    "validate_value_scale_corrections.py": (
+        "source_value_scale_corrections.csv",
+        "pipelines/polity-autoimprove/matchlib.py",
+        "pipelines/polity-autoimprove/extdata.py",
+    ),
     "validate_label_item_corrections.py": (
         "polities_database.csv",
         "source_label_item_corrections.csv",

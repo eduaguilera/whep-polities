@@ -380,6 +380,14 @@ LABEL_ITEM_CORRECTIONS = os.path.join(
 )
 
 
+# Value-scale corrections (issue 416). Tracked repo data like the two tables above; the loader is
+# matchlib.load_value_scale_corrections, for the same reason.
+VALUE_SCALE_CORRECTIONS = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "data/final/source_value_scale_corrections.csv",
+)
+
+
 def load_ocr_corrections(path: str | None = None):
     """Load the tabled OCR spelling corrections as {(source, ocr_label): correct_label}.
 
