@@ -160,6 +160,12 @@ CSV_CONTRACT = {
         "source", "item", "unit", "year_start", "year_end", "divisor", "exempt_labels",
         "observed_rows", "issue", "evidence", "labels", "volume",
     ],
+    # Added with the table itself (issue 375). Pinned because a consumer APPLIES it: it drops the
+    # rows keyed on `source`/`item`/`unit`, and a renamed key column makes that filter match nothing
+    # and silently publish iia spelt-and-meslin as wheat again.
+    "data/final/source_item_withholds.csv": [
+        "source", "item", "unit", "observed_rows", "issue", "evidence",
+    ],
     # Renamed by issue 95: `original_name` -> `source_label`, `target_polity_code` ->
     # `polity_code`, `rows` -> `observed_rows`. These are pipeline-internal registries,
     # not a published contract, so they could be unified now; `data/final/` could not.

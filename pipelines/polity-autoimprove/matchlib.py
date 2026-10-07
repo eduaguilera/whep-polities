@@ -579,6 +579,60 @@ def value_precision(df, table, label_col="source_label_raw"):
     out["value_grid"] = pd.concat([out["series_grid"], vg], axis=1).max(axis=1, skipna=True)
     return out[list(PRECISION_COLUMNS)]
 
+# ITEM WITHHOLDS (issue 375). Some layer-B items are not the commodity they are named for, and no
+# single re-labelling recovers the right one: iia `wheat` is spelt and meslin cell by cell (the raw IIA
+# extract has ZERO wheat production or area rows -- only trade), and iia `other sugar crops n.e.c.` is
+# citrus (the extract has no sugar crop besides beet and cane). Published under the FAO item code layer B
+# gives them, they sit beside every other source's real wheat and are AVERAGED with it on the consumer's
+# (polity, item, unit, year) key. A withhold is the remedy for an item whose correct series in this source
+# is EMPTY: the rows stay in layer B and matched_rows.parquet (every diagnostic still sees them), carry
+# `item_withheld = True`, and the harmonized build drops them. One rule per (source, item, unit). Table:
+# data/final/source_item_withholds.csv; gate: scripts/validate_item_withholds.py, which also requires every
+# rule to rest on an item whose raw products are ALL `defect` in state/item_equivalences.csv.
+ITEM_WITHHOLD_COLUMNS = ("source", "item", "unit", "observed_rows", "issue", "evidence")
+
+
+def load_item_withholds(path):
+    """Read data/final/source_item_withholds.csv into rule dicts.
+
+    Raises on a missing file, a wrong header, a blank cell, a non-positive `observed_rows`, or a
+    duplicated (source, item, unit): the table is applied as a filter, and a rule that cannot be read
+    must not be read as "withhold nothing"."""
+    if not path or not os.path.exists(path):
+        raise FileNotFoundError(f"tracked item-withhold table missing: {path}")
+    with open(path, newline="", encoding="utf-8") as fh:
+        reader = csv.DictReader(fh)
+        if tuple(reader.fieldnames or ()) != ITEM_WITHHOLD_COLUMNS:
+            raise ValueError(f"{path}: header {reader.fieldnames} != {list(ITEM_WITHHOLD_COLUMNS)}")
+        rules, seen = [], set()
+        for i, r in enumerate(reader, start=2):
+            for col in ITEM_WITHHOLD_COLUMNS:
+                if not (r.get(col) or "").strip():
+                    raise ValueError(f"{path}:{i}: empty `{col}`")
+            n = r["observed_rows"].strip()
+            if not n.isdigit() or int(n) <= 0:
+                raise ValueError(f"{path}:{i}: observed_rows {n!r} is not a positive count")
+            key = (r["source"], r["item"], r["unit"])
+            if key in seen:
+                raise ValueError(f"{path}:{i}: duplicate rule {key}")
+            seen.add(key)
+            rules.append(dict(r))
+    return rules
+
+
+def item_withheld(df, rules):
+    """Per-row withhold flag for a layer-B-shaped frame, and {rule index: rows hit}.
+
+    Keyed on (source, item, unit) as layer B prints them, dated AND period rows alike: the defect is
+    the item's identity, which does not depend on whether a row carries a year."""
+    flag = pd.Series(False, index=df.index)
+    per_rule = {}
+    for k, ru in enumerate(rules):
+        m = (df["source"] == ru["source"]) & (df["item"] == ru["item"]) & (df["unit"] == ru["unit"])
+        flag |= m
+        per_rule[k] = int(m.sum())
+    return flag, per_rule
+
 
 class Matcher:
     """Deterministic candidate resolver over the polities DB + alias tables.

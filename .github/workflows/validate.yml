@@ -908,6 +908,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_value_scale_corrections.py
 
+      - name: Item withholds are the adjudicated rules, and cover every all-defect registry item
+        if: '!cancelled()'
+        run: python3 scripts/validate_item_withholds.py
+
       - name: Wiki pages only name things that exist
         if: '!cancelled()'
         run: python3 scripts/validate_references.py

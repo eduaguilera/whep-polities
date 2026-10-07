@@ -478,6 +478,21 @@ if (!all(c("value_grid", "source_grid_verdict") %in% names(matches))) {
   )
 }
 
+# ITEM WITHHOLDS (whep-polities issue 375). matched_rows.parquet carries a per-row `item_withheld`:
+# TRUE where data/final/source_item_withholds.csv says the item is not the commodity it is named for
+# and no single relabel recovers it -- iia `wheat` is spelt and meslin (the raw IIA extract has no wheat
+# production or area at all), iia `other sugar crops n.e.c.` is citrus. Published under FAO item 15,
+# iia `wheat` contested 68 keys with juan's real wheat at a median 100x below it, so the resolver
+# withheld them all; dropped here, before the resolver, juan's figure is published. Those rows are
+# dropped below. A matches file without the column predates the table and would
+# publish them again, so it is refused.
+if (!"item_withheld" %in% names(matches)) {
+  stop(
+    "matched rows carry no `item_withheld`; re-run ",
+    "pipelines/polity-autoimprove/01_match_and_findings.py"
+  )
+}
+
 base <- dplyr::bind_cols(
   layer_b |>
     dplyr::rename(
@@ -489,7 +504,7 @@ base <- dplyr::bind_cols(
     ),
   matches |>
     dplyr::select(
-      "whep_code", "value_divisor", "value_grid", "source_grid_verdict",
+      "whep_code", "value_divisor", "value_grid", "source_grid_verdict", "item_withheld",
       dplyr::any_of("match_method")
     )
 ) |>
@@ -520,6 +535,7 @@ base <- dplyr::bind_cols(
     !is.na(.data$unit),
     !is.na(.data$whep_code),
     !is.na(.data$value),
+    !.data$item_withheld,
     # PERIOD AVERAGES ARE EXCLUDED HERE, and this is the largest single exclusion
     # the build makes: 9,865 valued layer-B rows (5.12%) carry a period label
     # like `1934-1938` instead of a year -- iia 6,163, fao1952 3,702, across

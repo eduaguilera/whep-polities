@@ -83,6 +83,27 @@ single-source groups); 1,451 retained keys change value, median ratio 1.001
 and meslin, Czechoslovak beans that are one component, Mitchell's Japanese "rye", ...). The other
 120 are recorded only in the baseline and are open defects.
 
+## Item Withholds
+
+`matched_rows.parquet` also carries `item_withheld` (whep-polities issue 375), TRUE where
+`data/final/source_item_withholds.csv` says a source's item is not the commodity it is named for and
+no single relabel recovers it: iia `wheat` is spelt and meslin (the IIA extract has no wheat
+production or area at all), iia `other sugar crops n.e.c.` is citrus. The build drops those rows and
+refuses a matches file without the column.
+
+The item withhold runs BEFORE the resolver above, and it changes what that resolver sees. iia `wheat`
+used to contest 68 keys with juan's real wheat at a median 100x below it, so all 68 were withheld as
+contradictions (they were 68 of the 256 above); 9 more keys had iia alone and published spelt and
+meslin as wheat. Measured on the 2026-10-07 panel, with only `item_withheld` toggled:
+
+```
+keys 141,718 -> 141,721: 65 leave (9 iia wheat, 56 iia other sugar crops), 68 return with juan's
+wheat; no other key changes value. Withheld keys 256 -> 188.
+          before             after
+ha        33,033,610,621     33,076,687,597     +43,076,976 = +43,995,600 juan wheat - 918,624 iia rows
+tonnes    67,629,287,398     67,686,057,212     +56,769,814 = +57,321,350 juan wheat - 551,536 iia rows
+```
+
 ## Constant-Territory Smoke Runs
 
 The example in `examples/austria_wheat_constant_territory_smoke.R` compares
