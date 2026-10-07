@@ -20,6 +20,21 @@ The second was found by exactly this check, run by hand, which is why it now exi
 Note what neither an ISO check nor a polygon check would have caught: the Canaries' `iso3` and
 geometry were both fine.
 
+A SECOND check (issue 653) asks a different question: does the code belong to the row's own
+country at all? `data/external/cow_state_system.csv` gives every COW code its iso3, so a row whose
+`iso3_code` differs from its code's iso3 is either one of the deliberate cases below or a wrong
+value. Three rows were wrong and nothing noticed: IDN-1800-1889 and IDN-1889-1945 carried 750
+(India) and NNI-1899-1904 / NNI-1904-1913 carried 385 (Norway). The collision check above could
+not see them -- the Norway one hid among the baselined shares, the Indonesia ones sat on superseded
+rows it skips -- and the polygon pipeline never reads the column, so they corrupted nothing until
+a join on it (#651) landed on the wrong country.
+
+The deliberate mismatches are baselined in ISO3_BASELINE, each with its reason: a row whose iso3
+is a historical entity name COW files under its successor (OTT/TUR, YUG/SRB, SUN/RUS), or a
+dependent territory that carries its metropole's code (FRIN/FRA, ITAEG/ITA). The set may not
+grow, and it may not hold an entry that has since been fixed. Rows with no iso3, and codes COW
+files under no iso3 ("NA", e.g. East Germany 265), cannot be tested and are skipped.
+
 Usage:
   python3 scripts/validate_cow_codes.py
 """
@@ -50,8 +65,8 @@ BASELINE = frozenset({
     # MNE pair removed 2026-08-05: MNE-1913-1915 is retired (issue 62).
 
     ("380", "SNW-1814-1905", "SWE-1814-1905"),
-    ("385", "NOR-1800-2025", "NNI-1899-1904"),
-    ("385", "NOR-1800-2025", "NNI-1904-1913"),
+    # NOR/NNI pairs removed (issue 653): NNI-1899-1904 and NNI-1904-1913 carried 385, which is
+    # Norway's. They now carry 475, Nigeria's -- the code NGA-1914-1960 already uses.
     # Renamed 2026-08-17 (issue 252): GHA-1898-1956 -> GHA-1898-1957, when the row's exclusive
     # end_year moved 1956 -> 1957 to cover the 1956 hole. The shared cow 452 is unchanged, and so
     # is the reason -- GCT-1919-1956 is the Gold-Coast-plus-Togoland reporting aggregate, which
@@ -89,6 +104,52 @@ BASELINE = frozenset({
     ("750", "HYD-1724-1948", "IND-1914-1937"),
     ("750", "HYD-1724-1948", "IND-1937-1947"),
     ("750", "HYD-1724-1948", "IND-1947-1949"),})
+
+COW_STATES = os.path.join(REPO, "data/external/cow_state_system.csv")
+
+# (polity_code, cow_code) for every row whose iso3_code differs from the iso3 COW files its code
+# under, and is correct anyway. Generated from the database, not hand-listed.
+ISO3_BASELINE = frozenset({
+    # Soviet Union and Yugoslavia: COW 365 is "Russia/USSR" and 345 "Yugoslavia/Serbia", filed under
+    # the successor iso3 (RUS, SRB); the rows carry the historical entity's own iso3.
+    ("F228-1921-1940", "365"), ("F228-1940-1945", "365"), ("F228-1945-1991", "365"),
+    ("F248-1918-1919", "345"), ("F248-1919-1920", "345"), ("F248-1920-1947", "345"),
+    ("F248-1920-1991", "345"), ("F248-1947-1991", "345"), ("F248-1991-1992", "345"),
+    ("SER-1878-1913", "345"),
+    # Ottoman Empire: COW 640 is Turkey throughout.
+    ("OTT-1800-1886", "640"), ("OTT-1886-1908", "640"), ("OTT-1908-1912", "640"),
+    # Pre-unification Italian states and Sweden-Norway's Swedish half: COW has no code for the
+    # pre-1861 states, so Sardinia carries Italy's 325; SNW carries Sweden's 380.
+    ("SAR-1800-1860", "325"), ("SNW-1814-1905", "380"),
+    # Colonial rows carrying the metropole's code, the established pattern (see above).
+    ("FRIN-1816-1954", "220"), ("ITAEG-1912-1947", "325"),
+    # Northern Nigeria: a protectorate with no COW code of its own; carries the successor state's
+    # 475 like NGA-1914-1960, while its own iso3 is NNI (issue 653).
+    ("NNI-1899-1904", "475"), ("NNI-1904-1913", "475"),
+    # Kosovo: the same country, COW files it under the user-assigned XKX and the row uses KOS.
+    ("KOS-2008-2025", "347"),
+    # German colonies in Oceania: a retired aggregate carrying its metropole's code.
+    ("GCO-1884-2025", "255"),
+})
+
+
+def iso3_observed() -> set:
+    """Rows whose iso3_code disagrees with the iso3 COW files their cow_code under."""
+    cow_iso = {}
+    with open(COW_STATES, encoding="utf-8", newline="") as fh:
+        for r in csv.DictReader(fh):
+            cow_iso[r["cow_code"].strip()] = (r.get("iso3") or "").strip()
+    out = set()
+    with open(POLITIES, encoding="utf-8", newline="") as fh:
+        for r in csv.DictReader(fh):
+            cow = (r.get("cow_code") or "").strip()
+            iso = (r.get("iso3_code") or "").strip()
+            ref = cow_iso.get(cow, "")
+            if cow in ("", "NA") or not iso or ref in ("", "NA"):
+                continue
+            if iso != ref:
+                out.add((r["polity_code"], cow))
+    return out
 
 
 def main() -> int:
@@ -132,6 +193,19 @@ def main() -> int:
     for cow, a, b in sorted(BASELINE - observed):
         problems.append(
             f"{a} and {b} no longer share cow {cow} — remove the pair from the baseline"
+        )
+
+    iso_obs = iso3_observed()
+    print(f"rows whose cow_code belongs to another iso3: {len(iso_obs)}")
+    for code, cow in sorted(iso_obs - ISO3_BASELINE):
+        problems.append(
+            f"{code} carries cow {cow}, which COW files under a different iso3 than the row's own "
+            f"-- a wrong code (check data/external/cow_state_system.csv), or a deliberate "
+            f"successor/metropole convention to add to ISO3_BASELINE with its reason"
+        )
+    for code, cow in sorted(ISO3_BASELINE - iso_obs):
+        problems.append(
+            f"{code} no longer carries cow {cow} against another iso3 -- remove it from ISO3_BASELINE"
         )
 
     if problems:
