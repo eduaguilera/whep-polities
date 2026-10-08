@@ -3535,6 +3535,29 @@ def mutate_volume_conflict_unconvicted(root, gpd, make_valid, affinity):
     return "downgraded japan soybean area 1933 to `undecided` while its x10 cell rule stays"
 
 
+def mutate_item_withhold_dropped(root, gpd, make_valid, affinity):
+    """Delete the iia `wheat` tonnes withhold (issue 375).
+
+    The quiet failure: the table stays well-formed, the other three rules still cover their rows, and
+    `wheat` still has a rule (its `ha` one), so the registry arm is satisfied. In the harmonized build
+    the 36 dated iia spelt-and-meslin production cells return as FAO wheat and are averaged with
+    juan/mitchell's real wheat again. Only the pin on the adjudicated rules can refuse it in CI.
+    """
+    import csv as _csv
+    path = os.path.join(root, "data/final/source_item_withholds.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        reader = _csv.DictReader(fh)
+        fields = list(reader.fieldnames)
+        rows = list(reader)
+    keep = [r for r in rows if not (r["item"] == "wheat" and r["unit"] == "tonnes")]
+    assert len(keep) == len(rows) - 1, "the iia wheat tonnes withhold moved -- pick another rule"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(keep)
+    return "deleted the iia wheat tonnes withhold, republishing spelt and meslin production as wheat"
+
+
 def mutate_label_item_correction_wrong_polity(root, gpd, make_valid, affinity):
     """Record the wrong `polity_code` on the fao1952 `New Guinea` use-total rule (issue 675).
 
@@ -6996,6 +7019,13 @@ CASES = (
         "formed and live, every shared cell averaged across two territories",
     ),
     (
+        "validate_item_withholds.py",
+        mutate_item_withhold_dropped,
+        "is missing or was edited",
+        "an item withhold deleted -- the table well-formed, the item still carrying a rule in its "
+        "other unit, and iia spelt-and-meslin production published as wheat again",
+    ),
+    (
         "validate_label_item_corrections.py",
         mutate_label_item_correction_wrong_polity,
         "the relabel and the published polity_code disagree",
@@ -8097,6 +8127,14 @@ WRITABLE = {
     # The gate reads only the routing ledger, which the case appends a unit to.
     "validate_panel_units_shared_polity.py": (
         "pipelines/agent-harness/state/routing_verdicts.csv",
+    ),
+    # The table is mutated; the gate reads the item registry and imports matchlib (loader) and
+    # extdata (layer B path; arms D/E SKIP by name where layer B is absent).
+    "validate_item_withholds.py": (
+        "source_item_withholds.csv",
+        "pipelines/polity-autoimprove/state/item_equivalences.csv",
+        "pipelines/polity-autoimprove/matchlib.py",
+        "pipelines/polity-autoimprove/extdata.py",
     ),
     "validate_label_item_corrections.py": (
         "polities_database.csv",

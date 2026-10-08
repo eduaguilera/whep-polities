@@ -65,10 +65,19 @@ ANCHORS = {
         resolution="source_precedence", published_source="fao1952", published_value="6544000",
         why="issue 367's total beside its own parts: 6,544 = 4,014 + 2,530 thousand t. The total is "
             "kept, and it equals juan's figure"),
+    # NOT CONTESTED ANY MORE (issue 375): iia `wheat` is withheld before the resolver by
+    # data/final/source_item_withholds.csv, so this key has juan alone and is published as a lone row,
+    # which the table does not record. `absent` asserts exactly that; were the item withhold lost,
+    # the key would reappear here as a contradiction.
     ("1930", "F51-1918-1938", "15", "tonnes"): dict(
+        resolution="absent",
+        why="iia's `wheat` here is 311.9 t of spelt and meslin against juan's 1,377,280 t "
+            "(iia-wheat-is-spelt-and-meslin): the mean published 688,796, #451 withheld the key, and "
+            "the item withhold of issue 375 now leaves juan's figure as the only candidate"),
+    ("1934", "F51-1918-1938", "176", "ha"): dict(
         resolution="withheld_contradiction", published_source="", published_value="",
-        why="iia's `wheat` here is 311.9 t against juan's 1,377,280 t (iia-wheat-is-spelt-and-meslin): "
-            "precedence would publish the 311.9 and the mean published 688,796"),
+        why="iia's Czechoslovak dry beans are one component, 7,000 ha against juan's 58,000 "
+            "(iia-czechoslovakia-beans-component-only): neither can be published as the key's value"),
     ("1945", "ETH-1941-1952", "656", "tonnes"): dict(
         resolution="identical", published_source="iia", published_value="17000",
         why="issue 451's `ethiopia` / `ethiopia pdr`: one series under two spellings, published once"),
@@ -284,6 +293,11 @@ def main() -> int:
     # --- F ---
     for key, want in ANCHORS.items():
         r = by_key.get(key)
+        if want["resolution"] == "absent":
+            if r is not None:
+                problems.append(f"F {'/'.join(key)}: anchor should have ONE candidate and be absent "
+                                f"from the table, but reads {r['resolution']!r}. {want['why']}")
+            continue
         if r is None:
             problems.append(f"F {'/'.join(key)}: anchor is GONE from the table. {want['why']}")
             continue

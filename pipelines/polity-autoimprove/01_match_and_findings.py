@@ -45,6 +45,8 @@ from matchlib import Matcher, norm, toks, eff_year as _eff_year, covers as _year
 from matchlib import load_label_item_corrections, apply_label_item_corrections
 from matchlib import (load_value_scale_corrections, value_scale_divisors, value_precision,
                       load_value_precision, VERDICT_GRID)
+from matchlib import load_value_scale_corrections, value_scale_divisors
+from matchlib import load_item_withholds, item_withheld
 import extdata
 from atomic import write_csv_atomic
 
@@ -104,6 +106,21 @@ print(f"value precision: {int(work_precision['value_grid'].notna().sum()):,} of 
       f"carry a grid ({int(work_precision['series_grid'].notna().sum()):,} from their own series, "
       f"{int(work_precision['source_grid_verdict'].isin(list(VERDICT_GRID)).sum()):,} from a coarse "
       f"source verdict)")
+# ITEM WITHHOLDS (issue 375). Items that are not the commodity they are named for, with no single
+# re-labelling that recovers it -- iia `wheat` is spelt and meslin, iia `other sugar crops n.e.c.` is
+# citrus. Flagged on the item AS LAYER B PRINTS IT; the rows are matched and kept here like any other
+# (every diagnostic still sees them), and the harmonized build drops `item_withheld` rows. Table:
+# data/final/source_item_withholds.csv; gate: scripts/validate_item_withholds.py.
+_iw = load_item_withholds(extdata.ITEM_WITHHOLDS)
+work["item_withheld"], _iw_per_rule = item_withheld(work, _iw)
+for _k, _n in _iw_per_rule.items():
+    _ru = _iw[_k]
+    if _n != int(_ru["observed_rows"]):
+        raise SystemExit(
+            f"item withhold {(_ru['source'], _ru['item'], _ru['unit'])} hits {_n} row(s), but the "
+            f"table records {_ru['observed_rows']}. Re-verify the rule against the rebuilt layer B "
+            f"and update observed_rows (or the rule) deliberately.")
+print(f"item withholds: {int(work['item_withheld'].sum()):,} row(s) withheld across {len(_iw)} rule(s)")
 _ocr = extdata.load_ocr_corrections()
 _before = work["country"].copy()
 for (_src, _bad), _good in _ocr.items():
@@ -561,12 +578,14 @@ json.dump({"summary": {
 # printed. `source_label_raw` (issue 675) was appended LAST before it for the same reason: `country` is the label the
 # row was ROUTED under, after the OCR and item-scoped corrections, and `source_label_raw` is what
 # layer B itself prints. They differ on exactly the corrected rows.
+# `item_withheld` (issue 375) is appended after `value_divisor`: True on rows whose item is not the
+# commodity it is named for (data/final/source_item_withholds.csv); the harmonized build drops them.
 # The three `period_*` columns are APPENDED, after `match_method`, so nothing that reads this
 # file by position shifts. They answer, per row, the question `period` alone cannot: whether the
 # averaged window pokes outside the polity it was routed to, and by how many years at which end.
 work[["source","country","iso3c","year","period","item","indicator","value","unit","whep_code","match_method",
       "period_straddles_polity_span","period_years_before_start","period_years_after_end",
-      "source_label_raw", "value_divisor"]] \
+      "source_label_raw", "value_divisor", "item_withheld"]] \
     .join(work_precision) \
     .to_parquet(f"{OUT}/matched_rows.parquet", index=False)
 

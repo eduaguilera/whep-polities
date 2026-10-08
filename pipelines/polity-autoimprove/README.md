@@ -1232,6 +1232,17 @@ publishes `value_grid` and `source_grid_verdict`; the manifest's `value_precisio
 them for consumers. NaN means unknown, not exact. Run 37_value_precision.py `--write` before 01 when
 layer B changes. Gate: `scripts/validate_value_grid_channel.py`.
 
+**When an item is not the commodity it is named for, an item withhold keeps it out of the
+harmonized build** (issue 375). iia `wheat` is spelt and meslin, cell by cell, and the raw extract
+has no wheat production at all; iia `other sugar crops n.e.c.` is citrus. Neither has a correct
+series in the source, so neither is relabelled: `data/final/source_item_withholds.csv` (`source,
+item, unit, observed_rows, issue, evidence`, one rule per unit) flags every row,
+`01_match_and_findings.py` writes the flag to `matched_rows.parquet` as `item_withheld`, and
+`pipelines/historical-production-harmonized/build.R` drops flagged rows. Layer B and every diagnostic
+keep them. `scripts/validate_item_withholds.py` pins the rules and ties them to
+`state/item_equivalences.csv` both ways: an item whose every raw product is a `defect` must be
+withheld, and only such an item may be.
+
 ### What a source label actually means (avoid false precision)
 
 A label like "Germany Western" is **the source's own reporting unit**, with the

@@ -125,6 +125,7 @@ python3 scripts/validate_cross_source_agreement.py  # two publishers on one poli
 python3 scripts/validate_ocr_corrections.py  # tabled OCR label fixes are still needed, and still route
 python3 scripts/validate_label_item_corrections.py  # item-scoped relabels (issue 675; optional unit/indicator scope, issue 688): unambiguous, needed, and landing on a live polity
 python3 scripts/validate_value_scale_corrections.py  # value-scale rules (issues 416, 424): iia tobacco/hops 1934-1945 divided by a power of ten, eight 1933 cells x10; rules pinned in full, cell rules checked both ways against state/volume_scale_conflicts.csv, siblings re-measured where layer B is present
+python3 scripts/validate_item_withholds.py  # item withholds (issue 375): iia `wheat` (spelt+meslin) and `other sugar crops n.e.c.` (citrus) kept out of the harmonized build; every all-defect registry item withheld
 python3 scripts/validate_shared_polygons.py
 python3 scripts/validate_coexisting_overlaps.py   # partial overlap: every substantial one classified, the sliver tail pinned
 python3 scripts/validate_polygon_period_fit.py

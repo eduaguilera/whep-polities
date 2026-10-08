@@ -393,6 +393,13 @@ VALUE_SCALE_CORRECTIONS = os.path.join(
 VALUE_PRECISION = os.path.join(
     os.path.dirname(os.path.abspath(__file__)), "state", "source_value_precision.csv")
 
+# Item withholds (issue 375). Tracked repo data like the tables above; the loader is
+# matchlib.load_item_withholds.
+ITEM_WITHHOLDS = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "data/final/source_item_withholds.csv",
+)
+
 
 def load_ocr_corrections(path: str | None = None):
     """Load the tabled OCR spelling corrections as {(source, ocr_label): correct_label}.

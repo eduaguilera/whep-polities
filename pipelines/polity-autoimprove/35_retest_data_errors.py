@@ -269,8 +269,58 @@ def check_wheat_is_spelt_and_meslin(ctx):
     raw = ctx["raw"]
     w = raw[(raw["_p"] == "wheat") & raw["_v"].isin(["production", "area"])]
     trade = raw[(raw["_p"] == "wheat") & raw["_v"].isin(["imports", "exports", "reexports"])]
-    return ([("wheat production/area rows", len(w), 0)],
-            f"and {len(trade)} wheat rows remain, all trade")
+    # The remedy (issue 375): data/final/source_item_withholds.csv withholds every iia `wheat` row
+    # from the harmonized build. Pinned against layer B itself, so a rule that drifted off the item
+    # -- or a third unit layer B grew -- shows here as well as in validate_item_withholds.py.
+    lb = ctx["panel"]
+    lb = lb[~lb["is_aggregate"].fillna(False).astype(bool)]
+    iw = lb[(lb["source"] == "iia") & (lb["item"] == "wheat")]
+    flag, _ = _item_withheld(lb)
+    return ([("wheat production/area rows", len(w), 0),
+             ("layer-B iia wheat rows", len(iw), 253),
+             ("  of those withheld", int(flag[iw.index].sum()), 253)],
+            f"and {len(trade)} wheat rows remain, all trade; every layer-B iia wheat row is withheld")
+
+
+def _item_withheld(lb):
+    import importlib
+    sys.path.insert(0, HERE)
+    matchlib = importlib.import_module("matchlib")
+    rules = matchlib.load_item_withholds(os.path.join(REPO, "data/final/source_item_withholds.csv"))
+    return matchlib.item_withheld(lb, rules)
+
+
+def check_other_sugar_crops_is_citrus(ctx):
+    """iia `other sugar crops n.e.c.` is citrus (issue 375's class, found by the item registry).
+
+    The ABSENCE is the load-bearing claim, as for wheat: the extract's only production-side products
+    whose name starts `sugar` are bare `sugar`, beet, cane and unrefined cane -- nothing an 'other sugar
+    crop' could be. The POSITIVE leg is a value match on (year, value, area/production): 23 of the 62 dated rows
+    match `citrus fruits: other` and nothing else, and no dated row matches a sugar product alone. The
+    remedy is the withhold; all 78 layer-B rows carry it."""
+    raw = ctx["raw"]
+    prod = raw[raw["_v"].isin(["production", "area"])]
+    sugar = sorted(prod.loc[prod["_p"].str.startswith("sugar"), "_p"].unique())
+    r = prod.assign(y=pd.to_numeric(prod["year"], errors="coerce"),
+                    v=pd.to_numeric(prod["value"], errors="coerce")).dropna(subset=["y", "v"])
+    idx = collections.defaultdict(set)
+    for y, v, var, p in zip(r["y"], r["v"], r["_v"], r["_p"]):
+        idx[(int(y), round(float(v), 1), "ha" if var == "area" else "tonnes")].add(p)
+    lb = ctx["panel"]
+    lb = lb[~lb["is_aggregate"].fillna(False).astype(bool)]
+    s = lb[(lb["source"] == "iia") & (lb["item"] == "other sugar crops n.e.c.")]
+    d = s[s["year"].notna()]
+    hits = [idx.get((int(y), round(float(v), 1), u), set())
+            for y, v, u in zip(d["year"], d["value"], d["unit"])]
+    flag, _ = _item_withheld(lb)
+    return ([("raw production-side sugar products", len(sugar), 4),
+             ("layer-B rows", len(s), 78),
+             ("  dated", len(d), 62),
+             ("  uniquely citrus fruits: other", sum(h == {"citrus fruits: other"} for h in hits), 23),
+             ("  uniquely a sugar product", sum(len(h) == 1 and next(iter(h)).startswith("sugar")
+                                                for h in hits), 0),
+             ("  withheld", int(flag[s.index].sum()), 78)],
+            f"raw sugar products are {sugar}; the item is a citrus residual, withheld")
 
 
 def check_tobacco_era_scope(ctx):
@@ -4026,6 +4076,7 @@ CHECKS = {
     "constant-runs-two-proven-placeholders": check_constant_run_placeholders,
     "iia-corrupted-country-labels": check_corrupted_country_labels,
     "iia-wheat-is-spelt-and-meslin": check_wheat_is_spelt_and_meslin,
+    "iia-other-sugar-crops-is-citrus": check_other_sugar_crops_is_citrus,
     "iia-tobacco-implausible-magnitudes": check_tobacco_era_scope,
     "fao1952-western-eastern-lost-germany-prefix": check_western_eastern_prefix,
     "iia-malawi-cotton-1934-1938-deflated": check_malawi_cotton_deflation,
