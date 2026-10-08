@@ -1,0 +1,1325 @@
+label,item,unit,value_1928_1932,value_1934_1938,ratio,rule_covered,verdict
+algeria,"beans, dry",tonnes,600.0,300.0,0.5,False,within_band
+angola,"beans, dry",ha,67000.0,56000.0,0.835821,False,within_band
+angola,"beans, dry",tonnes,33700.0,28000.0,0.830861,False,within_band
+argentina,"beans, dry",ha,27000.0,19000.0,0.703704,False,within_band
+argentina,"beans, dry",tonnes,23200.0,25300.0,1.090517,False,within_band
+austria,"beans, dry",ha,3000.0,3000.0,1.0,False,within_band
+austria,"beans, dry",tonnes,4800.0,3300.0,0.6875,False,within_band
+brazil,"beans, dry",ha,718000.0,953000.0,1.327298,False,within_band
+brazil,"beans, dry",tonnes,717100.0,829700.0,1.157021,False,within_band
+bulgaria,"beans, dry",ha,71000.0,80000.0,1.126761,False,within_band
+bulgaria,"beans, dry",tonnes,47600.0,44016400.0,924.714286,False,break_higher
+canada,"beans, dry",ha,33000.0,26000.0,0.787879,False,within_band
+canada,"beans, dry",tonnes,35600.0,31000.0,0.870787,False,within_band
+chile,"beans, dry",ha,74000.0,87000.0,1.175676,False,within_band
+chile,"beans, dry",tonnes,75600.0,77900.0,1.030423,False,within_band
+colombia,"beans, dry",tonnes,27800.0,33000.0,1.18705,False,within_band
+cyprus,"beans, dry",ha,1000.0,1000.0,1.0,False,within_band
+cyprus,"beans, dry",tonnes,200.0,500.0,2.5,False,within_band
+czech republic,"beans, dry",ha,8000.0,6000.0,0.75,False,within_band
+czech republic,"beans, dry",tonnes,9800.0,6500.0,0.663265,False,within_band
+france,"beans, dry",ha,144000.0,169000.0,1.173611,False,within_band
+france,"beans, dry",tonnes,120100.0,134500.0,1.1199,False,within_band
+germany,"beans, dry",ha,7000.0,5000.0,0.714286,False,within_band
+germany,"beans, dry",tonnes,11400.0,6800.0,0.596491,False,within_band
+greece,"beans, dry",ha,10000.0,12000.0,1.2,False,within_band
+greece,"beans, dry",tonnes,5200.0,8100.0,1.557692,False,within_band
+guatemala,"beans, dry",ha,12000.0,36000.0,3.0,False,within_band
+guatemala,"beans, dry",tonnes,6300.0,26600.0,4.222222,False,within_band
+hungary,"beans, dry",ha,5000.0,4000.0,0.8,False,within_band
+hungary,"beans, dry",tonnes,4000.0,3700.0,0.925,False,within_band
+italy,"beans, dry",ha,517000.0,511000.0,0.988395,False,within_band
+italy,"beans, dry",tonnes,145000.0,170300.0,1.174483,False,within_band
+japan,"beans, dry",ha,196000.0,193000.0,0.984694,False,within_band
+japan,"beans, dry",tonnes,179400.0,175300.0,0.977146,False,within_band
+kenya,"beans, dry",ha,1000.0,1000.0,1.0,False,within_band
+madagascar,"beans, dry",ha,37000.0,33000.0,0.891892,False,within_band
+madagascar,"beans, dry",tonnes,34900.0,23300.0,0.667622,False,within_band
+mexico,"beans, dry",ha,739000.0,567000.0,0.767253,False,within_band
+mexico,"beans, dry",tonnes,125100.0,112100.0,0.896083,False,within_band
+morocco,"beans, dry",ha,1000.0,1000.0,1.0,False,within_band
+morocco,"beans, dry",tonnes,200.0,300.0,1.5,False,within_band
+netherlands,"beans, dry",ha,8000.0,8000.0,1.0,False,within_band
+netherlands,"beans, dry",tonnes,15800.0,15300.0,0.968354,False,within_band
+peru,"beans, dry",ha,23000.0,23000.0,1.0,False,within_band
+peru,"beans, dry",tonnes,53500.0,53500.0,1.0,False,within_band
+portugal,"beans, dry",ha,160000.0,172000.0,1.075,False,within_band
+portugal,"beans, dry",tonnes,35000.0,36200.0,1.034286,False,within_band
+romania,"beans, dry",ha,96000.0,100000.0,1.041667,False,within_band
+romania,"beans, dry",tonnes,79000.0,58500.0,0.740506,False,within_band
+serbia,"beans, dry",ha,31000.0,32000.0,1.032258,False,within_band
+serbia,"beans, dry",tonnes,27000.0,31200.0,1.155556,False,within_band
+south korea,"beans, dry",ha,239000.0,232000.0,0.970711,False,within_band
+south korea,"beans, dry",tonnes,121300.0,123200.0,1.015664,False,within_band
+spain,"beans, dry",ha,79000.0,3000.0,0.037975,False,within_band
+spain,"beans, dry",tonnes,91100.0,4600.0,0.050494,False,within_band
+turkey,"beans, dry",ha,74000.0,75000.0,1.013514,False,within_band
+turkey,"beans, dry",tonnes,67800.0,63600.0,0.938053,False,within_band
+united states of america,"beans, dry",ha,731000.0,671000.0,0.917921,False,within_band
+united states of america,"beans, dry",tonnes,552500.0,626700.0,1.134299,False,within_band
+uruguay,"beans, dry",ha,7000.0,9000.0,1.285714,False,within_band
+uruguay,"beans, dry",tonnes,3000.0,3800.0,1.266667,False,within_band
+zimbabwe,"beans, dry",ha,1000.0,1000.0,1.0,False,within_band
+zimbabwe,"beans, dry",tonnes,600.0,500.0,0.833333,False,within_band
+bolivia,"cacao, beans",ha,5000.0,5000.0,1.0,False,within_band
+bolivia,"cacao, beans",tonnes,2500.0,2500.0,1.0,False,within_band
+brazil,"cacao, beans",ha,179000.0,185000.0,1.03352,False,within_band
+brazil,"cacao, beans",tonnes,82800.0,129900.0,1.568841,False,within_band
+cameroon,"cacao, beans",ha,35000.0,55000.0,1.571429,False,within_band
+cameroon,"cacao, beans",tonnes,15800.0,30600.0,1.936709,False,within_band
+colombia,"cacao, beans",ha,20000.0,33000.0,1.65,False,within_band
+colombia,"cacao, beans",tonnes,7400.0,10500.0,1.418919,False,within_band
+congo,"cacao, beans",ha,19000.0,18000.0,0.947368,False,within_band
+congo,"cacao, beans",tonnes,200.0,800.0,4.0,False,within_band
+costa rica,"cacao, beans",ha,56000.0,7000.0,0.125,False,within_band
+costa rica,"cacao, beans",tonnes,6800.0,6800.0,1.0,False,within_band
+cuba,"cacao, beans",ha,5000.0,7000.0,1.4,False,within_band
+cuba,"cacao, beans",tonnes,2800.0,3200.0,1.142857,False,within_band
+dominica,"cacao, beans",tonnes,100.0,100.0,1.0,False,within_band
+dominican republic,"cacao, beans",tonnes,21000.0,28700.0,1.366667,False,within_band
+dr congo,"cacao, beans",ha,4000.0,6000.0,1.5,False,within_band
+dr congo,"cacao, beans",tonnes,1100.0,1300.0,1.181818,False,within_band
+ecuador,"cacao, beans",tonnes,15800.0,19200.0,1.21519,False,within_band
+equatorial guinea,"cacao, beans",ha,35000.0,38000.0,1.085714,False,within_band
+equatorial guinea,"cacao, beans",tonnes,9200.0,12900.0,1.402174,False,within_band
+ghana,"cacao, beans",ha,366000.0,388000.0,1.060109,False,within_band
+ghana,"cacao, beans",tonnes,249300.0,265100.0,1.063377,False,within_band
+grenada,"cacao, beans",ha,8000.0,8000.0,1.0,False,within_band
+grenada,"cacao, beans",tonnes,4300.0,3700.0,0.860465,False,within_band
+guadeloupe,"cacao, beans",ha,3000.0,3000.0,1.0,False,within_band
+guatemala,"cacao, beans",ha,1000.0,1000.0,1.0,False,within_band
+haiti,"cacao, beans",ha,16000.0,16000.0,1.0,False,within_band
+haiti,"cacao, beans",tonnes,1300.0,1500.0,1.153846,False,within_band
+indonesia,"cacao, beans",ha,5000.0,5000.0,1.0,False,within_band
+indonesia,"cacao, beans",tonnes,1400.0,1600.0,1.142857,False,within_band
+ivory coast,"cacao, beans",ha,55000.0,114000.0,2.072727,False,within_band
+ivory coast,"cacao, beans",tonnes,22600.0,49900.0,2.207965,False,within_band
+jamaica,"cacao, beans",ha,800.0,1000.0,1.25,False,within_band
+jamaica,"cacao, beans",tonnes,2500.0,2200.0,0.88,False,within_band
+madagascar,"cacao, beans",tonnes,300.0,300.0,1.0,False,within_band
+martinique,"cacao, beans",ha,5000.0,1000.0,0.2,False,within_band
+martinique,"cacao, beans",tonnes,400.0,200.0,0.5,False,within_band
+mexico,"cacao, beans",ha,7000.0,8000.0,1.142857,False,within_band
+mexico,"cacao, beans",tonnes,900.0,1100.0,1.222222,False,within_band
+nicaragua,"cacao, beans",tonnes,200.0,400.0,2.0,False,within_band
+nigeria,"cacao, beans",tonnes,55500.0,89600.0,1.614414,False,within_band
+panama,"cacao, beans",tonnes,3200.0,4800.0,1.5,False,within_band
+papua new guinea,"cacao, beans",ha,7000.0,1000.0,0.142857,False,within_band
+papua new guinea,"cacao, beans",tonnes,900.0,100.0,0.111111,False,within_band
+peru,"cacao, beans",ha,11000.0,11000.0,1.0,False,within_band
+peru,"cacao, beans",tonnes,1900.0,1900.0,1.0,False,within_band
+philippines,"cacao, beans",ha,2000.0,2000.0,1.0,False,within_band
+philippines,"cacao, beans",tonnes,1100.0,800.0,0.727273,False,within_band
+saint lucia,"cacao, beans",ha,2000.0,2000.0,1.0,False,within_band
+saint lucia,"cacao, beans",tonnes,400.0,300.0,0.75,False,within_band
+samoa,"cacao, beans",ha,2000.0,2000.0,1.0,False,within_band
+samoa,"cacao, beans",tonnes,800.0,1100.0,1.375,False,within_band
+sao tome and principe,"cacao, beans",tonnes,12800.0,10500.0,0.820312,False,within_band
+sri lanka,"cacao, beans",ha,14000.0,14000.0,1.0,False,within_band
+sri lanka,"cacao, beans",tonnes,3900.0,3600.0,0.923077,False,within_band
+suriname,"cacao, beans",ha,1000.0,1000.0,1.0,False,within_band
+suriname,"cacao, beans",tonnes,200.0,100.0,0.5,False,within_band
+trinidad and tobago,"cacao, beans",ha,86000.0,87000.0,1.011628,False,within_band
+trinidad and tobago,"cacao, beans",tonnes,24100.0,14300.0,0.593361,False,within_band
+united states of america,"cacao, beans",tonnes,100.0,100.0,1.0,False,within_band
+vanuatu,"cacao, beans",ha,3000.0,4000.0,1.333333,False,within_band
+vanuatu,"cacao, beans",tonnes,1900.0,1800.0,0.947368,False,within_band
+venezuela,"cacao, beans",tonnes,18100.0,16800.0,0.928177,False,within_band
+angola,"coffee, green",ha,25000.0,36000.0,1.44,False,within_band
+angola,"coffee, green",tonnes,11000.0,16600.0,1.509091,False,within_band
+bolivia,"coffee, green",tonnes,23200.0,4000.0,0.172414,False,within_band
+brazil,"coffee, green",ha,3526000.0,3396000.0,0.963131,False,within_band
+brazil,"coffee, green",tonnes,1543800.0,1396700.0,0.904716,False,within_band
+colombia,"coffee, green",ha,329000.0,358000.0,1.088146,False,within_band
+colombia,"coffee, green",tonnes,201900.0,251200.0,1.24418,False,within_band
+congo,"coffee, green",ha,13000.0,30000.0,2.307692,False,within_band
+congo,"coffee, green",tonnes,100.0,1300.0,13.0,False,within_band
+costa rica,"coffee, green",ha,52000.0,46000.0,0.884615,False,within_band
+costa rica,"coffee, green",tonnes,22500.0,23300.0,1.035556,False,within_band
+cuba,"coffee, green",ha,50000.0,65000.0,1.3,False,within_band
+cuba,"coffee, green",tonnes,23700.0,31800.0,1.341772,False,within_band
+dominican republic,"coffee, green",tonnes,15900.0,21300.0,1.339623,False,within_band
+dr congo,"coffee, green",ha,26000.0,55000.0,2.115385,False,within_band
+dr congo,"coffee, green",tonnes,5200.0,17300.0,3.326923,False,within_band
+ecuador,"coffee, green",tonnes,8500.0,13700.0,1.611765,False,within_band
+el salvador,"coffee, green",ha,97000.0,103000.0,1.061856,False,within_band
+el salvador,"coffee, green",tonnes,62600.0,63900.0,1.020767,False,within_band
+ethiopia,"coffee, green",tonnes,19800.0,16300.0,0.823232,False,within_band
+ethiopia pdr,"coffee, green",tonnes,19800.0,16300.0,0.823232,False,within_band
+guadeloupe,"coffee, green",ha,7000.0,5000.0,0.714286,False,within_band
+guadeloupe,"coffee, green",tonnes,300.0,3500.0,11.666667,False,within_band
+guatemala,"coffee, green",ha,103000.0,111000.0,1.07767,False,within_band
+guatemala,"coffee, green",tonnes,46000.0,55100.0,1.197826,False,within_band
+guyana,"coffee, green",ha,2000.0,1000.0,0.5,False,within_band
+guyana,"coffee, green",tonnes,400.0,100.0,0.25,False,within_band
+haiti,"coffee, green",ha,142000.0,142000.0,1.0,False,within_band
+haiti,"coffee, green",tonnes,30800.0,26900.0,0.873377,False,within_band
+honduras,"coffee, green",ha,31000.0,31000.0,1.0,False,within_band
+honduras,"coffee, green",tonnes,1500.0,1600.0,1.066667,False,within_band
+indonesia,"coffee, green",ha,227000.0,217000.0,0.955947,False,within_band
+indonesia,"coffee, green",tonnes,52500.0,55500.0,1.057143,False,within_band
+ivory coast,"coffee, green",ha,12000.0,88000.0,7.333333,False,within_band
+ivory coast,"coffee, green",tonnes,600.0,7700.0,12.833333,False,within_band
+jamaica,"coffee, green",ha,2000.0,3000.0,1.5,False,within_band
+jamaica,"coffee, green",tonnes,3700.0,3900.0,1.054054,False,within_band
+kenya,"coffee, green",ha,39000.0,40000.0,1.025641,False,within_band
+kenya,"coffee, green",tonnes,11600.0,18400.0,1.586207,False,within_band
+madagascar,"coffee, green",ha,66000.0,93000.0,1.409091,False,within_band
+madagascar,"coffee, green",tonnes,11200.0,23900.0,2.133929,False,within_band
+malaysia,"coffee, green",ha,5000.0,8000.0,1.6,False,within_band
+mexico,"coffee, green",ha,87000.0,105000.0,1.206897,False,within_band
+mexico,"coffee, green",tonnes,39100.0,49900.0,1.276215,False,within_band
+new caledonia,"coffee, green",ha,3000.0,4000.0,1.333333,False,within_band
+new caledonia,"coffee, green",tonnes,1000.0,1500.0,1.5,False,within_band
+nicaragua,"coffee, green",ha,47000.0,50000.0,1.06383,False,within_band
+nicaragua,"coffee, green",tonnes,13200.0,15800.0,1.19697,False,within_band
+panama,"coffee, green",tonnes,700.0,1200.0,1.714286,False,within_band
+paraguay,"coffee, green",tonnes,100.0,100.0,1.0,False,within_band
+peru,"coffee, green",ha,7000.0,7000.0,1.0,False,within_band
+peru,"coffee, green",tonnes,1400.0,3000.0,2.142857,False,within_band
+philippines,"coffee, green",ha,1000.0,2000.0,2.0,False,within_band
+philippines,"coffee, green",tonnes,1200.0,800.0,0.666667,False,within_band
+sao tome and principe,"coffee, green",tonnes,500.0,700.0,1.4,False,within_band
+sierra leone,"coffee, green",tonnes,100.0,100.0,1.0,False,within_band
+suriname,"coffee, green",ha,9000.0,8000.0,0.888889,False,within_band
+suriname,"coffee, green",tonnes,3200.0,3400.0,1.0625,False,within_band
+tanzania,"coffee, green",tonnes,10500.0,14800.0,1.409524,False,within_band
+timor-leste,"coffee, green",tonnes,1700.0,1100.0,0.647059,False,within_band
+trinidad and tobago,"coffee, green",tonnes,300.0,500.0,1.666667,False,within_band
+united states of america,"coffee, green",ha,79000.0,61000.0,0.772152,False,within_band
+united states of america,"coffee, green",tonnes,8700.0,11900.0,1.367816,False,within_band
+vanuatu,"coffee, green",ha,1000.0,3000.0,3.0,False,within_band
+vanuatu,"coffee, green",tonnes,100.0,400.0,4.0,False,within_band
+venezuela,"coffee, green",ha,100000.0,100000.0,1.0,False,within_band
+venezuela,"coffee, green",tonnes,60200.0,58200.0,0.966777,False,within_band
+viet nam,"coffee, green",ha,4000.0,3000.0,0.75,False,within_band
+viet nam,"coffee, green",tonnes,600.0,1000.0,1.666667,False,within_band
+yemen,"coffee, green",tonnes,4400.0,4300.0,0.977273,False,within_band
+angola,cotton lint,ha,4000.0,21000.0,5.25,False,within_band
+angola,cotton lint,tonnes,600.0,2100.0,3.5,False,within_band
+argentina,cotton lint,ha,125000.0,311000.0,2.488,False,within_band
+argentina,cotton lint,tonnes,31500.0,59700.0,1.895238,False,within_band
+australia,cotton lint,ha,13000.0,22000.0,1.692308,False,within_band
+australia,cotton lint,tonnes,1900.0,2600.0,1.368421,False,within_band
+brazil,cotton lint,ha,689000.0,2095000.0,3.040639,False,within_band
+brazil,cotton lint,tonnes,109300.0,388600.0,3.555352,False,within_band
+bulgaria,cotton lint,ha,6000.0,39000.0,6.5,False,within_band
+bulgaria,cotton lint,tonnes,900.0,7200.0,8.0,False,within_band
+burundi,cotton lint,ha,1000.0,4000.0,4.0,False,within_band
+burundi,cotton lint,tonnes,200.0,700.0,3.5,False,within_band
+"china, mainland",cotton lint,ha,2114000.0,3087000.0,1.460265,False,within_band
+"china, mainland",cotton lint,tonnes,474400.0,646300.0,1.362352,False,within_band
+colombia,cotton lint,ha,14000.0,35000.0,2.5,False,within_band
+colombia,cotton lint,tonnes,2800.0,4500.0,1.607143,False,within_band
+congo,cotton lint,ha,26000.0,154000.0,5.923077,False,within_band
+congo,cotton lint,tonnes,1300.0,7700.0,5.923077,False,within_band
+cyprus,cotton lint,ha,5000.0,5000.0,1.0,False,within_band
+cyprus,cotton lint,tonnes,500.0,600.0,1.2,False,within_band
+dr congo,cotton lint,ha,142000.0,329000.0,2.316901,False,within_band
+dr congo,cotton lint,tonnes,10200.0,31000.0,3.039216,False,within_band
+egypt,cotton lint,ha,856000.0,919000.0,1.073598,False,within_band
+egypt,cotton lint,tonnes,355100.0,454900.0,1.281048,False,within_band
+eritrea,cotton lint,ha,3000.0,3000.0,1.0,False,within_band
+eritrea,cotton lint,tonnes,300.0,200.0,0.666667,False,within_band
+greece,cotton lint,ha,19000.0,57000.0,3.0,False,within_band
+greece,cotton lint,tonnes,3600.0,12200.0,3.388889,False,within_band
+grenada,cotton lint,ha,2000.0,2000.0,1.0,False,within_band
+grenada,cotton lint,tonnes,200.0,100.0,0.5,False,within_band
+haiti,cotton lint,ha,85000.0,115000.0,1.352941,False,within_band
+haiti,cotton lint,tonnes,5200.0,5300.0,1.019231,False,within_band
+india,cotton lint,tonnes,100.0,100.0,1.0,False,within_band
+indonesia,cotton lint,ha,9000.0,12000.0,1.333333,False,within_band
+indonesia,cotton lint,tonnes,900.0,1700.0,1.888889,False,within_band
+iran,cotton lint,ha,57000.0,158000.0,2.77193,False,within_band
+iran,cotton lint,tonnes,19200.0,33300.0,1.734375,False,within_band
+iraq,cotton lint,tonnes,500.0,1800.0,3.6,False,within_band
+italy,cotton lint,ha,3000.0,15000.0,5.0,False,within_band
+italy,cotton lint,tonnes,600.0,3100.0,5.166667,False,within_band
+japan,cotton lint,ha,1000.0,1000.0,1.0,False,within_band
+japan,cotton lint,tonnes,200.0,200.0,1.0,False,within_band
+kenya,cotton lint,tonnes,300.0,2800.0,9.333333,False,within_band
+mexico,cotton lint,ha,153000.0,270000.0,1.764706,False,within_band
+mexico,cotton lint,tonnes,44000.0,65700.0,1.493182,False,within_band
+montserrat,cotton lint,ha,1000.0,2000.0,2.0,False,within_band
+montserrat,cotton lint,tonnes,200.0,300.0,1.5,False,within_band
+myanmar,cotton lint,ha,128000.0,198000.0,1.546875,False,within_band
+myanmar,cotton lint,tonnes,11200.0,20600.0,1.839286,False,within_band
+nicaragua,cotton lint,tonnes,100.0,900.0,9.0,False,within_band
+niger,cotton lint,tonnes,2500.0,3600.0,1.44,False,within_band
+nigeria,cotton lint,tonnes,4500.0,8100.0,1.8,False,within_band
+paraguay,cotton lint,ha,12000.0,43000.0,3.583333,False,within_band
+paraguay,cotton lint,tonnes,3400.0,10000.0,2.941176,False,within_band
+peru,cotton lint,ha,125000.0,165000.0,1.32,False,within_band
+peru,cotton lint,tonnes,55200.0,82100.0,1.487319,False,within_band
+philippines,cotton lint,ha,1000.0,2000.0,2.0,False,within_band
+philippines,cotton lint,tonnes,100.0,500.0,5.0,False,within_band
+russian federation,cotton lint,ha,1584000.0,2027000.0,1.279672,False,within_band
+russian federation,cotton lint,tonnes,334100.0,673300.0,2.015265,False,within_band
+saint kitts and nevis,cotton lint,ha,1000.0,1000.0,1.0,False,within_band
+saint kitts and nevis,cotton lint,tonnes,100.0,200.0,2.0,False,within_band
+saint vincent and the grenadines,cotton lint,ha,1000.0,2000.0,2.0,False,within_band
+saint vincent and the grenadines,cotton lint,tonnes,100.0,200.0,2.0,False,within_band
+serbia,cotton lint,ha,1000.0,2000.0,2.0,False,within_band
+serbia,cotton lint,tonnes,100.0,500.0,5.0,False,within_band
+somalia,cotton lint,ha,7000.0,5000.0,0.714286,False,within_band
+somalia,cotton lint,tonnes,1100.0,500.0,0.454545,False,within_band
+south africa,cotton lint,ha,14000.0,5000.0,0.357143,False,within_band
+south africa,cotton lint,tonnes,1600.0,400.0,0.25,False,within_band
+south korea,cotton lint,ha,186000.0,216000.0,1.16129,False,within_band
+south korea,cotton lint,tonnes,28900.0,40400.0,1.397924,False,within_band
+spain,cotton lint,ha,10000.0,15000.0,1.5,False,within_band
+spain,cotton lint,tonnes,1000.0,1900.0,1.9,False,within_band
+sri lanka,cotton lint,ha,1000.0,1000.0,1.0,False,within_band
+syrian arab republic,cotton lint,ha,19000.0,32000.0,1.684211,False,within_band
+syrian arab republic,cotton lint,tonnes,2300.0,5800.0,2.521739,False,within_band
+tanzania,cotton lint,tonnes,4100.0,8100.0,1.97561,False,within_band
+thailand,cotton lint,ha,3000.0,6000.0,2.0,False,within_band
+thailand,cotton lint,tonnes,600.0,1300.0,2.166667,False,within_band
+turkey,cotton lint,ha,155000.0,249000.0,1.606452,False,within_band
+turkey,cotton lint,tonnes,20500.0,54600.0,2.663415,False,within_band
+united states of america,cotton lint,ha,16412000.0,11493000.0,0.70028,False,within_band
+united states of america,cotton lint,tonnes,3180500.0,2756400.0,0.866656,False,within_band
+venezuela,cotton lint,tonnes,7900.0,2300.0,0.291139,False,within_band
+viet nam,cotton lint,ha,1000.0,1000.0,1.0,False,within_band
+viet nam,cotton lint,tonnes,100.0,100.0,1.0,False,within_band
+zimbabwe,cotton lint,ha,2000.0,1000.0,0.5,False,within_band
+zimbabwe,cotton lint,tonnes,200.0,100.0,0.5,False,within_band
+algeria,cotton seed,tonnes,1800.0,100.0,0.055556,False,within_band
+angola,cotton seed,ha,4000.0,21000.0,5.25,False,within_band
+angola,cotton seed,tonnes,1300.0,5600.0,4.307692,False,within_band
+argentina,cotton seed,ha,125000.0,311000.0,2.488,False,within_band
+argentina,cotton seed,tonnes,76200.0,145800.0,1.913386,False,within_band
+australia,cotton seed,ha,13000.0,22000.0,1.692308,False,within_band
+australia,cotton seed,tonnes,3700.0,4600.0,1.243243,False,within_band
+brazil,cotton seed,ha,689000.0,2095000.0,3.040639,False,within_band
+brazil,cotton seed,tonnes,254700.0,816000.0,3.203769,False,within_band
+bulgaria,cotton seed,ha,6000.0,39000.0,6.5,False,within_band
+bulgaria,cotton seed,tonnes,2300.0,16000.0,6.956522,False,within_band
+burundi,cotton seed,ha,1000.0,4000.0,4.0,False,within_band
+burundi,cotton seed,tonnes,400.0,1600.0,4.0,False,within_band
+cameroon,cotton seed,ha,1000.0,1000.0,1.0,False,within_band
+cameroon,cotton seed,tonnes,100.0,100.0,1.0,False,within_band
+"china, mainland",cotton seed,ha,2114000.0,3087000.0,1.460265,False,within_band
+"china, mainland",cotton seed,tonnes,1105300.0,1300700.0,1.176785,False,within_band
+colombia,cotton seed,ha,14000.0,35000.0,2.5,False,within_band
+colombia,cotton seed,tonnes,5200.0,8000.0,1.538462,False,within_band
+congo,cotton seed,ha,26000.0,154000.0,5.923077,False,within_band
+congo,cotton seed,tonnes,1900.0,17200.0,9.052632,False,within_band
+cyprus,cotton seed,ha,5000.0,5000.0,1.0,False,within_band
+cyprus,cotton seed,tonnes,1200.0,1300.0,1.083333,False,within_band
+dr congo,cotton seed,ha,142000.0,329000.0,2.316901,False,within_band
+dr congo,cotton seed,tonnes,22400.0,67600.0,3.017857,False,within_band
+egypt,cotton seed,ha,856000.0,919000.0,1.073598,False,within_band
+egypt,cotton seed,tonnes,733800.0,874600.0,1.191878,False,within_band
+el salvador,cotton seed,tonnes,100.0,2200.0,22.0,False,within_band
+eritrea,cotton seed,ha,3000.0,3000.0,1.0,False,within_band
+eritrea,cotton seed,tonnes,500.0,700.0,1.4,False,within_band
+greece,cotton seed,ha,19000.0,57000.0,3.0,False,within_band
+greece,cotton seed,tonnes,8300.0,28500.0,3.433735,False,within_band
+grenada,cotton seed,ha,2000.0,2000.0,1.0,False,within_band
+grenada,cotton seed,tonnes,400.0,300.0,0.75,False,within_band
+guadeloupe,cotton seed,tonnes,200.0,100.0,0.5,False,within_band
+guatemala,cotton seed,tonnes,100.0,200.0,2.0,False,within_band
+haiti,cotton seed,ha,85000.0,115000.0,1.352941,False,within_band
+haiti,cotton seed,tonnes,12200.0,12400.0,1.016393,False,within_band
+india,cotton seed,tonnes,2700.0,200.0,0.074074,False,within_band
+indonesia,cotton seed,ha,9000.0,12000.0,1.333333,False,within_band
+indonesia,cotton seed,tonnes,2100.0,4500.0,2.142857,False,within_band
+iran,cotton seed,ha,57000.0,158000.0,2.77193,False,within_band
+iran,cotton seed,tonnes,44700.0,74300.0,1.662192,False,within_band
+iraq,cotton seed,tonnes,1200.0,4300.0,3.583333,False,within_band
+italy,cotton seed,ha,3000.0,15000.0,5.0,False,within_band
+italy,cotton seed,tonnes,1000.0,6200.0,6.2,False,within_band
+japan,cotton seed,ha,1000.0,1000.0,1.0,False,within_band
+japan,cotton seed,tonnes,500.0,500.0,1.0,False,within_band
+kenya,cotton seed,tonnes,800.0,6500.0,8.125,False,within_band
+malawi,cotton seed,tonnes,100.0,200.0,2.0,False,within_band
+mexico,cotton seed,ha,153000.0,270000.0,1.764706,False,within_band
+mexico,cotton seed,tonnes,90100.0,119600.0,1.327414,False,within_band
+montserrat,cotton seed,ha,1000.0,2000.0,2.0,False,within_band
+montserrat,cotton seed,tonnes,600.0,800.0,1.333333,False,within_band
+myanmar,cotton seed,ha,128000.0,198000.0,1.546875,False,within_band
+myanmar,cotton seed,tonnes,26000.0,39100.0,1.503846,False,within_band
+nicaragua,cotton seed,tonnes,100.0,2000.0,20.0,False,within_band
+niger,cotton seed,tonnes,7000.0,9000.0,1.285714,False,within_band
+nigeria,cotton seed,tonnes,10500.0,18500.0,1.761905,False,within_band
+paraguay,cotton seed,ha,12000.0,43000.0,3.583333,False,within_band
+paraguay,cotton seed,tonnes,8100.0,23100.0,2.851852,False,within_band
+peru,cotton seed,ha,125000.0,165000.0,1.32,False,within_band
+peru,cotton seed,tonnes,92400.0,138500.0,1.498918,False,within_band
+philippines,cotton seed,ha,1000.0,2000.0,2.0,False,within_band
+philippines,cotton seed,tonnes,300.0,1000.0,3.333333,False,within_band
+russian federation,cotton seed,ha,1584000.0,2027000.0,1.279672,False,within_band
+russian federation,cotton seed,tonnes,707500.0,1424200.0,2.013004,False,within_band
+saint kitts and nevis,cotton seed,ha,1000.0,1000.0,1.0,False,within_band
+saint kitts and nevis,cotton seed,tonnes,400.0,600.0,1.5,False,within_band
+saint vincent and the grenadines,cotton seed,ha,1000.0,2000.0,2.0,False,within_band
+saint vincent and the grenadines,cotton seed,tonnes,400.0,600.0,1.5,False,within_band
+serbia,cotton seed,ha,1000.0,2000.0,2.0,False,within_band
+serbia,cotton seed,tonnes,200.0,1200.0,6.0,False,within_band
+south africa,cotton seed,ha,14000.0,5000.0,0.357143,False,within_band
+south africa,cotton seed,tonnes,3500.0,700.0,0.2,False,within_band
+south korea,cotton seed,ha,186000.0,216000.0,1.16129,False,within_band
+south korea,cotton seed,tonnes,59900.0,81500.0,1.360601,False,within_band
+spain,cotton seed,ha,10000.0,15000.0,1.5,False,within_band
+spain,cotton seed,tonnes,2000.0,3400.0,1.7,False,within_band
+syrian arab republic,cotton seed,ha,19000.0,32000.0,1.684211,False,within_band
+syrian arab republic,cotton seed,tonnes,4900.0,11100.0,2.265306,False,within_band
+tanzania,cotton seed,tonnes,9600.0,22900.0,2.385417,False,within_band
+thailand,cotton seed,ha,3000.0,6000.0,2.0,False,within_band
+thailand,cotton seed,tonnes,1500.0,3400.0,2.266667,False,within_band
+turkey,cotton seed,ha,155000.0,249000.0,1.606452,False,within_band
+turkey,cotton seed,tonnes,47700.0,103700.0,2.174004,False,within_band
+united states of america,cotton seed,ha,16412000.0,11493000.0,0.70028,False,within_band
+united states of america,cotton seed,tonnes,5916300.0,4927300.0,0.832835,False,within_band
+vanuatu,cotton seed,tonnes,700.0,100.0,0.142857,False,within_band
+venezuela,cotton seed,tonnes,18000.0,5300.0,0.294444,False,within_band
+viet nam,cotton seed,ha,1000.0,1000.0,1.0,False,within_band
+viet nam,cotton seed,tonnes,400.0,200.0,0.5,False,within_band
+zimbabwe,cotton seed,ha,2000.0,1000.0,0.5,False,within_band
+zimbabwe,cotton seed,tonnes,400.0,100.0,0.25,False,within_band
+argentina,flax fibre and tow,ha,2688000.0,3001000.0,1.116443,False,within_band
+argentina,flax fibre and tow,tonnes,1817700.0,1702100.0,0.936403,False,within_band
+australia,flax fibre and tow,tonnes,500.0,100.0,0.2,False,within_band
+austria,flax fibre and tow,ha,2000.0,1000.0,0.5,False,within_band
+austria,flax fibre and tow,tonnes,900.0,600.0,0.666667,False,within_band
+belgium,flax fibre and tow,ha,19000.0,24000.0,1.263158,False,within_band
+belgium,flax fibre and tow,tonnes,10400.0,13800.0,1.326923,False,within_band
+bolivia,flax fibre and tow,ha,1000.0,1000.0,1.0,False,within_band
+bulgaria,flax fibre and tow,tonnes,200.0,1100.0,5.5,False,within_band
+canada,flax fibre and tow,ha,198000.0,118000.0,0.59596,False,within_band
+canada,flax fibre and tow,tonnes,80900.0,32500.0,0.401731,False,within_band
+cyprus,flax fibre and tow,ha,1000.0,1000.0,1.0,False,within_band
+cyprus,flax fibre and tow,tonnes,400.0,800.0,2.0,False,within_band
+czech republic,flax fibre and tow,ha,13000.0,15000.0,1.153846,False,within_band
+czech republic,flax fibre and tow,tonnes,5100.0,1986600.0,389.529412,False,break_higher
+egypt,flax fibre and tow,ha,1000.0,3000.0,3.0,False,within_band
+egypt,flax fibre and tow,tonnes,900.0,2000.0,2.222222,False,within_band
+eritrea,flax fibre and tow,ha,1000.0,2000.0,2.0,False,within_band
+eritrea,flax fibre and tow,tonnes,1100.0,800.0,0.727273,False,within_band
+estonia,flax fibre and tow,ha,26000.0,27000.0,1.038462,False,within_band
+estonia,flax fibre and tow,tonnes,7900.0,9400.0,1.189873,False,within_band
+finland,flax fibre and tow,ha,4000.0,4000.0,1.0,False,within_band
+finland,flax fibre and tow,tonnes,1200.0,1400.0,1.166667,False,within_band
+france,flax fibre and tow,ha,26000.0,32000.0,1.230769,False,within_band
+france,flax fibre and tow,tonnes,15500.0,11600.0,0.748387,False,within_band
+germany,flax fibre and tow,ha,10000.0,35000.0,3.5,False,within_band
+hungary,flax fibre and tow,ha,9000.0,12000.0,1.333333,False,within_band
+hungary,flax fibre and tow,tonnes,4100.0,3000.0,0.731707,False,within_band
+ireland,flax fibre and tow,ha,2000.0,2000.0,1.0,False,within_band
+ireland,flax fibre and tow,tonnes,700.0,800.0,1.142857,False,within_band
+italy,flax fibre and tow,ha,10000.0,7000.0,0.7,False,within_band
+italy,flax fibre and tow,tonnes,5600.0,3900.0,0.696429,False,within_band
+japan,flax fibre and tow,ha,9000.0,17000.0,1.888889,False,within_band
+japan,flax fibre and tow,tonnes,2800.0,4700.0,1.678571,False,within_band
+latvia,flax fibre and tow,ha,50000.0,63000.0,1.26,False,within_band
+latvia,flax fibre and tow,tonnes,14700.0,19400.0,1.319728,False,within_band
+lithuania,flax fibre and tow,ha,72000.0,78000.0,1.083333,False,within_band
+lithuania,flax fibre and tow,tonnes,29900.0,33100.0,1.107023,False,within_band
+mexico,flax fibre and tow,ha,3000.0,5000.0,1.666667,False,within_band
+mexico,flax fibre and tow,tonnes,1700.0,2400.0,1.411765,False,within_band
+morocco,flax fibre and tow,ha,23000.0,19000.0,0.826087,False,within_band
+morocco,flax fibre and tow,tonnes,12900.0,7900.0,0.612403,False,within_band
+netherlands,flax fibre and tow,ha,12000.0,13000.0,1.083333,False,within_band
+netherlands,flax fibre and tow,tonnes,8700.0,10300.0,1.183908,False,within_band
+new zealand,flax fibre and tow,tonnes,2000.0,500.0,0.25,False,within_band
+poland,flax fibre and tow,ha,110000.0,131000.0,1.190909,False,within_band
+poland,flax fibre and tow,tonnes,58400.0,68300.0,1.169521,False,within_band
+romania,flax fibre and tow,ha,21000.0,24000.0,1.142857,False,within_band
+romania,flax fibre and tow,tonnes,9200.0,9400.0,1.021739,False,within_band
+russian federation,flax fibre and tow,ha,2466000.0,2351000.0,0.953366,False,within_band
+russian federation,flax fibre and tow,tonnes,733700.0,737300.0,1.004907,False,within_band
+serbia,flax fibre and tow,ha,12000.0,13000.0,1.083333,False,within_band
+serbia,flax fibre and tow,tonnes,1100.0,1200.0,1.090909,False,within_band
+spain,flax fibre and tow,ha,1000.0,1000.0,1.0,False,within_band
+spain,flax fibre and tow,tonnes,300.0,200.0,0.666667,False,within_band
+tunisia,flax fibre and tow,tonnes,1200.0,100.0,0.083333,False,within_band
+turkey,flax fibre and tow,ha,12000.0,17000.0,1.416667,False,within_band
+turkey,flax fibre and tow,tonnes,4500.0,6900.0,1.533333,False,within_band
+united kingdom,flax fibre and tow,ha,1000.0,10000.0,10.0,False,within_band
+united kingdom,flax fibre and tow,tonnes,1600.0,4800.0,3.0,False,within_band
+united states of america,flax fibre and tow,ha,1122000.0,492000.0,0.438503,False,within_band
+united states of america,flax fibre and tow,tonnes,406300.0,208600.0,0.513414,False,within_band
+uruguay,flax fibre and tow,ha,144000.0,150000.0,1.041667,False,within_band
+uruguay,flax fibre and tow,tonnes,84500.0,89300.0,1.056805,False,within_band
+belize,grapefruit (inc. pomelos),tonnes,100.0,1400.0,14.0,False,within_band
+israel,grapefruit (inc. pomelos),tonnes,2700.0,46500.0,17.222222,False,within_band
+jamaica,grapefruit (inc. pomelos),tonnes,6000.0,7900.0,1.316667,False,within_band
+mexico,grapefruit (inc. pomelos),tonnes,600.0,600.0,1.0,False,within_band
+philippines,grapefruit (inc. pomelos),ha,2000.0,2000.0,1.0,False,within_band
+philippines,grapefruit (inc. pomelos),tonnes,7600.0,6200.0,0.815789,False,within_band
+south africa,grapefruit (inc. pomelos),tonnes,2300.0,11500.0,5.0,False,within_band
+trinidad and tobago,grapefruit (inc. pomelos),ha,1000.0,1000.0,1.0,False,within_band
+trinidad and tobago,grapefruit (inc. pomelos),tonnes,100.0,1600.0,16.0,False,within_band
+united states of america,grapefruit (inc. pomelos),ha,13000.0,3000.0,0.230769,False,within_band
+united states of america,grapefruit (inc. pomelos),tonnes,519800.0,1076300.0,2.070604,False,within_band
+algeria,grapes,ha,345000.0,406000.0,1.176812,False,within_band
+argentina,grapes,ha,147000.0,21000.0,0.142857,False,within_band
+argentina,grapes,tonnes,205000.0,250000.0,1.219512,False,within_band
+australia,grapes,ha,46000.0,3000.0,0.065217,False,within_band
+australia,grapes,tonnes,13900.0,14300.0,1.028777,False,within_band
+austria,grapes,ha,34000.0,36000.0,1.058824,False,within_band
+austria,grapes,tonnes,600.0,1300.0,2.166667,False,within_band
+belgium,grapes,tonnes,7500.0,311000.0,41.466667,False,break_higher
+brazil,grapes,ha,37000.0,48000.0,1.297297,False,within_band
+brazil,grapes,tonnes,214700.0,215400.0,1.00326,False,within_band
+bulgaria,grapes,ha,87000.0,107000.0,1.229885,False,within_band
+bulgaria,grapes,tonnes,111000.0,476100.0,4.289189,False,within_band
+canada,grapes,tonnes,23900.0,18600.0,0.778243,False,within_band
+chile,grapes,ha,85000.0,101000.0,1.188235,False,within_band
+cyprus,grapes,ha,43000.0,50000.0,1.162791,False,within_band
+cyprus,grapes,tonnes,17300.0,16300.0,0.942197,False,within_band
+czech republic,grapes,ha,18000.0,2000.0,0.111111,False,within_band
+czech republic,grapes,tonnes,6700.0,8100.0,1.208955,False,within_band
+egypt,grapes,ha,2000.0,3000.0,1.5,False,within_band
+egypt,grapes,tonnes,21000.0,23000.0,1.095238,False,within_band
+france,grapes,ha,1623000.0,1620000.0,0.998152,False,within_band
+france,grapes,tonnes,114200.0,143300.0,1.254816,False,within_band
+germany,grapes,ha,82000.0,82000.0,1.0,False,within_band
+greece,grapes,ha,229000.0,97000.0,0.423581,False,within_band
+greece,grapes,tonnes,3600.0,4500.0,1.25,False,within_band
+hungary,grapes,ha,215000.0,15000.0,0.069767,False,within_band
+hungary,grapes,tonnes,28400.0,14900.0,0.524648,False,within_band
+iran,grapes,tonnes,270000.0,400000.0,1.481481,False,within_band
+israel,grapes,tonnes,7000.0,40100.0,5.728571,False,within_band
+italy,grapes,ha,936000.0,970000.0,1.036325,False,within_band
+italy,grapes,tonnes,3457600.0,386100.0,0.111667,False,within_band
+japan,grapes,tonnes,53100.0,65200.0,1.227872,False,within_band
+libya,grapes,ha,4000.0,9000.0,2.25,False,within_band
+libya,grapes,tonnes,800.0,23000.0,28.75,False,within_band
+madagascar,grapes,tonnes,600.0,1000.0,1.666667,False,within_band
+malta,grapes,ha,1000.0,1000.0,1.0,False,within_band
+malta,grapes,tonnes,6400.0,3700.0,0.578125,False,within_band
+mexico,grapes,ha,4000.0,2000.0,0.5,False,within_band
+mexico,grapes,tonnes,8900.0,312300.0,35.089888,False,break_higher
+morocco,grapes,ha,11000.0,24000.0,2.181818,False,within_band
+morocco,grapes,tonnes,30300.0,6900.0,0.227723,False,within_band
+netherlands,grapes,tonnes,12800.0,21200.0,1.65625,False,within_band
+peru,grapes,ha,7000.0,7000.0,1.0,False,within_band
+peru,grapes,tonnes,32800.0,32800.0,1.0,False,within_band
+portugal,grapes,ha,35000.0,351000.0,10.028571,False,within_band
+portugal,grapes,tonnes,1086800.0,1183300.0,1.088793,False,within_band
+romania,grapes,ha,300000.0,345000.0,1.15,False,within_band
+romania,grapes,tonnes,1225000.0,1640600.0,1.339265,False,within_band
+russian federation,grapes,ha,239000.0,300000.0,1.25523,False,within_band
+russian federation,grapes,tonnes,971500.0,961000.0,0.989192,False,within_band
+serbia,grapes,ha,186000.0,211000.0,1.134409,False,within_band
+south africa,grapes,ha,30000.0,5000.0,0.166667,False,within_band
+south africa,grapes,tonnes,3600.0,8900.0,2.472222,False,within_band
+south korea,grapes,tonnes,1000.0,2100.0,2.1,False,within_band
+spain,grapes,ha,1522000.0,1564000.0,1.027595,False,within_band
+spain,grapes,tonnes,3490700.0,3236600.0,0.927207,False,within_band
+switzerland,grapes,ha,13000.0,13000.0,1.0,False,within_band
+syrian arab republic,grapes,ha,42000.0,42000.0,1.0,False,within_band
+syrian arab republic,grapes,tonnes,134000.0,92000.0,0.686567,False,within_band
+tunisia,grapes,ha,43000.0,4000.0,0.093023,False,within_band
+tunisia,grapes,tonnes,6000.0,2800.0,0.466667,False,within_band
+turkey,grapes,ha,326000.0,359000.0,1.101227,False,within_band
+turkey,grapes,tonnes,314600.0,440000.0,1.398601,False,within_band
+united states of america,grapes,ha,347000.0,32000.0,0.092219,False,within_band
+united states of america,grapes,tonnes,312700.0,269900.0,0.863128,False,within_band
+uruguay,grapes,ha,15000.0,16000.0,1.066667,False,within_band
+uruguay,grapes,tonnes,66400.0,92400.0,1.391566,False,within_band
+angola,"groundnuts, with shell",ha,14000.0,7000.0,0.5,False,within_band
+angola,"groundnuts, with shell",tonnes,9800.0,5600.0,0.571429,False,within_band
+argentina,"groundnuts, with shell",ha,55000.0,81000.0,1.472727,False,within_band
+argentina,"groundnuts, with shell",tonnes,63300.0,77700.0,1.227488,False,within_band
+australia,"groundnuts, with shell",ha,2000.0,6000.0,3.0,False,within_band
+australia,"groundnuts, with shell",tonnes,2600.0,6400.0,2.461538,False,within_band
+benin,"groundnuts, with shell",ha,3000.0,22000.0,7.333333,False,within_band
+benin,"groundnuts, with shell",tonnes,500.0,9900.0,19.8,False,within_band
+burundi,"groundnuts, with shell",ha,3000.0,3000.0,1.0,False,within_band
+burundi,"groundnuts, with shell",tonnes,2500.0,300.0,0.12,False,within_band
+"china, mainland","groundnuts, with shell",ha,34000.0,1448000.0,42.588235,False,break_higher
+"china, mainland","groundnuts, with shell",tonnes,65200.0,2597500.0,39.838957,False,break_higher
+"china, taiwan province of","groundnuts, with shell",ha,27000.0,31000.0,1.148148,False,within_band
+"china, taiwan province of","groundnuts, with shell",tonnes,43200.0,54600.0,1.263889,False,within_band
+congo,"groundnuts, with shell",ha,13000.0,37000.0,2.846154,False,within_band
+congo,"groundnuts, with shell",tonnes,10800.0,15800.0,1.462963,False,within_band
+dr congo,"groundnuts, with shell",ha,108000.0,99000.0,0.916667,False,within_band
+dr congo,"groundnuts, with shell",tonnes,90800.0,59100.0,0.650881,False,within_band
+egypt,"groundnuts, with shell",ha,26000.0,23000.0,0.884615,False,within_band
+egypt,"groundnuts, with shell",tonnes,27100.0,21000.0,0.774908,False,within_band
+gambia,"groundnuts, with shell",tonnes,63800.0,57200.0,0.896552,False,within_band
+guinea,"groundnuts, with shell",tonnes,10000.0,28800.0,2.88,False,within_band
+guinea-bissau,"groundnuts, with shell",ha,24000.0,20000.0,0.833333,False,within_band
+guinea-bissau,"groundnuts, with shell",tonnes,22200.0,24400.0,1.099099,False,within_band
+india,"groundnuts, with shell",ha,8000.0,3000.0,0.375,False,within_band
+india,"groundnuts, with shell",tonnes,6600.0,5200.0,0.787879,False,within_band
+indonesia,"groundnuts, with shell",ha,214000.0,237000.0,1.107477,False,within_band
+indonesia,"groundnuts, with shell",tonnes,225300.0,259500.0,1.151798,False,within_band
+ivory coast,"groundnuts, with shell",ha,24000.0,129000.0,5.375,False,within_band
+ivory coast,"groundnuts, with shell",tonnes,10900.0,44600.0,4.091743,False,within_band
+japan,"groundnuts, with shell",ha,6000.0,8000.0,1.333333,False,within_band
+japan,"groundnuts, with shell",tonnes,10900.0,12400.0,1.137615,False,within_band
+kenya,"groundnuts, with shell",tonnes,1100.0,2000.0,1.818182,False,within_band
+madagascar,"groundnuts, with shell",ha,9000.0,5000.0,0.555556,False,within_band
+madagascar,"groundnuts, with shell",tonnes,7800.0,5100.0,0.653846,False,within_band
+mali,"groundnuts, with shell",ha,115000.0,204000.0,1.773913,False,within_band
+mali,"groundnuts, with shell",tonnes,95200.0,113500.0,1.192227,False,within_band
+mauritania,"groundnuts, with shell",ha,5000.0,3000.0,0.6,False,within_band
+mauritania,"groundnuts, with shell",tonnes,3900.0,1500.0,0.384615,False,within_band
+mauritius,"groundnuts, with shell",tonnes,200.0,100.0,0.5,False,within_band
+mexico,"groundnuts, with shell",ha,8000.0,12000.0,1.5,False,within_band
+mexico,"groundnuts, with shell",tonnes,5500.0,9500.0,1.727273,False,within_band
+myanmar,"groundnuts, with shell",ha,216000.0,306000.0,1.416667,False,within_band
+myanmar,"groundnuts, with shell",tonnes,159900.0,165900.0,1.037523,False,within_band
+niger,"groundnuts, with shell",ha,31000.0,113000.0,3.645161,False,within_band
+niger,"groundnuts, with shell",tonnes,20600.0,54600.0,2.650485,False,within_band
+nigeria,"groundnuts, with shell",tonnes,216200.0,334800.0,1.548566,False,within_band
+paraguay,"groundnuts, with shell",ha,4000.0,13000.0,3.25,False,within_band
+philippines,"groundnuts, with shell",ha,8000.0,6000.0,0.75,False,within_band
+philippines,"groundnuts, with shell",tonnes,6100.0,5200.0,0.852459,False,within_band
+russian federation,"groundnuts, with shell",ha,5000.0,10000.0,2.0,False,within_band
+senegal,"groundnuts, with shell",ha,612000.0,684000.0,1.117647,False,within_band
+senegal,"groundnuts, with shell",tonnes,443600.0,527800.0,1.189811,False,within_band
+somalia,"groundnuts, with shell",tonnes,400.0,1500.0,3.75,False,within_band
+south africa,"groundnuts, with shell",ha,14000.0,22000.0,1.571429,False,within_band
+south africa,"groundnuts, with shell",tonnes,6000.0,10800.0,1.8,False,within_band
+south korea,"groundnuts, with shell",ha,1000.0,3000.0,3.0,False,within_band
+south korea,"groundnuts, with shell",tonnes,2000.0,6600.0,3.3,False,within_band
+spain,"groundnuts, with shell",ha,8000.0,9000.0,1.125,False,within_band
+spain,"groundnuts, with shell",tonnes,23900.0,20600.0,0.861925,False,within_band
+united states of america,"groundnuts, with shell",ha,574000.0,640000.0,1.114983,False,within_band
+united states of america,"groundnuts, with shell",tonnes,429200.0,539700.0,1.257456,False,within_band
+uruguay,"groundnuts, with shell",ha,1000.0,2000.0,2.0,False,within_band
+uruguay,"groundnuts, with shell",tonnes,400.0,1100.0,2.75,False,within_band
+viet nam,"groundnuts, with shell",ha,2000.0,2000.0,1.0,False,within_band
+viet nam,"groundnuts, with shell",tonnes,1600.0,1800.0,1.125,False,within_band
+zimbabwe,"groundnuts, with shell",ha,3000.0,2000.0,0.666667,False,within_band
+zimbabwe,"groundnuts, with shell",tonnes,2000.0,1400.0,0.7,False,within_band
+bulgaria,hempseed,ha,4000.0,7000.0,1.75,False,within_band
+bulgaria,hempseed,tonnes,1100.0,2300.0,2.090909,False,within_band
+czech republic,hempseed,ha,9000.0,7000.0,0.777778,False,within_band
+czech republic,hempseed,tonnes,4000.0,3700.0,0.925,False,within_band
+france,hempseed,ha,4000.0,3000.0,0.75,False,within_band
+france,hempseed,tonnes,1300.0,700.0,0.538462,False,within_band
+hungary,hempseed,ha,8000.0,12000.0,1.5,False,within_band
+hungary,hempseed,tonnes,3300.0,1000.0,0.30303,False,within_band
+italy,hempseed,tonnes,3800.0,2700.0,0.710526,False,within_band
+poland,hempseed,ha,32000.0,34000.0,1.0625,False,within_band
+poland,hempseed,tonnes,20000.0,19000.0,0.95,False,within_band
+romania,hempseed,ha,41000.0,49000.0,1.195122,False,within_band
+romania,hempseed,tonnes,13300.0,21900.0,1.646617,False,within_band
+russian federation,hempseed,ha,880000.0,498000.0,0.565909,False,within_band
+russian federation,hempseed,tonnes,388000.0,226000.0,0.582474,False,within_band
+serbia,hempseed,tonnes,1300.0,2800.0,2.153846,False,within_band
+spain,hempseed,ha,5000.0,4000.0,0.8,False,within_band
+spain,hempseed,tonnes,1800.0,1000.0,0.555556,False,within_band
+syrian arab republic,hempseed,ha,3000.0,4000.0,1.333333,False,within_band
+syrian arab republic,hempseed,tonnes,400.0,600.0,1.5,False,within_band
+australia,hops,ha,5000.0,400.0,0.08,True,within_band
+australia,hops,tonnes,91900.0,104500.0,1.137106,True,within_band
+austria,hops,tonnes,6000.0,4900.0,0.816667,True,within_band
+belgium,hops,ha,10000.0,900.0,0.09,True,within_band
+belgium,hops,tonnes,135000.0,120600.0,0.893333,True,within_band
+canada,hops,ha,4000.0,400.0,0.1,True,within_band
+canada,hops,tonnes,50800.0,73100.0,1.438976,True,within_band
+czech republic,hops,ha,140000.0,11300.0,0.080714,True,within_band
+czech republic,hops,tonnes,1116500.0,973500.0,0.871921,True,within_band
+france,hops,ha,33000.0,1800.0,0.054545,True,within_band
+france,hops,tonnes,292600.0,223900.0,0.765208,True,within_band
+germany,hops,ha,124000.0,9600.0,0.077419,True,within_band
+germany,hops,tonnes,884700.0,908700.0,1.027128,True,within_band
+hungary,hops,ha,2000.0,100.0,0.05,True,within_band
+hungary,hops,tonnes,12300.0,6600.0,0.536585,True,within_band
+new zealand,hops,ha,2000.0,300.0,0.15,True,within_band
+new zealand,hops,tonnes,35900.0,39700.0,1.10585,True,within_band
+poland,hops,ha,2700.0,3200.0,1.185185,True,within_band
+poland,hops,tonnes,167500.0,177200.0,1.05791,True,within_band
+romania,hops,tonnes,3500.0,1900.0,0.542857,True,within_band
+serbia,hops,ha,41000.0,2700.0,0.065854,True,within_band
+serbia,hops,tonnes,279400.0,180400.0,0.645669,True,within_band
+united kingdom,hops,ha,84000.0,7400.0,0.088095,True,within_band
+united kingdom,hops,tonnes,1230400.0,1271100.0,1.033079,True,within_band
+united states of america,hops,ha,92000.0,14000.0,0.152174,True,within_band
+united states of america,hops,tonnes,1270500.0,1768000.0,1.391578,True,within_band
+"china, taiwan province of",jute,ha,3000.0,6000.0,2.0,False,within_band
+"china, taiwan province of",jute,tonnes,4100.0,10300.0,2.512195,False,within_band
+iran,jute,tonnes,1700.0,3500.0,2.058824,False,within_band
+japan,jute,tonnes,1000.0,1200.0,1.2,False,within_band
+nepal,jute,tonnes,12600.0,10400.0,0.825397,False,within_band
+viet nam,jute,tonnes,100.0,200.0,2.0,False,within_band
+algeria,lemons and limes,tonnes,3800.0,3500.0,0.921053,False,within_band
+australia,lemons and limes,ha,2000.0,2000.0,1.0,False,within_band
+australia,lemons and limes,tonnes,11100.0,11100.0,1.0,False,within_band
+cyprus,lemons and limes,tonnes,1200.0,1800.0,1.5,False,within_band
+dominica,lemons and limes,ha,1000.0,1000.0,1.0,False,within_band
+dominica,lemons and limes,tonnes,8300.0,3200.0,0.385542,False,within_band
+france,lemons and limes,tonnes,200.0,200.0,1.0,False,within_band
+greece,lemons and limes,tonnes,6200.0,12000.0,1.935484,False,within_band
+israel,lemons and limes,tonnes,300.0,2500.0,8.333333,False,within_band
+italy,lemons and limes,ha,101000.0,45000.0,0.445545,False,within_band
+italy,lemons and limes,tonnes,506000.0,339500.0,0.670949,False,within_band
+japan,lemons and limes,ha,3000.0,3000.0,1.0,False,within_band
+japan,lemons and limes,tonnes,22400.0,22100.0,0.986607,False,within_band
+mexico,lemons and limes,tonnes,35200.0,23600.0,0.670455,False,within_band
+montserrat,lemons and limes,tonnes,200.0,500.0,2.5,False,within_band
+morocco,lemons and limes,tonnes,2500.0,30000.0,12.0,False,within_band
+new zealand,lemons and limes,tonnes,600.0,2400.0,4.0,False,within_band
+saint lucia,lemons and limes,tonnes,6900.0,2500.0,0.362319,False,within_band
+saint vincent and the grenadines,lemons and limes,tonnes,200.0,100.0,0.5,False,within_band
+south africa,lemons and limes,tonnes,600.0,1300.0,2.166667,False,within_band
+spain,lemons and limes,ha,3000.0,3000.0,1.0,False,within_band
+spain,lemons and limes,tonnes,55600.0,55400.0,0.996403,False,within_band
+tunisia,lemons and limes,tonnes,700.0,1200.0,1.714286,False,within_band
+united states of america,lemons and limes,ha,17000.0,286000.0,16.823529,False,within_band
+united states of america,lemons and limes,tonnes,250300.0,322500.0,1.288454,False,within_band
+philippines,manila fibre (abaca),ha,483000.0,487000.0,1.008282,False,within_band
+philippines,manila fibre (abaca),tonnes,176000.0,188300.0,1.069886,False,within_band
+algeria,"oil, olive, virgin",tonnes,20000.0,12100.0,0.605,False,within_band
+cyprus,"oil, olive, virgin",tonnes,1100.0,1600.0,1.454545,False,within_band
+france,"oil, olive, virgin",tonnes,4700.0,5600.0,1.191489,False,within_band
+greece,"oil, olive, virgin",tonnes,104100.0,115400.0,1.108549,False,within_band
+israel,"oil, olive, virgin",tonnes,2500.0,6100.0,2.44,False,within_band
+italy,"oil, olive, virgin",tonnes,214700.0,207400.0,0.965999,False,within_band
+libya,"oil, olive, virgin",tonnes,2900.0,1900.0,0.655172,False,within_band
+morocco,"oil, olive, virgin",tonnes,11000.0,9600.0,0.872727,False,within_band
+portugal,"oil, olive, virgin",tonnes,44500.0,46200.0,1.038202,False,within_band
+serbia,"oil, olive, virgin",tonnes,4900.0,4400.0,0.897959,False,within_band
+spain,"oil, olive, virgin",tonnes,333300.0,2352600.0,7.058506,False,within_band
+syrian arab republic,"oil, olive, virgin",tonnes,10800.0,8500.0,0.787037,False,within_band
+tunisia,"oil, olive, virgin",tonnes,43300.0,41000.0,0.946882,False,within_band
+turkey,"oil, olive, virgin",tonnes,36500.0,36900.0,1.010959,False,within_band
+united states of america,"oil, olive, virgin",tonnes,600.0,1200.0,2.0,False,within_band
+albania,olives,ha,5000.0,5000.0,1.0,False,within_band
+albania,olives,tonnes,32500.0,17000.0,0.523077,False,within_band
+algeria,olives,ha,81000.0,77000.0,0.950617,False,within_band
+algeria,olives,tonnes,155100.0,96300.0,0.62089,False,within_band
+australia,olives,tonnes,500.0,500.0,1.0,False,within_band
+chile,olives,ha,1000.0,1000.0,1.0,False,within_band
+chile,olives,tonnes,600.0,600.0,1.0,False,within_band
+cyprus,olives,tonnes,6300.0,9200.0,1.460317,False,within_band
+egypt,olives,ha,1000.0,1000.0,1.0,False,within_band
+france,olives,ha,119000.0,92000.0,0.773109,False,within_band
+france,olives,tonnes,39800.0,38800.0,0.974874,False,within_band
+greece,olives,tonnes,40600.0,39700.0,0.977833,False,within_band
+israel,olives,tonnes,12300.0,3075400.0,250.03252,False,break_higher
+italy,olives,ha,1530000.0,1358000.0,0.887582,False,within_band
+italy,olives,tonnes,1325100.0,10300.0,0.007773,False,break_lower
+libya,olives,ha,53000.0,61000.0,1.150943,False,within_band
+libya,olives,tonnes,19300.0,1610700.0,83.455959,False,break_higher
+mexico,olives,tonnes,100.0,100.0,1.0,False,within_band
+morocco,olives,tonnes,63400.0,67700.0,1.067823,False,within_band
+peru,olives,tonnes,2000.0,2000.0,1.0,False,within_band
+portugal,olives,tonnes,299700.0,376400.0,1.255923,False,within_band
+spain,olives,ha,1855000.0,2095000.0,1.12938,False,within_band
+spain,olives,tonnes,1714600.0,203800.0,0.118862,False,within_band
+syrian arab republic,olives,ha,76000.0,72000.0,0.947368,False,within_band
+turkey,olives,tonnes,182500.0,229000.0,1.254795,False,within_band
+united states of america,olives,ha,12000.0,10000.0,0.833333,False,within_band
+united states of america,olives,tonnes,18700.0,1127200.0,60.278075,False,break_higher
+uruguay,olives,ha,1000.0,1000.0,1.0,False,within_band
+uruguay,olives,tonnes,700.0,700.0,1.0,False,within_band
+algeria,oranges,ha,5000.0,6000.0,1.2,False,within_band
+algeria,oranges,tonnes,31600.0,48300.0,1.528481,False,within_band
+australia,oranges,ha,15000.0,15000.0,1.0,False,within_band
+australia,oranges,tonnes,77900.0,87100.0,1.1181,False,within_band
+"china, taiwan province of",oranges,tonnes,2900.0,9000.0,3.103448,False,within_band
+cyprus,oranges,tonnes,6100.0,12000.0,1.967213,False,within_band
+dominica,oranges,tonnes,200.0,400.0,2.0,False,within_band
+ecuador,oranges,tonnes,2900.0,9700.0,3.344828,False,within_band
+egypt,oranges,ha,5000.0,11000.0,2.2,False,within_band
+france,oranges,tonnes,900.0,900.0,1.0,False,within_band
+greece,oranges,tonnes,8300.0,25300.0,3.048193,False,within_band
+iran,oranges,tonnes,65200.0,21700.0,0.332822,False,within_band
+israel,oranges,ha,11000.0,29000.0,2.636364,False,within_band
+israel,oranges,tonnes,97900.0,1300.0,0.013279,False,break_lower
+italy,oranges,ha,101000.0,51000.0,0.50495,False,within_band
+italy,oranges,tonnes,338700.0,324600.0,0.95837,False,within_band
+jamaica,oranges,tonnes,1300.0,8200.0,6.307692,False,within_band
+japan,oranges,ha,7000.0,8000.0,1.142857,False,within_band
+japan,oranges,tonnes,76700.0,85700.0,1.11734,False,within_band
+mexico,oranges,tonnes,108400.0,143100.0,1.320111,False,within_band
+new zealand,oranges,tonnes,100.0,300.0,3.0,False,within_band
+paraguay,oranges,ha,2000.0,2000.0,1.0,False,within_band
+paraguay,oranges,tonnes,9000.0,3600.0,0.4,False,within_band
+philippines,oranges,ha,2000.0,2000.0,1.0,False,within_band
+philippines,oranges,tonnes,2200.0,1800.0,0.818182,False,within_band
+russian federation,oranges,ha,2000.0,4000.0,2.0,False,within_band
+russian federation,oranges,tonnes,3300.0,10500.0,3.181818,False,within_band
+south africa,oranges,ha,14000.0,24000.0,1.714286,False,within_band
+south africa,oranges,tonnes,37400.0,97500.0,2.606952,False,within_band
+spain,oranges,ha,69000.0,75000.0,1.086957,False,within_band
+spain,oranges,tonnes,1225400.0,1044400.0,0.852293,False,within_band
+suriname,oranges,tonnes,600.0,800.0,1.333333,False,within_band
+syrian arab republic,oranges,ha,3000.0,1000.0,0.333333,False,within_band
+syrian arab republic,oranges,tonnes,39800.0,4300.0,0.10804,False,within_band
+tunisia,oranges,tonnes,2500.0,10700.0,4.28,False,within_band
+united states of america,oranges,ha,94000.0,289000.0,3.074468,False,within_band
+united states of america,oranges,tonnes,1692000.0,2189000.0,1.293735,False,within_band
+uruguay,oranges,ha,8000.0,8000.0,1.0,False,within_band
+uruguay,oranges,tonnes,48500.0,48500.0,1.0,False,within_band
+zambia,oranges,tonnes,100.0,300.0,3.0,False,within_band
+zimbabwe,oranges,tonnes,5800.0,5800.0,1.0,False,within_band
+bulgaria,other berries and fruits of the genus vaccinium n.e.c.,ha,4000.0,4000.0,1.0,False,within_band
+bulgaria,other berries and fruits of the genus vaccinium n.e.c.,tonnes,20800.0,30400.0,1.461538,False,within_band
+"china, taiwan province of",other berries and fruits of the genus vaccinium n.e.c.,ha,1000.0,1000.0,1.0,False,within_band
+france,other berries and fruits of the genus vaccinium n.e.c.,tonnes,79000.0,45600.0,0.577215,False,within_band
+italy,other berries and fruits of the genus vaccinium n.e.c.,tonnes,1388900.0,1016200.0,0.731658,False,within_band
+japan,other berries and fruits of the genus vaccinium n.e.c.,ha,651000.0,572000.0,0.878648,False,within_band
+south korea,other berries and fruits of the genus vaccinium n.e.c.,ha,74000.0,77000.0,1.040541,False,within_band
+spain,other berries and fruits of the genus vaccinium n.e.c.,tonnes,27400.0,26000.0,0.948905,False,within_band
+syrian arab republic,other berries and fruits of the genus vaccinium n.e.c.,ha,25000.0,16000.0,0.64,False,within_band
+syrian arab republic,other berries and fruits of the genus vaccinium n.e.c.,tonnes,203800.0,144500.0,0.709028,False,within_band
+viet nam,other berries and fruits of the genus vaccinium n.e.c.,ha,3000.0,2000.0,0.666667,False,within_band
+viet nam,other berries and fruits of the genus vaccinium n.e.c.,tonnes,18100.0,15900.0,0.878453,False,within_band
+france,"other citrus fruit, n.e.c.",tonnes,1000.0,700.0,0.7,False,within_band
+greece,"other citrus fruit, n.e.c.",tonnes,600.0,500.0,0.833333,False,within_band
+mexico,"other citrus fruit, n.e.c.",tonnes,700.0,700.0,1.0,False,within_band
+australia,other sugar crops n.e.c.,tonnes,1500.0,2400.0,1.6,False,within_band
+argentina,raisins,tonnes,3000.0,4000.0,1.333333,False,within_band
+australia,raisins,tonnes,67800.0,75700.0,1.116519,False,within_band
+chile,raisins,tonnes,1700.0,1500.0,0.882353,False,within_band
+cyprus,raisins,tonnes,4200.0,4300.0,1.02381,False,within_band
+greece,raisins,tonnes,160000.0,194800.0,1.2175,False,within_band
+iran,raisins,tonnes,32000.0,54200.0,1.69375,False,within_band
+israel,raisins,tonnes,1000.0,1000.0,1.0,False,within_band
+italy,raisins,tonnes,4200.0,1000.0,0.238095,False,within_band
+morocco,raisins,tonnes,3300.0,2500.0,0.757576,False,within_band
+russian federation,raisins,tonnes,22700.0,25000.0,1.101322,False,within_band
+south africa,raisins,tonnes,5000.0,8000.0,1.6,False,within_band
+spain,raisins,tonnes,15800.0,13800.0,0.873418,False,within_band
+syrian arab republic,raisins,tonnes,10000.0,8000.0,0.8,False,within_band
+turkey,raisins,tonnes,55500.0,83000.0,1.495495,False,within_band
+united states of america,raisins,tonnes,199400.0,198300.0,0.994483,False,within_band
+austria,rapeseed,ha,2000.0,2000.0,1.0,False,within_band
+austria,rapeseed,tonnes,2500.0,1700.0,0.68,False,within_band
+bulgaria,rapeseed,ha,15000.0,13000.0,0.866667,False,within_band
+bulgaria,rapeseed,tonnes,13000.0,11100.0,0.853846,False,within_band
+"china, mainland",rapeseed,ha,3710000.0,3908000.0,1.053369,False,within_band
+"china, mainland",rapeseed,tonnes,2259300.0,2394700.0,1.05993,False,within_band
+"china, taiwan province of",rapeseed,tonnes,100.0,200.0,2.0,False,within_band
+czech republic,rapeseed,ha,2000.0,5000.0,2.5,False,within_band
+czech republic,rapeseed,tonnes,1700.0,7200.0,4.235294,False,within_band
+france,rapeseed,ha,19000.0,12000.0,0.631579,False,within_band
+france,rapeseed,tonnes,23900.0,12800.0,0.535565,False,within_band
+germany,rapeseed,ha,12000.0,48000.0,4.0,False,within_band
+germany,rapeseed,tonnes,16600.0,86200.0,5.192771,False,within_band
+hungary,rapeseed,ha,10000.0,11000.0,1.1,False,within_band
+hungary,rapeseed,tonnes,8700.0,8500.0,0.977011,False,within_band
+japan,rapeseed,ha,74000.0,103000.0,1.391892,False,within_band
+japan,rapeseed,tonnes,78500.0,119900.0,1.527389,False,within_band
+netherlands,rapeseed,ha,2000.0,2000.0,1.0,False,within_band
+netherlands,rapeseed,tonnes,3900.0,4700.0,1.205128,False,within_band
+poland,rapeseed,ha,30000.0,55000.0,1.833333,False,within_band
+poland,rapeseed,tonnes,27700.0,50800.0,1.833935,False,within_band
+romania,rapeseed,ha,62000.0,88000.0,1.419355,False,within_band
+romania,rapeseed,tonnes,32700.0,42000.0,1.284404,False,within_band
+russian federation,rapeseed,ha,21000.0,60000.0,2.857143,False,within_band
+serbia,rapeseed,ha,8000.0,16000.0,2.0,False,within_band
+serbia,rapeseed,tonnes,5200.0,10800.0,2.076923,False,within_band
+brunei darussalam,"rubber, natural",ha,3600.0,6200.0,1.722222,False,within_band
+cameroon,"rubber, natural",ha,5900.0,7100.0,1.20339,False,within_band
+dr congo,"rubber, natural",ha,6300.0,5800.0,0.920635,False,within_band
+indonesia,"rubber, natural",ha,562100.0,596400.0,1.061021,False,within_band
+malawi,"rubber, natural",ha,600.0,500.0,0.833333,False,within_band
+malaysia,"rubber, natural",ha,105500.0,93900.0,0.890047,False,within_band
+nigeria,"rubber, natural",ha,1900.0,2700.0,1.421053,False,within_band
+philippines,"rubber, natural",ha,3200.0,3800.0,1.1875,False,within_band
+sri lanka,"rubber, natural",ha,237100.0,244800.0,1.032476,False,within_band
+trinidad and tobago,"rubber, natural",ha,300.0,300.0,1.0,False,within_band
+albania,rye,ha,2000.0,3000.0,1.5,False,within_band
+albania,rye,tonnes,2500.0,3200.0,1.28,False,within_band
+algeria,rye,ha,1000.0,1000.0,1.0,False,within_band
+algeria,rye,tonnes,1200.0,900.0,0.75,False,within_band
+argentina,rye,ha,328000.0,361000.0,1.10061,False,within_band
+argentina,rye,tonnes,202400.0,253700.0,1.253458,False,within_band
+australia,rye,ha,2000.0,5000.0,2.5,False,within_band
+australia,rye,tonnes,1900.0,3300.0,1.736842,False,within_band
+austria,rye,ha,379000.0,367000.0,0.968338,False,within_band
+austria,rye,tonnes,527400.0,538600.0,1.021236,False,within_band
+belgium,rye,ha,229000.0,178000.0,0.777293,False,within_band
+belgium,rye,tonnes,549100.0,424400.0,0.772901,False,within_band
+brazil,rye,ha,17000.0,14000.0,0.823529,False,within_band
+brazil,rye,tonnes,16600.0,15600.0,0.939759,False,within_band
+bulgaria,rye,ha,228000.0,194000.0,0.850877,False,within_band
+bulgaria,rye,tonnes,242400.0,199000.0,0.820957,False,within_band
+canada,rye,ha,393000.0,297000.0,0.755725,False,within_band
+canada,rye,tonnes,323000.0,179600.0,0.556037,False,within_band
+chile,rye,ha,3000.0,11000.0,3.666667,False,within_band
+chile,rye,tonnes,3000.0,7700.0,2.566667,False,within_band
+czech republic,rye,ha,1035000.0,988000.0,0.954589,False,within_band
+czech republic,rye,tonnes,1792800.0,1597800.0,0.891232,False,within_band
+denmark,rye,ha,141000.0,148000.0,1.049645,False,within_band
+denmark,rye,tonnes,240100.0,262000.0,1.091212,False,within_band
+estonia,rye,ha,143000.0,145000.0,1.013986,False,within_band
+estonia,rye,tonnes,168100.0,191200.0,1.137418,False,within_band
+finland,rye,ha,213000.0,240000.0,1.126761,False,within_band
+finland,rye,tonnes,305100.0,370500.0,1.214356,False,within_band
+france,rye,ha,734000.0,670000.0,0.912807,False,within_band
+france,rye,tonnes,824700.0,769900.0,0.933552,False,within_band
+germany,rye,ha,4590000.0,4399000.0,0.958388,False,within_band
+germany,rye,tonnes,7910000.0,7611300.0,0.962238,False,within_band
+greece,rye,ha,62000.0,69000.0,1.112903,False,within_band
+greece,rye,tonnes,44700.0,56600.0,1.266219,False,within_band
+hungary,rye,ha,638000.0,631000.0,0.989028,False,within_band
+hungary,rye,tonnes,733500.0,696700.0,0.94983,False,within_band
+ireland,rye,ha,2000.0,1000.0,0.5,False,within_band
+ireland,rye,tonnes,3000.0,1600.0,0.533333,False,within_band
+italy,rye,ha,122000.0,107000.0,0.877049,False,within_band
+italy,rye,tonnes,164600.0,143100.0,0.86938,False,within_band
+latvia,rye,ha,247000.0,274000.0,1.109312,False,within_band
+latvia,rye,tonnes,252700.0,372400.0,1.473684,False,within_band
+lithuania,rye,ha,484000.0,508000.0,1.049587,False,within_band
+lithuania,rye,tonnes,537400.0,616600.0,1.147376,False,within_band
+luxembourg,rye,ha,7000.0,7000.0,1.0,False,within_band
+luxembourg,rye,tonnes,10600.0,11900.0,1.122642,False,within_band
+morocco,rye,ha,1000.0,3000.0,3.0,False,within_band
+morocco,rye,tonnes,600.0,800.0,1.333333,False,within_band
+netherlands,rye,ha,186000.0,218000.0,1.172043,False,within_band
+netherlands,rye,tonnes,399100.0,495500.0,1.241543,False,within_band
+new zealand,rye,tonnes,200.0,100.0,0.5,False,within_band
+norway,rye,ha,7000.0,6000.0,0.857143,False,within_band
+norway,rye,tonnes,12700.0,11100.0,0.874016,False,within_band
+poland,rye,ha,5690000.0,5774000.0,1.014763,False,within_band
+poland,rye,tonnes,6378200.0,6467200.0,1.013954,False,within_band
+portugal,rye,ha,162000.0,141000.0,0.87037,False,within_band
+portugal,rye,tonnes,118500.0,105700.0,0.891983,False,within_band
+romania,rye,ha,351000.0,420000.0,1.196581,False,within_band
+romania,rye,tonnes,343000.0,391200.0,1.140525,False,within_band
+russian federation,rye,ha,26455000.0,22730000.0,0.859195,False,within_band
+russian federation,rye,tonnes,21452700.0,21967200.0,1.023983,False,within_band
+serbia,rye,ha,235000.0,252000.0,1.07234,False,within_band
+serbia,rye,tonnes,201000.0,206200.0,1.025871,False,within_band
+south africa,rye,ha,52000.0,48000.0,0.923077,False,within_band
+south africa,rye,tonnes,27100.0,20800.0,0.767528,False,within_band
+spain,rye,ha,618000.0,594000.0,0.961165,False,within_band
+spain,rye,tonnes,548100.0,551300.0,1.005838,False,within_band
+sweden,rye,ha,238000.0,213000.0,0.894958,False,within_band
+sweden,rye,tonnes,398900.0,409300.0,1.026072,False,within_band
+turkey,rye,ha,264000.0,350000.0,1.325758,False,within_band
+turkey,rye,tonnes,269100.0,335500.0,1.246748,False,within_band
+united kingdom,rye,ha,10000.0,7000.0,0.7,False,within_band
+united kingdom,rye,tonnes,16300.0,10700.0,0.656442,False,within_band
+united states of america,rye,ha,1341000.0,25000.0,0.018643,False,break_lower
+united states of america,rye,tonnes,970600.0,1027800.0,1.058933,False,within_band
+angola,sesame seed,ha,2000.0,1000.0,0.5,False,within_band
+angola,sesame seed,tonnes,700.0,700.0,1.0,False,within_band
+bulgaria,sesame seed,ha,8000.0,6000.0,0.75,False,within_band
+bulgaria,sesame seed,tonnes,2500.0,1800.0,0.72,False,within_band
+cameroon,sesame seed,ha,10000.0,3000.0,0.3,False,within_band
+cameroon,sesame seed,tonnes,3100.0,1100.0,0.354839,False,within_band
+"china, taiwan province of",sesame seed,ha,3000.0,4000.0,1.333333,False,within_band
+"china, taiwan province of",sesame seed,tonnes,1100.0,1400.0,1.272727,False,within_band
+congo,sesame seed,ha,8000.0,8000.0,1.0,False,within_band
+congo,sesame seed,tonnes,1000.0,1500.0,1.5,False,within_band
+cyprus,sesame seed,ha,2000.0,1000.0,0.5,False,within_band
+cyprus,sesame seed,tonnes,300.0,300.0,1.0,False,within_band
+dr congo,sesame seed,ha,13000.0,5000.0,0.384615,False,within_band
+dr congo,sesame seed,tonnes,7400.0,1000.0,0.135135,False,within_band
+egypt,sesame seed,ha,75000.0,103000.0,1.373333,False,within_band
+egypt,sesame seed,tonnes,28200.0,36000.0,1.276596,False,within_band
+greece,sesame seed,ha,25000.0,36000.0,1.44,False,within_band
+greece,sesame seed,tonnes,5100.0,8500.0,1.666667,False,within_band
+guinea,sesame seed,ha,5000.0,1000.0,0.2,False,within_band
+guinea,sesame seed,tonnes,1800.0,700.0,0.388889,False,within_band
+india,sesame seed,ha,1000.0,1000.0,1.0,False,within_band
+india,sesame seed,tonnes,300.0,300.0,1.0,False,within_band
+indonesia,sesame seed,ha,16000.0,16000.0,1.0,False,within_band
+indonesia,sesame seed,tonnes,5400.0,3500.0,0.648148,False,within_band
+iran,sesame seed,tonnes,3300.0,6300.0,1.909091,False,within_band
+israel,sesame seed,tonnes,2200.0,5400.0,2.454545,False,within_band
+italy,sesame seed,tonnes,100.0,400.0,4.0,False,within_band
+japan,sesame seed,ha,5000.0,5000.0,1.0,False,within_band
+japan,sesame seed,tonnes,3500.0,3900.0,1.114286,False,within_band
+jordan,sesame seed,tonnes,200.0,200.0,1.0,False,within_band
+kenya,sesame seed,tonnes,1300.0,3800.0,2.923077,False,within_band
+mexico,sesame seed,ha,28000.0,53000.0,1.892857,False,within_band
+mexico,sesame seed,tonnes,12800.0,22200.0,1.734375,False,within_band
+myanmar,sesame seed,ha,529000.0,575000.0,1.086957,False,within_band
+myanmar,sesame seed,tonnes,52800.0,50300.0,0.952652,False,within_band
+nigeria,sesame seed,tonnes,7600.0,13300.0,1.75,False,within_band
+russian federation,sesame seed,ha,51000.0,38000.0,0.745098,False,within_band
+russian federation,sesame seed,tonnes,15800.0,8700.0,0.550633,False,within_band
+sierra leone,sesame seed,tonnes,100.0,300.0,3.0,False,within_band
+somalia,sesame seed,ha,3000.0,3000.0,1.0,False,within_band
+somalia,sesame seed,tonnes,1100.0,700.0,0.636364,False,within_band
+south korea,sesame seed,ha,10000.0,10000.0,1.0,False,within_band
+south korea,sesame seed,tonnes,4400.0,4300.0,0.977273,False,within_band
+syrian arab republic,sesame seed,ha,4000.0,5000.0,1.25,False,within_band
+syrian arab republic,sesame seed,tonnes,2400.0,3300.0,1.375,False,within_band
+tanzania,sesame seed,tonnes,3900.0,4700.0,1.205128,False,within_band
+thailand,sesame seed,ha,1000.0,1000.0,1.0,False,within_band
+thailand,sesame seed,tonnes,900.0,1000.0,1.111111,False,within_band
+turkey,sesame seed,ha,50000.0,65000.0,1.3,False,within_band
+turkey,sesame seed,tonnes,30200.0,27200.0,0.900662,False,within_band
+viet nam,sesame seed,tonnes,400.0,400.0,1.0,False,within_band
+algeria,"silk-worm cocoons, reelable",tonnes,4.0,1.0,0.25,False,within_band
+brazil,"silk-worm cocoons, reelable",tonnes,300.0,530.0,1.766667,False,within_band
+bulgaria,"silk-worm cocoons, reelable",tonnes,1805.0,1608.0,0.890859,False,within_band
+"china, taiwan province of","silk-worm cocoons, reelable",tonnes,74.0,56.0,0.756757,False,within_band
+cyprus,"silk-worm cocoons, reelable",tonnes,216.0,134.0,0.62037,False,within_band
+czech republic,"silk-worm cocoons, reelable",tonnes,19.0,7.0,0.368421,False,within_band
+egypt,"silk-worm cocoons, reelable",tonnes,36.0,28.0,0.777778,False,within_band
+france,"silk-worm cocoons, reelable",tonnes,1807.0,710.0,0.392916,False,within_band
+greece,"silk-worm cocoons, reelable",tonnes,2132.0,2910.0,1.364916,False,within_band
+hungary,"silk-worm cocoons, reelable",tonnes,568.0,338.0,0.59507,False,within_band
+iran,"silk-worm cocoons, reelable",tonnes,1538.0,1782.0,1.158648,False,within_band
+iraq,"silk-worm cocoons, reelable",tonnes,14.0,318.0,22.714286,False,within_band
+italy,"silk-worm cocoons, reelable",tonnes,46255.0,26095.0,0.564155,False,within_band
+japan,"silk-worm cocoons, reelable",tonnes,191489.0,165245.0,0.862948,False,within_band
+madagascar,"silk-worm cocoons, reelable",tonnes,4.0,8.0,2.0,False,within_band
+portugal,"silk-worm cocoons, reelable",tonnes,13.0,10.0,0.769231,False,within_band
+romania,"silk-worm cocoons, reelable",tonnes,386.0,141.0,0.365285,False,within_band
+russian federation,"silk-worm cocoons, reelable",tonnes,15586.0,19714.0,1.264853,False,within_band
+serbia,"silk-worm cocoons, reelable",tonnes,984.0,573.0,0.582317,False,within_band
+south korea,"silk-worm cocoons, reelable",tonnes,16559.0,8116.0,0.490126,False,within_band
+spain,"silk-worm cocoons, reelable",tonnes,708.0,454.0,0.641243,False,within_band
+switzerland,"silk-worm cocoons, reelable",tonnes,13.0,3.0,0.230769,False,within_band
+syrian arab republic,"silk-worm cocoons, reelable",tonnes,3004.0,371.0,0.123502,False,within_band
+turkey,"silk-worm cocoons, reelable",tonnes,1275.0,2100.0,1.647059,False,within_band
+austria,soybeans,tonnes,100.0,200.0,2.0,False,within_band
+"china, mainland",soybeans,ha,5357000.0,8559000.0,1.597723,False,within_band
+"china, mainland",soybeans,tonnes,6153400.0,9506000.0,1.544837,False,within_band
+"china, taiwan province of",soybeans,ha,9000.0,7000.0,0.777778,False,within_band
+"china, taiwan province of",soybeans,tonnes,4900.0,4200.0,0.857143,False,within_band
+indonesia,soybeans,ha,206000.0,337000.0,1.635922,False,within_band
+indonesia,soybeans,tonnes,125800.0,245400.0,1.950715,False,within_band
+japan,soybeans,ha,351000.0,330000.0,0.940171,False,within_band
+japan,soybeans,tonnes,349900.0,325100.0,0.929123,False,within_band
+poland,soybeans,ha,1000.0,6000.0,6.0,False,within_band
+poland,soybeans,tonnes,1300.0,6500.0,5.0,False,within_band
+russian federation,soybeans,ha,244000.0,141000.0,0.577869,False,within_band
+russian federation,soybeans,tonnes,118900.0,68100.0,0.57275,False,within_band
+south korea,soybeans,ha,791000.0,780000.0,0.986094,False,within_band
+south korea,soybeans,tonnes,533300.0,521900.0,0.978624,False,within_band
+united states of america,soybeans,ha,354000.0,1008000.0,2.847458,False,within_band
+united states of america,soybeans,tonnes,340000.0,1164000.0,3.423529,False,within_band
+angola,sugar raw centrifugal,tonnes,15400.0,29800.0,1.935065,False,within_band
+antigua and barbuda,sugar raw centrifugal,tonnes,15700.0,23300.0,1.484076,False,within_band
+argentina,sugar raw centrifugal,tonnes,356500.0,2200.0,0.006171,False,break_lower
+australia,sugar raw centrifugal,tonnes,524800.0,4400.0,0.008384,False,break_lower
+austria,sugar raw centrifugal,tonnes,124200.0,161100.0,1.297101,False,within_band
+barbados,sugar raw centrifugal,tonnes,70800.0,24700.0,0.34887,False,within_band
+belgium,sugar raw centrifugal,tonnes,229000.0,213400.0,0.931878,False,within_band
+brazil,sugar raw centrifugal,tonnes,1041900.0,1039500.0,0.997697,False,within_band
+bulgaria,sugar raw centrifugal,tonnes,33500.0,1600.0,0.047761,False,within_band
+cabo verde,sugar raw centrifugal,tonnes,300.0,100.0,0.333333,False,within_band
+canada,sugar raw centrifugal,tonnes,42400.0,59300.0,1.398585,False,within_band
+"china, taiwan province of",sugar raw centrifugal,tonnes,804000.0,1078600.0,1.341542,False,within_band
+colombia,sugar raw centrifugal,tonnes,27100.0,36700.0,1.354244,False,within_band
+cuba,sugar raw centrifugal,tonnes,3348000.0,672900.0,0.200986,False,within_band
+czech republic,sugar raw centrifugal,tonnes,822800.0,569900.0,0.692635,False,within_band
+denmark,sugar raw centrifugal,tonnes,141200.0,176800.0,1.252125,False,within_band
+dominican republic,sugar raw centrifugal,tonnes,350800.0,411200.0,1.172178,False,within_band
+dr congo,sugar raw centrifugal,tonnes,2900.0,10600.0,3.655172,False,within_band
+ecuador,sugar raw centrifugal,tonnes,20500.0,19400.0,0.946341,False,within_band
+egypt,sugar raw centrifugal,tonnes,131200.0,145800.0,1.11128,False,within_band
+el salvador,sugar raw centrifugal,tonnes,20700.0,27300.0,1.318841,False,within_band
+fiji,sugar raw centrifugal,tonnes,94200.0,129200.0,1.37155,False,within_band
+finland,sugar raw centrifugal,tonnes,3400.0,10200.0,3.0,False,within_band
+france,sugar raw centrifugal,tonnes,886500.0,872500.0,0.984208,False,within_band
+french polynesia,sugar raw centrifugal,tonnes,200.0,200.0,1.0,False,within_band
+germany,sugar raw centrifugal,tonnes,1634900.0,1662600.0,1.016943,False,within_band
+guadeloupe,sugar raw centrifugal,tonnes,27200.0,44500.0,1.636029,False,within_band
+guatemala,sugar raw centrifugal,tonnes,44200.0,34100.0,0.771493,False,within_band
+guyana,sugar raw centrifugal,tonnes,134500.0,192400.0,1.430483,False,within_band
+haiti,sugar raw centrifugal,tonnes,19400.0,37900.0,1.953608,False,within_band
+hungary,sugar raw centrifugal,tonnes,167300.0,111400.0,0.66587,False,within_band
+indonesia,sugar raw centrifugal,tonnes,2498400.0,1080500.0,0.432477,False,within_band
+iran,sugar raw centrifugal,tonnes,2300.0,15100.0,6.565217,False,within_band
+ireland,sugar raw centrifugal,tonnes,18600.0,74100.0,3.983871,False,within_band
+italy,sugar raw centrifugal,tonnes,356500.0,319500.0,0.896213,False,within_band
+jamaica,sugar raw centrifugal,tonnes,58400.0,103800.0,1.777397,False,within_band
+japan,sugar raw centrifugal,tonnes,78200.0,40100.0,0.512788,False,within_band
+kenya,sugar raw centrifugal,tonnes,6600.0,13500.0,2.045455,False,within_band
+latvia,sugar raw centrifugal,tonnes,9000.0,43100.0,4.788889,False,within_band
+lithuania,sugar raw centrifugal,tonnes,11500.0,20500.0,1.782609,False,within_band
+madagascar,sugar raw centrifugal,tonnes,6000.0,11800.0,1.966667,False,within_band
+martinique,sugar raw centrifugal,tonnes,41800.0,53600.0,1.282297,False,within_band
+mauritius,sugar raw centrifugal,tonnes,224700.0,279000.0,1.241656,False,within_band
+mexico,sugar raw centrifugal,tonnes,214200.0,297800.0,1.390289,False,within_band
+micronesia (federated states of),sugar raw centrifugal,tonnes,30900.0,63900.0,2.067961,False,within_band
+montserrat,sugar raw centrifugal,tonnes,100.0,100.0,1.0,False,within_band
+netherlands,sugar raw centrifugal,tonnes,232800.0,212900.0,0.914519,False,within_band
+paraguay,sugar raw centrifugal,tonnes,6700.0,5700.0,0.850746,False,within_band
+peru,sugar raw centrifugal,tonnes,407700.0,395800.0,0.970812,False,within_band
+philippines,sugar raw centrifugal,tonnes,946000.0,887200.0,0.937844,False,within_band
+poland,sugar raw centrifugal,tonnes,602500.0,442000.0,0.73361,False,within_band
+reunion,sugar raw centrifugal,tonnes,47300.0,80800.0,1.708245,False,within_band
+romania,sugar raw centrifugal,tonnes,94600.0,99200.0,1.048626,False,within_band
+russian federation,sugar raw centrifugal,tonnes,1199800.0,2074900.0,1.729372,False,within_band
+saint kitts and nevis,sugar raw centrifugal,tonnes,18000.0,31700.0,1.761111,False,within_band
+saint lucia,sugar raw centrifugal,tonnes,5200.0,8100.0,1.557692,False,within_band
+saint vincent and the grenadines,sugar raw centrifugal,tonnes,1900.0,1500.0,0.789474,False,within_band
+serbia,sugar raw centrifugal,tonnes,96500.0,67900.0,0.703627,False,within_band
+south africa,sugar raw centrifugal,tonnes,303500.0,408700.0,1.346623,False,within_band
+spain,sugar raw centrifugal,tonnes,15400.0,261000.0,16.948052,False,within_band
+suriname,sugar raw centrifugal,tonnes,20200.0,16300.0,0.806931,False,within_band
+sweden,sugar raw centrifugal,tonnes,152700.0,270700.0,1.772757,False,within_band
+switzerland,sugar raw centrifugal,tonnes,5700.0,9400.0,1.649123,False,within_band
+trinidad and tobago,sugar raw centrifugal,tonnes,98900.0,140000.0,1.415571,False,within_band
+turkey,sugar raw centrifugal,tonnes,15200.0,54500.0,3.585526,False,within_band
+united kingdom,sugar raw centrifugal,tonnes,298900.0,479500.0,1.604215,False,within_band
+united states of america,sugar raw centrifugal,tonnes,1699200.0,361500.0,0.212747,False,within_band
+united states virgin islands,sugar raw centrifugal,tonnes,3900.0,4100.0,1.051282,False,within_band
+venezuela,sugar raw centrifugal,tonnes,21400.0,20400.0,0.953271,False,within_band
+algeria,"tangerines, mandarins, clementines, satsumas",ha,3000.0,4000.0,1.333333,False,within_band
+algeria,"tangerines, mandarins, clementines, satsumas",tonnes,27600.0,39800.0,1.442029,False,within_band
+france,"tangerines, mandarins, clementines, satsumas",tonnes,200.0,300.0,1.5,False,within_band
+greece,"tangerines, mandarins, clementines, satsumas",tonnes,4100.0,5700.0,1.390244,False,within_band
+japan,"tangerines, mandarins, clementines, satsumas",ha,29000.0,35000.0,1.206897,False,within_band
+japan,"tangerines, mandarins, clementines, satsumas",tonnes,310100.0,378600.0,1.220896,False,within_band
+paraguay,"tangerines, mandarins, clementines, satsumas",tonnes,1200.0,800.0,0.666667,False,within_band
+philippines,"tangerines, mandarins, clementines, satsumas",ha,2000.0,2000.0,1.0,False,within_band
+philippines,"tangerines, mandarins, clementines, satsumas",tonnes,2300.0,2400.0,1.043478,False,within_band
+south africa,"tangerines, mandarins, clementines, satsumas",tonnes,900.0,400.0,0.444444,False,within_band
+azerbaijan,tea,ha,15000.0,40000.0,2.666667,False,within_band
+azerbaijan,tea,tonnes,320.0,5059.0,15.809375,False,within_band
+"china, mainland",tea,tonnes,47453.0,40951.0,0.86298,False,within_band
+"china, taiwan province of",tea,ha,45000.0,42000.0,0.933333,False,within_band
+"china, taiwan province of",tea,tonnes,10180.0,11553.0,1.134872,False,within_band
+indonesia,tea,ha,126000.0,201000.0,1.595238,False,within_band
+indonesia,tea,tonnes,65219.0,74668.0,1.144881,False,within_band
+iran,tea,ha,1000.0,3000.0,3.0,False,within_band
+iran,tea,tonnes,155.0,954.0,6.154839,False,within_band
+japan,tea,ha,40000.0,39000.0,0.975,False,within_band
+japan,tea,tonnes,16.0,2566.0,160.375,False,break_higher
+kenya,tea,ha,4000.0,5000.0,1.25,False,within_band
+kenya,tea,tonnes,506.0,3826.0,7.561265,False,within_band
+malawi,tea,ha,4000.0,7000.0,1.75,False,within_band
+malawi,tea,tonnes,902.0,3890.0,4.312639,False,within_band
+malaysia,tea,ha,1000.0,2000.0,2.0,False,within_band
+mauritius,tea,tonnes,17.0,35.0,2.058824,False,within_band
+myanmar,tea,ha,22000.0,22000.0,1.0,False,within_band
+south africa,tea,ha,1000.0,1000.0,1.0,False,within_band
+south africa,tea,tonnes,288.0,374.0,1.298611,False,within_band
+sri lanka,tea,ha,185000.0,226000.0,1.221622,False,within_band
+sri lanka,tea,tonnes,110776.0,101490.0,0.916173,False,within_band
+viet nam,tea,ha,5000.0,5000.0,1.0,False,within_band
+viet nam,tea,tonnes,1800.0,1611.0,0.895,False,within_band
+albania,"tobacco, unmanufactured",ha,1000.0,2000.0,2.0,False,within_band
+albania,"tobacco, unmanufactured",tonnes,97300.0,161200.0,1.656732,True,within_band
+algeria,"tobacco, unmanufactured",ha,24000.0,23000.0,0.958333,False,within_band
+algeria,"tobacco, unmanufactured",tonnes,2030000.0,1913900.0,0.942808,True,within_band
+angola,"tobacco, unmanufactured",ha,2000.0,4000.0,2.0,False,within_band
+angola,"tobacco, unmanufactured",tonnes,96200.0,237100.0,2.464657,True,within_band
+argentina,"tobacco, unmanufactured",ha,13000.0,16000.0,1.230769,False,within_band
+argentina,"tobacco, unmanufactured",tonnes,1254700.0,1552200.0,1.237108,True,within_band
+australia,"tobacco, unmanufactured",ha,4000.0,4000.0,1.0,False,within_band
+australia,"tobacco, unmanufactured",tonnes,227000.0,215700.0,0.95022,True,within_band
+belgium,"tobacco, unmanufactured",ha,3000.0,3000.0,1.0,False,within_band
+belgium,"tobacco, unmanufactured",tonnes,672200.0,633800.0,0.942874,True,within_band
+benin,"tobacco, unmanufactured",tonnes,2900.0,5200.0,1.793103,True,within_band
+bolivia,"tobacco, unmanufactured",ha,6000.0,3000.0,0.5,False,within_band
+bolivia,"tobacco, unmanufactured",tonnes,480000.0,353500.0,0.736458,True,within_band
+brazil,"tobacco, unmanufactured",ha,94000.0,99000.0,1.053191,False,within_band
+brazil,"tobacco, unmanufactured",tonnes,9643700.0,9265800.0,0.960814,True,within_band
+bulgaria,"tobacco, unmanufactured",ha,29000.0,34000.0,1.172414,False,within_band
+bulgaria,"tobacco, unmanufactured",tonnes,2486100.0,13056700.0,5.25188,True,within_band
+burundi,"tobacco, unmanufactured",tonnes,60500.0,34800.0,0.575207,True,within_band
+canada,"tobacco, unmanufactured",ha,19000.0,24000.0,1.263158,False,within_band
+canada,"tobacco, unmanufactured",tonnes,1941100.0,2846800.0,1.466591,True,within_band
+chile,"tobacco, unmanufactured",ha,3000.0,3000.0,1.0,False,within_band
+chile,"tobacco, unmanufactured",tonnes,604500.0,691800.0,1.144417,True,within_band
+"china, taiwan province of","tobacco, unmanufactured",ha,1000.0,1000.0,1.0,False,within_band
+"china, taiwan province of","tobacco, unmanufactured",tonnes,141200.0,225300.0,1.595609,True,within_band
+colombia,"tobacco, unmanufactured",ha,7000.0,11000.0,1.571429,False,within_band
+colombia,"tobacco, unmanufactured",tonnes,859600.0,1224100.0,1.424034,True,within_band
+congo,"tobacco, unmanufactured",ha,11000.0,7000.0,0.636364,False,within_band
+congo,"tobacco, unmanufactured",tonnes,95200.0,102100.0,1.072479,True,within_band
+costa rica,"tobacco, unmanufactured",ha,2000.0,1000.0,0.5,False,within_band
+costa rica,"tobacco, unmanufactured",tonnes,123900.0,26500.0,0.213882,True,within_band
+cuba,"tobacco, unmanufactured",ha,56000.0,45000.0,0.803571,False,within_band
+cuba,"tobacco, unmanufactured",tonnes,3055700.0,2192100.0,0.717381,True,within_band
+cyprus,"tobacco, unmanufactured",tonnes,17600.0,23600.0,1.340909,True,within_band
+czech republic,"tobacco, unmanufactured",ha,8000.0,10000.0,1.25,False,within_band
+czech republic,"tobacco, unmanufactured",tonnes,1137900.0,41410600.0,36.392126,True,break_higher
+dominican republic,"tobacco, unmanufactured",tonnes,1094900.0,696394900.0,636.035163,True,break_higher
+dr congo,"tobacco, unmanufactured",ha,5000.0,5000.0,1.0,False,within_band
+dr congo,"tobacco, unmanufactured",tonnes,366700.0,404600.0,1.103354,True,within_band
+ecuador,"tobacco, unmanufactured",tonnes,25300.0,69000.0,2.727273,True,within_band
+eritrea,"tobacco, unmanufactured",tonnes,2100.0,2600.0,1.238095,True,within_band
+eswatini,"tobacco, unmanufactured",tonnes,28900.0,13700.0,0.474048,True,within_band
+france,"tobacco, unmanufactured",ha,16000.0,18000.0,1.125,False,within_band
+france,"tobacco, unmanufactured",tonnes,2897600.0,3566700.0,1.230915,True,within_band
+germany,"tobacco, unmanufactured",ha,10000.0,13000.0,1.3,False,within_band
+germany,"tobacco, unmanufactured",tonnes,2382400.0,3360700.0,1.410636,True,within_band
+greece,"tobacco, unmanufactured",ha,88000.0,89000.0,1.011364,False,within_band
+greece,"tobacco, unmanufactured",tonnes,5359600.0,5737600.0,1.070528,True,within_band
+guatemala,"tobacco, unmanufactured",tonnes,4400.0,82200.0,18.681818,True,within_band
+guinea,"tobacco, unmanufactured",ha,1000.0,3000.0,3.0,False,within_band
+guinea,"tobacco, unmanufactured",tonnes,53600.0,20700.0,0.386194,True,within_band
+honduras,"tobacco, unmanufactured",ha,6000.0,6000.0,1.0,False,within_band
+honduras,"tobacco, unmanufactured",tonnes,337300.0,337300.0,1.0,True,within_band
+hungary,"tobacco, unmanufactured",ha,24000.0,15000.0,0.625,False,within_band
+hungary,"tobacco, unmanufactured",tonnes,3326100.0,2047600.0,0.615616,True,within_band
+indonesia,"tobacco, unmanufactured",ha,50000.0,41000.0,0.82,False,within_band
+indonesia,"tobacco, unmanufactured",tonnes,4846900.0,3471000.0,0.716128,True,within_band
+iran,"tobacco, unmanufactured",ha,11000.0,12000.0,1.090909,False,within_band
+iran,"tobacco, unmanufactured",tonnes,1353300.0,1500000.0,1.108402,True,within_band
+iraq,"tobacco, unmanufactured",ha,4000.0,4000.0,1.0,False,within_band
+iraq,"tobacco, unmanufactured",tonnes,407700.0,510700.0,1.252637,True,within_band
+israel,"tobacco, unmanufactured",ha,2000.0,3000.0,1.5,False,within_band
+israel,"tobacco, unmanufactured",tonnes,71400.0,138600.0,1.941176,True,within_band
+italy,"tobacco, unmanufactured",ha,40000.0,33000.0,0.825,False,within_band
+italy,"tobacco, unmanufactured",tonnes,4716400.0,4375800.0,0.927784,True,within_band
+ivory coast,"tobacco, unmanufactured",ha,9000.0,2000.0,0.222222,False,within_band
+ivory coast,"tobacco, unmanufactured",tonnes,2200.0,3000.0,1.363636,False,within_band
+japan,"tobacco, unmanufactured",ha,36000.0,35000.0,0.972222,False,within_band
+japan,"tobacco, unmanufactured",tonnes,6452000.0,6410500.0,0.993568,True,within_band
+jordan,"tobacco, unmanufactured",tonnes,1100.0,4000.0,3.636364,True,within_band
+libya,"tobacco, unmanufactured",tonnes,38000.0,75000.0,1.973684,True,within_band
+madagascar,"tobacco, unmanufactured",ha,10000.0,7000.0,0.7,False,within_band
+madagascar,"tobacco, unmanufactured",tonnes,886700.0,559200.0,0.630653,True,within_band
+malawi,"tobacco, unmanufactured",ha,7000.0,3000.0,0.428571,False,within_band
+malawi,"tobacco, unmanufactured",tonnes,282800.0,129900.0,0.459335,True,within_band
+malaysia,"tobacco, unmanufactured",tonnes,33700.0,16000.0,0.474777,True,within_band
+mali,"tobacco, unmanufactured",ha,2000.0,2000.0,1.0,False,within_band
+mali,"tobacco, unmanufactured",tonnes,138400.0,139000.0,1.004335,True,within_band
+mauritania,"tobacco, unmanufactured",tonnes,300.0,1600.0,5.333333,True,within_band
+mauritius,"tobacco, unmanufactured",tonnes,39300.0,30200.0,0.768448,True,within_band
+mexico,"tobacco, unmanufactured",ha,15000.0,18000.0,1.2,False,within_band
+mexico,"tobacco, unmanufactured",tonnes,1171900.0,1543100.0,1.316751,True,within_band
+morocco,"tobacco, unmanufactured",tonnes,18400.0,34700.0,1.88587,True,within_band
+myanmar,"tobacco, unmanufactured",ha,44000.0,40000.0,0.909091,False,within_band
+myanmar,"tobacco, unmanufactured",tonnes,4938000.0,4519600.0,0.915269,True,within_band
+new zealand,"tobacco, unmanufactured",ha,1000.0,1000.0,1.0,False,within_band
+new zealand,"tobacco, unmanufactured",tonnes,50300.0,62000.0,1.232604,True,within_band
+nicaragua,"tobacco, unmanufactured",tonnes,73300.0,55000.0,0.750341,True,within_band
+niger,"tobacco, unmanufactured",tonnes,11000.0,44900.0,4.081818,True,within_band
+paraguay,"tobacco, unmanufactured",ha,9000.0,9000.0,1.0,False,within_band
+paraguay,"tobacco, unmanufactured",tonnes,1259800.0,765300.0,0.607477,True,within_band
+philippines,"tobacco, unmanufactured",ha,79000.0,65000.0,0.822785,False,within_band
+philippines,"tobacco, unmanufactured",tonnes,4567300.0,3212700.0,0.703413,True,within_band
+poland,"tobacco, unmanufactured",ha,5000.0,6000.0,1.2,False,within_band
+poland,"tobacco, unmanufactured",tonnes,761000.0,1137200.0,1.49435,True,within_band
+reunion,"tobacco, unmanufactured",tonnes,58700.0,19700.0,0.335605,True,within_band
+romania,"tobacco, unmanufactured",ha,24000.0,16000.0,0.666667,False,within_band
+romania,"tobacco, unmanufactured",tonnes,1677800.0,1132300.0,0.674872,True,within_band
+russian federation,"tobacco, unmanufactured",ha,143000.0,199000.0,1.391608,False,within_band
+russian federation,"tobacco, unmanufactured",tonnes,13728800.0,22403500.0,1.631861,True,within_band
+serbia,"tobacco, unmanufactured",ha,16000.0,15000.0,0.9375,False,within_band
+serbia,"tobacco, unmanufactured",tonnes,1283000.0,1348200.0,1.050818,True,within_band
+south africa,"tobacco, unmanufactured",ha,9000.0,14000.0,1.555556,False,within_band
+south africa,"tobacco, unmanufactured",tonnes,656800.0,913100.0,1.390225,True,within_band
+south korea,"tobacco, unmanufactured",ha,17000.0,17000.0,1.0,False,within_band
+south korea,"tobacco, unmanufactured",tonnes,2000000.0,2252500.0,1.12625,True,within_band
+spain,"tobacco, unmanufactured",ha,3000.0,4000.0,1.333333,False,within_band
+spain,"tobacco, unmanufactured",tonnes,579100.0,707100.0,1.221033,True,within_band
+sri lanka,"tobacco, unmanufactured",ha,6000.0,6000.0,1.0,False,within_band
+sri lanka,"tobacco, unmanufactured",tonnes,400000.0,95400.0,0.2385,True,within_band
+sweden,"tobacco, unmanufactured",tonnes,55500.0,50300.0,0.906306,True,within_band
+switzerland,"tobacco, unmanufactured",tonnes,66100.0,106700.0,1.614221,True,within_band
+syrian arab republic,"tobacco, unmanufactured",ha,5000.0,4000.0,0.8,False,within_band
+syrian arab republic,"tobacco, unmanufactured",tonnes,309800.0,272200.0,0.878631,True,within_band
+thailand,"tobacco, unmanufactured",ha,9000.0,10000.0,1.111111,False,within_band
+thailand,"tobacco, unmanufactured",tonnes,581200.0,882800.0,1.518926,True,within_band
+tunisia,"tobacco, unmanufactured",tonnes,58200.0,58100.0,0.998282,True,within_band
+turkey,"tobacco, unmanufactured",ha,54000.0,72000.0,1.333333,False,within_band
+turkey,"tobacco, unmanufactured",tonnes,3918000.0,5543300.0,1.414829,True,within_band
+united states of america,"tobacco, unmanufactured",ha,773000.0,627000.0,0.811125,False,within_band
+united states of america,"tobacco, unmanufactured",tonnes,65919800.0,60387500.0,0.916075,True,within_band
+uruguay,"tobacco, unmanufactured",tonnes,47400.0,54000.0,1.139241,True,within_band
+viet nam,"tobacco, unmanufactured",ha,2000.0,2000.0,1.0,False,within_band
+viet nam,"tobacco, unmanufactured",tonnes,131000.0,168700.0,1.287786,True,within_band
+zambia,"tobacco, unmanufactured",ha,1000.0,2000.0,2.0,False,within_band
+zambia,"tobacco, unmanufactured",tonnes,56400.0,73800.0,1.308511,True,within_band
+zimbabwe,"tobacco, unmanufactured",ha,8000.0,19000.0,2.375,False,within_band
+zimbabwe,"tobacco, unmanufactured",tonnes,460200.0,1050600.0,2.28292,True,within_band
+austria,wheat,ha,10000.0,9000.0,0.9,False,within_band
+austria,wheat,tonnes,13000.0,13500.0,1.038462,False,within_band
+belgium,wheat,ha,4000.0,12000.0,3.0,False,within_band
+belgium,wheat,tonnes,6300.0,23700.0,3.761905,False,within_band
+bulgaria,wheat,ha,98000.0,10000.0,0.102041,False,within_band
+bulgaria,wheat,tonnes,115300.0,9800.0,0.084996,False,within_band
+canada,wheat,ha,470000.0,472000.0,1.004255,False,within_band
+canada,wheat,tonnes,806800.0,781000.0,0.968022,False,within_band
+czech republic,wheat,ha,9000.0,6000.0,0.666667,False,within_band
+czech republic,wheat,tonnes,13600.0,9500.0,0.698529,False,within_band
+denmark,wheat,ha,309000.0,322000.0,1.042071,False,within_band
+denmark,wheat,tonnes,763800.0,769200.0,1.00707,False,within_band
+estonia,wheat,ha,70000.0,81000.0,1.157143,False,within_band
+estonia,wheat,tonnes,75500.0,94300.0,1.249007,False,within_band
+finland,wheat,ha,11000.0,13000.0,1.181818,False,within_band
+finland,wheat,tonnes,17700.0,21700.0,1.225989,False,within_band
+france,wheat,ha,80000.0,74000.0,0.925,False,within_band
+france,wheat,tonnes,98100.0,95600.0,0.974516,False,within_band
+germany,wheat,ha,362000.0,73000.0,0.201657,False,within_band
+germany,wheat,tonnes,627800.0,115100.0,0.183339,False,within_band
+greece,wheat,ha,47000.0,56000.0,1.191489,False,within_band
+greece,wheat,tonnes,25000.0,38700.0,1.548,False,within_band
+latvia,wheat,ha,63000.0,75000.0,1.190476,False,within_band
+latvia,wheat,tonnes,72000.0,105000.0,1.458333,False,within_band
+lithuania,wheat,ha,92000.0,108000.0,1.173913,False,within_band
+lithuania,wheat,tonnes,106800.0,133500.0,1.25,False,within_band
+luxembourg,wheat,ha,4000.0,2000.0,0.5,False,within_band
+luxembourg,wheat,tonnes,5400.0,3500.0,0.648148,False,within_band
+norway,wheat,ha,6000.0,5000.0,0.833333,False,within_band
+norway,wheat,tonnes,11100.0,9700.0,0.873874,False,within_band
+poland,wheat,ha,141000.0,141000.0,1.0,False,within_band
+poland,wheat,tonnes,217500.0,171900.0,0.790345,False,within_band
+russian federation,wheat,ha,283000.0,66000.0,0.233216,False,within_band
+serbia,wheat,ha,50000.0,17000.0,0.34,False,within_band
+serbia,wheat,tonnes,44600.0,12300.0,0.275785,False,within_band
+spain,wheat,ha,43000.0,533000.0,12.395349,False,within_band
+spain,wheat,tonnes,23500.0,27600.0,1.174468,False,within_band
+sweden,wheat,ha,246000.0,251000.0,1.020325,False,within_band
+sweden,wheat,tonnes,505000.0,559500.0,1.107921,False,within_band
+switzerland,wheat,ha,5000.0,12000.0,2.4,False,within_band
+switzerland,wheat,tonnes,11700.0,27300.0,2.333333,False,within_band
+turkey,wheat,ha,73000.0,105000.0,1.438356,False,within_band
+turkey,wheat,tonnes,77500.0,88400.0,1.140645,False,within_band
+united kingdom,wheat,ha,50000.0,38000.0,0.76,False,within_band
+united kingdom,wheat,tonnes,99000.0,75600.0,0.763636,False,within_band
+algeria,wine,ha,277000.0,394000.0,1.422383,False,within_band
+algeria,wine,tonnes,1440062.0,1734263.0,1.204297,False,within_band
+argentina,wine,ha,138000.0,140000.0,1.014493,False,within_band
+argentina,wine,tonnes,560951.0,658436.0,1.173785,False,within_band
+australia,wine,ha,19000.0,20000.0,1.052632,False,within_band
+australia,wine,tonnes,69064.0,78958.0,1.143258,False,within_band
+austria,wine,ha,30000.0,29000.0,0.966667,False,within_band
+austria,wine,tonnes,97291.0,98843.0,1.015952,False,within_band
+brazil,wine,tonnes,71683.0,78667.0,1.097429,False,within_band
+bulgaria,wine,ha,76000.0,89000.0,1.171053,False,within_band
+bulgaria,wine,tonnes,119407.0,158110.0,1.324127,False,within_band
+canada,wine,tonnes,12804.0,11543.0,0.901515,False,within_band
+chile,wine,ha,82000.0,92000.0,1.121951,False,within_band
+chile,wine,tonnes,280815.0,303901.0,1.082211,False,within_band
+cyprus,wine,tonnes,11446.0,14841.0,1.29661,False,within_band
+czech republic,wine,ha,15000.0,19000.0,1.266667,False,within_band
+czech republic,wine,tonnes,37054.0,48500.0,1.308901,False,within_band
+france,wine,ha,1529000.0,1529000.0,1.0,False,within_band
+france,wine,tonnes,5429575.0,6076565.0,1.11916,False,within_band
+germany,wine,ha,72000.0,73000.0,1.013889,False,within_band
+germany,wine,tonnes,206610.0,306423.0,1.483099,False,within_band
+greece,wine,ha,135000.0,155000.0,1.148148,False,within_band
+greece,wine,tonnes,37830.0,30264.0,0.8,False,within_band
+hungary,wine,ha,201000.0,189000.0,0.940299,False,within_band
+hungary,wine,tonnes,311370.0,323204.0,1.038006,False,within_band
+israel,wine,tonnes,2813.0,2425.0,0.862069,False,within_band
+italy,wine,ha,936000.0,920000.0,0.982906,False,within_band
+italy,wine,tonnes,3995430.0,5683424.0,1.422481,False,within_band
+japan,wine,tonnes,582.0,582.0,1.0,False,within_band
+libya,wine,ha,1000.0,4000.0,4.0,False,within_band
+libya,wine,tonnes,679.0,3686.0,5.428571,False,within_band
+luxembourg,wine,ha,1000.0,1000.0,1.0,False,within_band
+luxembourg,wine,tonnes,5529.0,7663.0,1.385965,False,within_band
+madagascar,wine,tonnes,194.0,291.0,1.5,False,within_band
+malta,wine,tonnes,4074.0,2425.0,0.595238,False,within_band
+morocco,wine,ha,6000.0,18000.0,3.0,False,within_band
+morocco,wine,tonnes,22601.0,52865.0,2.339056,False,within_band
+new zealand,wine,tonnes,291.0,291.0,1.0,False,within_band
+peru,wine,ha,7000.0,6000.0,0.857143,False,within_band
+peru,wine,tonnes,8439.0,10864.0,1.287356,False,within_band
+portugal,wine,tonnes,599169.0,773090.0,1.29027,False,within_band
+romania,wine,ha,210000.0,245000.0,1.166667,False,within_band
+romania,wine,tonnes,720128.0,901227.0,1.251482,False,within_band
+russian federation,wine,ha,220000.0,260000.0,1.181818,False,within_band
+russian federation,wine,tonnes,437373.0,485000.0,1.108893,False,within_band
+serbia,wine,ha,186000.0,211000.0,1.134409,False,within_band
+serbia,wine,tonnes,390425.0,428255.0,1.096894,False,within_band
+south africa,wine,tonnes,94187.0,128816.0,1.367662,False,within_band
+spain,wine,ha,1341000.0,1357000.0,1.011931,False,within_band
+spain,wine,tonnes,1996939.0,1868414.0,0.935639,False,within_band
+switzerland,wine,tonnes,56066.0,63050.0,1.124567,False,within_band
+syrian arab republic,wine,tonnes,1940.0,3395.0,1.75,False,within_band
+tunisia,wine,ha,36000.0,43000.0,1.194444,False,within_band
+tunisia,wine,tonnes,105439.0,160244.0,1.519779,False,within_band
+turkey,wine,tonnes,3298.0,97000.0,29.411765,False,within_band
+united states of america,wine,ha,75000.0,70000.0,0.933333,False,within_band
+united states of america,wine,tonnes,186240.0,83226.0,0.446875,False,within_band
+uruguay,wine,ha,13000.0,16000.0,1.230769,False,within_band
+uruguay,wine,tonnes,44426.0,57133.0,1.286026,False,within_band

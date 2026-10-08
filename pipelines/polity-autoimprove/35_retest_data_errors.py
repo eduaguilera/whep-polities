@@ -4024,6 +4024,73 @@ def check_iia_fertilizer_one_material(ctx):
             "no fertilizer cell is a sum of materials; the surviving one is a minor material "
             "in 122 cells across 21 series, and k is clean")
 
+def check_iia_period_cells_impossible_yield(ctx):
+    """Six iia period cells break the 1928-1932 -> 1934-1938 screen (issue 640) and fail the yield identity.
+
+    The screen (47_period_across_volumes.py) compares a series' 1934-1938 average with its own
+    1928-1932 average; seventeen pairs sit beyond 30x and eleven are registered elsewhere. These are
+    the cells nothing registered, and each is convicted by arithmetic on its own paired area or on a
+    second source, not by the ratio:
+
+      japan tea            16 t and 2,566 t (and 15.11 t at 1925-1929) on 39,000-43,000 ha, a
+                           yield of 0.0004-0.07 t/ha; mitchell's 1925-1938 median is 39,500 t.
+      czech flax fibre     1,986,600 t on 15,000 ha = 132 t/ha; its own dated 1934-1937 mean is 6,575.
+      belgium grapes       311,000 t on 1,000 ha = 311 t/ha; juan's median is 12,000 t.
+      mexico grapes        312,300 t on 2,000 ha = 156 t/ha; juan's median is 13,204.5 t.
+      czech tobacco        41,410,600 t on 10,000 ha = 4,141 t/ha. The shared x100 late-volume unit
+                           explains the 1928-1932 side (#416) but not this: even divided by 100 it is
+                           41 t/ha, against 1.4 for the dated 1934-1937 mean after the same divisor.
+      dominican tobacco    696,394,900 t, against juan's maximum of 32,000 t in any year; its 1928-1932
+                           average (1,094,900) is the ordinary x100 and reads 10,949 t once divided.
+
+    Belgium and mexico print nearly the same grape tonnage (311,000 / 312,300). The factor is NOT
+    recoverable for any of them: none is a power of ten against its neighbours, so the entry records
+    the defect and not a correction.
+    """
+    lb = ctx["panel"]
+
+    def per(c, it, unit, span):
+        h = lb[(lb["source"] == "iia") & (lb["country"] == c) & (lb["item"] == it)
+               & (lb["unit"] == unit) & lb["year"].isna() & (lb["period"].astype(str) == span)
+               & lb["value"].notna()]["value"]
+        return float(h.iloc[0]) if len(h) else 0.0
+
+    def sib(src, c, it, lo, hi, how):
+        h = lb[(lb["source"] == src) & (lb["country"] == c) & (lb["item"] == it)
+               & (lb["unit"] == "tonnes") & lb["year"].between(lo, hi) & lb["value"].notna()]["value"]
+        return float(getattr(h, how)()) if len(h) else 0.0
+
+    tob, flax, grp, tea = "tobacco, unmanufactured", "flax fibre and tow", "grapes", "tea"
+    cz, jp, be, mx, dr = "czech republic", "japan", "belgium", "mexico", "dominican republic"
+    cz_dated = lb[(lb["source"] == "iia") & (lb["country"] == cz) & (lb["item"] == tob)
+                  & (lb["unit"] == "tonnes") & lb["year"].between(1934, 1937)]["value"]
+    out = [("japan tea 1925-29 (t)", per(jp, tea, "tonnes", "1925-1929"), 15.11),
+           ("japan tea 1928-32 (t)", per(jp, tea, "tonnes", "1928-1932"), 16.0),
+           ("japan tea 1934-38 (t)", per(jp, tea, "tonnes", "1934-1938"), 2566.0),
+           ("  its area 1934-38 (ha)", per(jp, tea, "ha", "1934-1938"), 39000.0),
+           ("  mitchell 1925-38 median", sib("mitchell", jp, tea, 1925, 1938, "median"), 39500.0),
+           ("czech flax 1934-38 (t)", per(cz, flax, "tonnes", "1934-1938"), 1986600.0),
+           ("  its area (ha)", per(cz, flax, "ha", "1934-1938"), 15000.0),
+           ("  dated 1934-37 mean (t)",
+            float(lb[(lb["source"] == "iia") & (lb["country"] == cz) & (lb["item"] == flax)
+                     & (lb["unit"] == "tonnes") & lb["year"].between(1934, 1937)]["value"].mean()),
+            6575.0),
+           ("belgium grapes 1934-38 (t)", per(be, grp, "tonnes", "1934-1938"), 311000.0),
+           ("  its area (ha)", per(be, grp, "ha", "1934-1938"), 1000.0),
+           ("  juan median (t)", sib("juan", be, grp, 1900, 2000, "median"), 12000.0),
+           ("mexico grapes 1934-38 (t)", per(mx, grp, "tonnes", "1934-1938"), 312300.0),
+           ("  its area (ha)", per(mx, grp, "ha", "1934-1938"), 2000.0),
+           ("  juan median (t)", sib("juan", mx, grp, 1900, 2000, "median"), 13204.5),
+           ("czech tobacco 1928-32 (t)", per(cz, tob, "tonnes", "1928-1932"), 1137900.0),
+           ("czech tobacco 1934-38 (t)", per(cz, tob, "tonnes", "1934-1938"), 41410600.0),
+           ("  its area (ha)", per(cz, tob, "ha", "1934-1938"), 10000.0),
+           ("  dated 1934-37 mean (t)", float(cz_dated.mean()), 1410550.0),
+           ("dominican tobacco 1928-32 (t)", per(dr, tob, "tonnes", "1928-1932"), 1094900.0),
+           ("dominican tobacco 1934-38 (t)", per(dr, tob, "tonnes", "1934-1938"), 696394900.0),
+           ("  juan maximum, any year (t)", sib("juan", dr, tob, 1000, 3000, "max"), 32000.0)]
+    return out, ("six cells fail the yield identity or sit orders of magnitude above a second source; "
+                 "no factor is recoverable, so the entry records the defect and no correction")
+
 
 def check_constant_runs_filled(ctx):
     """The disposition census the entry states, and that the filled runs are all named in it (issue 366).
@@ -4106,6 +4173,7 @@ CHECKS = {
     "cmr-1932-groundnut-area-620-million-ha": check_cmr_1932_groundnut_area,
     "iia-sugar-1934-1938-deflated": check_iia_sugar_1934_1938_deflated,
     "iia-olives-1934-1938-scale-scrambled": check_iia_olives_1934_1938_scale,
+    "iia-period-cells-1934-1938-impossible-yield": check_iia_period_cells_impossible_yield,
     "mitchell-japan-rye-is-not-rye": check_mitchell_japan_rye_is_not_rye,
     "nga-1950-livestock-broadcast-13000": check_nga_1950_livestock_broadcast,
     "iia-czechoslovakia-beans-component-only": check_iia_czechoslovakia_beans_component,

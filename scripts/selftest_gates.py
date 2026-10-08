@@ -2969,6 +2969,31 @@ def mutate_potash_joins_the_class(root, gpd, make_valid, affinity):
             f"the census count, all 8 findings and every share/ratio identity stay exactly as pinned")
 
 
+def mutate_period_across_new_break(root, gpd, make_valid, affinity):
+    """Inflate one ordinary pair's 1934-1938 value 50x, keeping ratio and verdict self-consistent.
+
+    A new break is exactly what the baseline exists to refuse, and re-deriving ratio and verdict
+    from the edited value means arm A stays quiet, so the only arm that can see it is the baseline
+    comparison (C). The pair is a mid-ratio one, so the median control barely moves.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/period_across_volumes.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = next(r for r in rows if r["verdict"] == "within_band" and 0.9 < float(r["ratio"]) < 1.1)
+    new_val = round(float(victim["value_1934_1938"]) * 50, 4)
+    ratio = round(new_val / float(victim["value_1928_1932"]), 6)
+    victim["value_1934_1938"], victim["ratio"], victim["verdict"] = str(new_val), str(ratio), \
+        "break_higher"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"inflated {victim['label']} / {victim['item']} ({victim['unit']}) 1934-1938 50x with "
+            f"ratio and verdict re-derived, so only the baseline of explained breaks can see the "
+            f"new unexplained one")
+
+
 def mutate_period_volume_relabelled(root, gpd, make_valid, affinity):
     """Move one row to a different yearbook volume, leaving its ratio and verdict untouched.
 
@@ -6557,6 +6582,13 @@ CASES = (
         "count, all eight findings and every share/ratio identity stay exactly where they are pinned",
     ),
     (
+        "validate_period_across_volumes.py",
+        mutate_period_across_new_break,
+        "NEW unexplained break",
+        "a fresh 50x break in an ordinary pair, with ratio and verdict consistent, so nothing but "
+        "the baseline of explained breaks can notice the screen's tail growing",
+    ),
+    (
         "validate_period_vs_dated_consistency.py",
         mutate_period_volume_relabelled,
         "pairs, recorded",
@@ -8023,6 +8055,15 @@ WRITABLE = {
     # real copy rather than a symlink into the tracked table.
     "validate_period_vs_dated_consistency.py": (
         "pipelines/polity-autoimprove/state/period_vs_dated_consistency.csv",
+    ),
+    # The case rewrites period_across_volumes.csv in place (it inflates one value), so a real copy.
+    # data_errors.csv and the rule table are only READ (arms D and E) but stage() creates nothing it
+    # was not asked for, and the gate FAILS on a missing input, so the case would pass for the wrong
+    # reason ("missing") rather than the one it injects.
+    "validate_period_across_volumes.py": (
+        "pipelines/polity-autoimprove/state/period_across_volumes.csv",
+        "pipelines/polity-autoimprove/state/data_errors.csv",
+        "source_value_scale_corrections.csv",
     ),
     # The case rewrites period_volume_provenance.csv in place (it edits the item column), so a real
     # copy rather than a symlink into the tracked table.
