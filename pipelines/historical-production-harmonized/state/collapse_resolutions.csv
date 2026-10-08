@@ -273,6 +273,7 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1951,CAN-1949-2025,333,Linseed,tonnes,3,fao1952=1000;251000|juan=251000,canada | Canada,linseed,fao1952=ambiguous|juan=single,one_source,juan,251000
 1950,CAN-1949-2025,71,Rye,ha,2,fao1952=473000|juan=429000,canada | Canada,rye,fao1952=single|juan=single,source_precedence,fao1952,473000
 1950,CAN-1949-2025,826,Unmanufactured tobacco,tonnes,2,fao1952=54600|juan=64600,canada | Canada,"tobacco | tobacco, unmanufactured",fao1952=single|juan=single,source_precedence,fao1952,54600
+1875,CAP-1800-1895,116,Potatoes,tonnes,2,mitchell=8100|sa_colonial=371524,Cape of Good Hope | cape province,potatoes,mitchell=single|sa_colonial=single,withheld_contradiction,,
 1949,CHL-1902-2025,176,"Beans, dry",ha,2,fao1952=68000|juan=79000,chile | Chile,"beans, dry | dry beans",fao1952=single|juan=single,source_precedence,fao1952,68000
 1950,CHL-1902-2025,176,"Beans, dry",ha,2,fao1952=73000|juan=60000,chile | Chile,"beans, dry | dry beans",fao1952=single|juan=single,source_precedence,fao1952,73000
 1951,CHL-1902-2025,176,"Beans, dry",ha,2,fao1952=77000|juan=73000,chile | Chile,"beans, dry | dry beans",fao1952=single|juan=single,source_precedence,fao1952,77000
@@ -496,6 +497,47 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1950,DZA-1919-1962,826,Unmanufactured tobacco,tonnes,2,fao1952=19400|mitchell=19000,algeria | Algeria,"tobacco | tobacco, unmanufactured",fao1952=single|mitchell=single,source_precedence,fao1952,19400
 1951,DZA-1919-1962,826,Unmanufactured tobacco,tonnes,2,fao1952=21400|mitchell=19000,algeria | Algeria,"tobacco | tobacco, unmanufactured",fao1952=single|mitchell=single,source_precedence,fao1952,21400
 1949,DZA-1919-1962,976,Sheep,heads,2,fao1952=3839000|mitchell=4541000,algeria | Algeria,sheep,fao1952=single|mitchell=single,source_precedence,fao1952,3839000
+1940,ECU-1830-1942,265,Castor oil seeds,tonnes,2,iia=800|juan=100,ecuador,castor beans seed | castor oil seed,iia=single|juan=single,withheld_contradiction,,
+1941,ECU-1830-1942,265,Castor oil seeds,tonnes,2,iia=1500|juan=800,ecuador,castor beans seed | castor oil seed,iia=single|juan=single,source_precedence,iia,1500
+1900,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=27000|mitchell=19000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,27000
+1901,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=19000|mitchell=23000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,19000
+1902,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=23000|mitchell=24000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,23000
+1903,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=24000|mitchell=23000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,24000
+1904,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=23000|mitchell=28000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,23000
+1905,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=28000|mitchell=21000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,28000
+1906,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=21000|mitchell=22000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,21000
+1907,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=22000|mitchell=19000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,22000
+1908,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=19000|mitchell=31000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,19000
+1910,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=31569.8|mitchell=36000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,31569.8
+1911,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=36305.2|mitchell=39000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,36305.2
+1912,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=38803|mitchell=36000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,38803
+1913,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=38224.7|mitchell=42000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,38224.7
+1914,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=41869.2|mitchell=44000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,41869.2
+1915,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=47210|mitchell=35000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,47210
+1916,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=37014.6|mitchell=49000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,37014.6
+1917,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=42666.5|mitchell=46000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,42666.5
+1918,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=46000|mitchell=37000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,46000
+1919,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=38415.6|mitchell=37000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,38415.6
+1920,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=44680|mitchell=39000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,44680
+1921,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=41805|mitchell=40000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,41805
+1923,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=44248.9|mitchell=29000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,44248.9
+1924,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=30879.7|mitchell=30000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,30879.7
+1925,ECU-1830-1942,661,Cocoa beans,tonnes,2,iia=34200|juan=33247.5,ecuador,"cacao, beans | cocoa, beans",iia=single|juan=single,source_precedence,iia,34200
+1926,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=34200|mitchell=18000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,34200
+1927,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=21769.9|mitchell=20000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,21769.9
+1928,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=23574.5|mitchell=20000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,23574.5
+1929,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=22960.9|mitchell=15000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,22960.9
+1930,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=18208|mitchell=17000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,18208
+1931,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=14634.2|mitchell=14000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,14634.2
+1932,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=15429.6|mitchell=15000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,15429.6
+1933,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=10580.2|mitchell=10000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,10580.2
+1934,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=16909|mitchell=19000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,16909
+1935,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=20200|mitchell=20000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,20200
+1936,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=19700|mitchell=19000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,19700
+1937,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=21400|mitchell=21000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,21400
+1938,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=18400|mitchell=19000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,18400
+1940,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=11200|mitchell=11000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,11200
+1941,ECU-1830-1942,661,Cocoa beans,tonnes,2,juan=14400|mitchell=14000,ecuador,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,14400
 1949,ECU-1942-2025,1016,Goats,heads,2,fao1952=1382000|juan=1302000,ecuador | Ecuador,goats,fao1952=single|juan=single,source_precedence,fao1952,1382000
 1949,ECU-1942-2025,176,"Beans, dry",ha,2,fao1952=20000|juan=15000,ecuador | Ecuador,"beans, dry | dry beans",fao1952=single|juan=single,source_precedence,fao1952,20000
 1949,ECU-1942-2025,176,"Beans, dry",tonnes,2,fao1952=4000|juan=14000,ecuador | Ecuador,"beans, dry | dry beans",fao1952=single|juan=single,withheld_contradiction,,
@@ -953,6 +995,17 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1945,F51-1945-1947,71,Rye,ha,2,iia=802000|juan=809000,czech republic | czechoslovakia,rye,iia=single|juan=single,source_precedence,iia,802000
 1945,F51-1945-1947,71,Rye,tonnes,2,iia=28000|juan=981000,czech republic | czechoslovakia,rye,iia=single|juan=single,withheld_contradiction,,
 1945,F51-1945-1947,773,"Flax, processed but not spun",tonnes,2,iia=7100|juan=5800,czech republic | czechoslovakia,flax fibre and tow,iia=single|juan=single,source_precedence,iia,7100
+1949,FCM-1920-1960,1016,Goats,heads,2,fao1952=650000|mitchell=710000,cameroon | French Cameroons,goats,fao1952=single|mitchell=single,source_precedence,fao1952,650000
+1950,FCM-1920-1960,1016,Goats,heads,2,fao1952=710000|mitchell=800000,cameroon | French Cameroons,goats,fao1952=single|mitchell=single,source_precedence,fao1952,710000
+1949,FCM-1920-1960,656,"Coffee, green",tonnes,2,fao1952=7400|mitchell=7000,cameroon | French Cameroons,"coffee | coffee, green",fao1952=single|mitchell=single,source_precedence,fao1952,7400
+1950,FCM-1920-1960,656,"Coffee, green",tonnes,2,fao1952=8200|mitchell=8000,cameroon | French Cameroons,"coffee | coffee, green",fao1952=single|mitchell=single,source_precedence,fao1952,8200
+1951,FCM-1920-1960,656,"Coffee, green",tonnes,2,fao1952=10300|mitchell=10000,cameroon | French Cameroons,"coffee | coffee, green",fao1952=single|mitchell=single,source_precedence,fao1952,10300
+1949,FCM-1920-1960,661,Cocoa beans,tonnes,2,fao1952=42500|mitchell=42000,cameroon | French Cameroons,"cacao | cacao, beans",fao1952=single|mitchell=single,source_precedence,fao1952,42500
+1950,FCM-1920-1960,661,Cocoa beans,tonnes,2,fao1952=43600|mitchell=48000,cameroon | French Cameroons,"cacao | cacao, beans",fao1952=single|mitchell=single,source_precedence,fao1952,43600
+1951,FCM-1920-1960,661,Cocoa beans,tonnes,2,fao1952=48800|mitchell=55000,cameroon | French Cameroons,"cacao | cacao, beans",fao1952=single|mitchell=single,source_precedence,fao1952,48800
+1949,FCM-1920-1960,976,Sheep,heads,2,fao1952=420000|mitchell=500000,cameroon | French Cameroons,sheep,fao1952=single|mitchell=single,source_precedence,fao1952,420000
+1950,FCM-1920-1960,976,Sheep,heads,2,fao1952=500000|mitchell=600000,cameroon | French Cameroons,sheep,fao1952=single|mitchell=single,source_precedence,fao1952,500000
+1951,FCM-1920-1960,976,Sheep,heads,2,fao1952=600000|mitchell=400000,cameroon | French Cameroons,sheep,fao1952=single|mitchell=single,source_precedence,fao1952,600000
 1949,FIN-1944-2025,187,"Peas, dry",tonnes,2,fao1952=13000|juan=13500,finland | Finland,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,13000
 1951,FIN-1944-2025,187,"Peas, dry",tonnes,2,fao1952=12000|juan=13400,finland | Finland,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,12000
 1950,FIN-1944-2025,333,Linseed,ha,2,fao1952=5000|juan=7000,finland | Finland,linseed,fao1952=single|juan=single,source_precedence,fao1952,5000
@@ -994,6 +1047,8 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1949,FRA-1919-2025,976,Sheep,heads,2,fao1952=7510000|juan=7480000,france | France,sheep,fao1952=single|juan=single,source_precedence,fao1952,7510000
 1950,FRA-1919-2025,976,Sheep,heads,2,fao1952=7480000|juan=7510000,france | France,sheep,fao1952=single|juan=single,source_precedence,fao1952,7480000
 1951,FRA-1919-2025,976,Sheep,heads,2,fao1952=7510000|juan=7585000,france | France,sheep,fao1952=single|juan=single,source_precedence,fao1952,7510000
+1951,FTO-1920-1960,125,"Cassava, fresh",ha,2,fao1952=48000|mitchell=47000,French Togoland | togo,"cassava | cassava, fresh",fao1952=single|mitchell=single,source_precedence,fao1952,48000
+1951,FTO-1920-1960,125,"Cassava, fresh",tonnes,2,fao1952=245000|mitchell=244000,French Togoland | togo,"cassava | cassava, fresh",fao1952=single|mitchell=single,source_precedence,fao1952,245000
 1949,GBR-1921-2025,333,Linseed,ha,2,fao1952=23000|juan=19000,united kingdom | United Kingdom,linseed,fao1952=single|juan=single,source_precedence,fao1952,23000
 1950,GBR-1921-2025,333,Linseed,ha,2,fao1952=5000|juan=16000,united kingdom | United Kingdom,linseed,fao1952=single|juan=single,withheld_contradiction,,
 1951,GBR-1921-2025,333,Linseed,ha,2,fao1952=11000|juan=18000,united kingdom | United Kingdom,linseed,fao1952=single|juan=single,source_precedence,fao1952,11000
@@ -1104,6 +1159,11 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1949,ISR-1948-1967,976,Sheep,heads,2,fao1952=30000|mitchell=29000,israel | Israel,sheep,fao1952=single|mitchell=single,source_precedence,fao1952,30000
 1950,ISR-1948-1967,976,Sheep,heads,2,fao1952=50000|mitchell=37000,israel | Israel,sheep,fao1952=single|mitchell=single,source_precedence,fao1952,50000
 1951,ISR-1948-1967,976,Sheep,heads,2,fao1952=52000|mitchell=44000,israel | Israel,sheep,fao1952=single|mitchell=single,source_precedence,fao1952,52000
+1925,ITA-1919-1947,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1448100|juan=1443100,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1448100
+1930,ITA-1919-1947,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1478101|juan=1478100,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1478101
+1931,ITA-1919-1947,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1249656|juan=1249650,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1249656
+1932,ITA-1919-1947,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1283015|juan=1283000,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1283015
+1933,ITA-1919-1947,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1165429|juan=1165400,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1165429
 1949,ITA-1947-2025,176,"Beans, dry",ha,2,fao1952=488000|juan=489407,italy | Italy,"beans, dry | dry beans",fao1952=single|juan=single,source_precedence,fao1952,488000
 1951,ITA-1947-2025,176,"Beans, dry",ha,2,fao1952=459000|juan=458000,italy | Italy,"beans, dry | dry beans",fao1952=single|juan=single,source_precedence,fao1952,459000
 1949,ITA-1947-2025,181,"Broad beans and horse beans, dry",tonnes,2,fao1952=264000|juan=254000,italy | Italy,"broad beans | broad beans, horse beans, dry",fao1952=single|juan=single,source_precedence,fao1952,264000
@@ -1113,11 +1173,6 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1949,ITA-1947-2025,187,"Peas, dry",tonnes,2,fao1952=11000|juan=10950,italy | Italy,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,11000
 1950,ITA-1947-2025,187,"Peas, dry",tonnes,2,fao1952=13000|juan=13200,italy | Italy,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,13000
 1951,ITA-1947-2025,187,"Peas, dry",tonnes,2,fao1952=13000|juan=13200,italy | Italy,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,13000
-1925,ITA-1919-1947,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1448100|juan=1443100,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1448100
-1930,ITA-1919-1947,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1478101|juan=1478100,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1478101
-1931,ITA-1919-1947,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1249656|juan=1249650,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1249656
-1932,ITA-1919-1947,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1283015|juan=1283000,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1283015
-1933,ITA-1919-1947,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1165429|juan=1165400,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1165429
 1949,ITA-1947-2025,560,Grapes,ha,4,fao1952=1014000;1724000;2840000|juan=1724000,italy | Italy,grapes,fao1952=ambiguous|juan=single,one_source,juan,1724000
 1950,ITA-1947-2025,560,Grapes,ha,4,fao1952=1010000;1734000;2896000|juan=1734000,italy | Italy,grapes,fao1952=ambiguous|juan=single,one_source,juan,1734000
 1951,ITA-1947-2025,560,Grapes,ha,4,fao1952=1017000;1743000;2904000|juan=1742000,italy | Italy,grapes,fao1952=ambiguous|juan=single,one_source,juan,1742000
@@ -1128,6 +1183,9 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1951,ITA-1947-2025,569,Figs,tonnes,2,fao1952=113000|juan=381100,italy | Italy,figs,fao1952=single|juan=single,withheld_contradiction,,
 1949,ITA-1947-2025,826,Unmanufactured tobacco,ha,2,fao1952=55000|juan=58000,italy | Italy,"tobacco | tobacco, unmanufactured",fao1952=single|juan=single,source_precedence,fao1952,55000
 1950,ITA-1947-2025,826,Unmanufactured tobacco,ha,2,fao1952=58000|juan=59000,italy | Italy,"tobacco | tobacco, unmanufactured",fao1952=single|juan=single,source_precedence,fao1952,58000
+1949,ITS-1908-1960,1016,Goats,heads,2,fao1952=2536000|mitchell=2135000,somalia | Somalia,goats,fao1952=single|mitchell=single,source_precedence,fao1952,2536000
+1949,ITS-1908-1960,1126,Camels,heads,2,fao1952=200000|mitchell=1156000,somalia | Somalia,camels,fao1952=single|mitchell=single,withheld_contradiction,,
+1951,ITS-1908-1960,1126,Camels,heads,2,fao1952=1156000|mitchell=1301000,somalia | Somalia,camels,fao1952=single|mitchell=single,source_precedence,fao1952,1156000
 1949,JPN-1945-1952,27,Rice,tonnes,2,fao1952=11929000|mitchell=9383000,japan | Japan,"rice paddy | rice, paddy",fao1952=single|mitchell=single,source_precedence,fao1952,11929000
 1951,JPN-1945-1952,27,Rice,tonnes,2,fao1952=11302000|mitchell=9042000,japan | Japan,"rice paddy | rice, paddy",fao1952=single|mitchell=single,source_precedence,fao1952,11302000
 1949,JPN-1945-1952,71,Rye,ha,2,fao1952=6000|mitchell=565000,japan | Japan,rye,fao1952=single|mitchell=single,withheld_contradiction,,
@@ -1292,6 +1350,7 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1949,NGA-1914-1960,242,"Groundnuts, excluding shelled",tonnes,2,fao1952=463000|mitchell=552000,nigeria | Nigeria,"groundnuts | groundnuts, with shell",fao1952=single|mitchell=single,source_precedence,fao1952,463000
 1951,NGA-1914-1960,242,"Groundnuts, excluding shelled",tonnes,2,fao1952=615000|mitchell=860000,nigeria | Nigeria,"groundnuts | groundnuts, with shell",fao1952=single|mitchell=single,source_precedence,fao1952,615000
 1951,NGA-1914-1960,767,"Cotton lint, ginned",tonnes,2,fao1952=22000|mitchell=21000,nigeria | Nigeria,cotton lint,fao1952=single|mitchell=single,source_precedence,fao1952,22000
+1951,NGBC-1916-1960,661,Cocoa beans,tonnes,2,fao1952=101600|mitchell=110000,nigeria | Nigeria and British cameroons,"cacao | cacao, beans",fao1952=single|mitchell=single,source_precedence,fao1952,101600
 1950,NIC-1800-2025,329,Cotton seed,tonnes,2,fao1952=10000|mitchell=11000,nicaragua | Nicaragua,cotton seed | cottonseed,fao1952=single|mitchell=single,source_precedence,fao1952,10000
 1951,NIC-1800-2025,329,Cotton seed,tonnes,2,fao1952=17000|mitchell=35000,nicaragua | Nicaragua,cotton seed | cottonseed,fao1952=single|mitchell=single,withheld_contradiction,,
 1949,NIC-1800-2025,656,"Coffee, green",tonnes,2,fao1952=19800|juan=14300,nicaragua | Nicaragua,"coffee | coffee, green",fao1952=single|juan=single,source_precedence,fao1952,19800
@@ -1349,6 +1408,24 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1950,PAK-1949-1971,826,Unmanufactured tobacco,tonnes,2,fao1952=68100|mitchell=68000,pakistan | Pakistan,"tobacco | tobacco, unmanufactured",fao1952=single|mitchell=single,source_precedence,fao1952,68100
 1951,PAK-1949-1971,826,Unmanufactured tobacco,tonnes,2,fao1952=67100|mitchell=76000,pakistan | Pakistan,"tobacco | tobacco, unmanufactured",fao1952=single|mitchell=single,source_precedence,fao1952,67100
 1950,PAK-1949-1971,976,Sheep,heads,2,fao1952=6145000|mitchell=6505000,pakistan | Pakistan,sheep,fao1952=single|mitchell=single,source_precedence,fao1952,6145000
+1922,PAL-1920-1948,564,Wine,tonnes,2,iia=2696.309|mitchell=2871,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,2696.309
+1923,PAL-1920-1948,564,Wine,tonnes,2,iia=2441.005|mitchell=2475,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,2441.005
+1924,PAL-1920-1948,564,Wine,tonnes,2,iia=1420.177|mitchell=1485,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,1420.177
+1930,PAL-1920-1948,564,Wine,tonnes,2,iia=3568.727|mitchell=1980,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,3568.727
+1931,PAL-1920-1948,564,Wine,tonnes,2,iia=3854.101|mitchell=2772,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,3854.101
+1932,PAL-1920-1948,564,Wine,tonnes,2,iia=3019.319|mitchell=8118,israel | palestine,wine,iia=single|mitchell=single,withheld_contradiction,,
+1933,PAL-1920-1948,564,Wine,tonnes,2,iia=2890.018|mitchell=1584,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,2890.018
+1934,PAL-1920-1948,564,Wine,tonnes,2,iia=2328|mitchell=2376,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,2328
+1935,PAL-1920-1948,564,Wine,tonnes,2,iia=2425|mitchell=2574,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,2425
+1936,PAL-1920-1948,564,Wine,tonnes,2,iia=2231|mitchell=2277,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,2231
+1937,PAL-1920-1948,564,Wine,tonnes,2,iia=2425|mitchell=2475,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,2425
+1938,PAL-1920-1948,564,Wine,tonnes,2,iia=2910|mitchell=2970,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,2910
+1939,PAL-1920-1948,564,Wine,tonnes,2,iia=3298|mitchell=3366,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,3298
+1940,PAL-1920-1948,564,Wine,tonnes,2,iia=3589|mitchell=3663,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,3589
+1941,PAL-1920-1948,564,Wine,tonnes,2,iia=3589|mitchell=3663,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,3589
+1942,PAL-1920-1948,564,Wine,tonnes,2,iia=3977|mitchell=4059,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,3977
+1943,PAL-1920-1948,564,Wine,tonnes,2,iia=4171|mitchell=4257,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,4171
+1944,PAL-1920-1948,564,Wine,tonnes,2,iia=5335|mitchell=5445,israel | palestine,wine,iia=single|mitchell=single,source_precedence,iia,5335
 1949,PAN-1903-1979,27,Rice,tonnes,2,fao1952=80000|juan=60000,panama | Panama,"rice paddy | rice, paddy",fao1952=single|juan=single,source_precedence,fao1952,80000
 1949,PAN-1903-1979,656,"Coffee, green",tonnes,2,fao1952=4000|juan=3700,panama | Panama,"coffee | coffee, green",fao1952=single|juan=single,source_precedence,fao1952,4000
 1950,PAN-1903-1979,656,"Coffee, green",tonnes,2,fao1952=2800|juan=4000,panama | Panama,"coffee | coffee, green",fao1952=single|juan=single,source_precedence,fao1952,2800
@@ -1432,6 +1509,19 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1949,POL-1945-2025,71,Rye,ha,2,fao1952=5166000|juan=5186000,poland | Poland,rye,fao1952=single|juan=single,source_precedence,fao1952,5166000
 1951,POL-1945-2025,773,"Flax, processed but not spun",tonnes,2,fao1952=64000|juan=54000,poland | Poland,flax fiber | flax fibre and tow,fao1952=single|juan=single,source_precedence,fao1952,64000
 1951,POL-1945-2025,976,Sheep,heads,2,fao1952=194000|juan=2194000,poland | Poland,sheep,fao1952=single|juan=single,withheld_contradiction,,
+1910,PRI-1800-2025,656,"Coffee, green",ha,2,iia=61669|juan=63043,puerto rico | united states of america,"coffee, green",iia=single|juan=single,source_precedence,iia,61669
+1911,PRI-1800-2025,656,"Coffee, green",ha,2,iia=61053|juan=61600,puerto rico | united states of america,"coffee, green",iia=single|juan=single,source_precedence,iia,61053
+1918,PRI-1800-2025,656,"Coffee, green",ha,2,iia=64311|juan=59738,puerto rico | united states of america,"coffee, green",iia=single|juan=single,source_precedence,iia,64311
+1923,PRI-1800-2025,656,"Coffee, green",ha,2,iia=64904|juan=65666,puerto rico | united states of america,"coffee, green",iia=single|juan=single,source_precedence,iia,64904
+1925,PRI-1800-2025,656,"Coffee, green",ha,2,iia=65308|juan=65153.4343144119,puerto rico | united states of america,"coffee, green",iia=single|juan=single,source_precedence,iia,65308
+1934,PRI-1800-2025,656,"Coffee, green",ha,2,iia=60000|juan=80900,puerto rico | united states of america,"coffee, green",iia=single|juan=single,source_precedence,iia,60000
+1935,PRI-1800-2025,656,"Coffee, green",ha,2,iia=58000|juan=60000,puerto rico | united states of america,"coffee, green",iia=single|juan=single,source_precedence,iia,58000
+1913,PRI-1800-2025,656,"Coffee, green",tonnes,2,iia=22775.6|juan=22566,puerto rico | united states of america,"coffee, green",iia=single|juan=single,source_precedence,iia,22775.6
+1914,PRI-1800-2025,656,"Coffee, green",tonnes,2,iia=23190.1|juan=22775.6,puerto rico | united states of america,"coffee, green",iia=single|juan=single,source_precedence,iia,23190.1
+1918,PRI-1800-2025,656,"Coffee, green",tonnes,2,iia=12654.2|juan=17063.4,puerto rico | united states of america,"coffee, green",iia=single|juan=single,source_precedence,iia,12654.2
+1922,PRI-1800-2025,656,"Coffee, green",tonnes,2,iia=19699.4|juan=20400,puerto rico | united states of america,"coffee, green",iia=single|juan=single,source_precedence,iia,19699.4
+1923,PRI-1800-2025,656,"Coffee, green",tonnes,2,iia=10912|juan=19699.4,puerto rico | united states of america,"coffee, green",iia=single|juan=single,source_precedence,iia,10912
+1933,PRI-1800-2025,656,"Coffee, green",tonnes,2,iia=50.8|juan=5171,puerto rico | united states of america,"coffee, green",iia=single|juan=single,withheld_contradiction,,
 1949,PRI-1800-2025,656,"Coffee, green",tonnes,2,fao1952=10200|juan=11000,puerto rico | Puerto Rico,"coffee | coffee, green",fao1952=single|juan=single,source_precedence,fao1952,10200
 1950,PRI-1800-2025,656,"Coffee, green",tonnes,2,fao1952=9000|juan=10200,puerto rico | Puerto Rico,"coffee | coffee, green",fao1952=single|juan=single,source_precedence,fao1952,9000
 1951,PRI-1800-2025,656,"Coffee, green",tonnes,2,fao1952=14000|juan=9000,puerto rico | Puerto Rico,"coffee | coffee, green",fao1952=single|juan=single,source_precedence,fao1952,14000
@@ -1463,6 +1553,14 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1951,PRY-1938-2025,826,Unmanufactured tobacco,tonnes,2,fao1952=4000|juan=5000,paraguay | Paraguay,"tobacco | tobacco, unmanufactured",fao1952=single|juan=single,source_precedence,fao1952,4000
 1950,ROU-1947-2025,201,"Lentils, dry",ha,2,fao1952=14000|juan=16000,romania | Romania,lentils,fao1952=single|juan=single,source_precedence,fao1952,14000
 1951,ROU-1947-2025,201,"Lentils, dry",tonnes,2,fao1952=8000|juan=11000,romania | Romania,lentils,fao1952=single|juan=single,source_precedence,fao1952,8000
+1949,RWB-1922-1962,1016,Goats,heads,2,fao1952=1201000|mitchell=1255000,Ruanda-Urundi | rwanda and burundi,goats,fao1952=single|mitchell=single,source_precedence,fao1952,1201000
+1950,RWB-1922-1962,1016,Goats,heads,2,fao1952=1255000|mitchell=1362000,Ruanda-Urundi | rwanda and burundi,goats,fao1952=single|mitchell=single,source_precedence,fao1952,1255000
+1951,RWB-1922-1962,1016,Goats,heads,2,fao1952=1362000|mitchell=1204000,Ruanda-Urundi | rwanda and burundi,goats,fao1952=single|mitchell=single,source_precedence,fao1952,1362000
+1909,SER-1878-1913,116,Potatoes,ha,2,juan=10400;11000,serbia | yugoslav sfr,potatoes,juan=ambiguous,withheld_ambiguous,,
+1910,SER-1878-1913,116,Potatoes,ha,2,juan=11000;11100,serbia | yugoslav sfr,potatoes,juan=ambiguous,withheld_ambiguous,,
+1911,SER-1878-1913,773,"Flax, processed but not spun",ha,2,iia=1811|juan=1800,serbia | yugoslav sfr,flax fibre and tow,iia=single|juan=single,source_precedence,iia,1811
+1910,SER-1878-1913,777,"True hemp, raw or retted",ha,2,iia=15454|juan=15400,serbia | yugoslav sfr,hemp tow waste,iia=single|juan=single,source_precedence,iia,15454
+1911,SER-1878-1913,777,"True hemp, raw or retted",ha,2,iia=15731|juan=15700,serbia | yugoslav sfr,hemp tow waste,iia=single|juan=single,source_precedence,iia,15731
 1951,SLE-1889-1961,27,Rice,ha,2,fao1952=316000|mitchell=320000,sierra leone | Sierra Leone,"rice paddy | rice, paddy",fao1952=single|mitchell=single,source_precedence,fao1952,316000
 1951,SLE-1889-1961,27,Rice,tonnes,2,fao1952=275000|mitchell=245000,sierra leone | Sierra Leone,"rice paddy | rice, paddy",fao1952=single|mitchell=single,source_precedence,fao1952,275000
 1950,SLV-1821-2025,329,Cotton seed,tonnes,2,fao1952=8000|mitchell=11000,el salvador | El Salvador,cotton seed | cottonseed,fao1952=single|mitchell=single,source_precedence,fao1952,8000
@@ -1473,6 +1571,7 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1949,STP-1800-2025,661,Cocoa beans,tonnes,2,fao1952=8100|mitchell=8000,sao tome and principe | São Tomé and Principe,"cacao | cacao, beans",fao1952=single|mitchell=single,source_precedence,fao1952,8100
 1950,STP-1800-2025,661,Cocoa beans,tonnes,2,fao1952=7600|mitchell=8000,sao tome and principe | São Tomé and Principe,"cacao | cacao, beans",fao1952=single|mitchell=single,source_precedence,fao1952,7600
 1951,STP-1800-2025,661,Cocoa beans,tonnes,2,fao1952=8000|mitchell=7000,sao tome and principe | São Tomé and Principe,"cacao | cacao, beans",fao1952=single|mitchell=single,source_precedence,fao1952,8000
+1950,SUD-1934-1956,1126,Camels,heads,2,fao1952=500000|mitchell=1500000,Anglo-Egyptian Sudan | sudan,camels,fao1952=single|mitchell=single,withheld_contradiction,,
 1949,SWE-1905-2025,333,Linseed,ha,2,fao1952=44000|juan=48000,sweden | Sweden,linseed,fao1952=single|juan=single,source_precedence,fao1952,44000
 1950,SWE-1905-2025,333,Linseed,ha,2,fao1952=36000|juan=40000,sweden | Sweden,linseed,fao1952=single|juan=single,source_precedence,fao1952,36000
 1951,SWE-1905-2025,333,Linseed,ha,2,fao1952=24000|juan=27000,sweden | Sweden,linseed,fao1952=single|juan=single,source_precedence,fao1952,24000
@@ -1482,6 +1581,7 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1949,SWE-1905-2025,773,"Flax, processed but not spun",ha,2,fao1952=4000|juan=48000,sweden | Sweden,flax fiber | flax fibre and tow,fao1952=single|juan=single,withheld_contradiction,,
 1950,SWE-1905-2025,773,"Flax, processed but not spun",ha,2,fao1952=4000|juan=40000,sweden | Sweden,flax fiber | flax fibre and tow,fao1952=single|juan=single,withheld_contradiction,,
 1951,SWE-1905-2025,773,"Flax, processed but not spun",ha,2,fao1952=3000|juan=27000,sweden | Sweden,flax fiber | flax fibre and tow,fao1952=single|juan=single,withheld_contradiction,,
+1951,SYL-1944-1953,826,Unmanufactured tobacco,tonnes,2,fao1952=9100|mitchell=9700,Syria and Lebanon | syrian arab republic,"tobacco | tobacco, unmanufactured",fao1952=single|mitchell=single,source_precedence,fao1952,9100
 1949,SYR-1946-1967,1016,Goats,heads,2,fao1952=1220000|mitchell=1196000,Syria | syrian arab republic,goats,fao1952=single|mitchell=single,source_precedence,fao1952,1220000
 1950,SYR-1946-1967,1016,Goats,heads,2,fao1952=230000|mitchell=1230000,Syria | syrian arab republic,goats,fao1952=single|mitchell=single,withheld_contradiction,,
 1951,SYR-1946-1967,1016,Goats,heads,2,fao1952=434000|mitchell=1434000,Syria | syrian arab republic,goats,fao1952=single|mitchell=single,withheld_contradiction,,
@@ -1489,6 +1589,20 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1950,SYR-1946-1967,261,Olive oil,tonnes,2,fao1952=14000|mitchell=4000,Syria | syrian arab republic,"oil, olive, virgin | olive oil",fao1952=single|mitchell=single,withheld_contradiction,,
 1951,SYR-1946-1967,767,"Cotton lint, ginned",tonnes,2,fao1952=49000|mitchell=48000,Syria | syrian arab republic,cotton lint,fao1952=single|mitchell=single,source_precedence,fao1952,49000
 1949,SYR-1946-1967,976,Sheep,heads,2,fao1952=2935000|mitchell=2750000,Syria | syrian arab republic,sheep,fao1952=single|mitchell=single,source_precedence,fao1952,2935000
+1949,TAN-1922-1964,1016,Goats,heads,2,fao1952=3523000|mitchell=3281000,Tanganyika | tanzania,goats,fao1952=single|mitchell=single,source_precedence,fao1952,3523000
+1950,TAN-1922-1964,1016,Goats,heads,2,fao1952=3281000|mitchell=3478000,Tanganyika | tanzania,goats,fao1952=single|mitchell=single,source_precedence,fao1952,3281000
+1951,TAN-1922-1964,1016,Goats,heads,2,fao1952=3478000|mitchell=3588000,Tanganyika | tanzania,goats,fao1952=single|mitchell=single,source_precedence,fao1952,3478000
+1950,TAN-1922-1964,125,"Cassava, fresh",ha,2,fao1952=250000|mitchell=245000,Tanganyika | tanzania,"cassava | cassava, fresh",fao1952=single|mitchell=single,source_precedence,fao1952,250000
+1951,TAN-1922-1964,242,"Groundnuts, excluding shelled",tonnes,2,fao1952=12000|mitchell=20000,Tanganyika | tanzania,"groundnuts | groundnuts, with shell",fao1952=single|mitchell=single,source_precedence,fao1952,12000
+1949,TAN-1922-1964,27,Rice,tonnes,2,fao1952=49000|mitchell=34000,Tanganyika | tanzania,"rice paddy | rice, paddy",fao1952=single|mitchell=single,source_precedence,fao1952,49000
+1950,TAN-1922-1964,27,Rice,tonnes,2,fao1952=78000|mitchell=76000,Tanganyika | tanzania,"rice paddy | rice, paddy",fao1952=single|mitchell=single,source_precedence,fao1952,78000
+1949,TAN-1922-1964,656,"Coffee, green",tonnes,2,fao1952=13300|mitchell=13000,Tanganyika | tanzania,"coffee | coffee, green",fao1952=single|mitchell=single,source_precedence,fao1952,13300
+1950,TAN-1922-1964,656,"Coffee, green",tonnes,2,fao1952=18300|mitchell=18000,Tanganyika | tanzania,"coffee | coffee, green",fao1952=single|mitchell=single,source_precedence,fao1952,18300
+1951,TAN-1922-1964,656,"Coffee, green",tonnes,2,fao1952=17400|mitchell=18000,Tanganyika | tanzania,"coffee | coffee, green",fao1952=single|mitchell=single,source_precedence,fao1952,17400
+1951,TAN-1922-1964,767,"Cotton lint, ginned",tonnes,2,fao1952=15000|mitchell=9000,Tanganyika | tanzania,cotton lint,fao1952=single|mitchell=single,source_precedence,fao1952,15000
+1949,TAN-1922-1964,976,Sheep,heads,2,fao1952=2214000|mitchell=2445000,Tanganyika | tanzania,sheep,fao1952=single|mitchell=single,source_precedence,fao1952,2214000
+1950,TAN-1922-1964,976,Sheep,heads,2,fao1952=2445000|mitchell=2339000,Tanganyika | tanzania,sheep,fao1952=single|mitchell=single,source_precedence,fao1952,2445000
+1951,TAN-1922-1964,976,Sheep,heads,2,fao1952=2339000|mitchell=2515000,Tanganyika | tanzania,sheep,fao1952=single|mitchell=single,source_precedence,fao1952,2339000
 1951,THA-1909-2025,27,Rice,ha,2,fao1952=5690000|mitchell=5736000,thailand | Thailand,"rice paddy | rice, paddy",fao1952=single|mitchell=single,source_precedence,fao1952,5690000
 1951,THA-1909-2025,27,Rice,tonnes,2,fao1952=7250000|mitchell=7325000,thailand | Thailand,"rice paddy | rice, paddy",fao1952=single|mitchell=single,source_precedence,fao1952,7250000
 1949,THA-1909-2025,826,Unmanufactured tobacco,tonnes,2,fao1952=16400|mitchell=16000,thailand | Thailand,"tobacco | tobacco, unmanufactured",fao1952=single|mitchell=single,source_precedence,fao1952,16400
@@ -1604,6 +1718,61 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1949,USA-1867-1959,777,"True hemp, raw or retted",ha,2,fao1952=2000|juan=1821.05872307362,United States | united states of america,hemp fiber | hemp tow waste,fao1952=single|juan=single,source_precedence,fao1952,2000
 1949,USA-1867-1959,777,"True hemp, raw or retted",tonnes,2,fao1952=2200|juan=1200,United States | united states of america,hemp fiber | hemp tow waste,fao1952=single|juan=single,source_precedence,fao1952,2200
 1951,USA-1867-1959,826,Unmanufactured tobacco,tonnes,2,fao1952=56000|juan=1056000,United States | united states of america,"tobacco | tobacco, unmanufactured",fao1952=single|juan=single,withheld_contradiction,,
+1949,VEN-1830-2025,176,"Beans, dry",tonnes,2,fao1952=16000|juan=80000,venezuela | Venezuela,"beans, dry | dry beans",fao1952=single|juan=single,withheld_contradiction,,
+1949,VEN-1830-2025,289,Sesame seed,tonnes,2,fao1952=8200|juan=2200,venezuela | Venezuela,sesame seed,fao1952=single|juan=single,withheld_contradiction,,
+1949,VEN-1830-2025,656,"Coffee, green",tonnes,2,fao1952=50700|juan=46600,venezuela | Venezuela,"coffee | coffee, green",fao1952=single|juan=single,source_precedence,fao1952,50700
+1950,VEN-1830-2025,656,"Coffee, green",tonnes,2,fao1952=34000|juan=50700,venezuela | Venezuela,"coffee | coffee, green",fao1952=single|juan=single,source_precedence,fao1952,34000
+1951,VEN-1830-2025,656,"Coffee, green",tonnes,2,fao1952=43300|juan=34000,venezuela | Venezuela,"coffee | coffee, green",fao1952=single|juan=single,source_precedence,fao1952,43300
+1902,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=9000|mitchell=8000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,9000
+1904,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=8000|mitchell=14000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,8000
+1905,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=14000|mitchell=12000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,14000
+1906,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=12000|mitchell=14000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,12000
+1907,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=14000|mitchell=12000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,14000
+1908,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=12000|mitchell=16000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,12000
+1909,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=16822.2|mitchell=16000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,16822.2
+1910,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=17360.5|mitchell=16000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,17360.5
+1911,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=17582.6|mitchell=18000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,17582.6
+1912,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=18600|mitchell=14000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,18600
+1913,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=17897|mitchell=18000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,17897
+1914,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=16886.5|mitchell=17000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,16886.5
+1915,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=18281|mitchell=18000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,18281
+1916,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=15182.6|mitchell=15000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,15182.6
+1917,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=20042.2|mitchell=20000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,20042.2
+1918,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=19762.2|mitchell=19000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,19762.2
+1919,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=19834|mitchell=19000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,19834
+1920,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=17598.3|mitchell=17000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,17598.3
+1922,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=20889.7|mitchell=21000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,20889.7
+1923,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=22430|mitchell=22000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,22430
+1924,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=17326.9|mitchell=17000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,17326.9
+1926,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=15051.9|mitchell=15000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,15051.9
+1927,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=16921.8|mitchell=17000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,16921.8
+1928,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=19997.6|mitchell=20000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,19997.6
+1929,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=21537|mitchell=21000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,21537
+1931,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=16125.4|mitchell=16000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,16125.4
+1932,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=15925.7|mitchell=16000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,15925.7
+1933,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=17587.6|mitchell=17000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,17587.6
+1934,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=11441|mitchell=14000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,11441
+1936,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=16500|mitchell=17000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,16500
+1937,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=16300|mitchell=18000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,16300
+1940,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=15300|mitchell=15000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,15300
+1941,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=12900|mitchell=17000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,12900
+1942,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=12200|mitchell=17000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,12200
+1943,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=15000|mitchell=18000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,15000
+1947,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=17200|mitchell=20000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,17200
+1948,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=18100|mitchell=17000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,18100
+1949,VEN-1830-2025,661,Cocoa beans,tonnes,3,fao1952=15000|juan=23800|mitchell=23000,venezuela | Venezuela,"cacao | cacao, beans | cocoa, beans",fao1952=single|juan=single|mitchell=single,source_precedence,fao1952,15000
+1950,VEN-1830-2025,661,Cocoa beans,tonnes,3,fao1952=17400|juan=15000|mitchell=17000,venezuela | Venezuela,"cacao | cacao, beans | cocoa, beans",fao1952=single|juan=single|mitchell=single,source_precedence,fao1952,17400
+1951,VEN-1830-2025,661,Cocoa beans,tonnes,3,fao1952=13400|juan=17400|mitchell=18000,venezuela | Venezuela,"cacao | cacao, beans | cocoa, beans",fao1952=single|juan=single|mitchell=single,source_precedence,fao1952,13400
+1952,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=13400|mitchell=16000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,13400
+1954,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=16000|mitchell=17000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,16000
+1955,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=15000|mitchell=19000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,15000
+1956,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=18400|mitchell=16000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,18400
+1957,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=15200|mitchell=15000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,15200
+1958,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=16800|mitchell=18000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,16800
+1959,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=14800|mitchell=19000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,14800
+1960,VEN-1830-2025,661,Cocoa beans,tonnes,2,juan=10100|mitchell=17000,venezuela,"cacao, beans | cocoa, beans",juan=single|mitchell=single,source_precedence,juan,10100
+1949,VEN-1830-2025,767,"Cotton lint, ginned",tonnes,2,fao1952=1000|juan=4000,venezuela | Venezuela,cotton lint,fao1952=single|juan=single,withheld_contradiction,,
+1950,VEN-1830-2025,767,"Cotton lint, ginned",tonnes,2,fao1952=1000|juan=4000,venezuela | Venezuela,cotton lint,fao1952=single|juan=single,withheld_contradiction,,
 1950,VNM-1887-1954,125,"Cassava, fresh",ha,2,fao1952=4000|mitchell=6000,Indochina Viet Nam | viet nam,"cassava | cassava, fresh",fao1952=single|mitchell=single,source_precedence,fao1952,4000
 1951,VNM-1887-1954,125,"Cassava, fresh",ha,2,fao1952=9000|mitchell=4000,Indochina Viet Nam | viet nam,"cassava | cassava, fresh",fao1952=single|mitchell=single,withheld_contradiction,,
 1951,VNM-1887-1954,242,"Groundnuts, excluding shelled",tonnes,2,fao1952=84000|mitchell=4000,Indochina Viet Nam | viet nam,"groundnuts | groundnuts, with shell",fao1952=single|mitchell=single,withheld_contradiction,,

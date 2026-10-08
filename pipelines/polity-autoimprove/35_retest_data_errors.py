@@ -1636,6 +1636,46 @@ def check_cze_1910_rye_orphan(ctx):
             "three pre-existence rows is the argument; the 3.0 is only the cell")
 
 
+def check_pri_coffee_1933_misplaced_digits(ctx):
+    """iia_1933_34's Puerto Rico coffee production, keyed with misplaced digits, against the two
+    readings that convict it.
+
+    THE PATTERN IS THE ARGUMENT, not the magnitude. The four 1930-1933 cells of iia_1933_34 are pinned,
+    and so are juan's 1931-1934 cells, which are the same four figures with the digits restored and the
+    year moved on by one; with the later volume's revised 1933 figure (4,100 t), that is two readings
+    independent of any yield judgement. Layer B carries only the 1933 cell (50.8 t).
+    """
+    raw, lb = ctx["raw"], ctx["panel"]
+    r = raw[(raw["_c"] == "us puerto rico") & (raw["_p"] == "coffee: raw") & (raw["_v"] == "production")]
+    yr = r["year"].map(str)
+
+    def cell(vol, year):
+        v = r[(r["yearbook"].map(str) == vol) & (yr == str(year))]["value"]
+        return round(float(v.iloc[0]), 6) if len(v) == 1 else None
+
+    j = lb[(lb["source"] == "juan") & (lb["country"] == "puerto rico") & (lb["item"] == "coffee, green")
+           & (lb["unit"] == "tonnes")]
+    jy = pd.to_numeric(j["year"], errors="coerce")
+
+    def juan(year):
+        v = j[jy == year]["value"]
+        return round(float(v.iloc[0]), 6) if len(v) == 1 else None
+
+    # Layer B files the cell under `united states of america`; the item-scoped label correction of
+    # #733 relabels it to Puerto Rico in matched_rows, so the panel is read under its own label.
+    i = lb[(lb["source"] == "iia") & (lb["country"] == "united states of america")
+           & (lb["item"] == "coffee, green")
+           & (lb["unit"] == "tonnes") & (pd.to_numeric(lb["year"], errors="coerce") == 1933)]
+    claims = [(f"iia_1933_34 {y}", cell("iia_1933_34", y), v)
+              for y, v in ((1930, 62.3), (1931, 408.2), (1932, 517.1), (1933, 50.8))]
+    claims.append(("iia_1938_39 1933 (revised)", cell("iia_1938_39", 1933), 4100.0))
+    claims += [(f"juan {y}", juan(y), v)
+               for y, v in ((1931, 6230.0), (1932, 4082.0), (1933, 5171.0), (1934, 5080.0))]
+    claims.append(("layer-B iia usa coffee 1933", round(float(i["value"].iloc[0]), 6) if len(i) == 1 else None, 50.8))
+    return (claims,
+            "digits restored x100/x10/x10/x100 and shifted one year in juan; 4,100 t in the later volume")
+
+
 def check_1933_x10_provenance_linked(ctx):
     """The 14 provenance-linked x10 cells -- and the entry names the wrong provenance table.
 
@@ -4212,6 +4252,7 @@ CHECKS = {
     "fao1952-malaya-female-agric-1937-is-total": check_malaya_female_agric_is_total,
     "nga-1941-1945-cotton-area-zero": check_nigeria_cotton_area_zero,
     "cze-1910-rye-area-orphan-3ha": check_cze_1910_rye_orphan,
+    "iia-pri-coffee-1933-misplaced-digits": check_pri_coffee_1933_misplaced_digits,
     "iia-1933-x10-wrong-volume-cells": check_1933_x10_provenance_linked,
     "nru-1933-phosphate-transposed-with-australia": check_nauru_1933_transposition,
     "ltu-1933-sugar-wrong-volume": check_lithuania_1933_sugar_volume,

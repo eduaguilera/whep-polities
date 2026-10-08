@@ -2861,6 +2861,24 @@ def mutate_build_averages_again(root, gpd, make_valid, affinity):
     return "build.R"
 
 
+def mutate_build_drops_arealess_rows(root, gpd, make_valid, affinity):
+    """Put the `!is.na(.data$area_code)` filter back into build.R's candidate filter.
+
+    With the package crosswalk this filter silently removed every polity WHEP had not yet synced
+    (13,972 publishable rows on 2026-10-08). The table the gate re-derives would still read as
+    resolved, because the dropped rows never reach it, so only the source arm can see it.
+    """
+    path = os.path.join(root, "pipelines/historical-production-harmonized/build.R")
+    with open(path, encoding="utf-8") as fh:
+        text = fh.read()
+    needle = "    !is.nan(.data$value)\n  ) |>"
+    assert needle in text, "build.R's candidate filter is not where this mutation expects it"
+    text = text.replace(needle, "    !is.na(.data$area_code),\n" + needle, 1)
+    with open(path, "w", encoding="utf-8") as fh:
+        fh.write(text)
+    return "build.R"
+
+
 def mutate_overlap_shrunk_below_floor(root, gpd, make_valid, affinity):
     """Shrink a pinned containment pair's cell count below the floor that made it sayable.
 
@@ -6947,6 +6965,14 @@ CASES = (
         "averages `value` again",
         "build.R averaging `value` again while the committed table still reads as resolved, so only "
         "the source arm can see the regression before the table is regenerated",
+    ),
+    (
+        "validate_published_collapse.py",
+        mutate_build_drops_arealess_rows,
+        "drops rows lacking an area_code",
+        "build.R filtering out rows with no FAOSTAT area again, which silently removed every polity "
+        "the whep package had not synced; the published table never shows the loss, so only the "
+        "source arm can",
     ),
     (
         "validate_same_polity_overlaps.py",

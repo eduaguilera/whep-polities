@@ -293,26 +293,115 @@ stock_lookup <- function() {
     dplyr::distinct(.data$item_code, .data$item_alias, .keep_all = TRUE)
 }
 
-polity_lookup <- function() {
-  whep::polity_area_crosswalk |>
-    dplyr::filter(!is.na(.data$polity_code)) |>
-    dplyr::mutate(
-      area_code = dplyr::coalesce(.data$area_code, .data$polity_area_code),
-      has_area_code = !is.na(.data$area_code),
-      has_polity_area_code = !is.na(.data$polity_area_code),
-      is_matched = .data$mapping_status == "matched"
+# POLITY METADATA COMES FROM THIS REPOSITORY, NOT FROM THE INSTALLED `whep` PACKAGE (followup to
+# #737/#713). This used to read `whep::polity_area_crosswalk` and then drop every candidate whose
+# `area_code` came back NA. The package carries the polity list of its last re-sync, so every polity
+# this repository minted, split or renamed since then left the published table silently: on the
+# 2026-10-08 panel, 13,972 publishable rows over 110 polities (ITA-1919-1947, VEN-1830-2025,
+# FIN-1944-2025, TAN-1922-1964, SYR-1922-1946, IDN-JVM-1800-1949, ...) -- the
+# matcher routes to `data/final/polities_database.csv`, so the two lists disagree exactly on the
+# newest work. The lookup is now built from the same two files the matcher and WHEP's own
+# crosswalk build read:
+#
+#   * `polities_database.csv` -- every live polity: name, and `has_geometry` (a polygon in any state
+#     but `unassigned`). A retired code (split or renamed) is absent from it, so it cannot be
+#     published; the guard below stops the build on one instead of dropping its rows.
+#   * `faostat_area_polity_map.csv` -- the FAOSTAT reporting area. `area_code` is the area the map
+#     names for the polity; for a polity it does not name, WHEP's own prefix rule
+#     (data-raw/table_mappings.R, `prefix_outside_map`): a canonical `PREFIX-start-end` code whose
+#     prefix is the family prefix or ISO3 of a mapped area, unless the area is a composite of
+#     aggregates or the polity's span overlaps a span the map gives that area; ties take the lowest
+#     area code, as the crosswalk's row order did. Measured on the 548 live codes the installed
+#     crosswalk knows, this reproduces its `area_code` for 535. The other 13: WHEP's 7 FABIO buckets
+#     (ROW-1850-2025 and the six regional `R*` aggregates), to which no row routes, and 6 periods the
+#     current map shadows with a territory-specific polity the package predates. Only PAK-1949-1971
+#     has rows: 268, now `area_code` NA, because the map gives area 165 to PAK-WP-1949-1971.
+#
+# `polity_area_code` used to be the crosswalk's FABIO aggregation bucket (999 for small territories
+# folded into Rest of World). That bucket is WHEP's model, not this repository's, and WHEP's consumer
+# reads `area_code` first, so the column now repeats `area_code`. A polity with no FAOSTAT area
+# (subnational units, colonial federations, polities FAOSTAT never reported) is PUBLISHED with
+# `area_code` NA rather than dropped: WHEP's `.prepare_historical_production()` skips such rows
+# itself, and every other reader keys on `polity_code`.
+polity_lookup <- function(repo_root) {
+  polities <- readr::read_csv(
+    file.path(repo_root, "data", "final", "polities_database.csv"),
+    col_types = readr::cols(.default = readr::col_character()),
+    na = ""
+  ) |>
+    dplyr::transmute(
+      polity_code = .data$polity_code,
+      polity_name = .data$polity_name,
+      polity_type = .data$polity_type,
+      start_year = as.integer(.data$start_year),
+      end_year = as.integer(.data$end_year),
+      has_geometry = !is.na(.data$polygon_status) & .data$polygon_status != "unassigned"
+    )
+  if (anyDuplicated(polities$polity_code)) {
+    stop("polities_database.csv repeats a polity_code")
+  }
+  area_map <- readr::read_csv(
+    file.path(repo_root, "data", "final", "faostat_area_polity_map.csv"),
+    col_types = readr::cols(.default = readr::col_character()),
+    na = ""
+  ) |>
+    dplyr::transmute(
+      area_code = as.integer(.data$area_code),
+      map_start = as.integer(.data$year_start),
+      map_end = as.integer(.data$year_end),
+      polity_code = .data$polity_code,
+      iso3 = .data$iso3
+    )
+  if (anyDuplicated(area_map$polity_code)) {
+    stop("faostat_area_polity_map.csv names a polity for more than one area")
+  }
+
+  # An area every one of whose mapped polities is an `aggregate` (Belgium-Luxembourg, Netherlands
+  # Antilles) is a composite reporting unit; the history sharing its prefix is not its territory.
+  composite_areas <- area_map |>
+    dplyr::left_join(dplyr::select(polities, "polity_code", "polity_type"), by = "polity_code") |>
+    dplyr::summarise(all_aggregate = all(.data$polity_type %in% "aggregate"), .by = "area_code") |>
+    dplyr::filter(.data$all_aggregate) |>
+    dplyr::pull("area_code")
+  prefix_areas <- dplyr::bind_rows(
+    dplyr::transmute(area_map, prefix = sub("-.*", "", .data$polity_code), .data$area_code),
+    dplyr::transmute(area_map, prefix = .data$iso3, .data$area_code)
+  ) |>
+    dplyr::filter(!is.na(.data$prefix), !.data$area_code %in% composite_areas) |>
+    dplyr::distinct()
+
+  prefix_candidates <- polities |>
+    dplyr::filter(
+      !.data$polity_code %in% area_map$polity_code,
+      grepl("^[^-]+-[0-9]{4}-[0-9]{4}$", .data$polity_code)
     ) |>
-    dplyr::arrange(
-      .data$polity_code,
-      dplyr::desc(.data$has_area_code),
-      dplyr::desc(.data$has_polity_area_code),
-      dplyr::desc(.data$is_matched)
+    dplyr::mutate(prefix = sub("-.*", "", .data$polity_code)) |>
+    dplyr::inner_join(prefix_areas, by = "prefix", relationship = "many-to-many")
+  # A candidate period overlapping a span the map gives the same area is shadowed by the map's own
+  # polity there. `end_year` is exclusive, the map's `year_end` inclusive.
+  shadowed <- prefix_candidates |>
+    dplyr::inner_join(
+      dplyr::select(area_map, "area_code", "map_start", "map_end"),
+      by = "area_code",
+      relationship = "many-to-many"
     ) |>
-    dplyr::distinct(.data$polity_code, .keep_all = TRUE) |>
+    dplyr::filter(.data$start_year <= .data$map_end, .data$end_year - 1L >= .data$map_start) |>
+    dplyr::distinct(.data$polity_code, .data$area_code)
+  by_prefix <- prefix_candidates |>
+    dplyr::anti_join(shadowed, by = c("polity_code", "area_code")) |>
+    dplyr::summarise(area_code = min(.data$area_code), .by = "polity_code")
+
+  area_of <- dplyr::bind_rows(
+    dplyr::select(area_map, "polity_code", "area_code"),
+    by_prefix
+  )
+
+  polities |>
+    dplyr::left_join(area_of, by = "polity_code", relationship = "one-to-one") |>
     dplyr::transmute(
       whep_code = .data$polity_code,
       area_code = as.numeric(.data$area_code),
-      polity_area_code = as.numeric(.data$polity_area_code),
+      polity_area_code = as.numeric(.data$area_code),
       polity_code = .data$polity_code,
       reporting_polity_code = .data$polity_code,
       reporting_polity_name = .data$polity_name,
@@ -571,12 +660,31 @@ base <- dplyr::bind_cols(
 products <- prepare_products(base, product_lookup())
 stocks <- prepare_stocks(base, stock_lookup())
 
-candidates <- dplyr::bind_rows(products, stocks) |>
-  dplyr::left_join(polity_lookup(), by = "whep_code") |>
+repo_root <- dirname(dirname(script_dir))
+polities <- polity_lookup(repo_root)
+item_rows <- dplyr::bind_rows(products, stocks)
+# NO ROW LEAVES FOR LACKING A POLITY. Every row reaching here is matched, valued, dated, not
+# withheld and on a published item and unit; its `whep_code` must be a live polity of this
+# repository's database. A code that is not -- a retired code from a stale matches file, or a
+# polity the database dropped -- stops the build: the old `!is.na(area_code)` filter turned exactly
+# this into a silent loss (13,972 published rows on 2026-10-08).
+unknown_polities <- item_rows |>
+  dplyr::filter(!.data$whep_code %in% polities$whep_code) |>
+  dplyr::count(.data$whep_code, sort = TRUE)
+if (nrow(unknown_polities) > 0L) {
+  stop(
+    sum(unknown_polities$n), " matched row(s) route to ", nrow(unknown_polities),
+    " polity code(s) absent from data/final/polities_database.csv (retired or unknown); re-run ",
+    "pipelines/polity-autoimprove/01_match_and_findings.py. Codes: ",
+    paste(utils::head(unknown_polities$whep_code, 20L), collapse = ", ")
+  )
+}
+
+candidates <- item_rows |>
+  dplyr::left_join(polities, by = "whep_code", relationship = "many-to-one") |>
   dplyr::filter(
     !is.na(.data$item_prod_code),
     !is.na(.data$item_cbs_code),
-    !is.na(.data$area_code),
     !is.nan(.data$value)
   ) |>
   dplyr::mutate(
@@ -585,6 +693,12 @@ candidates <- dplyr::bind_rows(products, stocks) |>
     item_cbs_code = as.numeric(.data$item_cbs_code),
     live_anim_code = as.numeric(.data$live_anim_code)
   )
+if (nrow(candidates) != nrow(item_rows)) {
+  stop(
+    nrow(item_rows) - nrow(candidates), " matched row(s) left the build at the polity join; ",
+    "every row must reach the resolver"
+  )
+}
 
 # ONE ROW PER CONSUMER KEY (whep-polities issues 451, 367). This used to be
 # `summarise(value = mean(value))` over a key that kept the raw label, item and source apart, so

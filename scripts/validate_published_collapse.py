@@ -29,7 +29,9 @@ Checks:
      from the published table unnoticed. A baseline row that no longer applies is stale. Each
      `known_defect` id must name an entry of `data_errors.csv`.
   E. THE BUILD PUBLISHES THROUGH THE RESOLVER -- build.R sources and calls it, refuses to write a
-     table with a duplicate key, and no longer averages `value`.
+     table with a duplicate key, and no longer averages `value`. It also takes polity metadata from
+     this repository rather than the `whep` package, and never drops a row for lacking a polity or
+     a FAOSTAT area.
   F. CURATED ANCHORS read as the issues describe them.
 """
 import csv
@@ -289,6 +291,20 @@ def main() -> int:
                         "would publish a number equal to none of them (issue 451)")
     if "still carry more than one row" not in code:
         problems.append("E build.R no longer refuses to write a table with a duplicate key")
+    # No silent polity drop (followup to #737/#713): the polity columns come from this repository's
+    # polities_database.csv, never the installed package's crosswalk, a row whose polity is unknown
+    # stops the build, and no filter drops a row for lacking a FAOSTAT area -- the filter that, with
+    # the package lookup, hid 13,972 publishable rows over 110 polities.
+    if "polity_area_crosswalk" in code:
+        problems.append("E build.R reads its polity metadata from the installed whep package again; "
+                        "every polity created since WHEP's last re-sync would leave the table")
+    if re.search(r"!\s*is\.na\(\s*\.data\$area_code\s*\)", code):
+        problems.append("E build.R drops rows lacking an area_code again: a polity with no FAOSTAT "
+                        "area is published with area_code NA, never removed")
+    for needle, what in (("absent from data/final/polities_database.csv", "stops on an unknown polity"),
+                         ("left the build at the polity join", "stops if the polity join loses rows")):
+        if needle not in code:
+            problems.append(f"E build.R no longer {what}")
 
     # --- F ---
     for key, want in ANCHORS.items():
