@@ -150,10 +150,11 @@ def _split_candidate(pairs, raw):
     Returns ((early_label, early_product, early_years, early_ndistinct),
              (late_label, late_product, late_years, late_ndistinct), combined_share) or None.
 
-    The temporal-separation test is what distinguishes a splice from a mixture. USA sugar (issue 443)
-    is the counter-example that motivates it: it interleaves a national total with a Louisiana+Florida
-    subset and holds BOTH values for 1938, so it is not separable by year and must not be reported as
-    a clean split.
+    The temporal-separation test is what distinguishes a splice from a mixture: two labels matching
+    over OVERLAPPING years have no boundary year to cut at. (Issue 443 first motivated it with USA
+    sugar "holding both values for 1938"; that was retracted -- the second value was the `1934-1938`
+    PERIOD row -- and the series is four eras of different components, now in era_segments.csv.)
+    48_era_segments.py generalises this to every series, including `attributable` ones.
     """
     hits = []
     for (c, prod), s in raw.items():

@@ -656,7 +656,7 @@ HYD-1724-1948,Hyderabad State,1724,1948,cliopatria,1947.0,assigned,True,assumed_
 IBD-1829-1893,Ibadan City-State,1829,1893,paine-2024,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 ICN-1800-2025,Canary Islands,1800,2025,gadm-4.1-adm1,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,4
 IDN-1800-1889,Indonesia (to 1889),1800,1889,cshapes-2.0,1886.0,unassigned,True,unassigned,True,False,stable_where_covered,-0.02,no polygon (honest gap; never a false territory),0
-IDN-1800-1945,Dutch East Indies (1800-1945),1800,1945,cshapes-2.0,1900.0,polygon_vintage_drift,True,assumed_constant,True,True,stable_where_covered,-0.02,single 1900 polygon held across a 145y span (1800-1945); borders may have changed,957
+IDN-1800-1945,Dutch East Indies (1800-1945),1800,1945,cshapes-2.0,1900.0,polygon_vintage_drift,True,assumed_constant,True,True,stable_where_covered,-0.02,single 1900 polygon held across a 145y span (1800-1945); borders may have changed,951
 IDN-1889-1945,Indonesia (1889-1945),1889,1945,cshapes-2.0,1900.0,unassigned,True,unassigned,False,False,stable_confirmed,-0.02,"no polygon (honest gap; never a false territory); border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.02%), so the single polygon is not an assumption",0
 IDN-1945-1949,Indonesia (1945-1949),1945,1949,cshapes-2.0,1945.0,assigned,True,measured,False,False,stable_confirmed,-0.02,vintage 1945 faithful to period 1945-1949,53
 IDN-1949-1963,Indonesia (1949-1963),1949,1963,cshapes-2.0,1949.0,assigned,True,measured,False,False,stable_confirmed,-0.03,vintage 1949 faithful to period 1949-1963,382
@@ -669,7 +669,7 @@ IDN-BA-1800-1949,Bali (Dutch East Indies),1800,1949,gadm-4.1-adm1,,proxy,True,as
 IDN-BLB-1800-1949,Bali and Lombok (Dutch East Indies),1800,1949,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 IDN-BLB-1949-1951,"Bali and Lombok (within Indonesia, 1949-1951)",1949,1951,constructed,,proxy,True,assumed_constant,True,True,no_reference,,polygon present but no recorded vintage year,34
 IDN-JAV-1800-1949,Java (Dutch East Indies),1800,1949,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
-IDN-JVM-1800-1949,Java and Madura (Dutch East Indies),1800,1949,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,269
+IDN-JVM-1800-1949,Java and Madura (Dutch East Indies),1800,1949,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,275
 IDN-JVM-1949-1951,"Java and Madura (within Indonesia, 1949-1951)",1949,1951,constructed,,proxy,True,assumed_constant,True,True,no_reference,,polygon present but no recorded vintage year,43
 IDN-LOM-1800-1949,Lombok (Dutch East Indies),1800,1949,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 IDN-MAD-1800-1949,Madura (Dutch East Indies),1800,1949,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
@@ -825,7 +825,7 @@ KZM-1800-1899,Kingdom of Kazembe,1800,1899,paine-2024,,assigned,True,assumed_con
 LAO-1893-1954,Laos (1893-1954),1893,1954,cshapes-2.0,1896.0,assigned,True,assumed_constant,False,False,stable_confirmed,0.04,"single 1896 polygon held across a 61y span (1893-1954); borders may have changed; border VERIFIED STABLE across the whole span against CShapes (area agrees within 0.04%), so the single polygon is not an assumption",89
 LAO-1954-2025,Laos,1954,2025,cshapes-2.0,1954.0,assigned,True,assumed_constant,True,False,stable_where_covered,0.04,single 1954 polygon held across a 71y span (1954-2025); borders may have changed,23
 LBA-1800-1885,Luba Empire,1800,1885,paine-2024,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
-LBN-1920-1944,Lebanon (1920-1944),1920,1944,cshapes-2.0,1920.0,assigned,True,measured,False,False,stable_confirmed,-0.09,vintage 1920 faithful to period 1920-1944,132
+LBN-1920-1944,Lebanon (1920-1944),1920,1944,cshapes-2.0,1920.0,assigned,True,measured,False,False,stable_confirmed,-0.09,vintage 1920 faithful to period 1920-1944,140
 LBN-1944-2025,Lebanon,1944,2025,cshapes-2.0,1944.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.09,single 1944 polygon held across a 81y span (1944-2025); borders may have changed,197
 LBR-1847-2025,Liberia,1847,2025,cshapes-2.0,1892.0,assigned,True,assumed_constant,True,False,stable_where_covered,-0.01,single 1892 polygon held across a 178y span (1847-2025); borders may have changed,89
 LBY-1912-1919,Libya (1912-1919),1912,1919,cshapes-2.0,1912.0,assigned,True,measured,False,False,stable_confirmed,0.01,vintage 1912 faithful to period 1912-1919,0
@@ -1176,10 +1176,10 @@ SWK-1800-1894,Swazi Kingdom,1800,1894,paine-2024,,assigned,True,assumed_constant
 SWZ-1894-2025,Eswatini,1894,2025,cshapes-2.0,1902.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.04,single 1902 polygon held across a 131y span (1894-2025); borders may have changed,155
 SXM-2010-2025,Sint Maarten,2010,2025,gadm-4.1-adm0,,estimate,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 SYC-1903-2025,Seychelles,1903,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,35
-SYL-1920-1944,"Syria and Lebanon (French Mandate, combined reporting unit)",1920,1944,constructed,1930.0,assigned,True,measured,False,False,no_reference,,vintage 1930 faithful to period 1920-1944,264
+SYL-1920-1944,"Syria and Lebanon (French Mandate, combined reporting unit)",1920,1944,constructed,1930.0,assigned,True,measured,False,False,no_reference,,vintage 1930 faithful to period 1920-1944,278
 SYL-1944-1953,Syria and Lebanon (combined statistical unit),1944,1953,constructed,1949.0,assigned,True,measured,False,False,no_reference,,vintage 1949 faithful to period 1944-1953,13
 SYR-1920-1922,Syria (French Mandate),1920,1922,cshapes-2.0,1921.0,assigned,True,measured,False,False,no_reference,,vintage 1921 faithful to period 1920-1922,0
-SYR-1922-1946,Syria (1922-1946),1922,1946,cshapes-2.0,1922.0,assigned,True,measured,False,False,stable_confirmed,0.05,vintage 1922 faithful to period 1922-1946,431
+SYR-1922-1946,Syria (1922-1946),1922,1946,cshapes-2.0,1922.0,assigned,True,measured,False,False,stable_confirmed,0.05,vintage 1922 faithful to period 1922-1946,409
 SYR-1946-1967,Syrian Arab Republic (1946-1967),1946,1967,cshapes-2.0,1946.0,assigned,True,measured,False,True,stable_confirmed,0.05,vintage 1946 faithful to period 1946-1967; footnote coverage caveat (FAO/IIA yearbook),288
 SYR-1967-2025,Syrian Arab Republic,1967,2025,cshapes-2.0,1967.0,assigned,False,assumed_constant,True,False,stable_where_covered,0.06,single 1967 polygon held across a 58y span (1967-2025); borders may have changed,0
 TAN-1891-1920,Tanzania (1891-1920),1891,1920,cshapes-2.0,1900.0,assigned,True,assumed_constant,True,True,no_reference,,single 1900 polygon held across a 29y span (1891-1920); borders may have changed,46

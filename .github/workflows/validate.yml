@@ -652,6 +652,12 @@ jobs:
       - name: Sources — cell attributions must stay inside the blind spot and the crosswalk
         if: '!cancelled()'
         run: python3 scripts/validate_cell_attribution.py
+      # Issue 443: a series stitched from two raw labels in sequence is cut into eras, and each era says
+      # where its rows go. `rerouted` is re-derived from the corrections rules in both directions, and a
+      # rule may not drag a period row another raw label prints (Syria's `1934-1938` restatement).
+      - name: Sources — every era of a spliced series is dispositioned and backed
+        if: '!cancelled()'
+        run: python3 scripts/validate_era_segments.py
       - name: Sources — the value-precision table must agree with the grid conventions
         if: '!cancelled()'
         run: python3 scripts/validate_value_precision.py
