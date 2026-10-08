@@ -104,6 +104,14 @@ ha        33,034,033,576     33,077,110,552     +43,076,976 = +43,995,600 juan w
 tonnes    67,629,892,455     67,686,662,269     +56,769,814 = +57,321,350 juan wheat - 551,536 iia rows
 ```
 
+## Value-Null Corrections
+
+`matched_rows.parquet` also carries a per-row `value_is_null` (whep-polities issue 414): TRUE on the
+cells `data/final/source_value_null_corrections.csv` withholds -- iia zeros whose scanned page prints
+a dash, `...`, the see-notes marker `-o)`, or a non-zero figure, or whose own other axis refutes
+them. The build sets their value to NA, so the `!is.na(value)` filter drops them instead of
+averaging a 0 into the polity-year, and refuses a matches file without the column.
+
 ## Constant-Territory Smoke Runs
 
 The example in `examples/austria_wheat_constant_territory_smoke.R` compares

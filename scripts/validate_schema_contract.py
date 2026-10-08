@@ -166,6 +166,13 @@ CSV_CONTRACT = {
     "data/final/source_item_withholds.csv": [
         "source", "item", "unit", "observed_rows", "issue", "evidence",
     ],
+    # Added with the table itself (issue 414). Pinned because a consumer APPLIES it: it withholds
+    # the rows keyed on `source`/`source_label`/`item`/`unit`/`year`, and a renamed key column makes
+    # that filter match nothing and silently publish the false zeros again.
+    "data/final/source_value_null_corrections.csv": [
+        "source", "source_label", "item", "unit", "year", "printed_value", "evidence_rule",
+        "printed_glyph", "evidence_ref", "observed_rows", "issue", "evidence",
+    ],
     # Renamed by issue 95: `original_name` -> `source_label`, `target_polity_code` ->
     # `polity_code`, `rows` -> `observed_rows`. These are pipeline-internal registries,
     # not a published contract, so they could be unified now; `data/final/` could not.

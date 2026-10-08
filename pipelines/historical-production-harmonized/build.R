@@ -466,6 +466,18 @@ if (!"value_divisor" %in% names(matches)) {
     "pipelines/polity-autoimprove/01_match_and_findings.py"
   )
 }
+# VALUE-NULL CORRECTIONS (whep-polities issue 414). `value_is_null` is TRUE on the cells
+# data/final/source_value_null_corrections.csv withholds: the source printed no figure there (a
+# dash, `...`, a see-notes marker) or the cell's own other axis refutes its 0, yet layer B carries a
+# 0. The value becomes NA and the `!is.na(value)` filter below drops it, so a zero that was never an
+# observation is not averaged into a polity-year as "none". Refused when absent, as above: an old
+# matches file would put the false zeros back.
+if (!"value_is_null" %in% names(matches)) {
+  stop(
+    "matched rows carry no `value_is_null`; re-run ",
+    "pipelines/polity-autoimprove/01_match_and_findings.py"
+  )
+}
 
 # VALUE PRECISION (whep-polities issue 446). matched_rows.parquet carries `value_grid` (the step a
 # value cannot be assumed finer than, in the unit layer B printed it), `source_grid_verdict` and the
@@ -505,6 +517,7 @@ base <- dplyr::bind_cols(
   matches |>
     dplyr::select(
       "whep_code", "value_divisor", "value_grid", "source_grid_verdict", "item_withheld",
+      "value_is_null",
       dplyr::any_of("match_method")
     )
 ) |>
@@ -517,10 +530,12 @@ base <- dplyr::bind_cols(
     unit = output_unit(.data$unit_in),
     # A divisor below 1 (issue 424: single cells printed 10x too small) multiplies by its exact
     # inverse; dividing by 0.1 would carry 0.1's binary rounding into the published value.
-    value = dplyr::if_else(
-      .data$value_divisor < 1,
-      as.numeric(.data$value) * .data$unit_multiplier * round(1 / .data$value_divisor),
-      as.numeric(.data$value) * .data$unit_multiplier / .data$value_divisor
+    # `value_is_null` (issue 414) withholds a printed-no-figure zero: NA, dropped by the filter below.
+    value = dplyr::case_when(
+      .data$value_is_null ~ NA_real_,
+      .data$value_divisor < 1 ~
+        as.numeric(.data$value) * .data$unit_multiplier * round(1 / .data$value_divisor),
+      .default = as.numeric(.data$value) * .data$unit_multiplier / .data$value_divisor
     ),
     # The grid is a step in the PRINTED unit, so it rescales exactly as the value does: a
     # `1000 tonnes` row on a 0.1 grid is a 100 t step, a /100 value-scale correction divides the

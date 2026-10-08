@@ -4050,6 +4050,45 @@ def check_constant_runs_filled(ctx):
     return claims, "31 filled runs (23 carried forward, 8 placeholders), each named; no run touched by a divisor"
 
 
+
+def check_iia_no_figure_typed_as_zero(ctx):
+    """The zeros the scanned page does not print, and the census they sit in (issue 414).
+
+    data/final/source_value_null_corrections.csv withholds 44 dated iia layer-B zeros whose page
+    shows a dash, `...`, the see-notes marker `-o)`, or a non-zero figure; the harmonized build
+    turns them into NA. Pinned here on the rows themselves: the census of iia zeros in layer B
+    (dated and period, so neither count is quoted as the total), the cells the table selects -- all
+    still 0 -- per evidence rule and glyph, and the matcher's flag. A rebuilt layer B that moved any
+    of these changes this entry."""
+    import importlib
+    sys.path.insert(0, HERE)
+    matchlib = importlib.import_module("matchlib")
+    rules = matchlib.load_value_null_corrections(
+        os.path.join(REPO, "data/final/source_value_null_corrections.csv"))
+    lb = ctx["panel"]
+    lb = lb[~lb["is_aggregate"].fillna(False).astype(bool)]
+    iia = lb[lb["source"] == "iia"]
+    yr = pd.to_numeric(iia["year"], errors="coerce")
+    z = iia["value"] == 0
+    mask, per_rule = matchlib.value_null_mask(lb, rules)
+    claims = [("iia zero rows in layer B", int(z.sum()), 781),
+              ("  dated", int((z & yr.notna()).sum()), 629),
+              ("  period", int((z & yr.isna()).sum()), 152),
+              ("cells in the table", len(rules), 44),
+              ("layer-B rows withheld", int(mask.sum()), 44),
+              ("  all still printed 0", int((lb.loc[mask, "value"] == 0).sum()), 44),
+              ("  refuted_by_paired_axis", sum(r["evidence_rule"] == "refuted_by_paired_axis" for r in rules), 8),
+              ("  scan_no_figure", sum(r["evidence_rule"] == "scan_no_figure" for r in rules), 36),
+              ("  glyph dash", sum(r["glyph"] in ("—", "-") for r in rules), 36),
+              ("  glyph `...`", sum(r["glyph"] == "..." for r in rules), 2),
+              ("  glyph `-o)`", sum(r["glyph"] == "-o)" for r in rules), 3),
+              ("  glyph non-zero figure", sum(r["glyph"] == "figure" for r in rules), 3)]
+    m = ctx["matched"]
+    if m is not None and "value_is_null" in m.columns:
+        claims.append(("matched rows flagged value_is_null", int(m["value_is_null"].astype(bool).sum()), 44))
+    return claims, ("44 dated iia zeros the page does not print are withheld; iia_1938_39's own printed "
+                    "zeros (its grid floor) are not")
+
 CHECKS = {
     "mmr-1885-1889-rice-area-is-lower-burma": check_mmr_1885_1889_lower_burma,
     "vnm-1955-1960-rice-maize-output-is-north-plus-south": check_vnm_1955_1960_output_north_plus_south,
@@ -4096,6 +4135,7 @@ CHECKS = {
     "iia-hops-x100": check_hops_x100_and_area_x10,
     "iia-tobacco-hops-late-volume-unit-scale": check_iia_tobacco_hops_late_volume_scale,
     "constant-runs-filled-carried-forward": check_constant_runs_filled,
+    "iia-no-figure-typed-as-zero": check_iia_no_figure_typed_as_zero,
     "fao1952-hemp-germany-label-glued": check_hemp_germany_glued,
     "iia-item-series-switch-raw-products": check_item_product_switches,
     "iia-fertilizer-nutrient-item-is-one-material": check_iia_fertilizer_one_material,
