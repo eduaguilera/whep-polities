@@ -429,6 +429,7 @@ ESP-CE-1800-2025,Ceuta,1800,2025,territory,,,Africa,draft,2026-09-30,constructed
 ESP-GC-1833-2025,Gran Canaria (island of Spain),1833,2025,subnational,ESP,,Europe,draft,2026-09-08,none,,,unassigned,,,,,,
 ESP-IBZ-1833-2025,Eivissa y Formentera (province of Spain),1833,2025,subnational,ESP,,Europe,draft,2026-09-08,none,,,unassigned,,,,,,
 ESP-ML-1800-2025,Melilla,1800,2025,territory,,,Africa,draft,2026-09-30,constructed,ESP-ML-1800-2025,,proxy,,,,,,
+ESP-TFE-1833-2025,Tenerife (island of Spain),1833,2025,subnational,ESP,,Europe,draft,2026-10-08,none,,,unassigned,,,,,,
 EST-1800-1918,Estonia (Governorate),1800,1918,national,EST,366,Europe,draft,2026-04-16,cshapes-2.0,366,1918,assigned,,,EST-1918-1940,,,
 EST-1918-1940,Estonia (interwar republic),1918,1940,national,EST,366,Europe,draft,2026-04-17,cshapes-2.0,366,1918,assigned,49295,EST-1800-1918,EST-1940-1945,,measured-from-polygon,
 EST-1940-1945,Estonian SSR (1940-1945),1940,1945,national,EST,366,Europe,draft,2026-04-16,cshapes-2.0,366,1918,assigned,,EST-1918-1940,EST-1945-1991,,,

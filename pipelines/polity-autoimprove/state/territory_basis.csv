@@ -429,6 +429,7 @@ ESP-CE-1800-2025,Ceuta,1800,2025,constructed,,proxy,True,assumed_constant,True,F
 ESP-GC-1833-2025,Gran Canaria (island of Spain),1833,2025,none,,unassigned,True,unassigned,True,False,no_reference,,no polygon (honest gap; never a false territory),0
 ESP-IBZ-1833-2025,Eivissa y Formentera (province of Spain),1833,2025,none,,unassigned,True,unassigned,True,False,no_reference,,no polygon (honest gap; never a false territory),0
 ESP-ML-1800-2025,Melilla,1800,2025,constructed,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+ESP-TFE-1833-2025,Tenerife (island of Spain),1833,2025,none,,unassigned,True,unassigned,True,False,no_reference,,no polygon (honest gap; never a false territory),0
 EST-1800-1918,Estonia (Governorate),1800,1918,cshapes-2.0,1918.0,assigned,True,assumed_constant,True,False,no_reference,,single 1918 polygon held across a 118y span (1800-1918); borders may have changed,16
 EST-1918-1940,Estonia (interwar republic),1918,1940,cshapes-2.0,1918.0,assigned,True,measured,False,False,stable_confirmed,0.02,vintage 1918 faithful to period 1918-1940,506
 EST-1940-1945,Estonian SSR (1940-1945),1940,1945,cshapes-2.0,1918.0,assigned,True,back_projected,True,True,no_reference,,polygon vintage 1918 is BEFORE the period starts (1940),9
