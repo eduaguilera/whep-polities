@@ -30,6 +30,54 @@ Optional arguments:
 Rscript build.R <raw_layer_b_parquet> <matched_rows_parquet> <output_dir>
 ```
 
+## Polity Metadata, and No Silent Drops
+
+`polity_lookup()` builds the polity columns from this repository's own tables, not from the installed
+`whep` package. It used to read `whep::polity_area_crosswalk` and drop every candidate whose
+`area_code` came back NA, so every polity created, split or renamed here since WHEP's last re-sync
+vanished from the published table without an error (all of #737's border-era splits, #713's renames,
+every subnational unit). Now:
+
+- `data/final/polities_database.csv` supplies every live polity, its name and
+  `reporting_polity_has_geometry` (any `polygon_status` but `unassigned`). A retired code is not in
+  it, so the build **stops** on a matched row that routes to one (re-run stage 01), and it also stops
+  if the polity join loses any row. There is no silent drop.
+- `area_code` is the FAOSTAT reporting area from `data/final/faostat_area_polity_map.csv`, or for a
+  polity the map does not name, WHEP's own prefix rule (`data-raw/table_mappings.R`,
+  `prefix_outside_map`): a canonical `PREFIX-start-end` code whose prefix is the family prefix or
+  ISO3 of a mapped area, unless that area is a composite of aggregates or the polity's span overlaps
+  a span the map gives the area. On the 548 live codes the installed crosswalk knows, this reproduces
+  its `area_code` for 535. The other 13 are WHEP's 7 FABIO buckets (`ROW-1850-2025`, the six `R*`
+  regional aggregates), to which no row routes, and 6 periods the current map now shadows with a
+  territory-specific polity (`IDN-1976-2002`, `ISR-1967-1979`, `ISR-1979-2025`, `PAK-1949-1971`,
+  `SRB-2006-2008`, `TZA-1961-1964`). Of those, only `PAK-1949-1971` has rows. FAOSTAT area 165 is
+  `PAK-WP-1949-1971` (West Pakistan) for 1961-1970, so its 268 all-Pakistan rows for 1949-1960 now
+  publish with `area_code` NA instead of 165.
+- `polity_area_code` repeats `area_code`. It used to carry WHEP's FABIO bucket (999 for small
+  territories folded into Rest of World), which is WHEP's model, not this repository's. The change
+  touches 1,675 rows, and WHEP's consumer reads `area_code` first.
+- A polity with no FAOSTAT area (subnational units, colonial federations, polities FAOSTAT never
+  reported) is published with `area_code` NA. WHEP's `.prepare_historical_production()` skips such
+  rows itself, so they cannot reach its area mean. Every other reader keys on `polity_code`.
+
+Measured 2026-10-08 against the build with the package lookup, same panel and matches file:
+
+```
+published rows   135,416 -> 149,388  (+13,972 over 110 polities; 0 rows lost; 0 retained keys change value)
+                 area_code set on 8,200 restored rows (25 polities); NA on 5,772 (85 polities)
+          all rows                                     area_code set (what WHEP consumes)
+ha        32,434,268,423 -> 34,617,960,914  +6.7%      32,434,268,423 -> 33,253,243,163  +2.5%
+tonnes    65,925,215,762 -> 69,449,416,149  +5.3%      65,925,215,762 -> 67,934,243,545  +3.0%
+heads     84,119,221,637 -> 86,596,723,625  +2.9%      84,119,221,637 -> 84,895,117,625  +0.9%
+```
+
+The largest gains: ITA-1919-1947 2,549 rows, ITA-1947-2025 1,691, VEN-1830-2025 710, TAN-1922-1964
+489, FIN-1920-1940 463, BGR-1885-1913 450, FIN-1944-2025 413, LTU-1923-1940 360. `sa_colonial`
+publishes for the first time (165 rows), because all its rows route to the Cape and Natal. No
+consumer key `(year, area_code, item, unit)` holds more than one polity, before or after. The restored
+polities bring 11 new withheld keys, and #733's Puerto Rico coffee routing one more (1933, iia 50.8 t
+against juan 5,171 t: `iia-pri-coffee-1933-misplaced-digits`). All 12 are in `state/withheld_keys_baseline.csv`.
+
 ## Value-Scale Corrections
 
 `matched_rows.parquet` carries a per-row `value_divisor` (whep-polities issue 416), 1 except where
@@ -168,8 +216,8 @@ provenance:
 
 ## Value Precision
 
-`value` is a printed number, and a large part of the panel was printed coarsely: 47% of the non-zero
-layer-B values sit on a 1000-grid (whep-polities #446), so `1,000` is often "somewhere in 500-1,500",
+`value` is a printed number, and a large part of the panel was printed coarsely: 47.6% of the non-zero
+layer-B values sit on a 1000-grid (89,938 of 189,090 non-zero matched rows, measured 2026-10-08; whep-polities #446), so `1,000` is often "somewhere in 500-1,500",
 not an exact point. Two columns carry that, derived by `matchlib.value_precision` in stage 01 and
 documented for consumers in `data/final/polities_manifest.json` under `value_precision`:
 
@@ -183,8 +231,11 @@ documented for consumers in `data/final/polities_manifest.json` under `value_pre
   the #416 value-scale divisor. The published row (one per consumer key, `R/resolve_collapse_groups.R`) carries the grid of
   the candidate row it was chosen from; where several rows carrying the SAME number were merged it
   keeps the COARSEST of their grids, because a number is no more precise than its least precise printing. **NULL means
-  unknown, not exact**: 3.4% of the harmonized rows (short series from a source without a coarse
-verdict).
+  unknown, not exact**: 3.9% of the harmonized rows (5,759 of 149,388 on the 2026-10-08 build:
+  fao1952 4,355, juan 727, iia 677 -- short series from a source without a coarse verdict). It was
+  3.4% (4,660 of 135,416) before the build stopped dropping polities the `whep` package lacks; 1,099 of
+  the 13,972 restored rows are NULL, 916 of them fao1952 (916 of its 1,109 restored rows, three-year
+  series too short for a series grid).
 - `source_grid_verdict` -- `coarse_1000`, `coarse_100`, `mixed` or `fine`, the (source, unit, era)
   verdict of `pipelines/polity-autoimprove/state/source_value_precision.csv`. `mixed` (the majority of
   the panel: `juan` crops, `iia` overall) means the source prints both coarse and fine values there, so
@@ -192,8 +243,9 @@ verdict).
   split by era (the 1934 volume boundary; a period row takes its end year).
 
 Neither column is proof that one value was rounded: a grid is a fact about a series or a source. A
-published `0` in a series on a coarse grid may be a value below half a step; the 201 such zeros are
-enumerated in `state/grid_ambiguous_zeros.csv`. The build refuses a matches file without the columns,
+published `0` in a series on a coarse grid may be a value below half a step; the 201 such layer-B zeros
+(197 dated, 4 period averages, in 24 series) are enumerated in
+`pipelines/polity-autoimprove/state/grid_ambiguous_zeros.csv`. The build refuses a matches file without the columns,
 which would otherwise publish the panel as exact again. Gate: `scripts/validate_value_grid_channel.py`.
 
 ## Included
