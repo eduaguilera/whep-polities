@@ -127,9 +127,14 @@ MATCHED = os.path.join(REPO, "pipelines/polity-autoimprove/state/matched_rows.pa
 # (3, 60 -> FMS-1909-1946, GBM-1895-1946) and `united states of america` Puerto-Rico-only coffee cells (7, 16 ->
 # PRI-1800-2025). Ten are unit-scoped (where the other unit of the same years is a different territory, or a
 # 1909-1913 average is the Dutch East Indies whole): BASELINE_SCOPED_RULES 15 -> 25.
-BASELINE_RULES = 124
-BASELINE_ROWS = 1547
-BASELINE_SCOPED_RULES = 25
+# 124/1547 -> 129/1575 on 2026-10-08 (issue 443, Claude): the ERA SPLICES 48_era_segments.py finds that issue
+# 372's rules left behind. iia `syrian arab republic` sesame 1922-1925 is raw `french lebanon` (-> LBN-1920-1944, 8),
+# hempseed 1934-1938 and grape AREA 1930-1933 are the combined unit (-> SYL-1920-1944, 10 + 4; split at 1937|1938 like
+# 372's so the `1934-1938` period row stays), and `indonesia` cotton seed OUTPUT 1939-1944 is raw `dutch java and
+# madura` (-> IDN-JVM-1800-1949, 6). The grape and cotton-seed rules are unit-scoped: 25 -> 27.
+BASELINE_RULES = 129
+BASELINE_ROWS = 1575
+BASELINE_SCOPED_RULES = 27
 
 # Units a scope may name, per source: layer B's own `unit` vocabulary, measured 2026-09-25 over
 # consolidated_layer_b.parquet (every non-null value of the column, by source). A scope outside it

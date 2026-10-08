@@ -2084,7 +2084,8 @@ def mutate_provenance_split_interleaved(root, gpd, make_valid, affinity):
     separation is the entire claim: two labels matching the same series over OVERLAPPING years is a
     mixture, not a splice, and the two cases need opposite remedies -- a splice can be cut at a
     boundary year, a mixture cannot. USA sugar is the counter-example that proves the distinction
-    matters, holding a national total AND a two-state subset for 1938.
+    matters (its own "1938 holds both" evidence was later retracted -- the second value was the
+    `1934-1938` period row -- but the four-era composition it led to is real).
 
     The mutation only rewrites the early half's END year to the late half's end, so the row keeps its
     status, both raw labels, both distinct-value counts and its share -- every other arm stays quiet
@@ -2108,6 +2109,56 @@ def mutate_provenance_split_interleaved(root, gpd, make_valid, affinity):
     return (f"stretched {victim['layer_b_label']}/{victim['item']}'s early half to end at "
             f"{g[5]}, so it now overlaps the late half instead of preceding it, while the status, "
             f"both labels, both distinct counts and the share all stay as they were")
+
+
+def mutate_era_rule_deleted(root, gpd, make_valid, affinity):
+    """Delete the corrections rule that carries one `rerouted` era, leaving era_segments.csv as it was.
+
+    48_era_segments.py never curates `rerouted`: it reads it off source_label_item_corrections.csv, so
+    the table and the rules agree by construction -- until the rules change without the table being
+    regenerated, which in CI is always, because the generator needs the panel and the raw extract.
+    Deleting a rule puts that era's rows back on the territory the source misfiled them under (Malaya's
+    coffee back on British North Borneo) while the era table still says they moved. Only arm B, which
+    re-derives coverage from the rules file itself, can see it.
+    """
+    path = os.path.join(root, "data/final/source_label_item_corrections.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = next(r for r in rows if r["source"] == "iia" and r["source_label"] == "malaysia"
+                  and r["polity_code"] == "FMS-1909-1946")
+    rows.remove(victim)
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"deleted the {victim['source_label']}/{victim['item']} {victim['year_start']}-"
+            f"{victim['year_end']} rule to {victim['polity_code']}, leaving the era table claiming "
+            f"the era was rerouted")
+
+
+def mutate_era_rule_drags_a_period(root, gpd, make_valid, affinity):
+    """Record that a rerouted era's rules move a period row another raw label prints.
+
+    Syria's combined-unit eras run 1922-1938, and the `1934-1938` period row inside them is the late
+    volume's restatement for `french syria` ALONE. One 1922-1938 rule would carry it to Syria+Lebanon,
+    which is why each pair is split at 1934|1935. The generator counts such dragged rows in
+    `n_period_moved_other`; the mutation sets one era's count to 1 and touches nothing else, so the
+    rules, the years and the disposition all still agree and only arm C can object.
+    """
+    path = os.path.join(root, "pipelines/polity-autoimprove/state/era_segments.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        rows = list(csv.DictReader(fh))
+        fields = list(rows[0])
+    victim = next(r for r in rows if r["disposition"] == "rerouted"
+                  and r["layer_b_label"] == "syrian arab republic")
+    victim["n_period_moved_other"] = "1"
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = csv.DictWriter(fh, fieldnames=fields)
+        w.writeheader()
+        w.writerows(rows)
+    return (f"recorded that {victim['layer_b_label']}/{victim['item']}/{victim['unit']}'s rerouted "
+            f"era drags one `french syria` period row into Syria+Lebanon")
 
 
 def mutate_item_block_count_lowered(root, gpd, make_valid, affinity):
@@ -6630,6 +6681,20 @@ CASES = (
         "retitled to withdraw, with every other field left intact",
     ),
     (
+        "validate_era_segments.py",
+        mutate_era_rule_deleted,
+        "no rule in",
+        "a corrections rule deleted while the era table still says its era was rerouted -- the "
+        "rows go back to the misfiled territory and only the coverage re-derivation can see it",
+    ),
+    (
+        "validate_era_segments.py",
+        mutate_era_rule_drags_a_period,
+        "period row(s)",
+        "a rerouted era whose rules move a period row that another raw label prints, with the rules, "
+        "years and disposition left consistent",
+    ),
+    (
         "validate_cell_attribution.py",
         mutate_attribution_outside_the_blind_spot,
         "not `unattributable`",
@@ -7973,6 +8038,14 @@ WRITABLE = {
     ),
     # The case appends a row to cell_attribution.csv; the gate imports the generator and reads both
     # item_provenance.csv and item_equivalences.csv, so all four are staged.
+    # The era table, the rules it reads `rerouted` from, and the two registries its references
+    # point at. The rules file is mutated by one case and the table by the other, so both are copies.
+    "validate_era_segments.py": (
+        "pipelines/polity-autoimprove/state/era_segments.csv",
+        "source_label_item_corrections.csv",
+        "pipelines/polity-autoimprove/state/data_errors.csv",
+        "pipelines/polity-autoimprove/state/source_conventions.csv",
+    ),
     "validate_cell_attribution.py": (
         "pipelines/polity-autoimprove/state/cell_attribution.csv",
         "pipelines/polity-autoimprove/38_cell_attribution.py",

@@ -26,6 +26,28 @@ Kinds:
 
 ---
 
+## decision-era-splices-rerouted
+**Date:** 2026-10-08
+**Touched:** SYL-1920-1944, LBN-1920-1944, SYR-1922-1946, IDN-JVM-1800-1949, IDN-1800-1945 (data routing and
+page text only; no polity row, date or polygon changed)
+**Source:** none
+**Kind:** decision
+
+**Some IIA item series are stitched from two raw labels in sequence, and each era now has a recorded
+destination.** [Issue 443](https://github.com/eduaguilera/whep-polities/issues/443) found the class inside
+`unattributable`. The new `48_era_segments.py` finds it in every iia series, `attributable` ones included. It
+attributes cells by identity, cuts each series into runs of one raw label, and finds 59 spliced series with 128
+eras (`state/era_segments.csv`). Each era is `routed` (78), `rerouted` (22), `component` (18) or `open` (10).
+`rerouted` is read from the corrections table, and most of those eras were already moved by issue 372's rules.
+
+Five new rules move the 28 rows those rules had left. Sesame 1922-1925 under `syrian arab republic` is Lebanon's
+and goes to [lbn-1920-1944](polities/lbn-1920-1944.md) (8). Hempseed 1934-1938 and grape area 1930-1933 are the
+combined unit and go to [syl-1920-1944](polities/syl-1920-1944.md) (14). `indonesia` cotton seed output
+1939-1944 is Java and Madura's and goes to [idn-jvm-1800-1949](polities/idn-jvm-1800-1949.md) (6). Before and
+after a re-run of stage 01, exactly 28 rows change polity, and the row count and value total are unchanged.
+
+Signed off by: Claude (Claude Code), issue 443; pending review in its pull request.
+
 ## decision-372-item-level-mixtures-routed
 **Date:** 2026-10-07
 **Touched:** CXR-1888-1946, AUH-1908-1918, SYL-1920-1944, IDN-JVM-1800-1949, AOF-1895-1960, FMS-1909-1946,
