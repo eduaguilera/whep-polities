@@ -51,7 +51,10 @@ DEAD_STATUS = ("retired", "superseded")
 #
 # So this entry was previously pinning a real anomaly to the WRONG ROW, and reading it as
 # "1900-1906 is legitimately large" would have been reading a binding error as history.
-BASELINE = frozenset({"COG-1898-1900", "ERI-1885-1889"})
+# HKG-1898-2025 added 2026-10-07 (issue 686): splitting Hong Kong into its 1842 (island, 83 km2)
+# and 1860 (with Kowloon, 96 km2) eras left the post-1898 row, the colony with the New Territories,
+# 11.7x the family median. That is the 1898 lease, not a binding error.
+BASELINE = frozenset({"COG-1898-1900", "ERI-1885-1889", "HKG-1898-2025"})
 
 CODE_RE = re.compile(r"^(.*)-\d{4}-\d{4}$")
 

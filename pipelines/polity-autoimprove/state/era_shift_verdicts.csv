@@ -132,7 +132,7 @@ iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1942,,tonnes,141900,3000,47.3
 iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1943,,tonnes,128900,3000,42.966667,583.05,221.07881,impossible_yield,True
 iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1944,,tonnes,168300,3000,56.1,583.05,288.654489,impossible_yield,True
 iia,israel,PAL-1920-1948,"tobacco, unmanufactured",1945,,tonnes,136000,3000,45.333333,583.05,233.256153,impossible_yield,True
-iia,italy,ITA-1919-2025,"tobacco, unmanufactured",,1934-1938,tonnes,4375800,33000,132.6,41318.9,105.90311,impossible_yield,True
+iia,italy,ITA-1919-1947,"tobacco, unmanufactured",,1934-1938,tonnes,4375800,33000,132.6,41318.9,105.90311,impossible_yield,True
 iia,japan,JPN-1895-1945,"tobacco, unmanufactured",,1934-1938,tonnes,6410500,35000,183.157143,64313.3,99.676117,impossible_yield,True
 iia,japan,JPN-1895-1945,"tobacco, unmanufactured",1940,,tonnes,8705400,49000,177.661224,64313.3,135.359249,impossible_yield,True
 iia,lebanon,LBN-1920-1944,"tobacco, unmanufactured",,1934-1938,tonnes,108000,2000,54,,,impossible_yield,True

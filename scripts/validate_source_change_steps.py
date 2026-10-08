@@ -120,6 +120,20 @@ BASELINE = {
         "Anatolian throughout — not a polygon question, so it is not decided here."
     ),
     # ---------- EVENT: real history at the boundary year ----------
+    # Added 2026-10-07 (issue 686): the three steps the era splits introduced.
+    "HKG-1860-1898 -> HKG-1898-2025": (
+        "EVENT: the Convention for the Extension of Hong Kong Territory, 9 June 1898, leased the "
+        "New Territories and New Kowloon. 96 -> 1,128 km2; the earlier row is the island plus "
+        "Kowloon south of Boundary Street, composed from GADM districts, the later GADM's SAR."),
+    "PAP-1800-1860 -> PAP-1860-1870": (
+        "EVENT: the 1860 annexations of the Romagna, the Marche and Umbria to Sardinia/Italy left "
+        "the pope only Lazio. 39,269 -> 11,861 km2; the later row is CShapes-Europe 327's 1862 "
+        "step, the same vintage the Italian rows use, the earlier Cliopatria's restored extent."),
+    "LTU-1800-1918 -> LTU-1918-1923": (
+        "SCOPE: LTU-1800-1918 is the Lithuanian governorates as a proxy and carries CShapes 368's "
+        "1918-1920 step, which draws the 12 July 1920 treaty line with the Vilnius region "
+        "(83,899 km2). LTU-1918-1923 is the Kaunas republic after Poland seized Vilnius in "
+        "October 1920 and before the Klaipeda Territory joined in 1923 (53,666 km2)."),
     # Added 2026-10-01 (harmonize audit, issue 706).
     "CZE-CL-1918-1938 -> CZE-CL-1938-1945": (
         "EVENT: Munich Agreement, 30 September 1938. 78,683 -> 54,895 km2 (1.43x); the Czech lands "

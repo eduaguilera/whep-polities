@@ -5868,13 +5868,13 @@ def mutate_part_edged_beside_its_aggregate(root, gpd, make_valid, affinity):
     if len(hit) != 1:
         raise AssertionError("ITA-21-1970-2025 -> ITA-PVA-1861-2025 edge not found once; the "
                              "mutation would do nothing")
-    hit[0]["container_code"] = "ITA-1919-2025"
+    hit[0]["container_code"] = "ITA-1947-2025"
     tmp = path + ".tmp"
     with open(tmp, "w", newline="", encoding="utf-8") as fh:
         w = _csv.DictWriter(fh, fieldnames=list(rows[0].keys()), lineterminator="\n")
         w.writeheader(); w.writerows(rows)
     os.replace(tmp, path)
-    return ("re-edged ITA-21-1970-2025 onto ITA-1919-2025, beside ITA-PVA-1861-2025 which "
+    return ("re-edged ITA-21-1970-2025 onto ITA-1947-2025, beside ITA-PVA-1861-2025 which "
             "contains it")
 
 def mutate_routed_unit_loses_its_alias(root, gpd, make_valid, affinity):

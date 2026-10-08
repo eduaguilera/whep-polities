@@ -1487,8 +1487,9 @@ def check_fao1952_present_boundaries(d):
         brackets fao1952's 1937 `Italy`. The interwar frame without the whole Free Territory (FAO's own
         `Trieste`, 350) is ABOVE fao1952's figure already in April 1936, so no 1937 date can reach it.
         Asserted for the 1937 population only; the 1934-38 averages follow the source-wide rule, and
-        the 1939 livestock is not asserted (Romania's 1939 livestock is the interwar exception). The
-        rows stay on ITA-1919-2025, which has no post-1947 row to receive them (issue 686).
+        the 1939 livestock is not asserted (Romania's 1939 livestock is the interwar exception). Since
+        issue 686 split ITA-1919-2025 at 1947, the 1934-1938 rows go back_cast to ITA-1947-2025; the
+        1939 rows stay on the row live in 1939, ITA-1919-1947.
     (12) KOREA NORTH is a COMPONENT of `Korea`: in the nitrogen table every cell printed for `Korea`
         that also prints a part equals `Korea South` + `Korea North` (blank as zero), including 1934-38 production (93.0 = North
         93.0). Its 1934-38 row goes back_cast to PRK-1948-2025; `Korea South` stays on KRS-1910-1945.

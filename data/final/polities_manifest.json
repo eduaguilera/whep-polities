@@ -49,10 +49,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "bdcfaeb49dd1c91627f8e3534d64518f4baed125d1a3d641c90cf8302b9b162c",
+ "identity_sha256": "db43cc281b4e65ec3f5a1335baef83ee2415bc3f4270dbeba70bb678e6a5e133",
  "counts": {
-  "total": 1329,
-  "live": 1285,
+  "total": 1341,
+  "live": 1297,
   "dead": 44
  },
  "dead_status": [
@@ -192,7 +192,7 @@
  },
  "faostat_area_map": {
   "path": "data/final/faostat_area_polity_map.csv",
-  "sha256": "086195ac36f6aa546c2e7b57fe3119a21edba81dfa29f1297ec55a8ea56e3834",
+  "sha256": "f37c01472c2c2961cc7c7ba2297fb5edf38844871f33ba609232015f2d2d4dfc",
   "mappings": 299,
   "areas": 244,
   "coverage": {
@@ -210,8 +210,8 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "8383120223cfba1ad2566095c71d328c7c409422ae8633328c590a7dd48718cc",
-  "aliases": 3284,
+  "sha256": "0495b46500b434dce44378be662c240b7bde9462280780e024d270fa5e34f39a",
+  "aliases": 3290,
   "labels": 1799,
   "sources": [
    "crops-manure-n",
@@ -258,19 +258,19 @@
  },
  "iso3_successor_map": {
   "path": "data/final/iso3_successor_map.csv",
-  "sha256": "7db836caf0d30fd9d333c45135f0e236adac7895b465ab7d26d5be4a6f76ae89",
-  "relations": 5642,
+  "sha256": "4e09117acbda7675f53131bf3d062fbc52c9416623817be8b30b4e18bd9fce18",
+  "relations": 5641,
   "modern_iso3": 79
  },
  "stated_area_basis": {
   "path": "data/final/source_stated_area_basis.csv",
-  "bases": 431,
-  "polities": 300,
+  "bases": 432,
+  "polities": 302,
   "sources": [
    "fao",
    "iia"
   ],
-  "review_flagged": 27,
+  "review_flagged": 28,
   "why": "Per (polity, source), the area the SOURCE stated for its own reporting unit beside the area of our polygon. A `review` basis_flag means the two differ by 1.5x or more and are BOTH defensible -- a per-km2 denominator has to choose which territory the numerator was collected over. An empty `note` on such a row means no reason has been recorded for THAT source, not that the divergence is understood."
  },
  "source_flow_flags": {
@@ -485,11 +485,6 @@
     "family": "DMO",
     "year_min": 1850,
     "year_max": 1859
-   },
-   {
-    "family": "PAP",
-    "year_min": 1860,
-    "year_max": 1860
    }
   ],
   "KAZ": [
@@ -713,8 +708,8 @@
    },
    {
     "family": "SER",
-    "year_min": 1918,
-    "year_max": 1944
+    "year_min": 1945,
+    "year_max": 1991
    }
   ],
   "SSD": [
@@ -804,7 +799,7 @@
   "TWN": [
    {
     "family": "CHN",
-    "year_min": 1850,
+    "year_min": 1860,
     "year_max": 1894
    }
   ],
@@ -839,7 +834,7 @@
   "VAT": [
    {
     "family": "PAP",
-    "year_min": 1850,
+    "year_min": 1860,
     "year_max": 1869
    }
   ],
@@ -990,7 +985,8 @@
   "BGA-1800-1894",
   "BGD-1947-1971",
   "BGD-1971-2025",
-  "BGR-1878-1913",
+  "BGR-1878-1885",
+  "BGR-1885-1913",
   "BGR-1913-1918",
   "BGR-1918-1919",
   "BGR-1919-1940",
@@ -1113,7 +1109,8 @@
   "CHL-RM-1976-2025",
   "CHL-TA-1976-2025",
   "CHL-VS-1976-2025",
-  "CHN-1800-1895",
+  "CHN-1800-1860",
+  "CHN-1860-1895",
   "CHN-1895-1913",
   "CHN-1913-1914",
   "CHN-1914-1921",
@@ -1310,7 +1307,8 @@
   "ESP-ML-1800-2025",
   "EST-1800-1918",
   "EST-1918-1940",
-  "EST-1940-1991",
+  "EST-1940-1945",
+  "EST-1945-1991",
   "EST-1991-2025",
   "ETH-1800-1889",
   "ETH-1889-1897",
@@ -1352,8 +1350,10 @@
   "FEZ-1943-1951",
   "FID-1887-1954",
   "FIN-1809-1917",
-  "FIN-1917-1940",
-  "FIN-1940-2025",
+  "FIN-1917-1920",
+  "FIN-1920-1940",
+  "FIN-1940-1944",
+  "FIN-1944-2025",
   "FJI-1800-2025",
   "FLK-1833-2025",
   "FMS-1909-1946",
@@ -1443,7 +1443,8 @@
   "FRA-80-1800-2025",
   "FRA-81-1800-2025",
   "FRA-82-1808-2025",
-  "FRA-83-1790-2025",
+  "FRA-83-1790-1860",
+  "FRA-83-1860-2025",
   "FRA-84-1793-2025",
   "FRA-85-1800-2025",
   "FRA-86-1800-2025",
@@ -1514,7 +1515,9 @@
   "HATAY-1938-1939",
   "HAW-1959-2025",
   "HAWI-1898-1959",
-  "HKG-1842-2025",
+  "HKG-1842-1860",
+  "HKG-1860-1898",
+  "HKG-1898-2025",
   "HND-1800-2025",
   "HRV-1992-2025",
   "HTI-1800-2025",
@@ -1573,7 +1576,8 @@
   "ITA-1861-1866",
   "ITA-1866-1870",
   "ITA-1870-1919",
-  "ITA-1919-2025",
+  "ITA-1919-1947",
+  "ITA-1947-2025",
   "ITA-21-1970-2025",
   "ITA-23-1948-2025",
   "ITA-25-1861-2025",
@@ -1711,7 +1715,8 @@
   "LSO-1966-2025",
   "LST-1822-1868",
   "LTU-1800-1918",
-  "LTU-1918-1940",
+  "LTU-1918-1923",
+  "LTU-1923-1940",
   "LTU-1940-1991",
   "LTU-1991-2025",
   "LUX-1839-2025",
@@ -1875,7 +1880,8 @@
   "PAL-1920-1948",
   "PAN-1903-1979",
   "PAN-1979-2025",
-  "PAP-1800-1870",
+  "PAP-1800-1860",
+  "PAP-1860-1870",
   "PAPNG-1920-1949",
   "PCN-1800-2025",
   "PER-1825-1884",
@@ -1975,6 +1981,7 @@
   "SER-1878-1913",
   "SER-1913-1918",
   "SER-1918-1945",
+  "SER-1945-2006",
   "SGP-1824-1946",
   "SGP-1946-1963",
   "SGP-1963-1965",

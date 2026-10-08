@@ -66,6 +66,11 @@ EXEMPT = frozenset({
     # same reason SCG-1992-2006 does. Added 2026-09-24.
     "SCG-XK-1999-2006",
     "SER-2006-2008",
+    # Serbia as a federal unit of Yugoslavia and the FRY, 1945-2006 (issue 686). It never had an
+    # ISO 3166-1 code of its own -- the codes of the period were YUG and SCG, which belong to the
+    # federations around it -- and it continues the SER prefix of SER-1918-1945. Giving it SRB
+    # would put a constituent republic in independent Serbia's ISO family.
+    "SER-1945-2006",
     # Dissolved states carrying their ISO 3166-3 code (issue 55). 3166-3 is the register OF
     # FORMERLY-USED codes, so by construction no 3166-1 alpha-3 exists for any of them --
     # which is precisely the condition this EXEMPT list is documented for.

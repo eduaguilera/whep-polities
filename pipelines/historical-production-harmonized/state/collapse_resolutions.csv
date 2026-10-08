@@ -953,12 +953,12 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1945,F51-1945-1947,71,Rye,ha,2,iia=802000|juan=809000,czech republic | czechoslovakia,rye,iia=single|juan=single,source_precedence,iia,802000
 1945,F51-1945-1947,71,Rye,tonnes,2,iia=28000|juan=981000,czech republic | czechoslovakia,rye,iia=single|juan=single,withheld_contradiction,,
 1945,F51-1945-1947,773,"Flax, processed but not spun",tonnes,2,iia=7100|juan=5800,czech republic | czechoslovakia,flax fibre and tow,iia=single|juan=single,source_precedence,iia,7100
-1949,FIN-1940-2025,187,"Peas, dry",tonnes,2,fao1952=13000|juan=13500,finland | Finland,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,13000
-1951,FIN-1940-2025,187,"Peas, dry",tonnes,2,fao1952=12000|juan=13400,finland | Finland,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,12000
-1950,FIN-1940-2025,333,Linseed,ha,2,fao1952=5000|juan=7000,finland | Finland,linseed,fao1952=single|juan=single,source_precedence,fao1952,5000
-1950,FIN-1940-2025,71,Rye,ha,2,fao1952=142000|juan=143000,finland | Finland,rye,fao1952=single|juan=single,source_precedence,fao1952,142000
-1950,FIN-1940-2025,75,Oats,ha,2,fao1952=453000|juan=437000,finland | Finland,oats,fao1952=single|juan=single,source_precedence,fao1952,453000
-1950,FIN-1940-2025,773,"Flax, processed but not spun",ha,2,fao1952=2000|juan=7000,finland | Finland,flax fiber | flax fibre and tow,fao1952=single|juan=single,withheld_contradiction,,
+1949,FIN-1944-2025,187,"Peas, dry",tonnes,2,fao1952=13000|juan=13500,finland | Finland,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,13000
+1951,FIN-1944-2025,187,"Peas, dry",tonnes,2,fao1952=12000|juan=13400,finland | Finland,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,12000
+1950,FIN-1944-2025,333,Linseed,ha,2,fao1952=5000|juan=7000,finland | Finland,linseed,fao1952=single|juan=single,source_precedence,fao1952,5000
+1950,FIN-1944-2025,71,Rye,ha,2,fao1952=142000|juan=143000,finland | Finland,rye,fao1952=single|juan=single,source_precedence,fao1952,142000
+1950,FIN-1944-2025,75,Oats,ha,2,fao1952=453000|juan=437000,finland | Finland,oats,fao1952=single|juan=single,source_precedence,fao1952,453000
+1950,FIN-1944-2025,773,"Flax, processed but not spun",ha,2,fao1952=2000|juan=7000,finland | Finland,flax fiber | flax fibre and tow,fao1952=single|juan=single,withheld_contradiction,,
 1950,FJI-1800-2025,27,Rice,ha,2,fao1952=14000|mitchell=15000,fiji | Fiji,"rice paddy | rice, paddy",fao1952=single|mitchell=single,source_precedence,fao1952,14000
 1949,FJI-1800-2025,27,Rice,tonnes,2,fao1952=20000|mitchell=19000,fiji | Fiji,"rice paddy | rice, paddy",fao1952=single|mitchell=single,source_precedence,fao1952,20000
 1950,FJI-1800-2025,27,Rice,tonnes,2,fao1952=25000|mitchell=20000,fiji | Fiji,"rice paddy | rice, paddy",fao1952=single|mitchell=single,source_precedence,fao1952,25000
@@ -1104,30 +1104,30 @@ year,polity_code,item_prod_code,item_prod_name,unit,n_candidates,candidates,labe
 1949,ISR-1948-1967,976,Sheep,heads,2,fao1952=30000|mitchell=29000,israel | Israel,sheep,fao1952=single|mitchell=single,source_precedence,fao1952,30000
 1950,ISR-1948-1967,976,Sheep,heads,2,fao1952=50000|mitchell=37000,israel | Israel,sheep,fao1952=single|mitchell=single,source_precedence,fao1952,50000
 1951,ISR-1948-1967,976,Sheep,heads,2,fao1952=52000|mitchell=44000,israel | Israel,sheep,fao1952=single|mitchell=single,source_precedence,fao1952,52000
-1949,ITA-1919-2025,176,"Beans, dry",ha,2,fao1952=488000|juan=489407,italy | Italy,"beans, dry | dry beans",fao1952=single|juan=single,source_precedence,fao1952,488000
-1951,ITA-1919-2025,176,"Beans, dry",ha,2,fao1952=459000|juan=458000,italy | Italy,"beans, dry | dry beans",fao1952=single|juan=single,source_precedence,fao1952,459000
-1949,ITA-1919-2025,181,"Broad beans and horse beans, dry",tonnes,2,fao1952=264000|juan=254000,italy | Italy,"broad beans | broad beans, horse beans, dry",fao1952=single|juan=single,source_precedence,fao1952,264000
-1949,ITA-1919-2025,187,"Peas, dry",ha,2,fao1952=19000|juan=20189,italy | Italy,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,19000
-1950,ITA-1919-2025,187,"Peas, dry",ha,2,fao1952=19000|juan=21000,italy | Italy,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,19000
-1951,ITA-1919-2025,187,"Peas, dry",ha,2,fao1952=19000|juan=20000,italy | Italy,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,19000
-1949,ITA-1919-2025,187,"Peas, dry",tonnes,2,fao1952=11000|juan=10950,italy | Italy,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,11000
-1950,ITA-1919-2025,187,"Peas, dry",tonnes,2,fao1952=13000|juan=13200,italy | Italy,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,13000
-1951,ITA-1919-2025,187,"Peas, dry",tonnes,2,fao1952=13000|juan=13200,italy | Italy,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,13000
-1925,ITA-1919-2025,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1448100|juan=1443100,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1448100
-1930,ITA-1919-2025,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1478101|juan=1478100,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1478101
-1931,ITA-1919-2025,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1249656|juan=1249650,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1249656
-1932,ITA-1919-2025,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1283015|juan=1283000,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1283015
-1933,ITA-1919-2025,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1165429|juan=1165400,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1165429
-1949,ITA-1919-2025,560,Grapes,ha,4,fao1952=1014000;1724000;2840000|juan=1724000,italy | Italy,grapes,fao1952=ambiguous|juan=single,one_source,juan,1724000
-1950,ITA-1919-2025,560,Grapes,ha,4,fao1952=1010000;1734000;2896000|juan=1734000,italy | Italy,grapes,fao1952=ambiguous|juan=single,one_source,juan,1734000
-1951,ITA-1919-2025,560,Grapes,ha,4,fao1952=1017000;1743000;2904000|juan=1742000,italy | Italy,grapes,fao1952=ambiguous|juan=single,one_source,juan,1742000
-1950,ITA-1919-2025,560,Grapes,tonnes,4,fao1952=2530000;4014000;6544000|juan=6544000,italy | Italy,grapes,fao1952=total_beside_parts|juan=single,source_precedence,fao1952,6544000
-1951,ITA-1919-2025,560,Grapes,tonnes,4,fao1952=2883000;4435000;7318000|juan=7318000,italy | Italy,grapes,fao1952=total_beside_parts|juan=single,source_precedence,fao1952,7318000
-1949,ITA-1919-2025,569,Figs,tonnes,2,fao1952=119000|juan=394450,italy | Italy,figs,fao1952=single|juan=single,withheld_contradiction,,
-1950,ITA-1919-2025,569,Figs,tonnes,2,fao1952=112000|juan=363400,italy | Italy,figs,fao1952=single|juan=single,withheld_contradiction,,
-1951,ITA-1919-2025,569,Figs,tonnes,2,fao1952=113000|juan=381100,italy | Italy,figs,fao1952=single|juan=single,withheld_contradiction,,
-1949,ITA-1919-2025,826,Unmanufactured tobacco,ha,2,fao1952=55000|juan=58000,italy | Italy,"tobacco | tobacco, unmanufactured",fao1952=single|juan=single,source_precedence,fao1952,55000
-1950,ITA-1919-2025,826,Unmanufactured tobacco,ha,2,fao1952=58000|juan=59000,italy | Italy,"tobacco | tobacco, unmanufactured",fao1952=single|juan=single,source_precedence,fao1952,58000
+1949,ITA-1947-2025,176,"Beans, dry",ha,2,fao1952=488000|juan=489407,italy | Italy,"beans, dry | dry beans",fao1952=single|juan=single,source_precedence,fao1952,488000
+1951,ITA-1947-2025,176,"Beans, dry",ha,2,fao1952=459000|juan=458000,italy | Italy,"beans, dry | dry beans",fao1952=single|juan=single,source_precedence,fao1952,459000
+1949,ITA-1947-2025,181,"Broad beans and horse beans, dry",tonnes,2,fao1952=264000|juan=254000,italy | Italy,"broad beans | broad beans, horse beans, dry",fao1952=single|juan=single,source_precedence,fao1952,264000
+1949,ITA-1947-2025,187,"Peas, dry",ha,2,fao1952=19000|juan=20189,italy | Italy,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,19000
+1950,ITA-1947-2025,187,"Peas, dry",ha,2,fao1952=19000|juan=21000,italy | Italy,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,19000
+1951,ITA-1947-2025,187,"Peas, dry",ha,2,fao1952=19000|juan=20000,italy | Italy,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,19000
+1949,ITA-1947-2025,187,"Peas, dry",tonnes,2,fao1952=11000|juan=10950,italy | Italy,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,11000
+1950,ITA-1947-2025,187,"Peas, dry",tonnes,2,fao1952=13000|juan=13200,italy | Italy,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,13000
+1951,ITA-1947-2025,187,"Peas, dry",tonnes,2,fao1952=13000|juan=13200,italy | Italy,"dry peas | peas, dry",fao1952=single|juan=single,source_precedence,fao1952,13000
+1925,ITA-1919-1947,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1448100|juan=1443100,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1448100
+1930,ITA-1919-1947,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1478101|juan=1478100,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1478101
+1931,ITA-1919-1947,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1249656|juan=1249650,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1249656
+1932,ITA-1919-1947,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1283015|juan=1283000,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1283015
+1933,ITA-1919-1947,558,Other berries and fruits of the genus vaccinium n.e.c.,tonnes,2,iia=1165429|juan=1165400,italy,berries nes | other berries and fruits of the genus vaccinium n.e.c.,iia=single|juan=single,source_precedence,iia,1165429
+1949,ITA-1947-2025,560,Grapes,ha,4,fao1952=1014000;1724000;2840000|juan=1724000,italy | Italy,grapes,fao1952=ambiguous|juan=single,one_source,juan,1724000
+1950,ITA-1947-2025,560,Grapes,ha,4,fao1952=1010000;1734000;2896000|juan=1734000,italy | Italy,grapes,fao1952=ambiguous|juan=single,one_source,juan,1734000
+1951,ITA-1947-2025,560,Grapes,ha,4,fao1952=1017000;1743000;2904000|juan=1742000,italy | Italy,grapes,fao1952=ambiguous|juan=single,one_source,juan,1742000
+1950,ITA-1947-2025,560,Grapes,tonnes,4,fao1952=2530000;4014000;6544000|juan=6544000,italy | Italy,grapes,fao1952=total_beside_parts|juan=single,source_precedence,fao1952,6544000
+1951,ITA-1947-2025,560,Grapes,tonnes,4,fao1952=2883000;4435000;7318000|juan=7318000,italy | Italy,grapes,fao1952=total_beside_parts|juan=single,source_precedence,fao1952,7318000
+1949,ITA-1947-2025,569,Figs,tonnes,2,fao1952=119000|juan=394450,italy | Italy,figs,fao1952=single|juan=single,withheld_contradiction,,
+1950,ITA-1947-2025,569,Figs,tonnes,2,fao1952=112000|juan=363400,italy | Italy,figs,fao1952=single|juan=single,withheld_contradiction,,
+1951,ITA-1947-2025,569,Figs,tonnes,2,fao1952=113000|juan=381100,italy | Italy,figs,fao1952=single|juan=single,withheld_contradiction,,
+1949,ITA-1947-2025,826,Unmanufactured tobacco,ha,2,fao1952=55000|juan=58000,italy | Italy,"tobacco | tobacco, unmanufactured",fao1952=single|juan=single,source_precedence,fao1952,55000
+1950,ITA-1947-2025,826,Unmanufactured tobacco,ha,2,fao1952=58000|juan=59000,italy | Italy,"tobacco | tobacco, unmanufactured",fao1952=single|juan=single,source_precedence,fao1952,58000
 1949,JPN-1945-1952,27,Rice,tonnes,2,fao1952=11929000|mitchell=9383000,japan | Japan,"rice paddy | rice, paddy",fao1952=single|mitchell=single,source_precedence,fao1952,11929000
 1951,JPN-1945-1952,27,Rice,tonnes,2,fao1952=11302000|mitchell=9042000,japan | Japan,"rice paddy | rice, paddy",fao1952=single|mitchell=single,source_precedence,fao1952,11302000
 1949,JPN-1945-1952,71,Rye,ha,2,fao1952=6000|mitchell=565000,japan | Japan,rye,fao1952=single|mitchell=single,withheld_contradiction,,

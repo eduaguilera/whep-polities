@@ -81,7 +81,15 @@ MIN_PAIRS_MEASURED = 5000
 
 # (container, member_a, member_b) with a and b sorted -> reason. Empty on 2026-09-24: every pair
 # above the threshold was an aggregate declared beside its own part and was fixed by re-edging.
-BASELINE: dict[tuple[str, str, str], str] = {}
+BASELINE: dict[tuple[str, str, str], str] = {
+    # Added 2026-10-07 (issue 686), measured 87.77% of the smaller (77,228 km2), 1999-2006.
+    # SER-1945-2006 is the Serbian republic WITH Kosovo; SCG-XK-1999-2006 is the reporting area
+    # "Serbia and Montenegro excluding Kosovo". Each holds ground the other lacks (Kosovo;
+    # Montenegro), so neither can be re-edged onto the other: they are two different ways of
+    # cutting SCG-1992-2006, used by different sources, and are never summed together.
+    ("SCG-1992-2006", "SCG-XK-1999-2006", "SER-1945-2006"):
+        "straddle: Serbia with Kosovo against Serbia and Montenegro without Kosovo (issue 686)",
+}
 
 
 def main() -> int:

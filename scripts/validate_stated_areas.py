@@ -126,6 +126,14 @@ BASELINE = {
     # Keyed PER SOURCE, not as ("OMN-1856-2025", "fao/iia"): divergence is suppressed on the polity code
     # alone, but `write_stated_area_basis.py` looks the note up as BASELINE[(code, source)], so a
     # combined key suppresses the failure and then publishes both basis rows with an EMPTY note.
+    # LTU-1918-1923, added 2026-10-07 (issue 686). Splitting LTU-1918-1940 at 1923 left exactly one IIA
+    # statement on the early row: `LITHUANIE` 150,000 km2 from the 1909 edition, the single-edition
+    # outlier SOURCE_NOTES already explains (four later editions say 55,658-55,670). With the later
+    # editions now on LTU-1923-1940, nothing outvotes it here, so the row diverges on that figure alone.
+    ("LTU-1918-1923", "iia"):
+        "IIA's only statement for these years is the 1909 edition's 150,000 km2 for `LITHUANIE`, an "
+        "outlier four later editions contradict (55,658-55,670 km2, 1925-1937). Lithuania without "
+        "the Klaipeda Territory was about 52,800 km2; our polygon is 53,666.",
     ("OMN-1856-2025", "iia"):
         "IIA states 212,376 km2 (1911 and 1921 editions) against our 314,239. This is not an independent "
         "measurement from FAO's 212,400: 82,000 square miles is 212,379 km2, so both publishers are "
@@ -504,7 +512,7 @@ SOURCE_NOTES = {
         "A SINGLE-EDITION OUTLIER. `CÔTE DES SOMALIS` reads 120,000 km2 in the 1909 edition (applied to "
         "1911 and 1921) and 21,963 in 1937; our polygon is 21,481, i.e. 2% from the later figure and "
         "82% from the earlier. French Somaliland was about 23,000 km2, so 120,000 is the error.",
-    ("LTU-1918-1940", "iia"):
+    ("LTU-1923-1940", "iia"):
         "A SINGLE-EDITION OUTLIER, and the later editions are unanimous. `LITHUANIE` reads 150,000 km2 "
         "in the 1909 edition and then 55,658 / 55,670 / 55,670 / 55,670 across 1925-1937; our polygon "
         "is 55,904, within 0% of those. Interwar Lithuania was about 55,700 km2 without Vilnius, so "
@@ -661,7 +669,10 @@ BASELINE_COLLIDING_LEXICON_FORMS = 28
 # northern Algeria alone), JOR (IIA revised itself in 1938). Lowered 6 -> 5 on 2026-09-24: CHN left
 # the class when FAO's two China parts stopped routing beside the whole (world alias collisions).
 # A SIXTH is the thing worth looking at: it means a source is filing two territories under one polity.
-BASELINE_LABEL_SPREAD = 5
+# Lowered 5 -> 4 on 2026-10-07 (issue 686): LTU left the class when LTU-1918-1940 was split at 1923.
+# The 1909 edition's outlier now lands on LTU-1918-1923 alone (baselined above) and the later editions
+# on LTU-1923-1940, so no single (polity, source) group holds both.
+BASELINE_LABEL_SPREAD = 4
 LABEL_SPREAD_FACTOR = 2.0
 
 # 18 -> 17 on 2026-09-24 (issue 687): `togo` -> `Togo` was inert because IIA states Togo's area only

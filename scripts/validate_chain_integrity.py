@@ -226,7 +226,11 @@ BASELINE_ASYMMETRY = {
     # LOWERED 165 -> 164 on 2026-09-24 (fix/geodata-polygon-batch): KRS-1910-1945 -> KOR-1948-2025 became
     # KRS-1910-1945 -> KRS-1945-1948 -> KOR-1948-2025, both halves stated on both sides, when the US-zone
     # row was created (issue 688).
-    "successor_only": 164,
+    # LOWERED 164 -> 162 on 2026-10-07 (issue 686): the stopgap SER-1918-1945 -> SRB-2006-2008 above is
+    # gone. SER-1945-2006 (Serbia within Yugoslavia and the FRY) now sits between them and both of its
+    # edges are stated on both sides; the eras split out of FIN, BGR, PAP, LTU, ITA, CHN, HKG and EST
+    # are linked both ways as well.
+    "successor_only": 162,
     # RAISED 81 -> 83 on 2026-08-13 (issue 171). BFA-1919-1932 and BFA-1947-1960 each gained
     # `predecessor: AOF-1895-1960` and the federation names neither back, deliberately. Upper Volta
     # was carved OUT of French West Africa in 1919 and reconstituted inside it in 1947; AOF ran to
@@ -240,7 +244,8 @@ BASELINE_ASYMMETRY = {
     # The subnational vocabulary added pages that name a predecessor whose counterpart does not reciprocate, because the counterpart is a pre-existing row whose own successor field points elsewhere.
     # The authoring-time reciprocity check refuses these when it can see the conflict; these five predate it or name a counterpart it could not repoint.
     # LOWERED 88 -> 72 on 2026-09-24, same change as successor_only above.
-    "predecessor_only": 72,
+    # LOWERED 72 -> 70 on 2026-10-07 (issue 686), same change as successor_only above.
+    "predecessor_only": 70,
 }
 
 BASELINE_LINKS = {
