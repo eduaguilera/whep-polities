@@ -47,6 +47,7 @@ from matchlib import (load_value_scale_corrections, value_scale_divisors, value_
                       load_value_precision, VERDICT_GRID)
 from matchlib import load_value_scale_corrections, value_scale_divisors
 from matchlib import load_item_withholds, item_withheld
+from matchlib import load_value_null_corrections, value_null_mask
 import extdata
 from atomic import write_csv_atomic
 
@@ -121,6 +122,20 @@ for _k, _n in _iw_per_rule.items():
             f"table records {_ru['observed_rows']}. Re-verify the rule against the rebuilt layer B "
             f"and update observed_rows (or the rule) deliberately.")
 print(f"item withholds: {int(work['item_withheld'].sum()):,} row(s) withheld across {len(_iw)} rule(s)")
+# VALUE-NULL CORRECTIONS (issue 414). Cells the source printed with NO FIGURE (a dash, `...`, the
+# see-notes marker) or whose 0 is refuted by its own other axis, but which layer B carries as 0. Keyed
+# on the label layer B prints, like the divisor above, and likewise `value` is NOT rewritten: the
+# per-row `value_is_null` rides on matched_rows.parquet and the harmonized build withholds the value.
+# Table: data/final/source_value_null_corrections.csv; gate: scripts/validate_value_null_corrections.py.
+_vnc = load_value_null_corrections(extdata.VALUE_NULL_CORRECTIONS)
+work["value_is_null"], _vnc_per_rule = value_null_mask(work, _vnc)
+for _k, _n in _vnc_per_rule.items():
+    if _n != int(_vnc[_k]["observed_rows"]):
+        raise SystemExit(
+            f"value-null correction {_vnc[_k]['key']} hits {_n} row(s), but the table records "
+            f"{_vnc[_k]['observed_rows']}. Re-verify the cell against the rebuilt layer B.")
+print(f"value-null corrections: {int(work['value_is_null'].sum()):,} row(s) withheld across "
+      f"{len(_vnc)} cell(s)")
 _ocr = extdata.load_ocr_corrections()
 _before = work["country"].copy()
 for (_src, _bad), _good in _ocr.items():
@@ -575,6 +590,8 @@ json.dump({"summary": {
 # very duplicates the table exists to find.
 # `value_divisor` (issue 416) is appended after it: 1.0 except on rows a value-scale rule covers,
 # where it is the power of ten the harmonized build divides `value` by. `value` itself stays as
+# printed. `value_is_null` (issue 414) follows it: True on the cells data/final/
+# source_value_null_corrections.csv withholds, which the build turns into NA; `value` again stays as
 # printed. `source_label_raw` (issue 675) was appended LAST before it for the same reason: `country` is the label the
 # row was ROUTED under, after the OCR and item-scoped corrections, and `source_label_raw` is what
 # layer B itself prints. They differ on exactly the corrected rows.
@@ -585,7 +602,7 @@ json.dump({"summary": {
 # averaged window pokes outside the polity it was routed to, and by how many years at which end.
 work[["source","country","iso3c","year","period","item","indicator","value","unit","whep_code","match_method",
       "period_straddles_polity_span","period_years_before_start","period_years_after_end",
-      "source_label_raw", "value_divisor", "item_withheld"]] \
+      "source_label_raw", "value_divisor", "item_withheld", "value_is_null"]] \
     .join(work_precision) \
     .to_parquet(f"{OUT}/matched_rows.parquet", index=False)
 

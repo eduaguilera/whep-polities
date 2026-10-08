@@ -3609,6 +3609,32 @@ def mutate_item_withhold_dropped(root, gpd, make_valid, affinity):
     return "deleted the iia wheat tonnes withhold, republishing spelt and meslin production as wheat"
 
 
+def mutate_value_null_printed_zero_withheld(root, gpd, make_valid, affinity):
+    """Withhold a zero iia_1938_39 really PRINTS, as if it were a dash (issue 414).
+
+    `fiji / cotton lint / ha / 1933` is a printed digit 0 on iia_1938_39's 1,000 ha grid -- the
+    volume's way of writing "under 500 ha" (issue 446), a value. The row is well-formed, cites a
+    glyph and a page, and selects one zero-valued layer-B row, so every shape check and (on a
+    maintainer's machine) the scope arm pass. Only the pin on the adjudicated cells refuses it.
+    """
+    import csv as _csv
+    path = os.path.join(root, "data/final/source_value_null_corrections.csv")
+    with open(path, newline="", encoding="utf-8") as fh:
+        reader = _csv.DictReader(fh)
+        fields = list(reader.fieldnames)
+        rows = list(reader)
+    assert not any(r["source_label"] == "fiji" for r in rows), "fiji is adjudicated -- pick another cell"
+    rows.append({**rows[-1], "source_label": "fiji", "item": "cotton lint", "unit": "ha",
+                 "year": "1933", "evidence_rule": "scan_no_figure", "printed_glyph": "—",
+                 "evidence_ref": "scan iia_1938_39 crops_1938_39/400_403algodonsup_prod_rend.pdf p.3",
+                 "observed_rows": "1"})
+    with open(path, "w", newline="", encoding="utf-8") as fh:
+        w = _csv.DictWriter(fh, fieldnames=fields, lineterminator="\n")
+        w.writeheader()
+        w.writerows(rows)
+    return "withheld fiji cotton lint area 1933, a digit 0 iia_1938_39 prints on its grid, as a dash"
+
+
 def mutate_label_item_correction_wrong_polity(root, gpd, make_valid, affinity):
     """Record the wrong `polity_code` on the fao1952 `New Guinea` use-total rule (issue 675).
 
@@ -7091,6 +7117,13 @@ CASES = (
         "other unit, and iia spelt-and-meslin production published as wheat again",
     ),
     (
+        "validate_value_null_corrections.py",
+        mutate_value_null_printed_zero_withheld,
+        "differs from the adjudicated set",
+        "a printed grid-floor zero withheld as if the page showed a dash -- well-formed, cited, and "
+        "selecting one zero-valued row, so only the pin on the adjudicated cells can refuse it",
+    ),
+    (
         "validate_label_item_corrections.py",
         mutate_label_item_correction_wrong_polity,
         "the relabel and the published polity_code disagree",
@@ -8208,6 +8241,15 @@ WRITABLE = {
         "pipelines/polity-autoimprove/state/item_equivalences.csv",
         "pipelines/polity-autoimprove/matchlib.py",
         "pipelines/polity-autoimprove/extdata.py",
+    ),
+    # The table is mutated; the gate imports matchlib (loader, mask) and extdata (layer B path), and
+    # reads the two state tables its evidence rules cite.
+    "validate_value_null_corrections.py": (
+        "source_value_null_corrections.csv",
+        "pipelines/polity-autoimprove/matchlib.py",
+        "pipelines/polity-autoimprove/extdata.py",
+        "pipelines/polity-autoimprove/state/zero_grid_floor.csv",
+        "pipelines/polity-autoimprove/state/edition_conflicts.csv",
     ),
     "validate_label_item_corrections.py": (
         "polities_database.csv",

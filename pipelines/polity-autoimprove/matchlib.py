@@ -634,6 +634,101 @@ def item_withheld(df, rules):
     return flag, per_rule
 
 
+# VALUE-NULL CORRECTIONS (issue 414). A printed cell that carries NO FIGURE -- a dash, `...`, or the
+# volume's see-notes marker `-o)` -- can reach layer B as the number 0 when its transcription typed a
+# 0 into it, and a 0 is then averaged into the panel as an observation of "none". The repair is to
+# withhold the value, not to estimate one, and it is a property of single cells, so the table is one
+# row per (source, label, item, unit, year) cell. As with the value-scale table the rule NEVER rewrites
+# `value`: every diagnostic keeps convicting the printed 0, and matched_rows.parquet carries a per-row
+# `value_is_null` that the harmonized build (pipelines/historical-production-harmonized/build.R) turns
+# into NA. Table: data/final/source_value_null_corrections.csv; gate:
+# scripts/validate_value_null_corrections.py.
+VALUE_NULL_CORRECTION_COLUMNS = (
+    "source", "source_label", "item", "unit", "year", "printed_value", "evidence_rule",
+    "printed_glyph", "evidence_ref", "observed_rows", "issue", "evidence",
+)
+# Why a cell may be nulled. Each names evidence the gate can check:
+#   scan_no_figure               the scanned page prints no figure in the cell (`printed_glyph`)
+#   refuted_by_paired_axis       state/zero_grid_floor.csv: no sub-grid value fits the cell's other axis
+#   contradicted_by_other_volume state/edition_conflicts.csv: another edition prints a value the
+#                                volume's grid cannot round to 0
+VALUE_NULL_EVIDENCE_RULES = ("scan_no_figure", "refuted_by_paired_axis", "contradicted_by_other_volume")
+# What the scan shows instead of the typed 0: a dash, `...` (not available), the see-notes marker
+# `-o)`, or `figure` -- a NON-ZERO figure the transcription typed as 0 (illegible at the binding, or
+# mis-keyed); withholding it is the repair here, restoring it is a value correction for another
+# table. A printed `0` is NOT here: in the IIA's coarse volumes it is the grid's way of writing
+# "under half a unit" (issue 446), a value rather than a blank.
+VALUE_NULL_GLYPHS = ("—", "-", "...", "-o)", "figure")
+
+
+def load_value_null_corrections(path):
+    """Read data/final/source_value_null_corrections.csv into rule dicts.
+
+    Raises on a missing file, a wrong header, a blank key or evidence column, a non-integer year, an
+    unknown evidence rule, a `scan_no_figure` row without a non-figure glyph, or a repeated cell."""
+    if not path or not os.path.exists(path):
+        raise FileNotFoundError(f"tracked value-null correction table missing: {path}")
+    with open(path, newline="", encoding="utf-8") as fh:
+        reader = csv.DictReader(fh)
+        if tuple(reader.fieldnames or ()) != VALUE_NULL_CORRECTION_COLUMNS:
+            raise ValueError(f"{path}: header {reader.fieldnames} != "
+                             f"{list(VALUE_NULL_CORRECTION_COLUMNS)}")
+        rules, seen = [], set()
+        for i, r in enumerate(reader, start=2):
+            for col in ("source", "source_label", "item", "unit", "year", "printed_value",
+                        "evidence_rule", "evidence_ref", "observed_rows", "issue", "evidence"):
+                if not (r.get(col) or "").strip():
+                    raise ValueError(f"{path}:{i}: empty `{col}`")
+            y = _yr(r["year"])
+            if y is None:
+                raise ValueError(f"{path}:{i}: year {r['year']!r} is not a single year (DATED rows only)")
+            try:
+                pv = float(r["printed_value"])
+            except ValueError:
+                raise ValueError(f"{path}:{i}: printed_value {r['printed_value']!r} is not a number")
+            if r["evidence_rule"] not in VALUE_NULL_EVIDENCE_RULES:
+                raise ValueError(f"{path}:{i}: evidence_rule {r['evidence_rule']!r} not in "
+                                 f"{VALUE_NULL_EVIDENCE_RULES}")
+            g = (r.get("printed_glyph") or "").strip()
+            if g and g not in VALUE_NULL_GLYPHS:
+                raise ValueError(f"{path}:{i}: printed_glyph {g!r} is not a recorded glyph "
+                                 f"{VALUE_NULL_GLYPHS}; a printed figure is a value, not a blank")
+            if r["evidence_rule"] == "scan_no_figure" and not g:
+                raise ValueError(f"{path}:{i}: scan_no_figure needs the printed_glyph seen on the scan")
+            key = (r["source"], r["source_label"], r["item"], r["unit"], y)
+            if key in seen:
+                raise ValueError(f"{path}:{i}: cell {key} listed twice")
+            seen.add(key)
+            rules.append({**r, "y": y, "pv": pv, "glyph": g, "key": key})
+    return rules
+
+
+def value_null_mask(df, rules, label_col="country"):
+    """Per-row bool (True = withhold the value) for a layer-B-shaped frame.
+
+    Returns (Series of bools, {rule index: rows hit}). DATED ROWS ONLY, keyed on the label AS LAYER B
+    PRINTS IT. Raises when a cell's rows do not all carry `printed_value`: a rule that would null a
+    real figure means layer B changed under it, and must be re-adjudicated, not applied."""
+    years = pd.to_numeric(df["year"], errors="coerce")
+    vals = pd.to_numeric(df["value"], errors="coerce")
+    mask = pd.Series(False, index=df.index, dtype=bool)
+    per_rule = {}
+    for k, ru in enumerate(rules):
+        m = ((df["source"] == ru["source"]) & (df[label_col] == ru["source_label"])
+             & (df["item"] == ru["item"]) & (df["unit"] == ru["unit"]) & (years == ru["y"]))
+        # Nullable year/value columns compare to <NA>; a missing year is not this cell, and a
+        # missing value is not the printed one.
+        m = m.fillna(False).astype(bool)
+        off = m & (vals != ru["pv"]).fillna(True).astype(bool)
+        if off.any():
+            raise ValueError(f"value-null correction {ru['key']} matches {int(off.sum())} row(s) whose "
+                             f"value is not the printed {ru['printed_value']} "
+                             f"({sorted(vals[off].unique().tolist())[:3]}) -- re-adjudicate the cell")
+        mask |= m
+        per_rule[k] = int(m.sum())
+    return mask, per_rule
+
+
 class Matcher:
     """Deterministic candidate resolver over the polities DB + alias tables.
 

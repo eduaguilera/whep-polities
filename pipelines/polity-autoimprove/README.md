@@ -1244,6 +1244,19 @@ keep them. `scripts/validate_item_withholds.py` pins the rules and ties them to
 `state/item_equivalences.csv` both ways: an item whose every raw product is a `defect` must be
 withheld, and only such an item may be.
 
+**When a printed cell carries no figure but layer B carries a 0, a value-null row withholds it**
+(issue 414). The IIA transcription typed 0 into some cells whose page prints a dash, `...`, the
+see-notes marker `-o)`, or a figure cut at the binding; the extraction's own rule maps those glyphs to
+NA, so the 0 is a keying slip, not a reading. `data/final/source_value_null_corrections.csv` lists
+them one cell per row (`source, source_label, item, unit, year, printed_value, evidence_rule,
+printed_glyph, evidence_ref, observed_rows, issue, evidence`; DATED rows, keyed on the label layer B
+prints). `evidence_rule` is `scan_no_figure` (the glyph and the pdf page), `refuted_by_paired_axis`
+(a row of `state/zero_grid_floor.csv`) or `contradicted_by_other_volume` (a `grid_cannot_explain` row
+of `state/edition_conflicts.csv`). A printed digit `0` never qualifies: iia_1938_39 prints it as its
+grid floor (issue 446). `01_match_and_findings.py` writes `value_is_null` to `matched_rows.parquet`
+(`matchlib.value_null_mask`), `value` stays as printed, and the harmonized build sets it to NA.
+`scripts/validate_value_null_corrections.py` pins every cell and re-checks the cited evidence.
+
 ### What a source label actually means (avoid false precision)
 
 A label like "Germany Western" is **the source's own reporting unit**, with the

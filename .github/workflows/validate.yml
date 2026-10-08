@@ -918,6 +918,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_item_withholds.py
 
+      - name: Value-null corrections withhold only adjudicated false zeros, on evidence that still stands
+        if: '!cancelled()'
+        run: python3 scripts/validate_value_null_corrections.py
+
       - name: Wiki pages only name things that exist
         if: '!cancelled()'
         run: python3 scripts/validate_references.py

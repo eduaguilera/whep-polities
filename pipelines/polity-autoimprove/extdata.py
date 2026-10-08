@@ -400,6 +400,13 @@ ITEM_WITHHOLDS = os.path.join(
     "data/final/source_item_withholds.csv",
 )
 
+# Value-null corrections (issue 414): cells printed with no figure that layer B carries as 0. Tracked
+# repo data; the loader is matchlib.load_value_null_corrections.
+VALUE_NULL_CORRECTIONS = os.path.join(
+    os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))),
+    "data/final/source_value_null_corrections.csv",
+)
+
 
 def load_ocr_corrections(path: str | None = None):
     """Load the tabled OCR spelling corrections as {(source, ocr_label): correct_label}.
