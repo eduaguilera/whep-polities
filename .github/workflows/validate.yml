@@ -623,6 +623,14 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_period_vs_dated_consistency.py
 
+      # The same screen ACROSS volumes (issue 640): a series' 1934-1938 average against its own
+      # 1928-1932 average, which iia_1938_39 and iia_1939_45 print. Median ratio 1.09 over 1,324
+      # pairs is the control; 17 pairs break by 30x-925x in BOTH directions and each is held in a
+      # baseline of explained breaks (a data_errors entry or a documented reason). A new break fails.
+      - name: Sources — a period average must stay within 30x of the previous volume's
+        if: '!cancelled()'
+        run: python3 scripts/validate_period_across_volumes.py
+
       # Where a source REVISES its own stated area by >=50%, does our periodisation have a boundary
       # there? 11 of 18 agree — Serbia -> Yugoslavia 87,776 -> 247,916, Romania's Transylvania gains,
       # Trianon — which corroborates the spans from data rather than from historical reading, and no
