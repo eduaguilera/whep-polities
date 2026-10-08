@@ -429,6 +429,7 @@ ESP-CE-1800-2025,1800,2025,,territory,constructed,21,no_reference,0,,0,,,,,,
 ESP-GC-1833-2025,1833,2025,,subnational,none,,no_reference,0,,0,,,,,,
 ESP-IBZ-1833-2025,1833,2025,,subnational,none,,no_reference,0,,0,,,,,,
 ESP-ML-1800-2025,1800,2025,,territory,constructed,8,no_reference,0,,0,,,,,,
+ESP-TFE-1833-2025,1833,2025,,subnational,none,,no_reference,0,,0,,,,,,
 EST-1800-1918,1800,1918,366,national,cshapes-2.0,49303,no_reference,0,,0,,,,,,
 EST-1918-1940,1918,1940,366,national,cshapes-2.0,49303,stable_confirmed,1,1918-1939,0,49295,49295,,,0.995,0.02
 EST-1940-1945,1940,1945,366,national,cshapes-2.0,49303,no_reference,0,,0,,,,,,
