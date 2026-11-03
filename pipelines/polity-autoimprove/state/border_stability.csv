@@ -587,7 +587,7 @@ FRN-1953-1964,1953,1964,,national,cshapes-2.0,1260085,no_reference,0,,0,,,,,,
 FRO-1800-2025,1800,2025,,territory,gadm-4.1-adm0,1439,no_reference,0,,0,,,,,,
 FRS-1884-1977,1884,1977,522,national,cshapes-2.0,21481,stable_where_covered,1,1886-1976,1,21433,21433,,,0.993,0.22
 FRS-1977-2025,1977,2025,522,national,cshapes-2.0,21481,stable_where_covered,1,1977-2019,0,21433,21433,,,0.993,0.22
-FSM-1991-2025,1991,2025,987,national,gadm-4.1-adm0,763,no_reference,0,,0,,,,,,
+FSM-1978-2025,1978,2025,987,national,gadm-4.1-adm0,763,no_reference,0,,0,,,,,,
 FTJ-1800-1896,1800,1896,,national,paine-2024,47260,no_reference,0,,0,,,,,,
 FTO-1920-1960,1920,1960,,national,cshapes-2.0,57137,no_reference,0,,0,,,,,,
 FTT-1800-1862,1800,1862,,national,paine-2024,10301,no_reference,0,,0,,,,,,
@@ -1034,7 +1034,7 @@ PER-1909-1922,1909,1922,135,national,cshapes-2.0,1246141,stable_confirmed,1,1909
 PER-1922-1942,1922,1942,135,national,cshapes-2.0,1204360,stable_confirmed,1,1922-1941,0,1204363,1204363,,,0.999,-0.0
 PER-1942-2025,1942,2025,135,national,cshapes-2.0,1290852,stable_where_covered,1,1942-2019,0,1290854,1290854,,,0.999,-0.0
 PHL-1800-2025,1800,2025,840,national,cshapes-2.0,291825,stable_where_covered,1,1886-2019,4,292048,292048,,,0.991,-0.08
-PLW-1991-2025,1991,2025,986,national,gadm-4.1-adm0,481,no_reference,0,,0,,,,,,
+PLW-1953-2025,1953,2025,986,national,gadm-4.1-adm0,481,no_reference,0,,0,,,,,,
 PNG-1949-1975,1949,1975,,national,cshapes-2.0,461639,no_reference,0,,0,,,,,,
 PNG-1975-2025,1975,2025,910,national,cshapes-2.0,461639,stable_where_covered,1,1975-2019,0,461689,461689,,,0.996,-0.01
 PNV-1800-1882,1800,1882,,national,paine-2024,7092,no_reference,0,,0,,,,,,
@@ -1143,7 +1143,8 @@ SGP-1946-1963,1946,1963,830,colonial,cshapes-2.0,545,stable_confirmed,1,1946-196
 SGP-1963-1965,1963,1965,,subnational,cshapes-2.0,545,no_reference,0,,0,,,,,,
 SGP-1965-2025,1965,2025,830,national,cshapes-2.0,545,stable_where_covered,1,1965-2019,0,545,545,,,1.0,-0.08
 SGS-1800-2025,1800,2025,,territory,gadm-4.1-adm0,4052,no_reference,0,,0,,,,,,
-SHN-1834-1967,1834,1967,,colonial,gadm-4.1-adm1,123,no_reference,0,,0,,,,,,
+SHN-1834-2025,1834,2025,,territory,gadm-4.1-adm1,123,no_reference,0,,0,,,,,,
+SHN-RA-1938-2025,1938,2025,,territory,gadm-4.1-adm0,411,no_reference,0,,0,,,,,,
 SJM-1930-2025,1930,2025,,aggregate,constructed,60223,no_reference,0,,0,,,,,,
 SLB-1800-2025,1800,2025,940,national,gadm-4.1-adm0,28051,changed,2,1893-2019,2,19641,26861,1.368,1899,0.599,42.82
 SLE-1800-1886,1800,1886,451,national,cshapes-2.0,72503,no_reference,0,,0,,,,,,

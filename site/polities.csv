@@ -587,7 +587,7 @@ FRN-1953-1964,Federation of Rhodesia and Nyasaland (1953-1964),1953,1964,nationa
 FRO-1800-2025,Faroe Islands,1800,2025,territory,FRO,,Europe,draft,2026-07-02,gadm-4.1-adm0,FRO,,assigned,1399,,,,source-stated,1399
 FRS-1884-1977,French Somaliland,1884,1977,national,DJI,522,Africa,draft,2026-07-01,cshapes-2.0,522,1900,assigned,23192,,FRS-1977-2025,,source-stated,23192
 FRS-1977-2025,Djibouti (formerly French Somaliland),1977,2025,national,DJI,522,Africa,draft,2026-07-01,cshapes-2.0,522,1900,assigned,23192,FRS-1884-1977,,,source-stated,23192
-FSM-1991-2025,Micronesia,1991,2025,national,FSM,987,Oceania,draft,2026-04-13,gadm-4.1-adm0,FSM,,assigned,,TTPI-1947-1994,,,,
+FSM-1978-2025,Micronesia,1978,2025,national,FSM,987,Oceania,draft,2026-11-03,gadm-4.1-adm0,FSM,,proxy,,,,,,
 FTJ-1800-1896,Imamate of Futa Jallon,1800,1896,national,,,Africa,draft,2026-04-13,paine-2024,Futa Jalon,,assigned,,,GIN-1958-2025; GIN-1894-1958,,,
 FTO-1920-1960,French Togoland (1920-1960),1920,1960,national,TGO,,Africa,draft,2026-08-13,cshapes-2.0,461,1930,assigned,57094,GTO-1884-1920,TGO-1960-2025,,measured-from-polygon,
 FTT-1800-1862,Imamate of Futa Toro,1800,1862,national,,,Africa,draft,2026-04-13,paine-2024,Futa Toro,,assigned,,,SEN-1960-2025,,,
@@ -1034,7 +1034,7 @@ PER-1909-1922,Peru (1909-1922),1909,1922,national,PER,135,South America,reviewed
 PER-1922-1942,Peru (1922-1942),1922,1942,national,PER,135,South America,draft,2026-04-12,cshapes-2.0,135,1922,assigned,,PER-1909-1922,PER-1942-2025,,,
 PER-1942-2025,Peru,1942,2025,national,PER,135,South America,reviewed,2026-04-12,cshapes-2.0,135,1942,assigned,,PER-1922-1942,,,,
 PHL-1800-2025,Philippines,1800,2025,national,PHL,840,Asia,draft,2026-04-13,cshapes-2.0,840,1898,assigned,,,,,,
-PLW-1991-2025,Palau,1991,2025,national,PLW,986,Oceania,draft,2026-04-13,gadm-4.1-adm0,PLW,,assigned,,,,,,
+PLW-1953-2025,Palau,1953,2025,national,PLW,986,Oceania,draft,2026-11-03,gadm-4.1-adm0,PLW,,proxy,,,,,,
 PNG-1949-1975,Territory of Papua and New Guinea,1949,1975,national,PNG,,Oceania,draft,2026-04-16,cshapes-2.0,910,1949,assigned,,TPAP-1906-1949; TNGU-1920-1949,PNG-1975-2025,,,
 PNG-1975-2025,Papua New Guinea,1975,2025,national,PNG,910,Oceania,draft,2026-04-12,cshapes-2.0,910,1975,assigned,,,,,,
 PNV-1800-1882,Kingdom of Porto-Novo,1800,1882,national,,,Africa,draft,2026-04-13,paine-2024,Porto Novo,,assigned,,,BEN-1960-2025; BEN-1898-1960,,,
@@ -1143,7 +1143,8 @@ SGP-1946-1963,Singapore (Crown Colony),1946,1963,colonial,SGP,830,Asia,draft,202
 SGP-1963-1965,Singapore (State of Singapore in Malaysia),1963,1965,subnational,SGP,,Asia,draft,2026-07-02,cshapes-2.0,830,1962,assigned,547,SGP-1946-1963,SGP-1965-2025,,unrecorded,
 SGP-1965-2025,Singapore,1965,2025,national,SGP,830,Asia,draft,2026-04-12,cshapes-2.0,830,1965,assigned,,,,,,
 SGS-1800-2025,South Georgia and the South Sandwich Islands,1800,2025,territory,SGS,,South America,draft,2026-08-10,gadm-4.1-adm0,SGS,,estimate,3903,,,,official-gazetteer,3903
-SHN-1834-1967,Saint Helena (Crown Colony),1834,1967,colonial,SHN,,Africa,draft,2026-06-26,gadm-4.1-adm1,SHN.2_1,2024,assigned,123,,,,source-stated,123
+SHN-1834-2025,Saint Helena island,1834,2025,territory,,,Africa,draft,2026-11-03,gadm-4.1-adm1,SHN.2_1,,proxy,123,,,,source-stated,123
+SHN-RA-1938-2025,"Saint Helena, Ascension and Tristan da Cunha",1938,2025,territory,SHN,,Africa,draft,2026-11-03,gadm-4.1-adm0,SHN,,proxy,,,,,,
 SJM-1930-2025,Svalbard and Jan Mayen (combined reporting unit),1930,2025,aggregate,,,Europe,draft,2026-09-30,constructed,SJM-1930-2025,,assigned,,,,,,
 SLB-1800-2025,Solomon Islands,1800,2025,national,SLB,940,Oceania,draft,2026-06-09,gadm-4.1-adm0,SLB,,proxy,,,,,,
 SLE-1800-1886,Sierra Leone,1800,1886,national,SLE,451,Africa,draft,2026-04-13,cshapes-2.0,451,1895,assigned,,,SLE-1886-1889,,,
@@ -1225,7 +1226,7 @@ TPAP-1949-1975,Territory of Papua (1949-1975),1949,1975,subnational,PNG,,Oceania
 TRP-1943-1951,British Military Administration of Tripolitania,1943,1951,national,LBY,620,Africa,draft,2026-06-26,constructed,TRP-1943-1951,,proxy,314598,LBY-1934-1943,LBY-1951-2025,,measured-from-polygon,
 TRS-1947-1954,Free Territory of Trieste,1947,1954,national,,,Europe,draft,2026-06-26,constructed,,1947,unassigned,737,ITA-1919-1947,ITA-1947-2025,,source-stated,737
 TTO-1800-2025,Trinidad and Tobago,1800,2025,national,TTO,52,North America,draft,2026-04-13,cshapes-2.0,52,1886,assigned,,,,,,
-TTPI-1947-1994,Trust Territory of the Pacific Islands,1947,1994,colonial,PCI,,Oceania,draft,2026-06-26,constructed,TTPI-1947-1994,,proxy,1791,CAR-1920-1945; MHL-1874-2025; SSM-1914-1945,FSM-1991-2025; MHL-1874-2025; PLW-1991-2025,,source-stated,1791
+TTPI-1947-1994,Trust Territory of the Pacific Islands,1947,1994,colonial,PCI,,Oceania,draft,2026-06-26,constructed,TTPI-1947-1994,,proxy,1791,CAR-1920-1945; MHL-1874-2025; SSM-1914-1945,MHL-1874-2025,,source-stated,1791
 TUN-1800-1881,Beylik of Tunis,1800,1881,national,TUN,616,Africa,draft,2026-04-13,cshapes-2.0,616,1886,proxy,,,TUN-1881-2025,,,
 TUN-1881-2025,Tunisia,1881,2025,national,TUN,616,Africa,draft,2026-04-13,cshapes-2.0,616,1886,assigned,,TUN-1800-1881,,,,
 TUR-1800-1913,"Turkey (Anatolia, to 1913)",1800,1913,national,TUR,640,Asia,draft,2026-04-16,cshapes-2.0,640,1923,estimate,779964,,TUR-1913-1914,,measured-from-polygon,

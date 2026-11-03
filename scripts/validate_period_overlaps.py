@@ -185,11 +185,10 @@ BASELINE_CROSS_FAMILY = frozenset({
     ("ERI-1993-2025", "ETH-1993-2025"),                 #  32y 1993-2025
     # Macedonia's independence year against the rump Yugoslav aggregate.
     ("F248-1991-1992", "MKD-1991-2025"),                #   1y 1991-1992
-    # French Indochina containing Laos; the Rhodesian federation containing Northern
-    # Rhodesia; the Pacific trusteeship containing Micronesia and Palau.
+    # The Rhodesian federation contains Northern Rhodesia.
     ("FRN-1953-1964", "NRH-1953-1964"),                 #  11y 1953-1964
-    ("FSM-1991-2025", "TTPI-1947-1994"),                #   3y 1991-1994
-    ("PLW-1991-2025", "TTPI-1947-1994"),                #   3y 1991-1994
+    # FSM/Palau -> TTPI chronology pairs removed (issue 742): these concurrent
+    # components now have containment edges, not succession-family inference.
     # Precolonial polities against the colonies that absorbed them, over the years the
     # absorption took: Futa Jallon/Guinea, Igala/Northern Nigeria, the Papal States and
     # Italy, Ndebele and Southern Rhodesia, Wadai and Chad.

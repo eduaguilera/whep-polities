@@ -212,6 +212,28 @@ BASELINE_DIFFERENT = frozenset({
 #                       for the second status word rather than for its sensitivity. This is
 #                       the invariant issue 16 found the R side missing entirely.
 FIXTURE = (
+    # FishStat 2025.1 reporting footprints, first/last held year (issue 742).
+    # These are territorial-validity probes, not invented FAOSTAT observations.
+    ("Micronesia (Federated States of)", None, "fishstat-trade", 1988,
+     "FSM-1978-2025"),
+    ("Micronesia (Federated States of)", "FSM", "fishstat-trade", 1990,
+     "FSM-1978-2025"),
+    ("Palau", None, "fishstat-trade", 1981, "PLW-1953-2025"),
+    ("Palau", "PLW", "fishstat-trade", 1990, "PLW-1953-2025"),
+    ("Ascension, Saint Helena and Tristan da Cunha", None, "fishstat-trade",
+     1980, "SHN-RA-1938-2025"),
+    ("Ascension, Saint Helena and Tristan da Cunha", "SHN", "fishstat-trade",
+     2023, "SHN-RA-1938-2025"),
+    # Earlier than the supported footprint, or beyond its catalogue end,
+    # must stay unresolved rather than inherit a whole federation/island.
+    ("Micronesia", "FSM", "fishstat-trade", 1977, None),
+    ("Palau", "PLW", "fishstat-trade", 1952, None),
+    ("Ascension, Saint Helena and Tristan da Cunha", "SHN", "fishstat-trade",
+     1937, None),
+    ("Micronesia", "FSM", "fishstat-trade", 2026, None),
+    ("Palau", "PLW", "fishstat-trade", 2026, None),
+    ("Ascension, Saint Helena and Tristan da Cunha", "SHN", "fishstat-trade",
+     2026, None),
     ("Malaysia", "MYS", "faostat", 1961, "MYS-1957-1963"),
     ("Malaysia", "MYS", "faostat", 1962, "MYS-1957-1963"),
     ("Malaysia", "MYS", "faostat", 1963, "MYS-1963-1965"),

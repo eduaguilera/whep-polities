@@ -49,10 +49,10 @@
   "cow_code",
   "wiki_status"
  ],
- "identity_sha256": "148c8505f1f3d0063347ab5d7fa66875ff931ab48cffe84051736ed094f9cd4b",
+ "identity_sha256": "e43bf0dbdd966a06edd939c55cb6446c38eadeabedd14eb08b885868d40c50d7",
  "counts": {
-  "total": 1342,
-  "live": 1298,
+  "total": 1343,
+  "live": 1299,
   "dead": 44
  },
  "dead_status": [
@@ -192,17 +192,17 @@
  },
  "faostat_area_map": {
   "path": "data/final/faostat_area_polity_map.csv",
-  "sha256": "f37c01472c2c2961cc7c7ba2297fb5edf38844871f33ba609232015f2d2d4dfc",
-  "mappings": 299,
+  "sha256": "2ec3c2dc4c8657182e973b6017b946ed2a3e7d3766527f511368a0a57e137bb0",
+  "mappings": 301,
   "areas": 244,
   "coverage": {
    "reporting_era_first_year": 1961,
    "earliest_year_start": 1850,
    "latest_year_end": 2024,
    "pre_reporting_era": "out-of-scope",
-   "areas_with_a_row_covering_the_era_start": 207,
+   "areas_with_a_row_covering_the_era_start": 208,
    "areas_first_covered_after_the_era_start": 36,
-   "pre_reporting_rows": 31,
+   "pre_reporting_rows": 33,
    "pre_reporting_rows_are": "no-data registry areas only (rows_observed = 0), whose span comes from the polity's own period because the area has no observed FAOSTAT years at all",
    "pre_coverage_rule": "For a year before an area's earliest row, this map states nothing. Do NOT infer a polity by matching the area's ISO3 as a prefix of a polity code: the stems differ across a colonial handover (TUR before 1913 is OTT, PAK before 1947 is IND), so a prefix rule cannot reach the right answer and reaches a wrong one silently. A back-cast value (grown from the reporting-era anchor by a present-day-ISO3 land series) should carry that area's ANCHOR row -- its earliest, which is unique per area -- and be labelled a reconstruction on that polity's boundary, not an observation of it in that year. A value that is a genuine pre-1961 OBSERVATION belongs on the other key: resolve its source label through label_alias_map.csv, which names real historical polities (Abyssinia 1800-1889 -> ETH-1800-1889).",
    "why": "The map is built from what FAOSTAT reports, and FAOSTAT begins in 1961. Stating a pre-1961 polity per area_code is not merely unsupported but undefined for a third of the file: the areas first covered after the era's start have no anchor at 1961 to extend backwards (Armenia 1992, Czechia 1993, Palau 2000, South Sudan 2012), and a back-cast built on modern borders is not an observation of whoever held that ground."
@@ -210,9 +210,9 @@
  },
  "label_alias_map": {
   "path": "data/final/label_alias_map.csv",
-  "sha256": "f82350e3d7a867d10d7ecfd9e027a0b82e5dfe5932f19e3c4d0ff9bae12b5720",
-  "aliases": 3284,
-  "labels": 1799,
+  "sha256": "475fe7010225c99a00e512affba1b368d618bb72a2c9efe996239c71563c5e98",
+  "aliases": 3289,
+  "labels": 1800,
   "sources": [
    "crops-manure-n",
    "eurostat-nuts2013",
@@ -221,6 +221,7 @@
    "fao1952",
    "faostat",
    "federico_tena",
+   "fishstat-trade",
    "ibge-uf",
    "ihme-gbd",
    "iia",
@@ -258,9 +259,9 @@
  },
  "iso3_successor_map": {
   "path": "data/final/iso3_successor_map.csv",
-  "sha256": "4e09117acbda7675f53131bf3d062fbc52c9416623817be8b30b4e18bd9fce18",
-  "relations": 5641,
-  "modern_iso3": 79
+  "sha256": "8e823ceb09695d104080f14a641e3717ac27a69c3150240a65988743530d50be",
+  "relations": 5359,
+  "modern_iso3": 77
  },
  "stated_area_basis": {
   "path": "data/final/source_stated_area_basis.csv",
@@ -284,8 +285,8 @@
  },
  "polity_code_renames": {
   "path": "data/final/polity_code_renames.csv",
-  "sha256": "79ad69a06d4c00feba128f834fcbd2e229e1f01aad289657ab8cb41527a35dfe",
-  "renames": 304,
+  "sha256": "540bc509213549e451e82da5a56ab08edf9625da8a637986b4f0c95774d24e78",
+  "renames": 307,
   "why": "Codes that were renamed without any change of territory, years or data. Map `old_code` to `new_code` in any data keyed on polity codes from before `renamed_on`. The mapping is one-to-one, does not chain, and no `old_code` is ever reused for a different polity. Data keyed on source labels needs nothing: label_alias_map already resolves to the new codes."
  },
  "value_precision": {
@@ -445,13 +446,6 @@
     "year_max": 1910
    }
   ],
-  "FSM": [
-   {
-    "family": "TTPI",
-    "year_min": 1947,
-    "year_max": 1990
-   }
-  ],
   "GEO": [
    {
     "family": "F228",
@@ -600,13 +594,6 @@
     "family": "MHL",
     "year_min": 1874,
     "year_max": 2024
-   }
-  ],
-  "PLW": [
-   {
-    "family": "TTPI",
-    "year_min": 1947,
-    "year_max": 1990
    }
   ],
   "PRK": [
@@ -1460,7 +1447,7 @@
   "FRO-1800-2025",
   "FRS-1884-1977",
   "FRS-1977-2025",
-  "FSM-1991-2025",
+  "FSM-1978-2025",
   "FTJ-1800-1896",
   "FTO-1920-1960",
   "FTT-1800-1862",
@@ -1891,7 +1878,7 @@
   "PER-1922-1942",
   "PER-1942-2025",
   "PHL-1800-2025",
-  "PLW-1991-2025",
+  "PLW-1953-2025",
   "PNG-1949-1975",
   "PNG-1975-2025",
   "PNV-1800-1882",
@@ -1988,7 +1975,8 @@
   "SGP-1963-1965",
   "SGP-1965-2025",
   "SGS-1800-2025",
-  "SHN-1834-1967",
+  "SHN-1834-2025",
+  "SHN-RA-1938-2025",
   "SJM-1930-2025",
   "SLB-1800-2025",
   "SLE-1800-1886",

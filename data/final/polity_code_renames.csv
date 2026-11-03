@@ -303,3 +303,6 @@ USA-UTAH-1896-2025,USA-UT-1896-2025,2026-10-02,refactor/standardise-subunit-code
 USA-UTT-1868-1896,USA-UT-1868-1896,2026-10-02,refactor/standardise-subunit-codes,LINEAGE,US-UT,subnational code standardisation (ISO 3166-2 suffix)
 USA-WAT-1863-1889,USA-WA-1863-1889,2026-10-02,refactor/standardise-subunit-codes,LINEAGE,US-WA,subnational code standardisation (ISO 3166-2 suffix)
 USA-WYT-1868-1890,USA-WY-1868-1890,2026-10-02,refactor/standardise-subunit-codes,LINEAGE,US-WY,subnational code standardisation (ISO 3166-2 suffix)
+FSM-1991-2025,FSM-1978-2025,2026-11-03,issue742,territorial-period-correction,,Same island footprint; remove unsupported statehood/constitutional date boundary.
+PLW-1991-2025,PLW-1953-2025,2026-11-03,issue742,territorial-period-correction,,Same island footprint; remove unsupported statehood/constitutional date boundary.
+SHN-1834-1967,SHN-1834-2025,2026-11-03,issue742,territorial-period-correction,,Same island footprint; remove unsupported statehood/constitutional date boundary.

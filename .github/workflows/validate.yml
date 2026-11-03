@@ -306,14 +306,34 @@ jobs:
           # apt has no cache here, so the dependency tree is paid in full on every run.
           sudo apt-get install -y -qq --no-install-recommends gdal-bin python3-gdal
           python -m pip install --upgrade pip
-          pip install -r requirements-ci.txt
-          # expose the apt-installed osgeo bindings to the setup-python interpreter
-          echo "PYTHONPATH=/usr/lib/python3/dist-packages" >> "$GITHUB_ENV"
+          python -m pip install -r requirements-ci.txt
+          # Expose only apt's GDAL bindings, not its unrelated Python packages.
+          # The requirements retain GDAL's compatible NumPy ABI; import
+          # success alone does not test its raster-array extension.
+          python -c "import pathlib, sysconfig; pathlib.Path(sysconfig.get_path('purelib'), 'osgeo').symlink_to('/usr/lib/python3/dist-packages/osgeo', target_is_directory=True)"
 
-      - name: Report versions
+      - name: Report versions and check GDAL array compatibility
         run: |
-          python -c "import sys, pandas, geopandas; print(sys.version); print('pandas', pandas.__version__, '| geopandas', geopandas.__version__)"
-          python -c "from osgeo import gdal; print('gdal', gdal.__version__)"
+          python - <<'PY'
+          import sys
+          import numpy as np
+          import pandas
+          import geopandas
+          import pyarrow
+          from osgeo import gdal, ogr
+          print(sys.version)
+          print('numpy', np.__version__, np.__file__)
+          print('pandas', pandas.__version__, '| geopandas', geopandas.__version__)
+          print('pyarrow', pyarrow.__version__)
+          print('gdal', gdal.__version__, gdal.__file__)
+          gdal.UseExceptions()
+          values = np.arange(6, dtype=np.float64).reshape(2, 3)
+          raster = gdal.GetDriverByName('MEM').Create('', 3, 2, 1, gdal.GDT_Float64)
+          raster.GetRasterBand(1).WriteArray(values)
+          np.testing.assert_array_equal(raster.ReadAsArray(), values)
+          assert ogr.CreateGeometryFromWkt('POINT (1 2)').GetX() == 1
+          print('PASS: GDAL raster array write/read and OGR geometry')
+          PY
 
       # Each check runs even if an earlier one failed, so one push surfaces every
       # problem rather than only the first.

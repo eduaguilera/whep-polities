@@ -75,6 +75,7 @@ ARG-Y-1853-2025,ARG-1800-1899,1853,1899,"Jujuy province, organized under the 185
 ARG-Y-1853-2025,ARG-1899-1902,1899,1902,short national-row era between the two adjacent Argentina national spans; Jujuy province continues unchanged through it
 ARG-Y-1853-2025,ARG-1902-2025,1902,2025,"Jujuy as a province of the modern Argentine national territory, from 1902 to present"
 ARG-Z-1955-2025,ARG-1902-2025,1955,2025,Santa Cruz was one of the national territories held directly under the Argentine national government; it was granted full provincial status by Law 14.408 in 1955 and has remained a province of Argentina within this national territory chain through the present.
+ASC-1815-2025,SHN-RA-1938-2025,1938,2025,"Constituent territory of the composite Saint Helena, Ascension and Tristan da Cunha grouping."
 AUS-ACT-1911-2025,AUS-1901-2025,1911,2025,"The ACT has been a Commonwealth-administered territory inside Australia continuously since its excision from New South Wales in 1911; the containing national row AUS-1901-2025 spans the entire period, so one edge tiles the full 1911-2025 range."
 AUS-NSW-1901-2025,AUS-1901-2025,1901,2025,"NSW became a state of the Commonwealth of Australia at Federation on 1 January 1901 and has remained one continuously since; no departure rule applies to NSW (unlike NT or ACT), so the country convention's default start rule governs and the container edge is coextensive with the polity's own span."
 AUS-NT-1911-2025,AUS-1901-2025,1911,2025,"Northern Territory was excised from South Australia and placed under direct Commonwealth administration in 1911, and remains a Commonwealth territory within Australia to the present."
@@ -692,6 +693,7 @@ FRA-91-1968-2025,FRA-SSO-1860-2025,1968,2025,"Re-edged to depth 2 on 2026-09-24 
 FRA-SSO-1860-2025,FRA-1860-1871,1860,1871,"Seine-et-Oise and the suburban arrondissements of Seine (Saint-Denis, Sceaux) were metropolitan French départements around Paris throughout; the edge starts in 1860 because this entry's extent assumes Paris at its post-1860 limits."
 FRA-SSO-1860-2025,FRA-1871-1919,1871,1919,The Paris region was untouched by the 1871 cession of Alsace-Lorraine and stayed inside France without the ceded provinces.
 FRA-SSO-1860-2025,FRA-1919-2025,1919,2025,"Inside reunified metropolitan France from 1919; the 1968 break-up of Seine and Seine-et-Oise into six départements happened inside this ground and did not move its outer limit against Seine-et-Marne, Oise, Eure, Eure-et-Loir or Loiret."
+FSM-1978-2025,TTPI-1947-1994,1978,1994,Geographically inside the published four-component TTPI aggregate footprint; this is not a claim that trusteeship or US administration continued unchanged throughout the interval.
 GBR-EW-1800-2025,GBR-GB-1800-2025,1800,2025,England and Wales are Great Britain less Scotland throughout the span.
 GBR-GB-1800-2025,GBR-1800-1921,1800,1921,Great Britain was the larger island of the United Kingdom of Great Britain and Ireland from the 1801 union to the 1921 partition of Ireland.
 GBR-GB-1800-2025,GBR-1921-2025,1921,2025,Great Britain together with Northern Ireland constitutes the United Kingdom after the 1921-1922 settlement.
@@ -1071,6 +1073,7 @@ NGA-S-1914-1967,NGA-1914-1960,1914,1960,"The Southern Provinces (from 1939 the E
 NGA-S-1914-1967,NGA-1960-1961,1960,1961,The Eastern and Western Regions and Lagos in independent Nigeria.
 NGA-S-1914-1967,NGA-1961-2025,1961,1967,"The Eastern, Western and (from 1963) Mid-Western Regions and Lagos, until the 1967 states."
 PAK-WP-1949-1971,PAK-1949-1971,1949,1971,"the western wing of Pakistan, the part of PAK-1949-1971 that is not East Pakistan"
+PLW-1953-2025,TTPI-1947-1994,1953,1994,Geographically inside the published four-component TTPI aggregate footprint; this is not a claim that trusteeship or US administration continued unchanged throughout the interval.
 PRT-01-1835-2025,PRT-1800-2025,1835,1986,"Portuguese district since the 1835 administrative reform. Portugal's NUTS II regions date from 1986, so before that year the district was a direct subunit of the Portuguese state."
 PRT-01-1835-2025,PRT-PT16-1986-2025,1986,2025,"Measured against Eurostat GISCO NUTS 2021 level-2 geometry the district straddles NUTS II boundaries — 63% of its area falls in Centro and the rest in Norte 36%. The edge records the region holding the largest share, so reading this district as a subunit of Centro is approximate; the five regions themselves tile Portugal exactly."
 PRT-02-1835-2025,PRT-1800-2025,1835,1986,"Portuguese district since the 1835 administrative reform. Portugal's NUTS II regions date from 1986, so before that year the district was a direct subunit of the Portuguese state."
@@ -1127,8 +1130,10 @@ SER-1945-2006,F248-1991-1992,1991,1992,"Serbia inside the rump Yugoslavia betwee
 SER-1945-2006,SCG-1992-2006,1992,2006,The Republic of Serbia within the Federal Republic of Yugoslavia (1992-2003) and the State Union of Serbia and Montenegro (2003-2006).
 SGP-1824-1946,STS-1826-1946,1826,1946,Singapore was governed as part of the Straits Settlements from 1826 to 1946.
 SGP-1963-1965,MYS-1963-1965,1963,1965,"the State of Singapore inside Malaysia, from the 1963 federation to the 1965 separation"
+SHN-1834-2025,SHN-RA-1938-2025,1938,2025,Saint Helena island is one constituent of the composite territory; excludes the other constituent islands.
 SRB-XK-2006-2008,SRB-2006-2008,2006,2008,"Serbia without Kosovo, the area Serbia's statistics cover in 2006-2008"
 STS-1826-1946,GBM-1895-1946,1895,1946,The Straits Settlements are one of the three units British Malaya is composed of (with the Federated and Unfederated Malay States).
+TDC-1816-2025,SHN-RA-1938-2025,1938,2025,"Constituent territory of the composite Saint Helena, Ascension and Tristan da Cunha grouping."
 TNGU-1949-1975,PNG-1949-1975,1949,1975,"the Trust Territory of New Guinea inside the Papua and New Guinea administrative union, from the Papua and New Guinea Act 1949 (in force 1 July 1949) until independence on 16 September 1975"
 TPAP-1949-1975,PNG-1949-1975,1949,1975,"the Territory of Papua inside the Papua and New Guinea administrative union, from the Papua and New Guinea Act 1949 (in force 1 July 1949) until independence on 16 September 1975"
 UMS-1909-1946,GBM-1895-1946,1909,1946,The Unfederated Malay States are one of the three units British Malaya is composed of.

@@ -45,7 +45,9 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 39,1961,2024,TCD-1960-2025,Chad,TCD,iso-equal,high,116662
 40,1961,2024,CHL-1902-2025,Chile,CHL,iso-equal,high,233241
 41,1961,2024,CHN-1950-2025,"China, mainland",CHN,iso-equal,high,271786
+42,1888,1945,CXR-1888-1946,Christmas Island,CXR,registry,high,0
 42,1946,1957,CXR-1946-1958,Christmas Island,CXR,registry,high,0
+42,1958,2024,CXR-1958-2025,Christmas Island,CXR,registry,high,0
 44,1961,2024,COL-1922-2025,Colombia,COL,iso-equal,high,237007
 45,1961,1974,COM-1946-1975,Comoros,COM,iso-equal,high,53338
 45,1975,2024,COM-1975-2025,Comoros,COM,iso-equal,high,53338
@@ -163,7 +165,7 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 143,1979,2024,MAR-1979-2025,Morocco,MAR,iso-equal,high,248040
 144,1961,1974,MOZ-1891-1975,Mozambique,MOZ,iso-equal,high,183516
 144,1975,2024,MOZ-1975-2025,Mozambique,MOZ,iso-equal,high,183516
-145,1991,2024,FSM-1991-2025,Micronesia (Federated States of),FSM,iso-equal,high,18270
+145,1991,2024,FSM-1978-2025,Micronesia (Federated States of),FSM,iso-equal,high,18270
 146,1992,2024,MDA-1991-2025,Republic of Moldova,MDA,iso-equal,high,112673
 147,1961,1989,NAM-1920-1990,Namibia,NAM,iso-equal,high,174367
 147,1990,2024,NAM-1990-2025,Namibia,NAM,iso-equal,high,174367
@@ -202,7 +204,7 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 177,1961,2024,PRI-1800-2025,Puerto Rico,PRI,iso-equal,high,13095
 178,1993,2024,ERI-1993-2025,Eritrea,ERI,iso-equal,high,14746
 179,1961,2024,QAT-1800-2025,Qatar,QAT,iso-equal,high,69337
-180,2000,2024,PLW-1991-2025,Palau,PLW,iso-equal,high,9051
+180,2000,2024,PLW-1953-2025,Palau,PLW,iso-equal,high,9051
 181,1961,1963,SRH-1953-1964,Zimbabwe,ZWE,iso-equal,high,226308
 181,1964,1979,ZWE-1964-1980,Zimbabwe,ZWE,iso-equal,high,226308
 181,1980,2024,ZWE-1980-2025,Zimbabwe,ZWE,iso-equal,high,226308
@@ -214,7 +216,7 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 185,2014,2024,RUS-2014-2025,Russian Federation,RUS,iso-equal,high,130135
 186,1992,1998,SCG-1992-2006,Serbia and Montenegro,SCG,iso-equal,high,46585
 186,1999,2005,SCG-XK-1999-2006,Serbia and Montenegro,SCG,manual-territory,high,46585
-187,1850,1966,SHN-1834-1967,"Saint Helena, Ascension and Tristan da Cunha",SHN,registry,high,0
+187,1938,2024,SHN-RA-1938-2025,"Saint Helena, Ascension and Tristan da Cunha",SHN,registry,high,0
 188,1961,2024,KNA-1800-2025,Saint Kitts and Nevis,KNA,iso-equal,high,140659
 189,1961,2024,LCA-1838-2025,Saint Lucia,LCA,iso-equal,high,167775
 190,1850,2024,SPM-1816-2025,Saint Pierre and Miquelon,SPM,registry,high,0

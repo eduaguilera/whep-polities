@@ -587,7 +587,7 @@ FRN-1953-1964,Federation of Rhodesia and Nyasaland (1953-1964),1953,1964,cshapes
 FRO-1800-2025,Faroe Islands,1800,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,13
 FRS-1884-1977,French Somaliland,1884,1977,cshapes-2.0,1900.0,assigned,True,assumed_constant,True,False,stable_where_covered,0.22,single 1900 polygon held across a 93y span (1884-1977); borders may have changed,43
 FRS-1977-2025,Djibouti (formerly French Somaliland),1977,2025,cshapes-2.0,1900.0,assigned,False,back_projected,True,False,stable_where_covered,0.22,polygon vintage 1900 is BEFORE the period starts (1977),0
-FSM-1991-2025,Micronesia,1991,2025,gadm-4.1-adm0,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+FSM-1978-2025,Micronesia,1978,2025,gadm-4.1-adm0,,proxy,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 FTJ-1800-1896,Imamate of Futa Jallon,1800,1896,paine-2024,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 FTO-1920-1960,French Togoland (1920-1960),1920,1960,cshapes-2.0,1930.0,assigned,True,assumed_constant,True,False,no_reference,,single 1930 polygon held across a 40y span (1920-1960); borders may have changed,182
 FTT-1800-1862,Imamate of Futa Toro,1800,1862,paine-2024,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
@@ -1034,7 +1034,7 @@ PER-1909-1922,Peru (1909-1922),1909,1922,cshapes-2.0,1909.0,assigned,True,measur
 PER-1922-1942,Peru (1922-1942),1922,1942,cshapes-2.0,1922.0,assigned,True,measured,False,False,stable_confirmed,-0.0,vintage 1922 faithful to period 1922-1942,452
 PER-1942-2025,Peru,1942,2025,cshapes-2.0,1942.0,assigned,True,assumed_constant,True,True,stable_where_covered,-0.0,single 1942 polygon held across a 83y span (1942-2025); borders may have changed,1102
 PHL-1800-2025,Philippines,1800,2025,cshapes-2.0,1898.0,assigned,True,assumed_constant,True,False,stable_where_covered,-0.08,single 1898 polygon held across a 225y span (1800-2025); borders may have changed,1424
-PLW-1991-2025,Palau,1991,2025,gadm-4.1-adm0,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
+PLW-1953-2025,Palau,1953,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 PNG-1949-1975,Territory of Papua and New Guinea,1949,1975,cshapes-2.0,1949.0,assigned,True,assumed_constant,True,False,no_reference,,single 1949 polygon held across a 26y span (1949-1975); borders may have changed,8
 PNG-1975-2025,Papua New Guinea,1975,2025,cshapes-2.0,1975.0,assigned,False,assumed_constant,True,False,stable_where_covered,-0.01,single 1975 polygon held across a 50y span (1975-2025); borders may have changed,0
 PNV-1800-1882,Kingdom of Porto-Novo,1800,1882,paine-2024,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
@@ -1143,7 +1143,8 @@ SGP-1946-1963,Singapore (Crown Colony),1946,1963,cshapes-2.0,1953.0,assigned,Tru
 SGP-1963-1965,Singapore (State of Singapore in Malaysia),1963,1965,cshapes-2.0,1962.0,assigned,False,back_projected,True,False,no_reference,,polygon vintage 1962 is BEFORE the period starts (1963),0
 SGP-1965-2025,Singapore,1965,2025,cshapes-2.0,1965.0,assigned,False,assumed_constant,True,False,stable_where_covered,-0.08,single 1965 polygon held across a 60y span (1965-2025); borders may have changed,0
 SGS-1800-2025,South Georgia and the South Sandwich Islands,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
-SHN-1834-1967,Saint Helena (Crown Colony),1834,1967,gadm-4.1-adm1,2024.0,assigned,True,back_projected,True,True,no_reference,,polygon vintage 2024 is AFTER the period ends (1967) — later/modern border applied back,17
+SHN-1834-2025,Saint Helena island,1834,2025,gadm-4.1-adm1,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,17
+SHN-RA-1938-2025,"Saint Helena, Ascension and Tristan da Cunha",1938,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 SJM-1930-2025,Svalbard and Jan Mayen (combined reporting unit),1930,2025,constructed,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 SLB-1800-2025,Solomon Islands,1800,2025,gadm-4.1-adm0,,proxy,True,assumed_constant,True,False,changed,42.82,polygon present but no recorded vintage year,30
 SLE-1800-1886,Sierra Leone,1800,1886,cshapes-2.0,1895.0,assigned,True,back_projected,True,False,no_reference,,polygon vintage 1895 is AFTER the period ends (1886) — later/modern border applied back,0

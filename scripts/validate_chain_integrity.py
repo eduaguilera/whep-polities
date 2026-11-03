@@ -230,7 +230,9 @@ BASELINE_ASYMMETRY = {
     # gone. SER-1945-2006 (Serbia within Yugoslavia and the FRY) now sits between them and both of its
     # edges are stated on both sides; the eras split out of FIN, BGR, PAP, LTU, ITA, CHN, HKG and EST
     # are linked both ways as well.
-    "successor_only": 162,
+    # LOWERED 162 -> 161 (issue 742): FSM and Palau are concurrent
+    # TTPI components; explicit containment replaces chronology edges.
+    "successor_only": 161,
     # RAISED 81 -> 83 on 2026-08-13 (issue 171). BFA-1919-1932 and BFA-1947-1960 each gained
     # `predecessor: AOF-1895-1960` and the federation names neither back, deliberately. Upper Volta
     # was carved OUT of French West Africa in 1919 and reconstituted inside it in 1947; AOF ran to

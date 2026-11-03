@@ -67,7 +67,6 @@ wikipedia-united-states-virgin-islands-2026-06-26 #  1 page,  65 rows
 wikipedia-netherlands-antilles-2026-06-26         #  1 page,  58 rows
 wikipedia-british-togoland-2026                   #  1 page,  55 rows -- year-only date
 wikipedia-ttpi-2026-06-26                         #  1 page,  40 rows
-wikipedia-saint-helena-2026-06-26                 #  1 page,  15 rows
 wikipedia-late-colonial-2026-06-24                #  1 page,  14 rows -- wikipedia-late-colonial-2026-04-16 IS registered; this is a later read of the same topic
 wikipedia-danish-west-indies-2026-06-26           #  1 page,   9 rows
 wikipedia-niger-colony-2026                       #  1 page,   8 rows -- year-only date
