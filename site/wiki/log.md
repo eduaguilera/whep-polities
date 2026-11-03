@@ -5782,3 +5782,25 @@ it was read from (issue 195). The measured area and centroid appear in each page
 instead, labelled as measurements of the polygon. And the checklist itself needs a
 subnational path — two of its steps do not survive 431 units — which is a methodology
 change nobody has signed off.
+
+
+## fishstat-reporting-territories-742
+**Date:** 2026-11-03
+**Touched:** FSM-1978-2025, PLW-1953-2025, SHN-1834-2025, SHN-RA-1938-2025
+**Source:** ttc-1980, micronesian-monthly-1953-02, st-helena-constitution-2009,
+faostat-area187-country-area, fishstat-trade-2025-1
+**Kind:** proposal
+
+Agent research under the user's standing authorization to implement and open a
+reviewable PR; no claim of maintainer scientific adoption. Seven documentary
+and official-series fact cards were independently checked by Astra/medium.
+The proposed FSM 1978 and Palau 1953 starts replace unsupported 1991 dates;
+Saint Helena island continues after 1967, and a distinct 1938 composite carries
+ISO SHN. FAOSTAT areas 145 and 180 retain their observed bounds and row counts;
+area 187 remains a zero-observed registry route.
+
+The pages distinguish source declarations, estimated trade, modern coastline
+proxies, the prospective 1953 announcement and unresolved historical 1952 alias
+coverage ([issue 743](https://github.com/eduaguilera/whep-polities/issues/743)).
+No WHEP snapshot or pin is published. Validation and exact commit receipts
+accompany the PR. Ref [issue 742](https://github.com/eduaguilera/whep-polities/issues/742).

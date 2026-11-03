@@ -351,8 +351,8 @@ SAA-1947-1957,Saar Protectorate,fao,2570,1,1952,Saar,2565,0.998,agrees,
 SAU-1924-2025,Saudi Arabia,fao,1546000,1,1952,Saudi Arabia,1954367,1.264,agrees,"GENUINE HISTORICAL UNCERTAINTY. FAO states 1,546,000 km2 against our 1,954,454 and a modern 2,149,690. Saudi Arabia's southern and eastern desert boundaries were not settled until the 1990s, so contemporary figures varied by hundreds of thousands of km2. Neither side is wrong; the territory was not agreed."
 SEN-1886-1960,Senegal (1886-1960),iia,201000,5,1909;1925;1929;1933;1938,AFRIQUE OCCIDENTALE FRANÇAISE: Senegal;AFRIQUE OCCIDENTALE FRANÇAISE: Sénégal;afrique occidentale française: sénégal et dakar,196150,0.976,agrees,
 SGP-1946-1963,Singapore (Crown Colony),fao,750,1,1952,Singapore including Christmas and Cocos Islands,545,0.726,agrees,"SCOPE, THE LABEL SAYS SO. fao1952 1951 `Singapore including Christmas and Cocos Islands` states 750 km2: the Crown Colony as legally constituted (Cocos to 1955, Christmas Island to 1958). Our 545 km2 is Singapore island; Christmas Island (~139 km2) is CXR-1946-1958's polygon and Cocos (~14) has none, so 545 + 139 + 14 = 698 (0.93x). The 1951 land-use rows carry the dependencies the polygon omits."
-SHN-1834-1967,Saint Helena (Crown Colony),fao,330,1,1952,St Helena,123,0.372,review,
-SHN-1834-1967,Saint Helena (Crown Colony),iia,122,9,1909;1925;1929;1932;1933;1938,SAINTE-HELENE;SAINTE-HELENE british;SAINTE-HÉLÈNE;sainte-hélène,123,1.007,agrees,
+SHN-1834-2025,Saint Helena island,fao,330,1,1952,St Helena,123,0.372,review,
+SHN-1834-2025,Saint Helena island,iia,122,9,1909;1925;1929;1932;1933;1938,SAINTE-HELENE;SAINTE-HELENE british;SAINTE-HÉLÈNE;sainte-hélène,123,1.007,agrees,
 SLB-1800-2025,Solomon Islands,fao,29790,1,1952,Br Solomon Islands,28051,0.942,agrees,
 SLE-1889-1961,Sierra Leone (1889-1961),fao,72330,1,1952,Sierra Leone,72503,1.002,agrees,
 SLE-1889-1961,Sierra Leone (1889-1961),iia,70580,9,1909;1925;1929;1932;1933;1938,SIERRA LEONE;SIERRA LEONE colonie et protectorade;SIERRA-LEONE;SIERRA-LEONE british;sierra leone,72503,1.027,agrees,

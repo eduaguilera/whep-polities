@@ -194,7 +194,7 @@ ruanda urundi belge,,,Ruanda-Urundi,
 saint marin,,,San Marino,
 saint pierre et miquelon,,,Saint Pierre and Miquelon,
 saint thomas et prince,,,Sao Tome and Principe,
-sainte helene,,,Saint Helena,
+sainte helene,,,Saint Helena island,Canonical island name after identity migration (issue 742); preserves the prior island target.
 sakhaline japonaise,,,Karafuto,
 samoa americaine,,,Territory of American Samoa,American Samoa; the plain `Samoa` polity is Western Samoa
 samoa occidentale,,,Samoa,"Retargeted 2026-08-24 (#195): WSM-1900-2025. Area 2,572-2,934 vs polygon 2,835, ratio 0.966, and the alternative is refuted -- ASM-1900-2025 (American Samoa) is 204 km2, ratio 0.069."

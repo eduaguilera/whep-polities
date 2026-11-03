@@ -14,17 +14,17 @@ double the real polity total.)
 
 | Metric | Value |
 |---|---|
-| Polities in the database | 1342 |
-| Polity pages | 1342 |
-| Sources ingested | 38 |
-| `status: draft` | 1239 |
+| Polities in the database | 1343 |
+| Polity pages | 1343 |
+| Sources ingested | 43 |
+| `status: draft` | 1240 |
 | `status: reviewed` | 59 |
 | `status: superseded` / `retired` | 21 / 23 |
-| Pages with no source citation | 632 |
+| Pages with no source citation | 631 |
 | Pages citing biger-1995 | 416 |
-| Open questions (`### oq-`) | 2009 |
+| Open questions (`### oq-`) | 2003 |
 
-**By continent:** Europe 399 · Africa 290 · Asia 262 · North America 164 · South America 162 · Oceania 62 · World 2
+**By continent:** Europe 399 · Africa 291 · Asia 262 · North America 164 · South America 162 · Oceania 62 · World 2
 
 Regenerate with `python3 scripts/update_wiki_index.py`. The authoritative
 catalog is `data/final/polities_database.csv`; the per-continent notes below
@@ -688,8 +688,8 @@ are a **curated selection**, not a complete listing.
 - [Tonga](polities/ton-1800-2025.md) — `TON-1800-2025`, draft, 1 open question. Polynesian kingdom; never colonized; British protected state 1900–1970. COW batch entry 1999.
 - [Marshall Islands](polities/mhl-1874-2025.md) — `MHL-1874-2025`, draft, 2 open questions. German protectorate 1885; Japanese mandate 1919; US Trust Territory 1947; independent 1986. COW entry 1991.
 - [Nauru](polities/nru-1888-2025.md) — `NRU-1888-2025`, draft, 2 open questions. German annexation 1888; Australian administration after WWI; independent 1968. COW batch entry 1999.
-- [Micronesia (Federated States of)](polities/fsm-1991-2025.md) — `FSM-1991-2025`, draft, 1 open question. US Trust Territory until Compact of Free Association 1986; COW/UN entry 1991.
-- [Palau](polities/plw-1991-2025.md) — `PLW-1991-2025`, draft, 2 open questions. Last US Trust Territory component; Compact of Free Association 1994; COW entry 1994. WHEP start year 1991 inconsistent.
+- [Micronesia (Federated States of)](polities/fsm-1978-2025.md) — `FSM-1978-2025`, draft, 1 open question. US Trust Territory until Compact of Free Association 1986; COW/UN entry 1991.
+- [Palau](polities/plw-1953-2025.md) — `PLW-1953-2025`, draft, 2 open questions. Last US Trust Territory component; Compact of Free Association 1994; COW entry 1994. WHEP start year 1991 inconsistent.
 - [German colonies Oceania](polities/gco-1884-2025.md) — `GCO-1884-2025`, retired, 1 open question. **Candidate error row**: end_year=2025 is historically impossible (Germany lost Pacific colonies 1914–1919). Requires deletion or correction.
 
 ## Sources

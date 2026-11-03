@@ -188,6 +188,17 @@ DECIDED_OVERLAPS = {
     # the Marshall Islands).
     ("MNP-1986-2025", "TTPI-1947-1994"): "nested",
     ("MHL-1874-2025", "TTPI-1947-1994"): "nested",
+    # Issue 742: geographic components of the gross TTPI footprint, not a claim
+    # of continued trusteeship. Order 3027 groups the four FSM states; the 1980
+    # Trust Territory Code records Palau's post-1953 island bounds.
+    ("FSM-1978-2025", "TTPI-1947-1994"): "nested",
+    ("PLW-1953-2025", "TTPI-1947-1994"): "nested",
+    # Issue 742: SI 2009/1751 preamble (d), (e), (j) records the three-island
+    # grouping from 1938. The reporting territory is gross of its components;
+    # the separate component polygons remain available for island-only rows.
+    ("ASC-1815-2025", "SHN-RA-1938-2025"): "nested",
+    ("SHN-1834-2025", "SHN-RA-1938-2025"): "nested",
+    ("SHN-RA-1938-2025", "TDC-1816-2025"): "nested",
 }
 
 # Signal B. Sliver pairs above --max-sliver km2, with the size measured 2026-08-17. Each
