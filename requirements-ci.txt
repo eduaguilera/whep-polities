@@ -35,9 +35,15 @@
 #              answer against the FULL schema -- hint versus contract. The test asserts that split
 #              still holds, which means compiling both halves, so the library is needed even though
 #              CI never calls a model. Pure Python, no system dependency.
-pandas>=2.0
+# Ubuntu 24.04's apt GDAL 3.8 array extension is built against NumPy 1.x.
+# NumPy 2 imports osgeo but fails at WriteArray/ReadAsArray; pandas 3 requires
+# NumPy 2. Keep the compatible family until the runner's GDAL ABI is upgraded.
+numpy>=1.26,<2.0
+pandas>=2.0,<3.0
 geopandas>=1.0
 pyyaml>=6.0
 spherely>=0.1.1
-pyarrow>=14.0
+# Arrow 26 also requires NumPy 2; retain the same GDAL-compatible family.
+# https://arrow.apache.org/docs/python/install.html
+pyarrow>=14.0,<26.0
 jsonschema>=4.0
