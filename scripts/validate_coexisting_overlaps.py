@@ -207,11 +207,9 @@ DECIDED_OVERLAPS = {
 # rebinding which moves a border further apart is reported even though the pair is already
 # known.
 LARGE_SLIVERS = {
-    # 6.58% of Yemen. Its own class in issue 143's accounting and still open: the
-    # Saudi-Yemen frontier through the Rub al Khali was undefined until the 2000 Treaty of
-    # Jeddah, and the two sources simply place it differently. Needs a source decision,
-    # not a tolerance -- but its SIZE is pinned here so it cannot drift unnoticed.
-    ("SAU-1924-2025", "YEM-1990-2025"): 29828.3,
+    # Saudi/Yemen's former 29,828 km2 exception was a pre/post-2000
+    # source-vintage mismatch, not an unresolved modern frontier (issue 143).
+    # Coherent dated footprints remove it; no replacement tolerance is added.
     # 1.07% of Thailand -- the largest genuine resolution artefact in the set, and the
     # number that sets the top of class 3.
     ("MMR-1885-2025", "THA-1909-2025"): 5458.7,

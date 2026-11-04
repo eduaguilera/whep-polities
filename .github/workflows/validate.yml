@@ -1171,6 +1171,10 @@ jobs:
         if: '!cancelled()'
         run: python3 scripts/validate_year_semantics.py
 
+      - name: Saudi and Yemen use coherent pre/post-2000 source footprints
+        if: '!cancelled()'
+        run: python3 scripts/test_saudi_yemen_periods.py
+
       - name: Aliases — consecutive ranges in a chain do not touch
         if: '!cancelled()'
         run: python3 scripts/validate_alias_chain_overlaps.py

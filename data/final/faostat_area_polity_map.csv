@@ -223,7 +223,8 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 191,1961,2024,VCT-1833-2025,Saint Vincent and the Grenadines,VCT,iso-equal,high,150274
 192,1850,2024,SMR-1800-2025,San Marino,SMR,registry,high,0
 193,1961,2024,STP-1800-2025,Sao Tome and Principe,STP,iso-equal,high,114398
-194,1961,2024,SAU-1924-2025,Saudi Arabia,SAU,iso-equal,high,227870
+194,1961,1999,SAU-1924-2000,Saudi Arabia,SAU,iso-equal,high,227870
+194,2000,2024,SAU-2000-2025,Saudi Arabia,SAU,iso-equal,high,227870
 195,1961,2024,SEN-1960-2025,Senegal,SEN,iso-equal,high,208710
 196,1961,2024,SYC-1903-2025,Seychelles,SYC,iso-equal,high,76009
 197,1961,2024,SLE-1961-2025,Sierra Leone,SLE,iso-equal,high,143752
@@ -283,7 +284,8 @@ area_code,year_start,year_end,polity_code,source_label,iso3,match_route,confiden
 248,1961,1990,F248-1947-1991,Yugoslav SFR,YUG,manual-replace,high,112967
 248,1991,1991,F248-1991-1992,Yugoslav SFR,YUG,manual-replace,high,112967
 249,1961,1989,F249-1918-1990,Yemen,YEM,iso-equal,high,188945
-249,1990,2024,YEM-1990-2025,Yemen,YEM,iso-equal,high,188945
+249,1990,1999,YEM-1990-2000,Yemen,YEM,iso-equal,high,188945
+249,2000,2024,YEM-2000-2025,Yemen,YEM,iso-equal,high,188945
 250,1961,2024,COD-1960-2025,Democratic Republic of the Congo,COD,iso-equal,high,83189
 251,1961,1963,NRH-1953-1964,Zambia,ZMB,iso-equal,high,201635
 251,1964,2024,ZMB-1964-2025,Zambia,ZMB,iso-equal,high,201635

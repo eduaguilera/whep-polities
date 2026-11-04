@@ -649,7 +649,7 @@ manifest = {
         "per-year resolution, including the deeper traversals this field omits, read "
         "iso3_successor_map. ABSENCE IS NOT COVERAGE: a year with no entry may be held by a "
         "polity whose edge is missing, or by no row at all -- SAU has no holder for 1912-1923, "
-        "which is the second kind: SAU-1924-2025 names OTT-1908-1912 and nothing models the "
+        "which is the second kind: SAU-1924-2000 names OTT-1908-1912 and nothing models the "
         "Hejaz or Nejd between them. This sentence read 'MAR has no holder for 1904-1910' "
         "until 2026-08-17, when MOR-1904-1911 was added and that hole was closed (issue 82). "
         "A NARROW YEAR RANGE IS ALSO NOT A HOLE: this field takes hop_depth 1 only, so a "
