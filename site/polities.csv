@@ -464,7 +464,7 @@ F248-1920-1947,Yugoslavia (1920-1947),1920,1947,national,YUG,345,Europe,draft,20
 F248-1920-1991,Yugoslavia (1920-1991),1920,1991,national,YUG,345,Europe,retired,2026-04-12,cshapes-2.0,345,1920,assigned,,F248-1919-1920; F248-1918-1919,MKD-1991-2025; F248-1991-1992,,,
 F248-1947-1991,Yugoslavia (1947-1991),1947,1991,national,YUG,345,Europe,draft,2026-07-01,cshapes-2.0,345,1920,estimate,255000,F248-1920-1947,MKD-1991-2025; F248-1991-1992,,source-stated,255000
 F248-1991-1992,Yugoslavia (1991-1992),1991,1992,national,YUG,345,Europe,draft,2026-04-12,cshapes-2.0,345,1991,assigned,,F248-1947-1991,SVN-1992-2025; HRV-1992-2025; BIH-1992-2025; SCG-1992-2006; MKD-1991-2025,,,
-F249-1918-1990,Yemen (combined reporting: YAR and PDR Yemen),1918,1990,aggregate,YEM,,Asia,draft,2026-07-02,cshapes-2.0,678,1990,estimate,425263,,YEM-1990-2025,,unrecorded,
+F249-1918-1990,Yemen (combined reporting: YAR and PDR Yemen),1918,1990,aggregate,YEM,,Asia,draft,2026-07-02,cshapes-2.0,678,1990,estimate,425263,,YEM-1990-2000,,unrecorded,
 F51-1918-1938,Czechoslovakia (1918-1938),1918,1938,national,CSK,315,Europe,draft,2026-04-12,cshapes-2.0,315,1918,assigned,,AUH-1908-1918,F51-1938-1945,,,
 F51-1938-1945,Czechoslovakia (1938-1945),1938,1945,national,CSK,315,Europe,draft,2026-04-12,cshapes-2.0,315,1939,assigned,,F51-1918-1938,F51-1945-1947,,,
 F51-1945-1947,Czechoslovakia (1945-1947),1945,1947,national,CSK,315,Europe,draft,2026-04-12,cshapes-2.0,315,1945,assigned,,F51-1938-1945,F51-1947-1993,,,
@@ -916,7 +916,7 @@ MEX-YUC-1824-2025,Yucatán,1824,2025,subnational,MEX,,North America,draft,2026-0
 MEX-ZAC-1824-2025,Zacatecas,1824,2025,subnational,MEX,,North America,draft,2026-09-07,gadm-4.1-adm1,MEX.32_1,,assigned,,,,,,
 MHL-1874-2025,Marshall Islands,1874,2025,national,MHL,983,Oceania,draft,2026-04-13,gadm-4.1-adm0,MHL,,estimate,181,,,,official-gazetteer,181
 MKD-1991-2025,North Macedonia,1991,2025,national,MKD,343,Europe,reviewed,2026-04-12,cshapes-2.0,343,1991,assigned,,F248-1947-1991; F248-1991-1992,,,,
-MKY-1918-1962,Mutawakkilite Kingdom of Yemen (1918-1962),1918,1962,national,,679,Asia,draft,2026-06-26,cshapes-2.0,678,1930,assigned,136555,,YEM-1990-2025,,measured-from-polygon,
+MKY-1918-1962,Mutawakkilite Kingdom of Yemen (1918-1962),1918,1962,national,,679,Asia,draft,2026-06-26,cshapes-2.0,678,1930,assigned,136555,,YEM-1990-2000,,measured-from-polygon,
 MLI-1890-1960,French Sudan (1890-1960),1890,1960,national,MLI,432,Africa,draft,2026-06-24,cshapes-2.0,432,1905,assigned,1736746,,MLI-1960-2025,,measured-from-polygon,
 MLI-1960-2025,Mali,1960,2025,national,MLI,432,Africa,draft,2026-04-12,cshapes-2.0,432,1961,assigned,,,,,,
 MLT-1800-2025,Malta,1800,2025,national,MLT,,Europe,reviewed,2026-04-12,cshapes-2.0,338,1886,assigned,,,,,,
@@ -1013,7 +1013,7 @@ OMN-1800-1856,Omani Empire,1800,1856,national,OMN,,Asia,draft,2026-04-13,cliopat
 OMN-1856-2025,Sultanate of Oman,1856,2025,national,OMN,,Asia,draft,2026-04-12,cliopatria,Sultanate of Oman,1973,assigned,,OMN-1800-1856,,,,
 OTT-1800-1886,Ottoman Empire (to 1886),1800,1886,national,OTT,640,Asia,draft,2026-04-11,cliopatria,Ottoman Empire,1857,assigned,,,OTT-1886-1908,,,
 OTT-1886-1908,Ottoman Empire (1886–1908),1886,1908,national,OTT,640,Asia,reviewed,2026-04-12,cshapes-2.0,640,1886,assigned,,OTT-1800-1886,OTT-1908-1912,,,
-OTT-1908-1912,Ottoman Empire (1908–1912),1908,1912,national,OTT,640,Asia,draft,2026-04-11,cshapes-2.0,640,1886,assigned,,OTT-1886-1908,TUR-1913-1914; SAU-1924-2025; LBY-1912-1919,,,
+OTT-1908-1912,Ottoman Empire (1908–1912),1908,1912,national,OTT,640,Asia,draft,2026-04-11,cshapes-2.0,640,1886,assigned,,OTT-1886-1908,TUR-1913-1914; SAU-1924-2000; LBY-1912-1919,,,
 OYO-1800-1836,Oyo Empire,1800,1836,national,,,Africa,draft,2026-04-15,paine-2024,Oyo,,assigned,,,IBD-1829-1893,,,
 PAK-1937-1947,"Pakistan (territory within British India, 1937–1947)",1937,1947,national,PAK,770,Asia,draft,2026-06-30,cshapes-2.0,770,1947,assigned,881625,,PAK-1947-1949,,source-stated,881625
 PAK-1947-1949,Pakistan (1947-1949),1947,1949,national,PAK,770,Asia,draft,2026-04-13,cshapes-2.0,770,1947,assigned,,,PAK-1949-1971,,,
@@ -1123,7 +1123,9 @@ SAA-1947-1957,Saar Protectorate,1947,1957,national,SAA,,Europe,draft,2026-08-13,
 SAB-1920-1935,Saar Basin Territory (League of Nations),1920,1935,colonial,SAB,,Europe,draft,2026-06-25,none,,,unassigned,,DEU-1919-1920,SAC-1935-1947,,,
 SAC-1935-1947,"Saar (German incorporation, 1935-1947)",1935,1947,national,SAC,,Europe,draft,2026-06-26,none,,,unassigned,1912,SAB-1920-1935,SAA-1947-1957,,unrecorded,
 SAR-1800-1860,Sardinia,1800,1860,national,SAR,325,Europe,draft,2026-04-12,cliopatria,Kingdom of Sardinia,1815,assigned,,,ITA-1861-1866,,,
-SAU-1924-2025,Saudi Arabia,1924,2025,national,SAU,670,Asia,draft,2026-04-12,cshapes-2.0,670,1935,assigned,,OTT-1908-1912,,,,
+SAU-1924-2000,Saudi Arabia (before the 2000 boundary treaty),1924,2000,national,SAU,670,Asia,draft,2026-11-04,cshapes-2.0,670,1935,assigned,,OTT-1908-1912,SAU-2000-2025; YEM-2000-2025,,,
+SAU-1924-2025,Saudi Arabia,1924,2025,national,SAU,670,Asia,superseded,2026-04-12,cshapes-2.0,670,1935,assigned,,,,,,
+SAU-2000-2025,Saudi Arabia (from the 2000 boundary treaty),2000,2025,national,SAU,670,Asia,draft,2026-11-04,cshapes-2.0,670,2000,assigned,,SAU-1924-2000,,,,
 SBZ-1938-1949,Eastern Germany / Soviet Occupation Zone,1938,1949,national,,265,Europe,draft,2026-06-26,cshapes-2.0,265,1949,assigned,109272,DEU-1938-1945,F77-1949-1990,,measured-from-polygon,
 SCG-1992-2006,Serbia and Montenegro,1992,2006,national,SCG,,Europe,draft,2026-04-12,cshapes-2.0,345,1992,assigned,,F248-1991-1992,SRB-2006-2008; MNE-2006-2025,,,
 SCG-XK-1999-2006,Serbia and Montenegro excluding Kosovo (1999-2006),1999,2006,subnational,SCG,,Europe,draft,2026-09-24,constructed,SCG-XK-1999-2006,,assigned,91286,,,,measured-from-polygon,
@@ -1332,7 +1334,9 @@ WLF-1800-2025,Wallis and Futuna,1800,2025,territory,WLF,,Oceania,draft,2026-08-1
 WLO-1800-1855,Kingdom of Waalo,1800,1855,national,,,Africa,draft,2026-04-13,paine-2024,Walo,,assigned,,,SEN-1960-2025,,,
 WSM-1900-2025,Samoa,1900,2025,national,WSM,990,Oceania,draft,2026-04-12,gadm-4.1-adm0,WSM,,assigned,,,,,,
 WZO-1938-1949,Western Germany / Western Occupation Zones,1938,1949,national,,260,Europe,draft,2026-07-01,cshapes-2.0,260,1949,assigned,248000,DEU-1938-1945,F78-1949-1990,,official-gazetteer,248000
-YEM-1990-2025,Yemen (1990-2025),1990,2025,national,YEM,678,Asia,draft,2026-04-13,cshapes-2.0,678,2000,assigned,,,,,,
+YEM-1990-2000,Yemen (1990-2000),1990,2000,national,YEM,678,Asia,draft,2026-11-04,cshapes-2.0,678,1990,assigned,,,YEM-2000-2025,,,
+YEM-1990-2025,Yemen (1990-2025),1990,2025,national,YEM,678,Asia,superseded,2026-04-13,cshapes-2.0,678,2000,assigned,,,,,,
+YEM-2000-2025,Yemen (from the 2000 boundary treaty),2000,2025,national,YEM,678,Asia,draft,2026-11-04,cshapes-2.0,678,2000,assigned,,YEM-1990-2000; SAU-1924-2000,,,,
 ZAF-1910-2025,South Africa (Union and Republic),1910,2025,national,ZAF,560,Africa,reviewed,2026-07-01,cshapes-2.0,560,1910,assigned,1221037,CAP-1895-1910; NAT-1895-1910,,,source-stated,1221037
 ZMB-1964-2025,Zambia,1964,2025,national,ZMB,551,Africa,draft,2026-04-12,cshapes-2.0,551,1964,assigned,,BMB-1800-1899; LZI-1800-1890; KZM-1800-1899,,,,
 ZNZ-1890-1963,Zanzibar Protectorate,1890,1963,national,ZNZ,,Africa,draft,2026-06-24,cshapes-2.0,511,1930,assigned,2650,,TZA-1964-2025,,source-stated,2650

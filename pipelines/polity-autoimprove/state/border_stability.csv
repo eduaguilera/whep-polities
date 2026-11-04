@@ -1123,7 +1123,9 @@ SAA-1947-1957,1947,1957,,national,gadm-4.1-adm1,2565,no_reference,0,,0,,,,,,
 SAB-1920-1935,1920,1935,,colonial,none,,no_reference,0,,0,,,,,,
 SAC-1935-1947,1935,1947,,national,none,,no_reference,0,,0,,,,,,
 SAR-1800-1860,1800,1860,325,national,cliopatria,77962,no_reference,0,,0,,,,,,
+SAU-1924-2000,1924,2000,670,national,cshapes-2.0,1954367,stable_where_covered,1,1932-1999,1,1954496,1954496,,,1.0,-0.01
 SAU-1924-2025,1924,2025,670,national,cshapes-2.0,1954367,changed,2,1932-2019,1,1954496,1924636,1.016,2000,1.0,-0.01
+SAU-2000-2025,2000,2025,670,national,cshapes-2.0,1924546,stable_where_covered,1,2000-2019,0,1924636,1924636,,,1.0,-0.0
 SBZ-1938-1949,1938,1949,265,national,cshapes-2.0,109271,stable_where_covered,1,1945-1948,0,109254,109254,,,0.997,0.02
 SCG-1992-2006,1992,2006,,national,cshapes-2.0,101959,no_reference,0,,0,,,,,,
 SCG-XK-1999-2006,1999,2006,,subnational,constructed,91240,no_reference,0,,0,,,,,,
@@ -1332,7 +1334,9 @@ WLF-1800-2025,1800,2025,,territory,gadm-4.1-adm0,156,no_reference,0,,0,,,,,,
 WLO-1800-1855,1800,1855,,national,paine-2024,7283,no_reference,0,,0,,,,,,
 WSM-1900-2025,1900,2025,990,national,gadm-4.1-adm0,2835,no_reference,0,,0,,,,,,
 WZO-1938-1949,1938,1949,260,national,cshapes-2.0,247552,stable_where_covered,1,1945-1948,0,247663,247663,,,0.998,-0.04
+YEM-1990-2000,1990,2000,678,national,cshapes-2.0,423783,stable_confirmed,1,1990-1999,0,423691,423691,,,0.999,0.02
 YEM-1990-2025,1990,2025,678,national,cshapes-2.0,453595,changed,2,1990-2019,0,423691,453550,1.07,2000,0.933,7.06
+YEM-2000-2025,2000,2025,678,national,cshapes-2.0,453595,stable_where_covered,1,2000-2019,0,453550,453550,,,0.999,0.01
 ZAF-1910-2025,1910,2025,560,national,cshapes-2.0,1220223,stable_where_covered,1,1910-2019,0,1220229,1220229,,,0.999,-0.0
 ZMB-1964-2025,1964,2025,551,national,cshapes-2.0,752073,stable_where_covered,1,1964-2019,0,751924,751924,,,0.999,0.02
 ZNZ-1890-1963,1890,1963,,national,cshapes-2.0,2587,no_reference,0,,0,,,,,,

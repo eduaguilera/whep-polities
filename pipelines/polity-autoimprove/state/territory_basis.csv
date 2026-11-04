@@ -1123,7 +1123,9 @@ SAA-1947-1957,Saar Protectorate,1947,1957,gadm-4.1-adm1,,assigned,True,assumed_c
 SAB-1920-1935,Saar Basin Territory (League of Nations),1920,1935,none,,unassigned,True,unassigned,True,False,no_reference,,no polygon (honest gap; never a false territory),0
 SAC-1935-1947,"Saar (German incorporation, 1935-1947)",1935,1947,none,,unassigned,True,unassigned,True,False,no_reference,,no polygon (honest gap; never a false territory),14
 SAR-1800-1860,Sardinia,1800,1860,cliopatria,1815.0,assigned,True,assumed_constant,True,False,no_reference,,single 1815 polygon held across a 60y span (1800-1860); borders may have changed,0
-SAU-1924-2025,Saudi Arabia,1924,2025,cshapes-2.0,1935.0,assigned,True,assumed_constant,True,True,changed,-0.01,single 1935 polygon held across a 101y span (1924-2025); borders may have changed,18
+SAU-1924-2000,Saudi Arabia (before the 2000 boundary treaty),1924,2000,cshapes-2.0,1935.0,assigned,True,assumed_constant,True,False,stable_where_covered,-0.01,single 1935 polygon held across a 76y span (1924-2000); borders may have changed,18
+SAU-1924-2025,Saudi Arabia,1924,2025,cshapes-2.0,1935.0,assigned,True,assumed_constant,True,False,changed,-0.01,single 1935 polygon held across a 101y span (1924-2025); borders may have changed,0
+SAU-2000-2025,Saudi Arabia (from the 2000 boundary treaty),2000,2025,cshapes-2.0,2000.0,assigned,False,assumed_constant,True,False,stable_where_covered,-0.0,single 2000 polygon held across a 25y span (2000-2025); borders may have changed,0
 SBZ-1938-1949,Eastern Germany / Soviet Occupation Zone,1938,1949,cshapes-2.0,1949.0,assigned,True,measured,False,False,stable_where_covered,0.02,vintage 1949 faithful to period 1938-1949,42
 SCG-1992-2006,Serbia and Montenegro,1992,2006,cshapes-2.0,1992.0,assigned,False,measured,False,False,no_reference,,vintage 1992 faithful to period 1992-2006,0
 SCG-XK-1999-2006,Serbia and Montenegro excluding Kosovo (1999-2006),1999,2006,constructed,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
@@ -1332,7 +1334,9 @@ WLF-1800-2025,Wallis and Futuna,1800,2025,gadm-4.1-adm0,,estimate,True,assumed_c
 WLO-1800-1855,Kingdom of Waalo,1800,1855,paine-2024,,assigned,False,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,0
 WSM-1900-2025,Samoa,1900,2025,gadm-4.1-adm0,,assigned,True,assumed_constant,True,False,no_reference,,polygon present but no recorded vintage year,59
 WZO-1938-1949,Western Germany / Western Occupation Zones,1938,1949,cshapes-2.0,1949.0,assigned,True,measured,False,False,stable_where_covered,-0.04,vintage 1949 faithful to period 1938-1949,53
+YEM-1990-2000,Yemen (1990-2000),1990,2000,cshapes-2.0,1990.0,assigned,False,measured,False,False,stable_confirmed,0.02,vintage 1990 faithful to period 1990-2000,0
 YEM-1990-2025,Yemen (1990-2025),1990,2025,cshapes-2.0,2000.0,assigned,False,assumed_constant,True,False,changed,7.06,single 2000 polygon held across a 35y span (1990-2025); borders may have changed,0
+YEM-2000-2025,Yemen (from the 2000 boundary treaty),2000,2025,cshapes-2.0,2000.0,assigned,False,assumed_constant,True,False,stable_where_covered,0.01,single 2000 polygon held across a 25y span (2000-2025); borders may have changed,0
 ZAF-1910-2025,South Africa (Union and Republic),1910,2025,cshapes-2.0,1910.0,assigned,True,assumed_constant,True,False,stable_where_covered,-0.0,single 1910 polygon held across a 115y span (1910-2025); borders may have changed,1583
 ZMB-1964-2025,Zambia,1964,2025,cshapes-2.0,1964.0,assigned,False,assumed_constant,True,False,stable_where_covered,0.02,single 1964 polygon held across a 61y span (1964-2025); borders may have changed,0
 ZNZ-1890-1963,Zanzibar Protectorate,1890,1963,cshapes-2.0,1930.0,assigned,True,assumed_constant,True,True,no_reference,,single 1930 polygon held across a 73y span (1890-1963); borders may have changed,78

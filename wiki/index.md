@@ -14,17 +14,17 @@ double the real polity total.)
 
 | Metric | Value |
 |---|---|
-| Polities in the database | 1343 |
-| Polity pages | 1343 |
-| Sources ingested | 43 |
-| `status: draft` | 1240 |
+| Polities in the database | 1347 |
+| Polity pages | 1347 |
+| Sources ingested | 45 |
+| `status: draft` | 1242 |
 | `status: reviewed` | 59 |
-| `status: superseded` / `retired` | 21 / 23 |
+| `status: superseded` / `retired` | 23 / 23 |
 | Pages with no source citation | 631 |
 | Pages citing biger-1995 | 416 |
 | Open questions (`### oq-`) | 2003 |
 
-**By continent:** Europe 399 · Africa 291 · Asia 262 · North America 164 · South America 162 · Oceania 62 · World 2
+**By continent:** Europe 399 · Africa 291 · Asia 266 · North America 164 · South America 162 · Oceania 62 · World 2
 
 Regenerate with `python3 scripts/update_wiki_index.py`. The authoritative
 catalog is `data/final/polities_database.csv`; the per-continent notes below
@@ -606,7 +606,7 @@ are a **curated selection**, not a complete listing.
 - [Kazakhstan](polities/kaz-1991-2025.md) — `KAZ-1991-2025`, reviewed.
 - [Kyrgyzstan](polities/kgz-1991-2025.md) — `KGZ-1991-2025`, reviewed.
 - [South Korea](polities/kor-1948-2025.md) — `KOR-1948-2025`, draft.
-- [Saudi Arabia](polities/sau-1924-2025.md) — `SAU-1924-2025`, draft, 2 open questions. Ibn Saud conquest 1924; Kingdom proclaimed 23 Sep 1932.
+- [Saudi Arabia](polities/sau-1924-2025.md) — `SAU-1924-2025`, superseded, 2 open questions. Ibn Saud conquest 1924; Kingdom proclaimed 23 Sep 1932.
 - [Thailand (to 1893)](polities/tha-1800-1893.md) — `THA-1800-1893`, draft.
 - [Thailand (1893-1904)](polities/tha-1893-1904.md) — `THA-1893-1904`, draft.
 - [Thailand (1904-1907)](polities/tha-1904-1907.md) — `THA-1904-1907`, draft.
@@ -673,7 +673,7 @@ are a **curated selection**, not a complete listing.
 - [Syria](polities/syr-1967-2025.md) — `SYR-1967-2025`, draft.
 - [Timor-Leste](polities/tls-1800-2025.md) — `TLS-1800-2025`, draft.
 - [Vietnam](polities/vnm-1975-2025.md) — `VNM-1975-2025`, draft.
-- [Yemen (1990-2025)](polities/yem-1990-2025.md) — `YEM-1990-2025`, draft. Unified Republic; 1994 civil war; area change 2000.
+- [Yemen (1990-2025)](polities/yem-1990-2025.md) — `YEM-1990-2025`, superseded. Unified Republic; 1994 civil war; area change 2000.
 - [Maldives](polities/mdv-1800-2025.md) — `MDV-1800-2025`, draft, 1 open question. Indian Ocean archipelago; British protectorate 1887–1965; independent 1965. CShapes constant area across all time-steps confirms no territorial change.
 
 ### Oceania

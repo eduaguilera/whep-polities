@@ -5804,3 +5804,41 @@ proxies, the prospective 1953 announcement and unresolved historical 1952 alias
 coverage ([issue 743](https://github.com/eduaguilera/whep-polities/issues/743)).
 No WHEP snapshot or pin is published. Validation and exact commit receipts
 accompany the PR. Ref [issue 742](https://github.com/eduaguilera/whep-polities/issues/742).
+
+## decision-saudi-yemen-2000-source-periods
+
+**Date:** 2026-11-04
+**Touched:** SAU-1924-2025 and YEM-1990-2025 (superseded); four dated replacements.
+**Sources:** [Saudi-Yemen treaty](sources/saudi-yemen-boundary-treaty-2000.md),
+[cartographic guidance](sources/us-state-saudi-yemen-boundary-2001.md), CShapes 2.0.
+**Kind:** proposal
+
+Prepared by Codex under the maintainer's authorized territorial-research
+workflow. This entry describes the generated candidate in an unmerged PR;
+maintainer review/sign-off remains pending. It does not record a merge or
+WHEP adoption. The annual representation convention is explicit.
+
+The earlier `decision-merge-7-same-area-pairs` rationale was wrong for Yemen.
+Original CShapes GW 678 changes from 423,785.3 to 453,630.7 km² at 12 June 2000;
+GW 670 changes from 1,954,453.8 to 1,924,608.4 km². The previous database combined
+pre-2000 Saudi Arabia with post-2000 Yemen, creating about 2.99 million hectares
+of overlap. Coherent raw pre-change and post-change pairs each have zero overlap.
+
+Restore the two source periods for both countries, retaining the superseded
+broad records as audit records rather than declaring a year-independent rename.
+The annual split is 2000; the treaty's legal entry into force was 4 July 2000,
+not 1 January. This does not establish the scope of every annual observation
+in the transition year. The State Department's 35,000 km² estimate is not a
+polygon calibration target and its precision/demarcation caveats remain visible.
+
+Territorial predecessor links describe a partial footprint transfer, not a
+license to redistribute every Saudi statistical observation to Yemen. The
+existing ISO-successor map is byte-identical after the split (5,359 rows);
+source/year routes and downstream resolution are checked separately.
+
+The ordinary producer still creates about 276.34 ha pre-2000 and 429.55 ha
+post-2000 overlap by independent simplification; its existing unsimplified mode
+has no detected overlap for these pairs. No new tolerance or geographic
+priority rule is introduced. These source-period corrections do not certify a
+complete global native partition or publish a WHEP snapshot/support pin.
+Refs upstream issue 143 and eduaguilera/whep PR 1434.

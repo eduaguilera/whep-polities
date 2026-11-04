@@ -302,11 +302,13 @@ BASELINE = {
         "Ryukyus included Amami Oshima (~1,200 km2) until it returned to Japan in 1953, and "
         "2,270 + 1,200 = 3,470, within 2% of the stated figure. Our polygon is Okinawa "
         "Prefecture, so the gap is Amami and the divergence is real rather than wrong.",
-    ("SAU-1924-2025", "fao"):
-        "GENUINE HISTORICAL UNCERTAINTY. FAO states 1,546,000 km2 against our 1,954,454 and a "
-        "modern 2,149,690. Saudi Arabia's southern and eastern desert boundaries were not "
-        "settled until the 1990s, so contemporary figures varied by hundreds of thousands of "
-        "km2. Neither side is wrong; the territory was not agreed.",
+    ("SAU-1924-2000", "fao"):
+        "HISTORICAL AREA DISCREPANCY, UNRESOLVED. FAO's 1952 reference is 1,546,000 km2; "
+        "the retained pre-2000 source polygon is larger. UNTS 2389, I-43167 records the "
+        "Saudi-Yemen boundary treaty entering into force on 4 July 2000. That later "
+        "settlement does not verify the 1952 reporting footprint or quantitatively "
+        "explain this gap. Neither representation is used to calibrate the other; see "
+        "wiki/sources/saudi-yemen-boundary-treaty-2000.md.",
     ("QAT-1800-2025", "fao"):
         "GENUINE HISTORICAL UNCERTAINTY, same shape. FAO states 22,000 km2 against our 11,062 "
         "and a modern 11,586. Pre-settlement figures for Qatar commonly included disputed zones.",
